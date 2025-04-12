@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+Artefacts/*.safetensors filter=lfs diff=lfs merge=lfs -text
+Artefacts/*.bin filter=lfs diff=lfs merge=lfs -text
+Artefacts/*.pt filter=lfs diff=lfs merge=lfs -text
+Artefacts/*.h5 filter=lfs diff=lfs merge=lfs -text
+Artefacts/*.joblib filter=lfs diff=lfs merge=lfs -text
+Artefacts/*.json filter=lfs diff=lfs merge=lfs -text
+Artefacts/*.txt filter=lfs diff=lfs merge=lfs -text
+Artefacts/*.png filter=lfs diff=lfs merge=lfs -text
