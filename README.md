@@ -65,7 +65,7 @@ Contains all saved models and vectorizers from the classification pipelines:
 ### 📁 Other Files (non-notebooks)
 - `.gitignore`: Hides unwanted system/cache files from Git
 - `README.md`: This file!
-- `TASKS.md` : To keep track of all my tasks during prototyping stage 
+- `TASKS.md` : To keep track of all my tasks as they are being completed 
 
 ### 📌 Project Goals
 - Build a clean text classification pipeline

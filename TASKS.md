@@ -1,61 +1,77 @@
-# 📝 NLP Project Task Breakdown – Beginner Friendly
+# 📝 NLP Project Task Breakdown – Updated (Subfield Phase Complete)
 
-This markdown file contains a step-by-step breakdown of tasks for the NLP classification project. Each task is designed to be small, clear, and commit-worthy for GitHub.
+This markdown file tracks the step-by-step progress of the NLP classification project. Each task is designed to be small, focused, and Git-commit-worthy.
 
 ---
 
 ## 🛠 Project Initialization
 
-- [ ] Initialize GitHub repo
-- [ ] Create initial Jupyter notebook file
-- [ ] Add .gitignore file to exclude system/junk files
-- [ ] Create a README.md with project description
+- [x] Initialize GitHub repo
+- [x] Create initial Jupyter notebook file
+- [x] Add .gitignore file to exclude system/junk files
+- [x] Create a README.md with project description and project structure
 
 ---
 
 ## 📄 Dataset Creation
 
-- [ ] Create sample research paper abstracts (3–5)
-- [ ] Add discipline labels (CS, IS, IT)
-- [ ] Save dataset as a CSV
+- [x] Create full dataset of 105 research paper abstracts (35 per discipline)
+- [x] Add discipline and subfield labels (CS, IS, IT + 5 subfields each)
+- [x] Save dataset as CSV and load into Jupyter
 
 ---
 
 ## 🧹 Text Preprocessing
 
-- [ ] Load dataset into pandas
-- [ ] Convert text to lowercase
-- [ ] Remove punctuation and numbers
-- [ ] Remove stopwords using NLTK
-- [ ] Lemmatize text using spaCy
+- [x] Load dataset into pandas
+- [x] Clean text: lowercase, remove punctuation/numbers
+- [x] Remove stopwords using NLTK
+- [x] Lemmatize using spaCy (optional stage for future refinement)
 
 ---
 
 ## 🔢 Feature Extraction
 
-- [ ] Vectorize text using TF-IDF
-- [ ] Inspect resulting feature matrix
+- [x] Vectorize text using TF-IDF (max_features = 5000)
+- [x] Encode labels using LabelEncoder
+- [x] Inspect feature matrix and encoded targets
 
 ---
 
-## 🧠 Model Building
+## 🧠 Discipline Classification
 
-- [ ] Train Logistic Regression model for discipline classification
-- [ ] Evaluate model performance with accuracy, precision, recall
-- [ ] Plot confusion matrix
-
----
-
-## 🔁 Repeat for Methodology & Subfield
-
-- [ ] Train methodology classifier
-- [ ] Train subfield classifier (optional)
+- [x] Train Logistic Regression classifier for discipline labels
+- [x] Evaluate using classification report + confusion matrix
+- [x] Save model and vectorizer using `joblib`
+- [x] Evaluate model on external 9-paper test set
 
 ---
 
-## 📚 Final Polish
+## 🔁 Subfield Classification
 
-- [ ] Add inline comments to notebook
-- [ ] Save cleaned data as CSV
-- [ ] Document classification logic in markdown cell
-- [ ] Add this TASKS.md file to project repo
+- [x] Define 5 subfields per discipline (CS, IS, IT)
+- [x] Train Logistic Regression models for CS, IS, and IT separately
+- [x] Generate confusion matrices and interpret results
+- [x] Save all models and vectorizers to `Artefacts/`
+- [x] Log experiments in Notion with per-class scores and justification
+
+---
+
+## 🧪 Methodology Classification (Upcoming Phase)
+
+- [ ] Define clear methodology labels (e.g., Qualitative, Quantitative, Mixed)
+- [ ] Create or collect a new labeled dataset (at least 30–50 examples per class)
+- [ ] Train baseline Logistic Regression classifier
+- [ ] Evaluate performance and confusion matrix
+- [ ] Save model/vectorizer and document results in Notion
+
+---
+
+## 📚 Final Polish & Documentation
+
+- [x] Add inline comments and markdown explanations in all notebooks
+- [x] Organize `.pkl` files into `Artefacts/` folder
+- [x] Finalize `README.md` with linked structure and goals
+- [x] Add cleaned and complete `TASKS.md` to repo
+- [ ] Write final project summary or report (Notion → PDF)
+- [ ] Prepare for viva/presentation (script or slides)
