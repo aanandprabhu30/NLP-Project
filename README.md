@@ -2,79 +2,98 @@
 
 This project classifies computing research papers into:
 
-- 📚 **Discipline** (e.g., Computer Science, Information Systems)
-- 🧠 **Subfield** (e.g., AI, Security, EdTech)
-- 🧪 **Methodology** (Qualitative, Quantitative, Mixed)
-
-### 🛠 Built With
-- Python
-- Jupyter Notebook
-- scikit-learn
-- spaCy
-- NLTK
-
-> 🔍 Current Phase: Completed discipline + subfield classification pipeline.  
-> 📌 Next Phase: Methodology classification.
-
-## 📁 Repository Structure
-- [`NLP_Classifier_DisciplineOnly.ipynb`](./NLP_Classifier_DisciplineOnly.ipynb)  
-  → Classifies abstracts into computing disciplines (CS, IS, IT) using Logistic Regression on TF-IDF features.
-
-- [`NLP_Classifier_SubfieldOnly_CS.ipynb`](./NLP_Classifier_SubfieldOnly_CS.ipynb)  
-  → Classifies CS abstracts into subfields: AI, ML, CV, CYB, PAST. Includes evaluation and heatmap.
-
-- [`NLP_Classifier_SubfieldOnly_IS.ipynb`](./NLP_Classifier_SubfieldOnly_IS.ipynb)  
-  → Classifies IS abstracts into subfields: BSP, DSA, ENT, GOV, IMP. Includes confusion matrix and saved model.
-
-- [`NLP_Classifier_SubfieldOnly_IT.ipynb`](./NLP_Classifier_SubfieldOnly_IT.ipynb)  
-  → Classifies IT abstracts into subfields: CLD, EMERGE, IOTNET, OPS, SEC. Evaluated using Logistic Regression.
-
-- [`Evaluate_DisciplineClassifier.ipynb`](./Evaluate_DisciplineClassifier.ipynb)  
-  → Uses a separate 9-paper dataset to evaluate discipline-level classifier performance and confusion matrix.
-
-- [`NLP_Pipeline_Prototype_15_Abstracts.ipynb`](./NLP_Pipeline_Prototype_15_Abstracts.ipynb)  
-  → Early prototype testing on 15 abstracts to validate end-to-end pipeline structure before scaling to 105.
-
-### 📂 Artefacts/
-Contains all saved models and vectorizers from the classification pipelines:
-
-- `discipline_classifier_logreg.pkl`  
-  → Final Logistic Regression model trained on 105 abstracts to classify into CS, IS, or IT.
-
-- `tfidf_vectorizer.pkl`  
-  → TF-IDF vectorizer fitted on the full 105-paper dataset for discipline classification.
-
-- `subfield_classifier_logreg_cs.pkl`  
-  → Logistic Regression model trained on 35 CS abstracts to classify into AI, ML, CV, CYB, or PAST.
-
-- `tfidf_vectorizer_cs.pkl`  
-  → TF-IDF vectorizer used for CS subfield classification.
-
-- `subfield_classifier_logreg_is.pkl`  
-  → Logistic Regression model trained on 35 IS abstracts to classify into BSP, DSA, ENT, GOV, or IMP.
-
-- `tfidf_vectorizer_is.pkl`  
-  → TF-IDF vectorizer used for IS subfield classification.
-
-- `subfield_classifier_logreg_it.pkl`  
-  → Logistic Regression model trained on 35 IT abstracts to classify into CLD, EMERGE, IOTNET, OPS, or SEC.
-
-- `tfidf_vectorizer_it.pkl`  
-  → TF-IDF vectorizer used for IT subfield classification.
-
-### 📁 Other Files (non-notebooks)
-- `.gitignore`: Hides unwanted system/cache files from Git
-- `README.md`: This file!
-- `TASKS.md` : To keep track of all my tasks as they are being completed 
-
-### 📌 Project Goals
-- Build a clean text classification pipeline
-- Make it beginner-friendly and modular
-- Ensure version control using GitHub
-
-### 👨‍💻 Author
-- Aanand Prabhu ([@aanandprabhu30](https://github.com/aanandprabhu30))
+- 🧠 **Discipline** (e.g., Computer Science, Information Systems, Information Technology)
+- 🧠 **Subfield** (e.g., AI, Security, EdTech, etc.)
+- 🧠 **Methodology** (Qualitative, Quantitative, Mixed)
 
 ---
 
-_This project is part of my final year project BSc in Computer Science.
+## 🛠 Built With
+
+- Python
+- Jupyter Notebook
+- scikit-learn
+- pandas
+- seaborn
+- matplotlib
+- joblib
+
+---
+
+## 📍 Current Phase
+
+✅ Completed full pipeline:  
+**Discipline ➔ Subfield ➔ Methodology** classification.
+
+---
+
+## 🚀 Next Phase (Future Work)
+
+- Expand to larger datasets
+- Experiment with advanced models like **BERT**, **Hugging Face Transformers**
+- Explore hierarchical classification (e.g., Discipline ➔ Subfield ➔ Methodology in one model)
+
+---
+
+## 🗂️ Repository Structure
+
+| Folder/File | Description |
+|:---|:---|
+| `/Artefacts/` | Saved Logistic Regression models and TF-IDF vectorizers for all classification phases |
+| `NLP_Pipeline_Prototype_15_Abstracts.ipynb` | Early prototype testing on 15 abstracts |
+| `NLP_Classifier_DisciplineOnly.ipynb` | Classifies abstracts into CS, IS, or IT disciplines |
+| `Evaluate_DisciplineClassifier.ipynb` | Separate evaluation of the Discipline classifier |
+| `NLP_Classifier_SubfieldOnly_CS.ipynb` | Classifies CS abstracts into AI, ML, CV, CYB, PAST |
+| `NLP_Classifier_SubfieldOnly_IS.ipynb` | Classifies IS abstracts into BSP, DSA, ENT, GOV, IMP |
+| `NLP_Classifier_SubfieldOnly_IT.ipynb` | Classifies IT abstracts into CLD, EMERGE, IOTNET, OPS, SEC |
+| `NLP_Methodology_Classifier.ipynb` | Classifies abstracts into Research Methodologies: QLT, QNT, M |
+| `Evaluation Dataset - 9 entries.csv` | Dataset used for evaluating discipline classifier externally |
+| `NLP_Abstract_Dataset (Discipline)(105).csv` | Main 105 abstracts labeled by Discipline |
+| `NLP_Abstract_Dataset (Subfield)(105).csv` | Main 105 abstracts labeled by Subfield |
+| `NLP_Abstract_Dataset (Methodology)(105).csv` | Main 105 abstracts labeled by Methodology |
+
+---
+
+## 🗃️ Saved Models and Vectorizers (`/Artefacts/`)
+
+| File | Description |
+|:---|:---|
+| `discipline_classifier_logreg.pkl` | Logistic Regression model for CS, IS, IT classification |
+| `tfidf_vectorizer.pkl` | TF-IDF vectorizer fitted on 105-discipline dataset |
+| `subfield_classifier_logreg_cs.pkl` | Logistic Regression model for CS subfields |
+| `tfidf_vectorizer_cs.pkl` | TF-IDF vectorizer for CS subfield dataset |
+| `subfield_classifier_logreg_is.pkl` | Logistic Regression model for IS subfields |
+| `tfidf_vectorizer_is.pkl` | TF-IDF vectorizer for IS subfield dataset |
+| `subfield_classifier_logreg_it.pkl` | Logistic Regression model for IT subfields |
+| `tfidf_vectorizer_it.pkl` | TF-IDF vectorizer for IT subfield dataset |
+| `subfield_classifier_logreg_methodology.pkl` | Logistic Regression model for Methodology (QLT, QNT, M) classification |
+| `tfidf_vectorizer_methodology.pkl` | TF-IDF vectorizer for Methodology classification |
+
+---
+
+## 📝 Other Files
+
+| File | Purpose |
+|:---|:---|
+| `.gitignore` | Hides system/cache files from Git |
+| `README.md` | Project overview (this file) |
+| `TASKS.md` | Tracks task completion throughout the project |
+
+---
+
+## 🎯 Project Goals
+
+- Build a clean, reproducible text classification pipeline.
+- Focus on modularity, clarity, and scalability for future upgrades.
+- Ensure beginner-friendliness for understanding basic NLP pipelines.
+- Align with academic best practices for final year BSc projects.
+
+---
+
+## 👨‍💻 Author
+
+Aanand Prabhu ([@aanandprabhu30](https://github.com/aanandprabhu30))
+
+---
+
+> _This project is part of my final year project BSc in Computer Science._
