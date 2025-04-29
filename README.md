@@ -2,9 +2,9 @@
 
 This project classifies computing research papers into:
 
-- 🧠 **Discipline** (e.g., Computer Science, Information Systems, Information Technology)
-- 🧠 **Subfield** (e.g., AI, Security, EdTech, etc.)
-- 🧠 **Methodology** (Qualitative, Quantitative, Mixed)
+- 🧐 **Discipline** (e.g., Computer Science, Information Systems, Information Technology)
+- 🧐 **Subfield** (e.g., AI, Security, EdTech, etc.)
+- 🧐 **Methodology** (Qualitative, Quantitative, Mixed)
 
 ---
 
@@ -24,6 +24,9 @@ This project classifies computing research papers into:
 
 ✅ Completed full pipeline:  
 **Discipline ➔ Subfield ➔ Methodology** classification.
+
+- Conducted detailed 5-fold cross-validation for Discipline, Subfield, and Methodology tasks.
+- Documented fold-wise accuracies, average accuracies, standard deviations, and comparative analysis in Notion.
 
 ---
 
@@ -47,6 +50,7 @@ This project classifies computing research papers into:
 | `NLP_Classifier_SubfieldOnly_IS.ipynb` | Classifies IS abstracts into BSP, DSA, ENT, GOV, IMP |
 | `NLP_Classifier_SubfieldOnly_IT.ipynb` | Classifies IT abstracts into CLD, EMERGE, IOTNET, OPS, SEC |
 | `NLP_Methodology_Classifier.ipynb` | Classifies abstracts into Research Methodologies: QLT, QNT, M |
+| `CrossValidation_AllModels.ipynb` | 5-fold cross-validation results for all tasks |
 | `Evaluation Dataset - 9 entries.csv` | Dataset used for evaluating discipline classifier externally |
 | `NLP_Abstract_Dataset (Discipline)(105).csv` | Main 105 abstracts labeled by Discipline |
 | `NLP_Abstract_Dataset (Subfield)(105).csv` | Main 105 abstracts labeled by Subfield |
@@ -66,7 +70,7 @@ This project classifies computing research papers into:
 | `tfidf_vectorizer_is.pkl` | TF-IDF vectorizer for IS subfield dataset |
 | `subfield_classifier_logreg_it.pkl` | Logistic Regression model for IT subfields |
 | `tfidf_vectorizer_it.pkl` | TF-IDF vectorizer for IT subfield dataset |
-| `subfield_classifier_logreg_methodology.pkl` | Logistic Regression model for Methodology (QLT, QNT, M) classification |
+| `methodology_classifier_logreg.pkl` | Logistic Regression model for Methodology classification |
 | `tfidf_vectorizer_methodology.pkl` | TF-IDF vectorizer for Methodology classification |
 
 ---

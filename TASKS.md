@@ -1,4 +1,4 @@
-# 📝 NLP Project Task Breakdown – Updated (Full Pipeline Complete)
+# 📝 NLP Project Task Breakdown – Updated (Cross-Validation Complete)
 
 This markdown file tracks the step-by-step progress of the NLP classification project. Each task is designed to be small, focused, and Git-commit-worthy.
 
@@ -27,14 +27,14 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 
 ---
 
-## 🎯 Feature Extraction
+## 🌟 Feature Extraction
 - [x] Vectorize text using TF-IDF (max_features = 5000)
 - [x] Encode labels using LabelEncoder
 - [x] Inspect feature matrix and encoded targets
 
 ---
 
-## 🧠 Discipline Classification
+## 🧐 Discipline Classification
 - [x] Train Logistic Regression classifier for discipline labels
 - [x] Evaluate using classification report + confusion matrix
 - [x] Save model and vectorizer using `joblib`
@@ -42,32 +42,40 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 
 ---
 
-## 🧪 Subfield Classification
+## 🔮 Subfield Classification
 - [x] Define 5 subfields per discipline (CS, IS, IT)
 - [x] Train Logistic Regression models for CS, IS, and IT separately
 - [x] Generate confusion matrices and interpret results
 - [x] Save all models and vectorizers to `/Artefacts/`
-- [x] Log experiments in Notion with per-class scores and justification
+- [x] Document subfield cross-validation results, interpretations, and justifications in Notion
 
 ---
 
 ## 📚 Methodology Classification
-- [x] Define clear methodology labels (Qualitative, Quantitative, Mixed)
-- [x] Create labeled dataset (expanded from 105 abstracts)
-- [x] Train baseline Logistic Regression classifier (with class balancing)
-- [x] Evaluate performance and confusion matrix
-- [x] Save model/vectorizer and document results in Notion
+- [x] Define methodology labels (Qualitative, Quantitative, Mixed)
+- [x] Train Logistic Regression model for Methodology classification
+- [x] Perform 5-fold stratified cross-validation
+- [x] Document Methodology cross-validation results, interpretations, and justifications in Notion
 
 ---
 
 ## 🛠️ Final Polish & Documentation
 - [x] Add inline comments and markdown explanations in all notebooks
 - [x] Organize `.pkl` files into `/Artefacts/`
-- [x] Finalize `README.md` with updated full structure and goals
-- [x] Finalize `TASKS.md` to reflect project completion
-- [x] Write final project summary and conclusions in Notion
-- [x] Prepare for viva/presentation (script or slides)
+- [x] Finalize `README.md` with updated structure, goals, and evaluation results
+- [x] Update `TASKS.md` to reflect cross-validation phase completion
+- [x] Write final comparative analysis between Discipline, Subfield, and Methodology classifiers in Notion
+- [x] Save Notion documentation export (`N.zip`) and codebase archive (`NLP-Project.zip`)
+- [x] Commit cross-validation results separately for Subfield and Methodology phases
 
 ---
 
-# ✅ Current Status: Full NLP Pipeline Complete (Discipline → Subfield → Methodology)
+# ✅ Current Status: Cross-Validation and Comparative Analysis Completed (April 29, 2025)
+
+- Discipline classifier: Stable and high accuracy
+- Subfield classifiers: Low accuracy, high variance (expected due to fine-grained labels and small dataset)
+- Methodology classifier: Moderate accuracy, acceptable stability
+- Comparative analysis between all tasks completed and documented
+
+Ready for future phases: advanced modeling (e.g., BERT fine-tuning) or dataset expansion.
+
