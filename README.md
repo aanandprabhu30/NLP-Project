@@ -26,9 +26,15 @@ This project classifies computing research abstracts by:
 **Discipline ➜ Subfield ➜ Methodology**
 
 - Used `SVM + SMOTE + Bigram TF-IDF` architecture  
-- Evaluated using accuracy, F1, precision, recall, confusion matrix  
+- Evaluated using **5-fold stratified cross-validation**  
+- Results include **accuracy, standard deviation, fold-wise breakdown, and version comparison**  
 - Saved all trained models and vectorizers in `/Artefacts`  
-- Documented all experiments and rationales in Notion  
+- Documented full evaluation in Notion and `CrossValidation_AllModels (v1.1 and v2.0).ipynb`  
+
+> 🔁 Final architecture:  
+> - `Discipline`: Logistic Regression + bigram TF-IDF  
+> - `Subfield`: SVM + SMOTE + bigram TF-IDF  
+> - `Methodology`: SVM + SMOTE + bigram TF-IDF on Title + Abstract  
 
 > 🔁 v1.1 was skipped in versioning to standardize upgrades directly from v1.0 ➝ v1.2 ➝ v2.0.
 
@@ -113,6 +119,32 @@ This project classifies computing research abstracts by:
 | v2.0 | `methodology_classifier_v2_titleabstract.pkl` | `tfidf_vectorizer_methodology_v2_titleabstract.pkl` | Title + Abstract |
 
 > ℹ️ Note: Version 1.0 classifier notebooks were overwritten during later upgrades. Only the trained model artifacts (`.pkl`) are retained for comparison and version history.
+
+---
+
+## 📊 Cross-Validation Summary (v1.1 / v1.2 / v2.0)
+
+### Fold-wise Cross-Validation Scores
+
+| **Classifier** | **Fold 1** | **Fold 2** | **Fold 3** | **Fold 4** | **Fold 5** | **Mean Accuracy** | **Std Dev** |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **Discipline (v1.1)** | 0.7143 | 0.9048 | 0.7143 | 0.8571 | 0.6667 | **0.7429** | **0.1151** |
+| **CS Subfield (v1.2)** | 0.5714 | 0.4286 | 0.5714 | 0.2857 | 0.1429 | **0.4000** | **0.1895** |
+| **IS Subfield (v1.2)** | 0.4286 | 0.2857 | 0.5714 | 0.4286 | 0.2857 | **0.4571** | **0.1069** |
+| **IT Subfield (v1.2)** | 0.5714 | 0.5714 | 0.5714 | 0.5714 | 0.2857 | **0.5143** | **0.1143** |
+| **Methodology (v2.0)** | 0.5238 | 0.7143 | 0.7143 | 0.7143 | 0.6286 | **0.6381** | **0.0883** |
+
+---
+
+### 🔁 Version Comparison Table
+
+| **Task** | **Version** | **Prev Accuracy** | **Final Accuracy** | **Δ Accuracy** | **Prev Std Dev** | **Final Std Dev** | **Δ Std Dev** |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Discipline | v1.1 | 0.7714 | 0.7429 | ↓ -0.0285 | 0.0923 | 0.1151 | ↑ +0.0228 |
+| Subfield – CS | v1.2 | 0.2857 | 0.4000 | ↑ +0.1143 | 0.1807 | 0.1895 | ↑ +0.0088 |
+| Subfield – IS | v1.2 | 0.4000 | 0.4571 | ↑ +0.0571 | 0.1069 | 0.1069 | ➖ No change |
+| Subfield – IT | v1.2 | 0.4286 | 0.5143 | ↑ +0.0857 | 0.1565 | 0.1143 | ↓ -0.0422 |
+| Methodology | v2.0 | 0.6190 | 0.6381 | ↑ +0.0191 | 0.0738 | 0.0883 | ↑ +0.0145 |
 
 ---
 
