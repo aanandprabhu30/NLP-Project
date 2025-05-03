@@ -30,6 +30,8 @@ This project classifies computing research abstracts by:
 - Saved all trained models and vectorizers in `/Artefacts`  
 - Documented all experiments and rationales in Notion  
 
+> 🔁 v1.1 was skipped in versioning to standardize upgrades directly from v1.0 ➝ v1.2 ➝ v2.0.
+
 ---
 
 ## 🚀 Next Phase (Future Work)
@@ -109,6 +111,8 @@ This project classifies computing research abstracts by:
 | v1.0 | `methodology_classifier_logreg.pkl` | `tfidf_vectorizer_methodology.pkl` | Abstract-only baseline |
 | v1.2 | `methodology_classifier_svm.pkl` | `tfidf_vectorizer_methodology_smote.pkl` | SVM + SMOTE |
 | v2.0 | `methodology_classifier_v2_titleabstract.pkl` | `tfidf_vectorizer_methodology_v2_titleabstract.pkl` | Title + Abstract |
+
+> ℹ️ Note: Version 1.0 classifier notebooks were overwritten during later upgrades. Only the trained model artifacts (`.pkl`) are retained for comparison and version history.
 
 ---
 
