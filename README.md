@@ -102,6 +102,7 @@ This project classifies computing research abstracts by:
 | `methodology_confusion_matrix_v2.png` | Confusion matrix for Methodology v2.0 |
 
 ---
+## 🔁 Methodology Version Map
 
 | Version | Model | Vectorizer | Notes |
 |---------|--------|------------|-------|
