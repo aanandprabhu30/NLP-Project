@@ -1,10 +1,10 @@
-# NLP Project – Identifying Research Methodologies in Computing
+# 🧠 NLP Project – Identifying Research Methodologies in Computing
 
-This project classifies computing research papers into:
+This project classifies computing research abstracts by:
 
-- 🧐 **Discipline** (e.g., Computer Science, Information Systems, Information Technology)
-- 🧐 **Subfield** (e.g., AI, CV, CYB, etc.)
-- 🧐 **Methodology** (Qualitative, Quantitative, Mixed Methods)
+- 🧐 **Discipline** – Computer Science (CS), Information Systems (IS), Information Technology (IT)
+- 🧐 **Subfield** – AI, ML, CV, CYB, BSP, SEC, CLD, etc.
+- 🧐 **Research Methodology** – Qualitative, Quantitative, Mixed Methods
 
 ---
 
@@ -22,98 +22,107 @@ This project classifies computing research papers into:
 
 ## 📍 Current Phase
 
-✅ Finalized full pipeline:  
-**Discipline ➔ Subfield ➔ Methodology** classification.
+✅ All classifiers finalized:  
+**Discipline ➜ Subfield ➜ Methodology**
 
-- Upgraded all models to use `SVM + SMOTE + Bigram TF-IDF`.
-- Logged evaluation metrics, confusion matrices, and heatmaps.
-- All model versions (v1.0 ➔ v1.2) documented and stored.
-- 5-fold cross-validation completed for each classification layer.
-- Concepts and experimental justifications are stored in **Notion**.
+- Used `SVM + SMOTE + Bigram TF-IDF` architecture  
+- Evaluated using accuracy, F1, precision, recall, confusion matrix  
+- Saved all trained models and vectorizers in `/Artefacts`  
+- Documented all experiments and rationales in Notion  
 
 ---
 
 ## 🚀 Next Phase (Future Work)
 
-- Expand to larger labeled datasets.
-- Apply transformer-based models (e.g., **SciBERT**, **Hugging Face Transformers**).
-- Integrate hierarchical multi-label classification for end-to-end prediction.
-- Deploy as a minimal prototype or API.
+- Expand dataset size and class balance  
+- Explore **transformers** (e.g., SciBERT, BERT, HuggingFace)  
+- Build hierarchical end-to-end multi-label model  
+- Package as an API or minimal UI prototype  
 
 ---
 
 ## 🗂️ Repository Structure
 
 | Folder/File | Description |
-|:---|:---|
-| `/Artefacts/` | All trained models and TF-IDF vectorizers (LogReg and SVM versions) |
-| `/Data/` | CSV datasets used for training and evaluation |
-| `NLP_Pipeline_Prototype_15_Abstracts.ipynb` | Early prototype for proof-of-concept |
-| `NLP_Classifier_DisciplineOnly.ipynb` | Classifier for Discipline (CS, IS, IT) |
-| `NLP_Classifier_SubfieldOnly_CS.ipynb` | Subfield classifier for CS (AI, ML, CV, CYB, PAST) |
-| `NLP_Classifier_SubfieldOnly_IS.ipynb` | Subfield classifier for IS (BSP, DSA, ENT, GOV, IMP) |
-| `NLP_Classifier_SubfieldOnly_IT.ipynb` | Subfield classifier for IT (CLD, SEC, IOTNET, OPS) |
-| `NLP_Methodology_Classifier.ipynb` | Methodology classifier (QLT, QNT, M) |
-| `CrossValidation_AllModels.ipynb` | 5-fold CV for all models |
-| `Evaluate_DisciplineClassifier.ipynb` | Separate test evaluation on discipline model |
-| `README.md` | Project overview (this file) |
-| `TASKS.md` | Timeline and progress log |
+|-------------|-------------|
+| `/Artefacts/` | Trained classifiers + vectorizers + evaluation visuals |
+| `/Data/` | All labeled datasets used across classification tasks |
+| `NLP_Classifier_DisciplineOnly (v1.1).ipynb` | Discipline classifier (CS, IS, IT) |
+| `NLP_Classifier_SubfieldOnly_CS (v1.2).ipynb` | Subfield classifier for CS |
+| `NLP_Classifier_SubfieldOnly_IS (v1.2).ipynb` | Subfield classifier for IS |
+| `NLP_Classifier_SubfieldOnly_IT (v1.2).ipynb` | Subfield classifier for IT |
+| `NLP_Methodology_Classifier (v1.2).ipynb` | SVM + SMOTE for Methodology |
+| `NLP_Methodology_Classifier (v2.0).ipynb` | Methodology with Title + Abstract |
+| `CrossValidation_AllModels.ipynb` | 5-fold cross-validation notebook |
+| `Evaluate_DisciplineClassifier (v1.0).ipynb` | Discipline test split evaluation |
+| `NLP_Pipeline_Prototype_15_Abstracts.ipynb` | Early prototype with 15-entry set |
+| `README.md` | This file |
+| `TASKS.md` | To-do log and milestones |
 
 ---
 
 ## 📊 Data Files (`/Data/`)
 
 | File | Description |
-|:---|:---|
-| `Evaluation Dataset - 9 entries.csv` | External evaluation set for Discipline classifier |
-| `NLP_Abstract_Dataset (Discipline).csv` | 15-entry prototype dataset used in early pipeline testing |
-| `NLP_Abstract_Dataset (Discipline)(105).csv` | Final Discipline-labeled dataset |
-| `NLP_Abstract_Dataset (Subfield)(105).csv` | Subfield-labeled dataset for CS, IS, IT |
-| `NLP_Abstract_Dataset (Methodology)(105).csv` | Methodology-labeled dataset |
+|------|-------------|
+| `Evaluation Dataset - 9 entries.csv` | Held-out test set for Discipline model |
+| `NLP_Abstract_Dataset (Discipline).csv` | Initial prototype dataset (15 entries) |
+| `NLP_Abstract_Dataset (Discipline)(105).csv` | Final labeled Discipline set |
+| `NLP_Abstract_Dataset (Method)(105).csv` | Final labeled Methodology set |
+| `NLP_Abstract_Dataset (Subfield)(105).csv` | Final labeled Subfield set |
+| `NLP_Dataset_Title_Abstract_Discipline_Subfield_Methodology.csv` | Combined dataset for v2.0 |
 
 ---
 
 ## 🧠 Model Artifacts (`/Artefacts/`)
 
 | File | Description |
-|:---|:---|
-| `discipline_classifier_logreg.pkl` | Bi-gram Logistic Regression classifier for Discipline |
-| `tfidf_vectorizer.pkl` | Bigram TF-IDF vectorizer for Discipline model |
-| `subfield_classifier_logreg_cs.pkl` | LogReg classifier for CS subfields |
-| `tfidf_vectorizer_cs.pkl` | TF-IDF for CS subfields (Logreg) |
-| `subfield_classifier_logreg_is.pkl` | LogReg classifier for IS subfields |
-| `tfidf_vectorizer_is.pkl` | TF-IDF for IS subfields (Logreg) |
-| `subfield_classifier_logreg_it.pkl` | LogReg classifier for IT subfields |
-| `tfidf_vectorizer_it.pkl` | TF-IDF for IT subfields(Logreg) |
-| `methodology_classifier_logreg.pkl` | LogReg classifier for Methodology |
-| `tfidf_vectorizer_methodology.pkl` | Bigram TF-IDF for Methodology  |
-| `cs_subfield_classifier_svm_smote.pkl` | SVM+SMOTE classifier for CS subfields |
-| `cs_subfield_vectorizer_smote.pkl` | Bigram TF-IDF for CS subfields |
-| `is_subfield_classifier_svm_smote.pkl` | SVM+SMOTE classifier for IS subfields |
-| `is_subfield_vectorizer_smote.pkl` | Bigram TF-IDF for IS subfields |
-| `it_subfield_classifier_svm_smote.pkl` | SVM+SMOTE classifier for IT subfields |
-| `it_subfield_vectorizer_smote.pkl` | Bigram TF-IDF for IT subfields |
-| `methodology_classifier_svm.pkl` | SVM classifier for Methodology (v1.2) |
-| `baseline_classifier_logreg.pkl` | base reference LogReg model |
+|------|-------------|
+| `baseline_classifier_logreg.pkl` | Generic placeholder baseline |
+| `discipline_classifier_logreg.pkl` | Logistic Regression for Discipline |
+| `tfidf_vectorizer.pkl` | Shared TF-IDF for Discipline |
+| `subfield_classifier_logreg_cs.pkl` | LogReg for CS subfields |
+| `tfidf_vectorizer_cs.pkl` | TF-IDF for CS (LogReg) |
+| `subfield_classifier_logreg_is.pkl` | LogReg for IS subfields |
+| `tfidf_vectorizer_is.pkl` | TF-IDF for IS (LogReg) |
+| `subfield_classifier_logreg_it.pkl` | LogReg for IT subfields |
+| `tfidf_vectorizer_it.pkl` | TF-IDF for IT (LogReg) |
+| `cs_subfield_classifier_svm_smote.pkl` | SVM + SMOTE for CS subfields |
+| `cs_subfield_vectorizer_smote.pkl` | Bigram TF-IDF for CS (SVM) |
+| `is_subfield_classifier_svm_smote.pkl` | SVM + SMOTE for IS subfields |
+| `is_subfield_vectorizer_smote.pkl` | Bigram TF-IDF for IS (SVM) |
+| `it_subfield_classifier_svm_smote.pkl` | SVM + SMOTE for IT subfields |
+| `it_subfield_vectorizer_smote.pkl` | Bigram TF-IDF for IT (SVM) |
+| `methodology_classifier_logreg.pkl` | Logistic Regression (v1.0) – Abstract only |
+| `methodology_classifier_svm.pkl` | SVM + SMOTE (v1.2) – Abstract only |
+| `methodology_classifier_v2_titleabstract.pkl` | SVM + SMOTE (v2.0) – Title + Abstract |
+| `tfidf_vectorizer_methodology.pkl` | Used in v1.0 and v1.2 |
+| `tfidf_vectorizer_methodology_v2_titleabstract.pkl` | Used in v2.0 |
+| `methodology_confusion_matrix_v2.png` | Confusion matrix for Methodology v2.0 |
 
 ---
 
-## 📝 Other Notes
+## 🔁 Methodology Version Map
 
-- All model versioning (v1.0 to v1.2) and pipeline evolution is documented and reproducible.
+| Version | Model | Vectorizer | Notes |
+|---------|--------|------------|-------|
+| v1.0 | `methodology_classifier_logreg.pkl` | `tfidf_vectorizer_methodology.pkl` | Abstract-only baseline |
+| v1.2 | `methodology_classifier_svm.pkl` | `tfidf_vectorizer_methodology.pkl` | SVM + SMOTE |
+| v2.0 | `methodology_classifier_v2_titleabstract.pkl` | `tfidf_vectorizer_methodology_v2_titleabstract.pkl` | Title + Abstract |
 
 ---
 
 ## 🎯 Project Goals
 
-- Build a scalable, interpretable NLP classification pipeline for academic text.
-- Validate methodology across small, imbalanced datasets.
-- Prepare for research extensions with transformer-based models.
+- Build a scalable, modular NLP pipeline  
+- Handle small, imbalanced datasets robustly  
+- Lay groundwork for future semantic modeling with transformer architectures  
 
 ---
 
 ## 👨‍💻 Author
 
-Aanand Prabhu ([@aanandprabhu30](https://github.com/aanandprabhu30))
+Aanand Prabhu  
+[GitHub → @aanandprabhu30](https://github.com/aanandprabhu30)
 
-> _This project is submitted as part of my BSc Final Year Project in Computer Science._
+> _Submitted as part of my BSc Final Year Project in Computer Science – University of London_
