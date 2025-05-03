@@ -18,6 +18,7 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - [x] Save dataset as CSV and load into Jupyter
 - [x] Create `/Data/` folder to store all .csv files
 - [x] Add external evaluation set (9 entries) and prototype dataset (15 abstracts)
+- [x] Create enriched dataset with title + abstract + all 3 labels
 
 ---
 
@@ -61,9 +62,10 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - [x] Define methodology labels (QLT, QNT, M)
 - [x] Train Logistic Regression baseline (v1.0)
 - [x] Upgrade to SVM + SMOTE + Bigram TF-IDF (v1.2)
-- [x] Save both versions to `/Artefacts/`
+- [x] Add Title + Abstract as input features (v2.0)
+- [x] Save all models and vectorizers to `/Artefacts/`
 - [x] Perform stratified train-test split and 5-fold CV
-- [x] Document performance and architecture reuse justification in Notion
+- [x] Document performance evolution and architecture reuse justification in Notion
 
 ---
 
@@ -73,17 +75,19 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - [x] Finalize `README.md` with updated project state and architecture summary
 - [x] Update `TASKS.md` to reflect full modeling completion
 - [x] Document all concepts (e.g. make_pipeline, SMOTE, SVM, TF-IDF) in Notion
-- [x] Version and label models v1.0 to v1.2 in GitHub/Notion
+- [x] Version and label models v1.0 ➝ v1.2 ➝ v2.0 in GitHub/Notion
 - [x] Save `N.zip` (Notion export) and `NLP-Project.zip` (codebase snapshot)
 
 ---
 
-## ✅ Current Status: All Pipelines Finalized – April 30, 2025
+## ✅ Current Status: All Pipelines Finalized – May 3, 2025
 
-- All classification tasks completed with SVM + SMOTE architecture.
-- Final versioned models and vectorizers stored.
-- Confusion matrices, CV scores, and architecture comparisons logged.
-- All documentation and project files consistent between Notion and GitHub.
+- All classification tasks completed with final architecture: `SVM + SMOTE + Bigram TF-IDF`.
+- v2.0 Methodology classifier using Title + Abstract achieves best QLT performance.
+- All models and vectorizers versioned, saved, and documented.
+- Results aligned across Jupyter, GitHub, and Notion.
 
-Ready for next phase: Transformer experimentation, dataset expansion, or minimal deployment.
-
+**System is ready for:**
+- Transformer-based experimentation (e.g. SciBERT)
+- Dataset expansion
+- Optional API deployment or research publication
