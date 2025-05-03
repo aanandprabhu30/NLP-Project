@@ -96,18 +96,17 @@ This project classifies computing research abstracts by:
 | `methodology_classifier_logreg.pkl` | Logistic Regression (v1.0) – Abstract only |
 | `methodology_classifier_svm.pkl` | SVM + SMOTE (v1.2) – Abstract only |
 | `methodology_classifier_v2_titleabstract.pkl` | SVM + SMOTE (v2.0) – Title + Abstract |
-| `tfidf_vectorizer_methodology.pkl` | Used in v1.0 and v1.2 |
+| `tfidf_vectorizer_methodology.pkl` | Used in v1.0 (LogReg only) |
+| `tfidf_vectorizer_methodology_smote.pkl` | Used in v1.2 (SVM + SMOTE) |
 | `tfidf_vectorizer_methodology_v2_titleabstract.pkl` | Used in v2.0 |
 | `methodology_confusion_matrix_v2.png` | Confusion matrix for Methodology v2.0 |
 
 ---
 
-## 🔁 Methodology Version Map
-
 | Version | Model | Vectorizer | Notes |
 |---------|--------|------------|-------|
 | v1.0 | `methodology_classifier_logreg.pkl` | `tfidf_vectorizer_methodology.pkl` | Abstract-only baseline |
-| v1.2 | `methodology_classifier_svm.pkl` | `tfidf_vectorizer_methodology.pkl` | SVM + SMOTE |
+| v1.2 | `methodology_classifier_svm.pkl` | `tfidf_vectorizer_methodology_smote.pkl` | SVM + SMOTE |
 | v2.0 | `methodology_classifier_v2_titleabstract.pkl` | `tfidf_vectorizer_methodology_v2_titleabstract.pkl` | Title + Abstract |
 
 ---
