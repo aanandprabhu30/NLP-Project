@@ -69,18 +69,17 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 
 ---
 
-## 📁 Project Organisation & Docs
-- [x] Organize all `.pkl` files in `/Artefacts/`
-- [x] Create and populate `/Data/` with all datasets
-- [x] Finalize `README.md` with updated project state and architecture summary
-- [x] Update `TASKS.md` to reflect full modeling completion
-- [x] Document all concepts (e.g. make_pipeline, SMOTE, SVM, TF-IDF) in Notion
-- [x] Version and label models v1.0 ➝ v1.2 ➝ v2.0 in GitHub/Notion
-- [x] Save `N.zip` (Notion export) and `NLP-Project.zip` (codebase snapshot)
+## 📊 Final Cross-Validation & Reporting
+- [x] Implement 5-fold cross-validation for all finalized models (v1.1, v1.2, v2.0)
+- [x] Log fold-wise scores, mean accuracy, and standard deviation per classifier
+- [x] Create version comparison table (Previous vs Final accuracy and variance)
+- [x] Add consolidated fold-wise table across all classifiers
+- [x] Write final summary + interpretation + architecture justification in Notion
+- [x] Update `README.md` and `TASKS.md` to reflect final experimental validation
 
 ---
 
-## ✅ Current Status: All Pipelines Finalized – May 3, 2025
+## ✅ Current Status: All Pipelines Finalized and Validated – May 3, 2025
 
 - All classification tasks completed with final architecture: `SVM + SMOTE + Bigram TF-IDF`.
 - v2.0 Methodology classifier using Title + Abstract achieves best QLT performance.
