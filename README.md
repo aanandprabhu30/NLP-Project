@@ -36,7 +36,9 @@ This project classifies computing research abstracts by:
 - **Artefacts:**  
   - All trained models, embeddings, vectorizers, and label encoders saved as `.joblib` in `/Artefacts`
 - **Documentation:**  
-  - Full project evaluation and experiment history tracked in Notion and key notebooks (e.g., `CrossValidation_AllModels.ipynb`)
+  - Full project evaluation and experiment history tracked in Notion and key notebooks
+- **Scripts:**
+  - All scripts used for scraping data have been stored
 
 > 🔁 **Final architectures:**  
 > - `Discipline`: XGBoost + SciBERT (768-dim, 1138 papers)  
@@ -63,6 +65,7 @@ This project classifies computing research abstracts by:
 |-------------|-------------|
 | `/Artefacts/` | Trained classifiers + vectorizers + evaluation visuals |
 | `/Data/` | All labeled datasets used across classification tasks |
+| `/Scripts/`| All Scripts used for scraping data|
 | `README.md` | This file |
 | `TASKS.md` | To-do log and milestones |
 | `CrossValidation_AllModels (v1.0).ipynb` | Cross-validation for original pipeline |
