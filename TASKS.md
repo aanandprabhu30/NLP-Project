@@ -140,3 +140,15 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - Repository and dataset are reproducible, clean, and ready for final submission and review
 
 ---
+
+## 2025-05-17 – Final polish and full project sync
+
+- Added discipline v2.2 classifier: SciBERT + XGBoost trained on full 1138-paper dataset (`disc_scibert_xgboost_v2.2.pkl`), achieving 91% test-set accuracy.
+- Performed ablation with Methodology v2.1.1 (LogReg-scaled on MiniLM embeddings) and documented results.
+- Moved all 13 data collection scripts to `/Scripts/` and updated README with descriptions for each script.
+- Synced the artefact table in README with the current `/Artefacts/` folder (31 files).
+- Added and updated requirements.txt for full environment reproducibility.
+- Checked for and removed `.DS_Store` files and other OS-specific droppings from the repo.
+- Ensured TASKS.md, README.md, and Notion are now fully up to date with all final experiments, models, and artefacts.
+
+---
