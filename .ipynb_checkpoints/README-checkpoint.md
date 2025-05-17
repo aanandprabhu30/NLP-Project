@@ -125,9 +125,11 @@ This project classifies computing research abstracts by:
 | `methodology_scibert_xgb_v2.2.1_smote_model.pkl` | ✅ Best-performing model (v2.2.1) |
 | `methodology_scibert_xgb_v2.2_scaler.pkl` | StandardScaler used in v2.2 & v2.2.1 |
 | `methodology_scibert_xgb_v2.2_label_encoder.pkl` | LabelEncoder for BERT-based classifiers |
-| `disc_scibert_xgboost_v2.2.joblib` | Final discipline classifier model (SciBERT + XGBoost, v2.2) |
-| `scibert_embeddings_discipline_v2.2.joblib` | Discipline set SciBERT embeddings (768-dim) |
-| `discipline_label_encoder_v2.2.joblib` | Label encoder for discipline classifier (v2.2) |
+| `disc_scibert_xgboost_v2.2.pkl` | Final discipline classifier model (SciBERT + XGBoost, v2.2) |
+| `scibert_embeddings_discipline_v2.2.pkl` | Discipline set SciBERT embeddings (768-dim) |
+| `discipline_label_encoder_v2.2.pkl` | Label encoder for discipline classifier (v2.2) |
+| methodology_logreg_v2.1.1_scaled.pkl | Logistic Regression classifier (Scaled, Methodology v2.1.1, MiniLM embeddings) |
+| methodology_scaler_v2.1.1.pkl        | StandardScaler for scaling MiniLM embeddings (Methodology v2.1.1)              |
 ---
 ### Data Collection Scripts (`/Scripts/`)
 
