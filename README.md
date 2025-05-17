@@ -129,6 +129,25 @@ This project classifies computing research abstracts by:
 | `scibert_embeddings_discipline_v2.2.joblib` | Discipline set SciBERT embeddings (768-dim) |
 | `discipline_label_encoder_v2.2.joblib` | Label encoder for discipline classifier (v2.2) |
 ---
+### Data Collection Scripts (`/Scripts/`)
+
+| Script                                    | Description                                                                                                 |
+|--------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| arxiv_cs.py                               | Scrape general Computer Science papers from arXiv.                                                          |
+| arxiv_cs_se_scraper.py                    | Scrape Software Engineering papers from arXiv for IT/SE dataset (requires manual review for IT relevance).  |
+| arxiv_csdc_scraper.py                     | Scrape Data Center topic papers from arXiv (IT infrastructure).                                             |
+| arxiv_csni_scraper.py                     | Scrape Network Infrastructure papers from arXiv (for IT dataset).                                           |
+| download_it_papers_no_pandas_v3.py        | Download and parse IT papers from multiple sources (cloud, edge, etc.); no pandas dependency.               |
+| harvest_it_links.py                       | Collect/harvest links for IT papers prior to full metadata scraping.                                        |
+| is_scraper.py                             | Scrape AMCIS Information Systems conference papers (IS dataset).                                            |
+| is_scraper_ss.py                          | Scrape Information Systems papers from Semantic Scholar (supplements AMCIS collection).                     |
+| it_core.py                                | Core IT domain paper collector (scraping, metadata extraction, discipline filtering).                       |
+| it_v2.py                                  | Updated version of IT paper collector/validator (improved over it_core.py).                                 |
+| IT.py                                     | General-purpose IT paper downloader and cleaner; aggregates outputs from multiple IT scripts.               |
+| itc.py                                    | Custom/incremental IT collection script (handles specific IT subtopics or custom link batches).             |
+| semantic_scholar_web_scraper_loose.py     | Looser Semantic Scholar scraper for additional computing papers (CS/IS/IT) for manual review.               |
+---
+
 ## 🔁 Discipline Version Map
 
 | Version   | Model                                    | Vectorizer / Embedding                | Dataset               | Notes                       |

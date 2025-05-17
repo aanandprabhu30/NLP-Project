@@ -117,6 +117,20 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 
 ---
 
+## 🗂️ Data Collection Scripts Organization (May 17, 2025)
+
+- [x] Create a new `/scripts/` folder in the project root for all data collection utilities
+- [x] Move all scraping, harvesting, and data download scripts (total: 13) into the `/scripts/` folder
+- [x] Ensure all scripts are clearly named and versioned for transparency and reproducibility
+- [x] Add a README table entry for each script with a one-line description of its function
+- [x] Document, for each script:
+    - Source targeted (e.g., arXiv, AMCIS, Semantic Scholar)
+    - Discipline or topic focus (CS, IS, IT, general)
+    - Any manual review required (e.g., for IT relevance)
+- [x] Update Notion and README to reference the `/scripts/` folder as the official source for data gathering code
+
+---
+
 ## ✅ Current Status: All Pipelines Finalized and Validated – May 17, 2025
 
 - Discipline classifier upgraded to SciBERT + XGBoost, trained and validated on full 1138-paper dataset
