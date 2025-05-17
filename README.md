@@ -170,9 +170,9 @@ This project classifies computing research abstracts by:
 | v1.0      | `methodology_classifier_logreg.pkl`   | `tfidf_vectorizer_methodology.pkl`              | Abstract-only baseline |
 | v1.2      | `methodology_classifier_svm.pkl`      | `tfidf_vectorizer_methodology_smote.pkl`        | SVM + SMOTE |
 | v2.0      | `methodology_classifier_v2_titleabstract.pkl` | `tfidf_vectorizer_methodology_v2_titleabstract.pkl` | Title + Abstract |
-| v2.1.1    | Logistic Regression (Scaled)          | MiniLM (384-dim) via sentence-transformers      | CV only – no model saved |
-| v2.2      | `methodology_scibert_xgb_v2.2_model.pkl` | SciBERT (768-dim, Title + Abstract)             | XGBoost baseline |
-| v2.2.1    | `methodology_scibert_xgb_v2.2.1_smote_model.pkl` | SciBERT + SMOTE (768-dim)                  | ✅ Best performance |
+| v2.1.1    | `Logistic Regression (Scaled)`          | `MiniLM (384-dim) via sentence-transformers`      | CV only – no model saved |
+| v2.2      | `methodology_scibert_xgb_v2.2_model.pkl` | `SciBERT (768-dim, Title + Abstract)`             | XGBoost baseline |
+| v2.2.1    | `methodology_scibert_xgb_v2.2.1_smote_model.pkl` | `SciBERT + SMOTE (768-dim)`                  | ✅ Best performance |
 | v2.2.1-CV | N/A                                   | N/A                                              | CV-only evaluation (5-fold) |
 
 > ℹ️ Version 1.0 classifier notebooks were overwritten. Only `.pkl` artifacts retained for comparison and version history.
