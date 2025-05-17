@@ -159,7 +159,7 @@ This project classifies computing research abstracts by:
 |-----------|-------------------------------------------|---------------------------------------|-----------------------|-----------------------------|
 | v1.0      | Logistic Regression                       | TF-IDF (unigram)                      | 105                   | Baseline, small dataset     |
 | v1.1      | Logistic Regression                       | TF-IDF (bigram)                       | 105                   | Improved context, 80/20 CV  |
-| v2.2      | XGBoost (`disc_scibert_xgboost_v2.2.joblib`) | SciBERT (768-dim, Title+Abstract)    | **1138**              | ✅ Final, full dataset      |
+| v2.2      | XGBoost (`disc_scibert_xgboost_v2.2.pkl`) | SciBERT (768-dim, Title+Abstract)    | **1138**              | ✅ Final, full dataset      |
 
 ---
 
