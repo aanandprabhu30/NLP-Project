@@ -87,9 +87,9 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - [x] Update README to include new architecture, model artefacts, goals, and full CV results
 ---
 
-## ✅ Current Status: All Pipelines Finalized and Validated – May 3, 2025
+## ✅ Current Status: May 3, 2025
 
-## ✅ Current Status: All Pipelines Finalized and Validated – May 6, 2025
+## ✅ Current Status: May 6, 2025
 
 - All classification tasks completed using final architectures:
   - `Discipline`: Logistic Regression + bigram TF-IDF
@@ -103,3 +103,26 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
   - Data augmentation
   - Transformer fine-tuning
   - API inference or paper write-up
+
+---
+
+## 🆕 Expanded Dataset & Final Discipline Classifier (May 17, 2025)
+- [x] Scrape, curate, and manually label a full 1138-paper dataset (CS/IS/IT) for discipline classification
+- [x] Deduplicate and validate all abstracts, links, and discipline labels
+- [x] Extract SciBERT (768-dim) embeddings for all 1138 papers
+- [x] Train and evaluate XGBoost classifier on SciBERT embeddings for discipline (v2.2)
+- [x] Save discipline artefacts: classifier, embeddings, label encoder (`/Artefacts/`)
+- [x] Document discipline v2.2 workflow, metrics, and insights in README and Notion
+- [x] Update all tables and results to reflect discipline model’s expanded dataset and new architecture
+
+---
+
+## ✅ Current Status: All Pipelines Finalized and Validated – May 17, 2025
+
+- Discipline classifier upgraded to SciBERT + XGBoost, trained and validated on full 1138-paper dataset
+- Subfield and Methodology classifiers remain based on 105-paper labeled set (best models: SVM + SMOTE + bigram TF-IDF for Subfield, XGBoost + SMOTE + SciBERT for Methodology)
+- All model artefacts, embeddings, and encoders saved and versioned
+- Documentation in Notion, README, and TASKS.md fully updated
+- Repository and dataset are reproducible, clean, and ready for final submission and review
+
+---
