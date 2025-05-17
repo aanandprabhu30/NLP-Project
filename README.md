@@ -20,6 +20,32 @@ This project classifies computing research abstracts by:
 
 ---
 
+## 🧪 Environment Setup (nlp-bert kernel)
+This project was executed using a dedicated virtual environment and Jupyter kernel named **`nlp-bert`**, created specifically for BERT and XGBoost model stability.
+
+> 🔧 **Note:** The `xgboost` models repeatedly crashed when run under the default Anaconda kernel. Switching to a clean virtualenv-based kernel (`nlp-bert`) resolved the issue.
+
+### ⚙ Python Version
+- Python 3.11
+
+
+### 📦 To Recreate the Environment:
+
+    # Step 1: Create a virtual environment
+    python3 -m venv nlp-bert
+    source nlp-bert/bin/activate
+
+    # Step 2: Install dependencies
+    pip install -r requirements.txt
+
+    # Step 3: Register the kernel in Jupyter
+    pip install ipykernel
+    python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp-bert)"
+
+You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-bert)**.
+
+---
+
 ## 📍 Current Phase (as of 17th May 2025)
 
 ✅ **Discipline classifier finalized for 1138-paper dataset:**  
