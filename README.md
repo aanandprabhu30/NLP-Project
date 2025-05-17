@@ -229,6 +229,16 @@ This project classifies computing research abstracts by:
 
 ---
 
+## 🛠️ Reproducibility
+
+To recreate the exact Python environment:
+
+- With pip:
+  ```bash
+  pip install -r requirements.txt
+
+---
+
 ## 👨‍💻 Author
 
 Aanand Prabhu  
