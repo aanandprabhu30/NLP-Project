@@ -152,3 +152,45 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - Ensured TASKS.md, README.md, and Notion are now fully up to date with all final experiments, models, and artefacts.
 
 ---
+## 🧠 2025–05–20 – Final CS Subfield Classifier + AI/ML Disambiguator Integration
+
+- Added `cs_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` notebook containing:
+    - v2.3: XGBoost (default) on 1498-paper CS dataset using SPECTER embeddings
+    - v2.4: GridSearchCV-tuned XGBoost with improved generalization
+- Saved artefacts for both models and label encoder in `/Artefacts/`:
+    - `cs_subfield_xgb_model_v2.3.pkl`, `cs_subfield_xgb_model_v2.4_tuned.pkl`
+    - `cs_subfield_label_encoder_v2.3.pkl`
+- Collected CS dataset via arXiv API using new script: `fetch_arxiv_cs_subfields_balanced.py`
+    - Stored as `CS_subfields.csv` in `/Data/`
+    - Logged script in README under `/Scripts/` with description
+
+- Created second-stage AI/ML disambiguator:
+    - `ai_vs_ml_disambiguator.ipynb` (Logistic Regression + SPECTER, 600-paper filtered set)
+    - Evaluation: 68% Accuracy, Macro F1: 0.67 (balanced F1 for AI and ML)
+    - Saved model and encoder in `/Artefacts/` as:
+        - `ai_ml_disambiguator_logreg_v1.pkl`
+        - `ai_ml_label_encoder.pkl`
+    - Logic integrated into v2.4 inference as fallback when prediction is AI or ML
+
+- Updated:
+    - `README.md`: added new artefacts, scripts, data, notebooks, version tables, and fallback description
+    - `TASKS.md`: current entry
+    - Notion: subfield pipeline complete and reproducible, fallback logic documented
+---
+## 🧭 Upcoming Phase – Modular Inference, Deployment & Future Scaling
+
+- [ ] Refactor final classifier architecture into a modular prediction pipeline:
+    - Discipline ➝ Subfield ➝ Methodology
+    - AI vs ML disambiguator activated conditionally during Subfield inference
+- [ ] Build a wrapper function (e.g. `predict_abstract()`) that takes Title + Abstract and returns all 3 labels
+- [ ] Prepare a lightweight Streamlit app for demo:
+    - Upload abstract
+    - Display predictions + confidence scores
+    - Show fallback activation (if triggered)
+- [ ] Export core inference code into `inference_pipeline.py` (clean, importable, minimal dependencies)
+- [ ] Save one-liner CLI usage examples in `README.md` for demo/testing
+- [ ] Convert artefact loading into cached helper (`load_model()`, `load_vectorizer()` etc.)
+- [ ] Evaluate potential for multi-label classification (e.g., CV + CYB) using thresholding or binary relevance
+- [ ] Begin experiment logging using Weights & Biases or a custom CSV tracker
+- [ ] Outline abstract or draft intro for a conference or project paper submission
+---
