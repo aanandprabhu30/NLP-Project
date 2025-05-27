@@ -177,39 +177,30 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 ---
 ### Data Collection Scripts (`/Scripts/`)
 
-| Script                                    | Description                                                                                                 |
-|--------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| arxiv_cs.py                               | Scrape general Computer Science papers from arXiv.                                                          |
-| arxiv_cs_se_scraper.py                    | Scrape Software Engineering papers from arXiv for IT/SE dataset (requires manual review for IT relevance).  |
-| arxiv_csdc_scraper.py                     | Scrape Data Center topic papers from arXiv (IT infrastructure).                                             |
-| arxiv_csni_scraper.py                     | Scrape Network Infrastructure papers from arXiv (for IT dataset).                                           |
-| download_it_papers_no_pandas_v3.py        | Download and parse IT papers from multiple sources (cloud, edge, etc.); no pandas dependency.               |
-| harvest_it_links.py                       | Collect/harvest links for IT papers prior to full metadata scraping.                                        |
-| is_scraper.py                             | Scrape AMCIS Information Systems conference papers (IS dataset).                                            |
-| is_scraper_ss.py                          | Scrape Information Systems papers from Semantic Scholar (supplements AMCIS collection).                     |
-| it_core.py                                | Core IT domain paper collector (scraping, metadata extraction, discipline filtering).                       |
-| it_v2.py                                  | Updated version of IT paper collector/validator (improved over it_core.py).                                 |
-| IT.py                                     | General-purpose IT paper downloader and cleaner; aggregates outputs from multiple IT scripts.               |
-| itc.py                                    | Custom/incremental IT collection script (handles specific IT subtopics or custom link batches).             |
-| semantic_scholar_web_scraper_loose.py     | Looser Semantic Scholar scraper for additional computing papers (CS/IS/IT) for manual review.               |
-| fetch_arxiv_cs_subfields_balanced.py | Collect up to 300 recent arXiv papers per CS subfield (AI, ML, CV, CYB, PAST) to create a balanced 1498-paper dataset for training v2.3 and v2.4 classifiers
-      |
-| is_bsp.py           | Scrape IS papers for BSP (Blockchain, Security & Privacy) subfield from Semantic Scholar      
-      |
-| is_dsa.py           | Scrape IS papers for DSA (Decision Support & Analytics) subfield from Semantic Scholar        
-     |
-| is_ent.py           | Scrape IS papers for ENT (Enterprise Systems) subfield from Semantic Scholar                  
-     |
-| is_gov.py           | Scrape IS papers for GOV (e-Governance & Public Systems) subfield from Semantic Scholar       
-     |
-| is_imp.py           | Scrape IS papers for IMP (Tech Adoption & Impact) subfield from Semantic Scholar              
-     |
-| extra_papers.py     | Supplement and validate additional IT papers (OPS and IOTNET) from Semantic Scholar           
-     |
-| it_ss.py            | Scrape IT subfield papers (IoT, Edge, Cloud, etc.) from Semantic Scholar                      
-     |
-| it_arxiv.py         | Scrape IT-specific papers (Cloud, Edge, Infrastructure, etc.) from arXiv  
-     |
+| Script                             | Description                                                                                               |
+|-------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| arxiv_cs.py                        | Scrape general Computer Science papers from arXiv.                                                        |
+| arxiv_cs_se_scraper.py              | Scrape Software Engineering papers from arXiv for IT/SE dataset (requires manual review for IT relevance).|
+| arxiv_csdc_scraper.py               | Scrape Data Center topic papers from arXiv (IT infrastructure).                                           |
+| arxiv_csni_scraper.py               | Scrape Network Infrastructure papers from arXiv (for IT dataset).                                         |
+| download_it_papers_no_pandas_v3.py  | Download and parse IT papers from multiple sources (cloud, edge, etc.); no pandas dependency.             |
+| harvest_it_links.py                 | Collect/harvest links for IT papers prior to full metadata scraping.                                      |
+| is_scraper.py                       | Scrape AMCIS Information Systems conference papers (IS dataset).                                          |
+| is_scraper_ss.py                    | Scrape Information Systems papers from Semantic Scholar (supplements AMCIS collection).                   |
+| it_core.py                          | Core IT domain paper collector (scraping, metadata extraction, discipline filtering).                     |
+| it_v2.py                            | Updated version of IT paper collector/validator (improved over it_core.py).                               |
+| IT.py                               | General-purpose IT paper downloader and cleaner; aggregates outputs from multiple IT scripts.             |
+| itc.py                              | Custom/incremental IT collection script (handles specific IT subtopics or custom link batches).           |
+| semantic_scholar_web_scraper_loose.py| Looser Semantic Scholar scraper for additional computing papers (CS/IS/IT) for manual review.            |
+| fetch_arxiv_cs_subfields_balanced.py | Collect up to 300 recent arXiv papers per CS subfield (AI, ML, CV, CYB, PAST) to create a balanced 1498-paper dataset for training v2.3 and v2.4 classifiers |
+| is_bsp.py                           | Scrape IS papers for BSP (Blockchain, Security & Privacy) subfield from Semantic Scholar                 |
+| is_dsa.py                           | Scrape IS papers for DSA (Decision Support & Analytics) subfield from Semantic Scholar                   |
+| is_ent.py                           | Scrape IS papers for ENT (Enterprise Systems) subfield from Semantic Scholar                             |
+| is_gov.py                           | Scrape IS papers for GOV (e-Governance & Public Systems) subfield from Semantic Scholar                  |
+| is_imp.py                           | Scrape IS papers for IMP (Tech Adoption & Impact) subfield from Semantic Scholar                         |
+| extra_papers.py                     | Supplement and validate additional IT papers (OPS and IOTNET) from Semantic Scholar                      |
+| it_ss.py                            | Scrape IT subfield papers (IoT, Edge, Cloud, etc.) from Semantic Scholar                                 |
+| it_arxiv.py                         | Scrape IT-specific papers (Cloud, Edge, Infrastructure, etc.) from arXiv                                 |
 ---
 
 ## 🔁 Discipline Version Map
