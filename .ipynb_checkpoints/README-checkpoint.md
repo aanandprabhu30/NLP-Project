@@ -46,16 +46,15 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 
 ---
 
-## 📍 Current Phase (as of 17th May 2025)
+## 📍 Current Phase (as of 27th May 2025)
 
 ✅ **Discipline classifier finalized for 1138-paper dataset:**  
-**Subfield classifiers finalized for CS (1498 papers), IS and IT (35 each). Methodology classifier tuned and validated on 105-paper labeled subset.**
+**Subfield classifiers finalized for CS (1498 papers), IS (374 papers) and IT (504 papers). Methodology classifier tuned and validated on 105-paper labeled subset.**
 
 - **Discipline Model (1138 papers):**  
   - `XGBoost + SciBERT (768-dim)` trained on full, hand-validated dataset  
 - **Subfield Models:**  
-  - `XGBoost (tuned) + SPECTER (768-dim)` (CS, 1498 papers)  
-  - `SVM + SMOTE + Bigram TF-IDF` (IS/IT, 35 papers each)  
+  - `XGBoost (tuned) + SPECTER (768-dim)` (CS - 1498 papers, IS - 374 papers and IT - 504 papers)  
 - **Methodology Model (105 papers):**  
   - `XGBoost + SMOTE + SciBERT (768-dim)` (Title + Abstract)  
 - **Evaluation:**  
@@ -70,20 +69,19 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 
 > 🔁 **Final architectures:**  
 > - `Discipline`: XGBoost + SciBERT (768-dim, 1138 papers)  
-> - `Subfield`: XGBoost (tuned) + SPECTER (768-dim, 1498 papers) [CS]  
-> - `Subfield`: SVM + SMOTE + bigram TF-IDF (IS/IT, 35 papers each)  
+> - `Subfield`: XGBoost (tuned) + SPECTER (768-dim, CS – 1498 papers, IS – 374 papers, IT – 504 papers)
 > - `Methodology`: XGBoost + SMOTE + SciBERT (Title + Abstract, 768-dim, 105 papers)
 
-> 🔁 v1.1 was skipped in versioning to standardize upgrades directly from v1.0 ➝ v1.2 ➝ v2.0 ➝ v2.2.1 ➝ v2.4
+> 🔁 v1.1 was skipped in versioning to standardize upgrades directly from v1.0 ➝ v1.2 ➝ v2.0 ➝ v2.2.1 ➝ v2.3 and v2.4
 ---
 ## 🚀 Next Phase (Future Work)
 
-- 🔎 **Extend subfield classifiers for IS and IT** by expanding beyond the current 35-paper datasets to improve generalization, especially for difficult classes like GOV, BSP, and IOTNET.
 - 🧪 **Scale methodology classification** by collecting and annotating more papers, particularly Mixed Methods, to support balanced training with SMOTE or label smoothing.
 - 🤖 **Fine-tune transformer models (SciBERT, SPECTER)** on domain-specific data to improve embedding relevance for subfield and methodology classification tasks.
 - 🧭 **Implement hierarchical and fallback inference**: discipline ➝ subfield ➝ methodology, with modules like the AI vs ML disambiguator dynamically invoked during prediction.
 - 📦 **Package the full inference pipeline** into an interactive tool or API (e.g., Streamlit, FastAPI) for testing, demonstration, and external validation.
 - 🧠 **Formalize project documentation**: define templates for logging experiments, artefacts, scripts, and classifier metrics to support reproducibility and future publication.
+- 🧩 **Explore ensemble and meta-learning approaches** (e.g., stacking, voting, or classifier cascades) to further increase robustness and handle borderline abstracts.
 ---
 
 ## 🗂️ Repository Structure
@@ -109,6 +107,8 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `NLP_Pipeline_Prototype_15_Abstracts.ipynb` | Early 15-entry pipeline prototype |
 | `NLP_Classifier_DisciplineOnly_SciBERT_XGBoost_(v2.2).ipynb` | ✅ Final discipline classifier using SciBERT embeddings + XGBoost on 1138-paper dataset |
 | `cs_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final CS subfield classifiers (1498-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
+| `it_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IT subfield classifiers (504-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
+| `is_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IS subfield classifiers (374-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
 | `ai_vs_ml_disambiguator.ipynb` | 🧩 Binary fallback classifier (LogReg + SPECTER) to disambiguate AI vs ML within CS pipeline |
 ---
 
@@ -124,6 +124,8 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `NLP_Dataset_Title_Abstract_Discipline_Subfield_Methodology.csv` | Combined dataset for v2.0 |
 | `Discipline (1138).csv` | Final deduplicated, hand-labeled discipline dataset (CS/IS/IT, 1138 papers) |
 | `CS_subfields.csv` | Final CS subfield dataset (1498 papers) collected via arXiv API for training v2.3 and v2.4 |
+| `IS_subfields.csv`      | Final IS subfield dataset (374 papers, hand-labeled, multi-source) for v2.3 and v2.4 |
+| `IT_subfields.csv`      | Final IT subfield dataset (504 papers, hand-labeled, multi-source) for v2.3 and v2.4 |
 ---
 
 ## 🧠 Model Artifacts (`/Artefacts/`)
@@ -166,6 +168,12 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `cs_subfield_xgb_model_v2.4_tuned.pkl`   | Tuned XGBoost model (GridSearchCV) for CS subfield classification (v2.4, SPECTER) |
 | `ai_ml_disambiguator_logreg_v1.pkl`      | Logistic Regression model trained to disambiguate AI vs ML using SPECTER embeddings |
 | `ai_ml_label_encoder.pkl`                | Label encoder for the AI vs ML disambiguator |
+| `is_subfield_xgb_model_v2.3.pkl`         | XGBoost (default) model for IS subfield classification (SPECTER, 374-paper dataset) |
+| `is_subfield_xgb_model_v2.4_tuned.pkl`   | XGBoost (GridSearchCV-tuned) model for IS subfield classification (SPECTER, 374-paper dataset) |
+| `is_subfield_label_encoder_v2.3.pkl`     | Label encoder for IS subfield classifier (v2.3/v2.4)                               |
+| `it_subfield_xgb_model_v2.3.pkl`         | XGBoost (default) model for IT subfield classification (SPECTER, 504-paper dataset) |
+| `it_subfield_xgb_model_v2.4_tuned.pkl`   | XGBoost (GridSearchCV-tuned) model for IT subfield classification (SPECTER, 504-paper dataset) |
+| `it_subfield_label_encoder_v2.3.pkl`     | Label encoder for IT subfield classifier (v2.3/v2.4)                               |
 ---
 ### Data Collection Scripts (`/Scripts/`)
 
@@ -186,6 +194,14 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | semantic_scholar_web_scraper_loose.py     | Looser Semantic Scholar scraper for additional computing papers (CS/IS/IT) for manual review.               |
 | fetch_arxiv_cs_subfields_balanced.py | Collect up to 300 recent arXiv papers per CS subfield (AI, ML, CV, CYB, PAST) to create a balanced 1498-paper dataset for training v2.3 and v2.4 classifiers
       |
+| is_bsp.py           | Scrape IS papers for BSP (Blockchain, Security & Privacy) subfield from Semantic Scholar      |
+| is_dsa.py           | Scrape IS papers for DSA (Decision Support & Analytics) subfield from Semantic Scholar        |
+| is_ent.py           | Scrape IS papers for ENT (Enterprise Systems) subfield from Semantic Scholar                  |
+| is_gov.py           | Scrape IS papers for GOV (e-Governance & Public Systems) subfield from Semantic Scholar       |
+| is_imp.py           | Scrape IS papers for IMP (Tech Adoption & Impact) subfield from Semantic Scholar              |
+| extra_papers.py     | Supplement and validate additional IT papers (OPS and IOTNET) from Semantic Scholar           |
+| it_ss.py            | Scrape IT subfield papers (IoT, Edge, Cloud, etc.) from Semantic Scholar                      |
+| it_arxiv.py         | Scrape IT-specific papers (Cloud, Edge, Infrastructure, etc.) from arXiv   
 ---
 
 ## 🔁 Discipline Version Map
@@ -208,8 +224,12 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | —       | CS (AI/ML) | Logistic Regression        | SPECTER (768-dim)                | 600-paper AI/ML subset           | 80/20 stratified       | 0.68     | 0.67     | AI: 0.67, ML: 0.68                              | Binary disambiguator activated when CS v2.4 predicts AI or ML |
 | v1.0    | IS         | Logistic Regression        | Unigram TF-IDF                   | 35 abstracts                     | 70/30 stratified       | 0.27     | 0.20     | ENT: 0.33, others: 0.00                         | ENT-dominant predictions; low diversity |
 | v1.2    | IS         | SVM + SMOTE (k=1)          | Bigram TF-IDF (min_df=2)         | 35 abstracts                     | 80/20 stratified       | 0.29     | 0.21     | DSA: 0.67, IMP: 0.40                            | Slightly improved diversity |
+| v2.3    | IS | XGBoost (default) | SPECTER (768-dim) | 374-paper IS dataset | 80/20 stratified | 0.88 | 0.88 | BSP: 0.92, DSA: 0.86, ENT: 0.81, GOV: 0.88, IMP: 0.94 | Huge jump from v1.2; SPECTER features |
+| v2.4    | IS | XGBoost (tuned)   | SPECTER (768-dim) | 374-paper IS dataset | 80/20 stratified | 0.89 | 0.90 | BSP: 0.92, DSA: 0.83, ENT: 0.91, GOV: 0.87, IMP: 0.94 | Best overall, extremely stable        |
 | v1.0    | IT         | Logistic Regression        | Unigram TF-IDF                   | 35 abstracts                     | 70/30 stratified       | 0.27     | 0.27     | CLD: 0.46, SEC: 0.50                            | CLD-dominant |
-| v1.2    | IT         | SVM + SMOTE (k=1)          | Bigram TF-IDF (min_df=2)         | 35 abstracts                     | 80/20 stratified       | 0.71     | 0.71     | CLD: 1.00, OPS: 0.67, SEC: 0.67, IOTNET: 0.50   | ✅ Best subfield classifier overall |
+| v1.2    | IT         | SVM + SMOTE (k=1)          | Bigram TF-IDF (min_df=2)         | 35 abstracts                     | 80/20 stratified       | 0.71     | 0.71     | CLD: 1.00, OPS: 0.67, SEC: 0.67, IOTNET: 0.50   | - |
+| v2.3    | IT | XGBoost (default) | SPECTER (768-dim) | 504-paper IT dataset | 80/20 stratified | 0.83 | 0.80 | CLD: 0.87, IOTNET: 0.83, OPS: 0.61, SEC: 0.89 | Major boost over v1.2; SPECTER embeddings |
+| v2.4    | IT | XGBoost (tuned)   | SPECTER (768-dim) | 504-paper IT dataset | 80/20 stratified | 0.83 | 0.80 | CLD: 0.86, IOTNET: 0.84, OPS: 0.64, SEC: 0.87 | Marginal improvement, very stable          |
 
 ---
 
@@ -255,11 +275,12 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | Discipline   | v1.1        | 105              | Test split      | 0.9048       | —           | LogReg + bigram TF-IDF                   |
 | Discipline   | v2.2        | 1138             | Test split      | 0.91         | —           | SciBERT + XGBoost                        |
 | Subfield – CS| v1.2        | 105              | 5-fold CV       | 0.4000       | 0.1895      | SVM + SMOTE + bigram TF-IDF              |
-| Subfield – CS | v2.3 | 1498 | Test split | 0.76 | — | XGBoost (default) + SPECTER (768-dim); strong CV/CYB/PAST performance |
-| Subfield – CS | v2.4 | 1498 | Test split | 0.75 | — | XGBoost (tuned) + SPECTER (768-dim); regularized, improved PAST/CYB |
-| Subfield – CS (AI/ML only) | v2.4 | 600 | Test split | 0.68 | — | Logistic Regression + SPECTER (binary disambiguator module) |
-| Subfield – IS| v1.2        | 105              | 5-fold CV       | 0.4571       | 0.1069      | SVM + SMOTE + bigram TF-IDF              |
-| Subfield – IT| v1.2        | 105              | 5-fold CV       | 0.5143       | 0.1143      | SVM + SMOTE + bigram TF-IDF              |
+| Subfield – CS| v2.3        | 1498             | Test split      | 0.76         | –           | XGBoost (default) + SPECTER (768-dim); strong CV/CYB/PAST performance |
+| Subfield – CS| v2.4        | 1498             | Test split      | 0.75         | –           | XGBoost (tuned) + SPECTER (768-dim); regularized, improved PAST/CYB   |
+| Subfield – IS| v2.3        | 374               | Test split      | 0.88         | –           | XGBoost (default) + SPECTER (768-dim); huge jump over v1.2             |
+| Subfield – IS| v2.4        | 374               | Test split      | 0.89         | –           | XGBoost (tuned) + SPECTER (768-dim); best overall, extremely stable    |
+| Subfield – IT| v2.3        | 504              | Test split      | 0.83         | –           | XGBoost (default) + SPECTER (768-dim); major boost over v1.2           |
+| Subfield – IT| v2.4        | 504              | Test split      | 0.83         | –           | XGBoost (tuned) + SPECTER (768-dim); marginal improvement, very stable |
 | Methodology  | v2.0        | 105              | 5-fold CV       | 0.6381       | 0.0883      | SVM + SMOTE + TF-IDF (Title + Abstract)  |
 | Methodology  | v2.1.1      | 105              | 5-fold CV       | 0.4381       | 0.1143      | MiniLM + LogReg (Scaled)                 |
 | Methodology  | v2.2.1-CV   | 105              | 5-fold CV       | 0.6571       | 0.1017      | SciBERT + XGBoost + SMOTE                |
@@ -270,6 +291,8 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 > - v2.2 discipline classifier (SciBERT + XGBoost) is on the full 1138-paper dataset.
 > - All subfield and methodology classifiers were evaluated on the smaller, manually labeled 105-paper dataset.
 > - v2.3 and v2.4 CS subfield classifiers are trained on a 1498-paper arXiv dataset with SPECTER embeddings.
+> - v2.3 and v2.4 IS subfield classifiers are trained on a 374-paper semantic scholar dataset with SPECTER embeddings.
+> - v2.3 and v2.4 IT subfield classifiers are trained on a 504-paper dataset (arXiv + Semantic Scholar) with SPECTER embeddings.
 > - v2.4 includes the pipeline for a second-stage AI/ML disambiguator (Logistic Regression on SPECTER), that can be triggered conditionally when the main classifier predicts AI or ML.
 ---
 
