@@ -273,7 +273,6 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | Discipline   | v1.1        | 105              | 5-fold CV       | 0.7714       | 0.1151      | LogReg + bigram TF-IDF                   |
 | Discipline   | v1.1        | 105              | Test split      | 0.9048       | —           | LogReg + bigram TF-IDF                   |
 | Discipline   | v2.2        | 1138             | Test split      | 0.91         | —           | SciBERT + XGBoost                        |
-| Subfield – CS| v1.2        | 105              | 5-fold CV       | 0.4000       | 0.1895      | SVM + SMOTE + bigram TF-IDF              |
 | Subfield – CS| v2.3        | 1498             | Test split      | 0.76         | –           | XGBoost (default) + SPECTER (768-dim); strong CV/CYB/PAST performance |
 | Subfield – CS| v2.4        | 1498             | Test split      | 0.75         | –           | XGBoost (tuned) + SPECTER (768-dim); regularized, improved PAST/CYB   |
 | Subfield – IS| v2.3        | 374               | Test split      | 0.88         | –           | XGBoost (default) + SPECTER (768-dim); huge jump over v1.2             |
