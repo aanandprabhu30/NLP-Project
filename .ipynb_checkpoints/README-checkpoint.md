@@ -194,14 +194,22 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | semantic_scholar_web_scraper_loose.py     | Looser Semantic Scholar scraper for additional computing papers (CS/IS/IT) for manual review.               |
 | fetch_arxiv_cs_subfields_balanced.py | Collect up to 300 recent arXiv papers per CS subfield (AI, ML, CV, CYB, PAST) to create a balanced 1498-paper dataset for training v2.3 and v2.4 classifiers
       |
-| is_bsp.py           | Scrape IS papers for BSP (Blockchain, Security & Privacy) subfield from Semantic Scholar      |
-| is_dsa.py           | Scrape IS papers for DSA (Decision Support & Analytics) subfield from Semantic Scholar        |
-| is_ent.py           | Scrape IS papers for ENT (Enterprise Systems) subfield from Semantic Scholar                  |
-| is_gov.py           | Scrape IS papers for GOV (e-Governance & Public Systems) subfield from Semantic Scholar       |
-| is_imp.py           | Scrape IS papers for IMP (Tech Adoption & Impact) subfield from Semantic Scholar              |
-| extra_papers.py     | Supplement and validate additional IT papers (OPS and IOTNET) from Semantic Scholar           |
-| it_ss.py            | Scrape IT subfield papers (IoT, Edge, Cloud, etc.) from Semantic Scholar                      |
-| it_arxiv.py         | Scrape IT-specific papers (Cloud, Edge, Infrastructure, etc.) from arXiv   
+| is_bsp.py           | Scrape IS papers for BSP (Blockchain, Security & Privacy) subfield from Semantic Scholar      
+      |
+| is_dsa.py           | Scrape IS papers for DSA (Decision Support & Analytics) subfield from Semantic Scholar        
+     |
+| is_ent.py           | Scrape IS papers for ENT (Enterprise Systems) subfield from Semantic Scholar                  
+     |
+| is_gov.py           | Scrape IS papers for GOV (e-Governance & Public Systems) subfield from Semantic Scholar       
+     |
+| is_imp.py           | Scrape IS papers for IMP (Tech Adoption & Impact) subfield from Semantic Scholar              
+     |
+| extra_papers.py     | Supplement and validate additional IT papers (OPS and IOTNET) from Semantic Scholar           
+     |
+| it_ss.py            | Scrape IT subfield papers (IoT, Edge, Cloud, etc.) from Semantic Scholar                      
+     |
+| it_arxiv.py         | Scrape IT-specific papers (Cloud, Edge, Infrastructure, etc.) from arXiv  
+     |
 ---
 
 ## 🔁 Discipline Version Map
