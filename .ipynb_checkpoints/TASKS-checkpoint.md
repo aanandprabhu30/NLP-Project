@@ -177,6 +177,28 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
     - `TASKS.md`: current entry
     - Notion: subfield pipeline complete and reproducible, fallback logic documented
 ---
+## 🧠 2025–05–27 – Final IS & IT Subfield Classifiers (SPECTER + XGBoost v2.3/v2.4)
+
+- Added `is_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` notebook:
+    - v2.3: XGBoost (default) on 374-paper IS dataset using SPECTER embeddings
+    - v2.4: GridSearchCV-tuned XGBoost for IS subfields (best Macro F1: 0.90)
+- Added `it_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` notebook:
+    - v2.3: XGBoost (default) on 504-paper IT dataset using SPECTER embeddings
+    - v2.4: GridSearchCV-tuned XGBoost for IT subfields (best Macro F1: 0.80)
+- Saved all new model and label encoder artefacts in `/Artefacts/`:
+    - `is_subfield_xgb_model_v2.3.pkl`, `is_subfield_xgb_model_v2.4_tuned.pkl`, `is_subfield_label_encoder_v2.3.pkl`
+    - `it_subfield_xgb_model_v2.3.pkl`, `it_subfield_xgb_model_v2.4_tuned.pkl`, `it_subfield_label_encoder_v2.3.pkl`
+- Collected and finalized IS and IT subfield datasets:
+    - `IS_subfields.csv` (374 papers, multi-source, hand-labeled)
+    - `IT_subfields.csv` (504 papers, multi-source, hand-labeled)
+    - Added both files to `/Data/` and README tables
+- Added and documented all new scripts used for IS/IT scraping (Semantic Scholar, ArXiv) in `/Scripts/` and README
+- Updated:
+    - `README.md`: All version tables, dataset/artefact/script documentation, and project summary
+    - `TASKS.md`: Current entry
+    - Notion: Progress checkpointed; subfield classification for all three disciplines is now fully complete and reproducible
+
+---
 ## 🧭 Upcoming Phase – Modular Inference, Deployment & Future Scaling
 
 - [ ] Refactor final classifier architecture into a modular prediction pipeline:
