@@ -49,8 +49,8 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 ## 📍 Current Phase (as of 29th May 2025)
 
 ✅ **Discipline classifier finalized for 1138-paper dataset**  
-✅**Subfield classifiers finalized for CS (1498 papers), IS (374 papers) and IT (504 papers)**
-✅**Methodology classifier tuned and validated on 105-paper labeled subset**
+✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers) and IT (504 papers)**
+✅ **Methodology classifier tuned and validated on 105-paper labeled subset**
 
 - **Discipline Model (1138 papers):**  
   - `XGBoost + SciBERT (768-dim)` trained on full, hand-validated dataset  
