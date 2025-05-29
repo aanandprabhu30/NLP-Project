@@ -199,20 +199,46 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
     - Notion: Progress checkpointed; subfield classification for all three disciplines is now fully complete and reproducible
 
 ---
-## 🧭 Upcoming Phase – Modular Inference, Deployment & Future Scaling
+## 🧠 2025–05–29 – Methodology Classifier Enhancements (SPECTER + XGBoost v2.3 → v2.5a)
 
-- [ ] Refactor final classifier architecture into a modular prediction pipeline:
-    - Discipline ➝ Subfield ➝ Methodology
-    - AI vs ML disambiguator activated conditionally during Subfield inference
-- [ ] Build a wrapper function (e.g. `predict_abstract()`) that takes Title + Abstract and returns all 3 labels
-- [ ] Prepare a lightweight Streamlit app for demo:
-    - Upload abstract
-    - Display predictions + confidence scores
-    - Show fallback activation (if triggered)
-- [ ] Export core inference code into `inference_pipeline.py` (clean, importable, minimal dependencies)
-- [ ] Save one-liner CLI usage examples in `README.md` for demo/testing
-- [ ] Convert artefact loading into cached helper (`load_model()`, `load_vectorizer()` etc.)
-- [ ] Evaluate potential for multi-label classification (e.g., CV + CYB) using thresholding or binary relevance
-- [ ] Begin experiment logging using Weights & Biases or a custom CSV tracker
-- [ ] Outline abstract or draft intro for a conference or project paper submission
+- Added `notebooks/methodology_classifier_specter_xgboost (v2.3, v2.4 and v2.5).ipynb` notebook:
+    - v2.3: XGBoost default on 2,028-paper methodology dataset using SPECTER embeddings (Mixed F1=0.35, Qual F1=0.83, Quant F1=0.81)
+    - v2.4: GridSearchCV-tuned XGBoost on SPECTER embeddings (Mixed F1=0.11, Qual F1=0.83, Quant F1=0.79)
+    - v2.5: Balanced weights via `compute_class_weight(class_weight="balanced")` (Mixed F1=0.20, Qual F1=0.83, Quant F1=0.79)
+    - v2.5a: Manual class weights (Mixed=2, Qualitative=1, Quantitative=1) (Mixed F1≈0.19, Qual F1≈0.82, Quant F1≈0.80)
+- Saved all new model and encoder artefacts in `/Artefacts/`:
+    - `methodology_xgb_v2.3.pkl`
+    - `methodology_label_encoder_v2.3.pkl`
+    - `methodology_xgb_model_v2.4_tuned.pkl`
+    - `methodology_xgb_class_weighted_v2.5.pkl`
+    - `methodology_xgb_manual_weights_v2.5a.pkl`
+- Updated the `methodology.csv` dataset to 2,028 hand-labeled papers and added to `/Data/` and README tables
+- Added supporting config and script files:
+    - `configs/methodology_v2.5a_weights.yaml`
+    - New scraping and validation scripts: `arxiv_methodology.py`, `methodology_ss.py`, `methodology_checker.py`, `methodology_checker_v3.py`, `discipline_auditor.py`, `reclassify_discipline.py`
+- Updated:
+    - `README.md`: Added new version maps, artefact paths, dataset entries, version comparison and notes
+    - `TASKS.md`: Refreshed “Upcoming Phase” with v2.5b weight-tuning and next steps
+    - Notion: Logged v2.5a results and checkpointed methodology pipeline progress
+----
+## ⚙️ Upcoming Phase – Modular Inference, Deployment & Future Scaling
+
+- [ ] Automate weight tuning for methodology v2.5b  
+  - Implement GridSearchCV or Bayesian optimization over class_weight ratios (Mixed vs Qual vs Quant)  
+- [ ] Expand methodology dataset  
+  - Collect & annotate +50–100 additional Mixed-Methods abstracts to support robust SMOTE or label smoothing  
+- [ ] Integrate weighted macro-F1 into CI/CD  
+- [ ] Fine-tune SciBERT / SPECTER on domain corpus  
+  - Domain-adapt embeddings via continued pre-training or adapters on your 2,028-paper dataset  
+- [ ] Implement hierarchical inference + fallback  
+  - Build Discipline → Subfield → Methodology pipeline  
+  - Plug in AI vs ML disambiguator when CS predicts AI or ML  
+- [ ] Package full pipeline as API/app  
+  - Prototype a Streamlit or FastAPI service exposing all three classifiers with confidence scores  
+- [ ] Formalize experiment logging  
+  - Standardize Notion/README templates for experiment metadata, configs, artefacts, metrics snapshots  
+- [ ] Explore ensemble & meta-learning  
+  - Stack TF-IDF+SVM, BERT+LR, SPECTER+XGB with a meta-classifier to handle edge cases  
+- [ ] Conduct ablation & error analysis  
+  - Generate confusion matrices, error clusters, and a report to guide v2.6 improvements  
 ---
