@@ -268,7 +268,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | v2.0      | `methodology_classifier_v2_titleabstract.pkl` | `tfidf_vectorizer_methodology_v2_titleabstract.pkl` | Title + Abstract |
 | v2.1.1    | `Logistic Regression (Scaled)`          | `MiniLM (384-dim) via sentence-transformers`      | CV only – no model saved |
 | v2.2      | `methodology_scibert_xgb_v2.2_model.pkl` | `SciBERT (768-dim, Title + Abstract)`             | XGBoost baseline |
-| v2.2.1    | `methodology_scibert_xgb_v2.2.1_smote_model.pkl` | `SciBERT + SMOTE (768-dim)`                  | ✅ Best performance |
+| v2.2.1    | `methodology_scibert_xgb_v2.2.1_smote_model.pkl` | `SciBERT + SMOTE (768-dim)`                  | ✅ Best performance on samll data |
 | v2.2.1-CV | N/A                                   | N/A                                              | CV-only evaluation (5-fold) |
 | v2.3   | `methodology_xgb_v2.3.pkl`                   | `SPECTER (768-dim)`                     | XGBoost default parameters on SPECTER embeddings                  |
 | v2.4   | `methodology_xgb_model_v2.4_tuned.pkl`       | `SPECTER (768-dim)`                     | XGBoost tuned via GridSearchCV on SPECTER embeddings              |
