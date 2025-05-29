@@ -75,7 +75,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 > - `Subfield`: XGBoost (tuned) + SPECTER (768-dim, CS – 1498 papers, IS – 374 papers, IT – 504 papers)
 > - `Methodology`: XGBoost + SMOTE + SPECTER (768-dim, 2028 papers)
 
-> 🔁 v1.1 was skipped in versioning to standardize upgrades directly from v1.0 ➝ v1.2 ➝ v2.0 ➝ v2.2.1 ➝ v2.3 and v2.4
+> 🔁 v1.1 was skipped in versioning to standardize upgrades directly from v1.0 ➝ v1.2 ➝ v2.0 ➝ v2.2.1 ➝ v2.3 ➝ v2.4 ➝ v2.5/2.5a
 ---
 ## 🚀 Next Phase (Future Work)
 
