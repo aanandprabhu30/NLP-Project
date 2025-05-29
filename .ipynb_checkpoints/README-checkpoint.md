@@ -46,7 +46,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 
 ---
 
-## 📍 Current Phase (as of 27th May 2025)
+## 📍 Current Phase (as of 29th May 2025)
 
 ✅ **Discipline classifier finalized for 1138-paper dataset:**  
 **Subfield classifiers finalized for CS (1498 papers), IS (374 papers) and IT (504 papers). Methodology classifier tuned and validated on 105-paper labeled subset.**
@@ -56,7 +56,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 - **Subfield Models:**  
   - `XGBoost (tuned) + SPECTER (768-dim)` (CS - 1498 papers, IS - 374 papers and IT - 504 papers)  
 - **Methodology Model (105 papers):**  
-  - `XGBoost + SMOTE + SciBERT (768-dim)` (Title + Abstract)  
+  - `XGBoost + SMOTE + SciBERT (768-dim)` (2028 papers)  
 - **Evaluation:**  
   - 5-fold stratified cross-validation and ablation studies conducted on the 105-paper labeled set (subfield/methodology tasks)  
   - Results include accuracy, standard deviation, fold-wise breakdown, and version comparison  
@@ -70,18 +70,30 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 > 🔁 **Final architectures:**  
 > - `Discipline`: XGBoost + SciBERT (768-dim, 1138 papers)  
 > - `Subfield`: XGBoost (tuned) + SPECTER (768-dim, CS – 1498 papers, IS – 374 papers, IT – 504 papers)
-> - `Methodology`: XGBoost + SMOTE + SciBERT (Title + Abstract, 768-dim, 105 papers)
+> - `Methodology`: XGBoost + SMOTE + SPECTER (768-dim, 2028 papers)
 
 > 🔁 v1.1 was skipped in versioning to standardize upgrades directly from v1.0 ➝ v1.2 ➝ v2.0 ➝ v2.2.1 ➝ v2.3 and v2.4
 ---
 ## 🚀 Next Phase (Future Work)
 
-- 🧪 **Scale methodology classification** by collecting and annotating more papers, particularly Mixed Methods, to support balanced training with SMOTE or label smoothing.
-- 🤖 **Fine-tune transformer models (SciBERT, SPECTER)** on domain-specific data to improve embedding relevance for subfield and methodology classification tasks.
-- 🧭 **Implement hierarchical and fallback inference**: discipline ➝ subfield ➝ methodology, with modules like the AI vs ML disambiguator dynamically invoked during prediction.
-- 📦 **Package the full inference pipeline** into an interactive tool or API (e.g., Streamlit, FastAPI) for testing, demonstration, and external validation.
-- 🧠 **Formalize project documentation**: define templates for logging experiments, artefacts, scripts, and classifier metrics to support reproducibility and future publication.
-- 🧩 **Explore ensemble and meta-learning approaches** (e.g., stacking, voting, or classifier cascades) to further increase robustness and handle borderline abstracts.
+- 🤖 **Automate weight tuning** for methodology v2.5b  
+  – Implement GridSearchCV or Bayesian optimization over `class_weight` ratios (e.g., Mixed vs Qual vs Quant) and compare against manual weights.  
+- 🧪 **Expand methodology dataset**  
+  – Collect & label additional Mixed-Methods abstracts (target +50–100) to support robust CV with SMOTE or label smoothing.  
+- 🔄 **Integrate weighted macro-F1 into CI/CD**  
+  – Add per-class and macro-F1 checks to the evaluation pipeline (`scripts/evaluate_methodology.py`) for automatic monitoring on new commits.  
+- 🤖 **Fine-tune SciBERT / SPECTER** on the 1,138-paper corpus  
+  – Domain-adapt the embeddings via continued pre-training or adapter modules to boost downstream subfield and methodology accuracy.  
+- 🧭 **Implement hierarchical inference + fallback**  
+  – Discipline → Subfield → Methodology pipeline with dynamic invocation of the AI vs ML disambiguator and weight-aware methodology scorer.  
+- 📦 **Package as an API or app**  
+  – Prototype a Streamlit or FastAPI service that accepts an abstract and returns all three labels, including confidence scores and per-class explanations.  
+- 🧠 **Formalize experiment logging**  
+  – Standardize Notion/README templates; include experiment metadata (date, dataset size, model config, metrics) and automated artefact snapshots.  
+- 🧩 **Explore ensemble/meta-learning**  
+  – Stack the best TF-IDF+SVM, BERT+LR, and SPECTER+XGB models with a meta-classifier to handle borderline cases.  
+- 📊 **Ablation & error analysis report**  
+  – Deep-dive into misclassifications by methodology and subfield; generate confusion matrices and error clusters to guide v2.6 improvements.
 ---
 
 ## 🗂️ Repository Structure
@@ -110,6 +122,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `it_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IT subfield classifiers (504-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
 | `is_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IS subfield classifiers (374-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
 | `ai_vs_ml_disambiguator.ipynb` | 🧩 Binary fallback classifier (LogReg + SPECTER) to disambiguate AI vs ML within CS pipeline |
+| `methodology_classifier_specter_xgboost_(v2.3,_v2.4_and_v2.5).ipynb` | SPECTER + XGBoost methodology classifier notebook (v2.3 → v2.4 → v2.5a) |
 ---
 
 ## 📊 Data Files (`/Data/`)
@@ -126,6 +139,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `CS_subfields.csv` | Final CS subfield dataset (1498 papers) collected via arXiv API for training v2.3 and v2.4 |
 | `IS_subfields.csv`      | Final IS subfield dataset (374 papers, hand-labeled, multi-source) for v2.3 and v2.4 |
 | `IT_subfields.csv`      | Final IT subfield dataset (504 papers, hand-labeled, multi-source) for v2.3 and v2.4 |
+| `methodology.csv` | Final methodology dataset (2,028 papers, hand-labeled, arXiv and Semantic scholar) for v2.3-2.5a|
 ---
 
 ## 🧠 Model Artifacts (`/Artefacts/`)
@@ -174,6 +188,10 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `it_subfield_xgb_model_v2.3.pkl`         | XGBoost (default) model for IT subfield classification (SPECTER, 504-paper dataset) |
 | `it_subfield_xgb_model_v2.4_tuned.pkl`   | XGBoost (GridSearchCV-tuned) model for IT subfield classification (SPECTER, 504-paper dataset) |
 | `it_subfield_label_encoder_v2.3.pkl`     | Label encoder for IT subfield classifier (v2.3/v2.4)                               |
+| `methodology_xgb_v2.3.pkl`                   | Trained methodology classifier model (v2.3: SPECTER + XGBoost default)         |
+| `methodology_label_encoder_v2.3.pkl`         | Label encoder for methodology classifier (v2.3)                                |                   | `methodology_xgb_model_v2.4_tuned.pkl`       | Tuned methodology classifier model (v2.4: SPECTER + XGBoost + SMOTE)           |
+| `methodology_xgb_manual_weights_v2.5a.pkl`   | Methodology classifier model with manual class weights (v2.5a: Mixed=2, Qualitative=1, Quantitative=1) |
+| `methodology_xgb_class_weighted_v2.5.pkl`    | Methodology classifier model with optimized class weights (v2.5: grid-tuned ratios) |
 ---
 ### Data Collection Scripts (`/Scripts/`)
 
@@ -201,6 +219,12 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | extra_papers.py                     | Supplement and validate additional IT papers (OPS and IOTNET) from Semantic Scholar                      |
 | it_ss.py                            | Scrape IT subfield papers (IoT, Edge, Cloud, etc.) from Semantic Scholar                                 |
 | it_arxiv.py                         | Scrape IT-specific papers (Cloud, Edge, Infrastructure, etc.) from arXiv                                 |
+| reclassify_discipline.py    | Auto-relabel or remove abstracts based on updated discipline definitions and context (discipline reclassification)|
+| methodology_ss.py           | Scrape methodology-related papers from Semantic Scholar to expand the methodology dataset                        |
+| methodology_checker_v3.py   | Advanced methodology label validation (v3) for detecting and correcting methodology annotation errors            |
+| discipline_auditor.py       | Audit and report on discipline label consistency across all datasets                                             |
+| methodology_checker.py      | Initial methodology label checker for basic validation of methodology categories                                 |
+| arxiv_methodology.py        | Fetch and filter arXiv abstracts using methodology-focused keywords to build the methodology corpus              |
 ---
 
 ## 🔁 Discipline Version Map
@@ -243,6 +267,10 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | v2.2      | `methodology_scibert_xgb_v2.2_model.pkl` | `SciBERT (768-dim, Title + Abstract)`             | XGBoost baseline |
 | v2.2.1    | `methodology_scibert_xgb_v2.2.1_smote_model.pkl` | `SciBERT + SMOTE (768-dim)`                  | ✅ Best performance |
 | v2.2.1-CV | N/A                                   | N/A                                              | CV-only evaluation (5-fold) |
+| v2.3   | `methodology_xgb_v2.3.pkl`                   | `SPECTER (768-dim)`                     | XGBoost default parameters on SPECTER embeddings                  |
+| v2.4   | `methodology_xgb_model_v2.4_tuned.pkl`       | `SPECTER (768-dim)`                     | XGBoost tuned via GridSearchCV on SPECTER embeddings              |
+| v2.5   | `methodology_xgb_class_weighted_v2.5.pkl`    | `SPECTER (768-dim)`                     | Balanced weights via `compute_class_weight(class_weight="balanced")` |
+| v2.5a  | `methodology_xgb_manual_weights_v2.5a.pkl`   | `SPECTER (768-dim)`                     | Manual weights (Mixed=2, Qualitative=1, Quantitative=1); Mixed F1 ↑0.11→0.19 |
 
 > ℹ️ Version 1.0 classifier notebooks were overwritten. Only `.pkl` artifacts retained for comparison and version history.
 
@@ -283,15 +311,23 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | Methodology  | v2.1.1      | 105              | 5-fold CV       | 0.4381       | 0.1143      | MiniLM + LogReg (Scaled)                 |
 | Methodology  | v2.2.1-CV   | 105              | 5-fold CV       | 0.6571       | 0.1017      | SciBERT + XGBoost + SMOTE                |
 | Methodology  | v2.2.1      | 105              | Test split      | 0.7619       | —           | SciBERT + XGBoost + SMOTE                |
-
+| Methodology | v2.3  | 2,028 | Test split | 0.75 | – | Major boost in Mixed F1 to 0.35; strong Qual (0.83) & Quant (0.81) |
+| Methodology | v2.4  | 2,028 | Test split | 0.73 | – | Marginal drop in Mixed F1 to 0.11; Qual stable (0.83), Quant slight dip (0.79) |
+| Methodology | v2.5  | 2,028 | Test split | 0.74 | – | Balanced weights improved Mixed F1 to 0.20; maintained Qual (0.83) & Quant (0.79) |
+| Methodology | v2.5a | 2,028 | Test split | 0.74 | – | Manual weights maintained Mixed F1 ≈ 0.19; robust Qual (0.82) & Quant (0.80) |
 > **Notes:**  
-> - “Test split” means a standard train/test split (often 80/20 or similar), not cross-validation.
-> - v2.2 discipline classifier (SciBERT + XGBoost) is on the full 1138-paper dataset.
-> - All subfield and methodology classifiers were evaluated on the smaller, manually labeled 105-paper dataset.
-> - v2.3 and v2.4 CS subfield classifiers are trained on a 1498-paper arXiv dataset with SPECTER embeddings.
-> - v2.3 and v2.4 IS subfield classifiers are trained on a 374-paper semantic scholar dataset with SPECTER embeddings.
-> - v2.3 and v2.4 IT subfield classifiers are trained on a 504-paper dataset (arXiv + Semantic Scholar) with SPECTER embeddings.
-> - v2.4 includes the pipeline for a second-stage AI/ML disambiguator (Logistic Regression on SPECTER), that can be triggered conditionally when the main classifier predicts AI or ML.
+> - “Test split” means a standard train/test split (often 80/20 or similar), not cross-validation.  
+> - v2.2 discipline classifier (SciBERT + XGBoost) is on the full 1,138-paper dataset.  
+> - All methodology classifiers up through v2.2.1 were trained & evaluated on the smaller, manually labeled 105-paper subset.  
+> - From v2.3 onward, methodology uses the expanded 2,028-paper dataset (arXiv + Semantic Scholar) with test-split evaluation.  
+> - v2.3 methodology (SPECTER + XGBoost default) gave a major boost in Mixed F1 (0.35) while retaining strong Qual (0.83) & Quant (0.81).  
+> - v2.4 methodology (GridSearchCV-tuned XGBoost on SPECTER) saw a drop in Mixed F1 (0.11) but maintained Qual (0.83) & Quant (0.79).  
+> - v2.5 methodology (balanced class weights via `compute_class_weight`) improved Mixed F1 to 0.20 and kept Qual (0.83) & Quant (0.79).  
+> - v2.5a methodology (manual weights Mixed=2, Qualitative=1, Quantitative=1) achieved Mixed F1 ≈ 0.19, Qual F1 ≈ 0.82, Quant F1 ≈ 0.80.  
+> - v2.3 and v2.4 CS subfield classifiers are trained on a 1,498-paper arXiv dataset with SPECTER embeddings.  
+> - v2.3 and v2.4 IS subfield classifiers are trained on a 374-paper Semantic Scholar dataset with SPECTER embeddings.  
+> - v2.3 and v2.4 IT subfield classifiers are trained on a 504-paper arXiv + Semantic Scholar dataset with SPECTER embeddings.  
+> - v2.4 subfield pipeline includes a second-stage AI/ML disambiguator (Logistic Regression on SPECTER) that can be invoked when the main CS classifier predicts AI or ML.  
 ---
 
 ## 🎯 Project Goals
