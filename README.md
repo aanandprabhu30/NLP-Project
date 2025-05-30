@@ -45,58 +45,90 @@ This project was executed using a dedicated virtual environment and Jupyter kern
 You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-bert)**.
 
 ---
-
-## 📍 Current Phase (as of 29th May 2025)
+## 📍 Current Phase (as of 30th May 2025)
 
 ✅ **Discipline classifier finalized for 1138-paper dataset**
 
-✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers) and IT (504 papers)**
+✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers), and IT (504 papers)**
 
-✅ **Methodology classifier tuned and validated on 2028-paper labeled subset**
+✅ **Methodology classifier upgraded to two-stage architecture with threshold tuning (2028-paper labeled set)**
 
 - **Discipline Model (1138 papers):**  
   - `XGBoost + SciBERT (768-dim)` trained on full, hand-validated dataset  
+
 - **Subfield Models:**  
-  - `XGBoost (tuned) + SPECTER (768-dim)` (CS - 1498 papers, IS - 374 papers and IT - 504 papers)  
-- **Methodology Model (2028 papers):**  
-  - `v2.3+: SPECTER + XGBoost + SMOTE (2028 papers)` → High macro F1 (v2.3 = 0.66, v2.5 = 0.61)
+  - `XGBoost (tuned) + SPECTER (768-dim)`  
+  - Datasets: CS (1498 papers), IS (374 papers), IT (504 papers)  
+
+- **Methodology Models (2028 papers):**  
+  - `v2.3`: SPECTER + XGBoost + SMOTE → Macro F1 = 0.66  
+  - `v2.5a`: SPECTER + XGBoost (manual class weights) → Macro F1 = 0.61  
+  - `✅ v2.6`: Two-stage XGBoost (Mixed vs Non-Mixed → Qual vs Quant)  
+    - SPECTER embeddings  
+    - Optimal threshold for Mixed = 0.10 (F1 = 0.27)  
+    - Final deployed threshold = 0.15 → Macro F1 = 0.66, Mixed F1 = 0.25  
+
 - **Evaluation:**  
-  - 5-fold stratified cross-validation and ablation studies conducted on the 105-paper labeled set (subfield/methodology tasks)  
-  - Results include accuracy, standard deviation, fold-wise breakdown, and version comparison  
+  - 5-fold stratified CV and ablation studies conducted on 105-paper labeled set  
+  - Metrics include accuracy, macro/weighted F1, fold-wise breakdown, and per-class F1 scores  
+  - v2.6 uses dynamic label alignment and heatmap-based visualizations  
+
 - **Artefacts:**  
-  - All trained models, embeddings, vectorizers, and label encoders saved as `.joblib` in `/Artefacts`
+  - All trained models, threshold values, and SPECTER embeddings saved as `.pkl` in `/Artefacts`  
+  - Two-stage architecture components (binary + qual/quant classifiers) saved separately  
+
 - **Documentation:**  
-  - Full project evaluation and experiment history tracked in Notion and key notebooks
-- **Scripts:**
-  - All scripts used for data scraping and automated collection stored in `Scripts/`
+  - Project evolution, version logs, and experimental notes maintained in Notion  
+  - Major versions documented via markdown in notebooks and README  
+
+- **Scripts:**  
+  - Data scraping, embedding generation, model training, and evaluation scripts stored in `Scripts/`  
 
 > 🔁 **Final architectures:**  
 > - `Discipline`: XGBoost + SciBERT (768-dim, 1138 papers)  
-> - `Subfield`: XGBoost (tuned) + SPECTER (768-dim, CS – 1498 papers, IS – 374 papers, IT – 504 papers)
-> - `Methodology`: XGBoost + SMOTE + SPECTER (768-dim, 2028 papers)
+> - `Subfield`: XGBoost (tuned) + SPECTER (768-dim, CS – 1498 papers, IS – 374 papers, IT – 504 papers)  
+> - `Methodology`:  
+>   - v2.3+: XGBoost + SMOTE + SPECTER (single model)  
+>   - v2.6: Two-Stage XGBoost + SPECTER with threshold tuning (Mixed = 0.15)  
 
-> 🔁 v1.1 was skipped in versioning to standardize upgrades directly from v1.0 ➝ v1.2 ➝ v2.0 ➝ v2.2.1 ➝ v2.3 ➝ v2.4 ➝ v2.5/2.5a
+> ℹ️ Version Notes:  
+> - v1.1 skipped to align with core redesigns  
+> - Key methodology versions: v2.0 ➝ v2.2.1 ➝ v2.3 ➝ v2.4 ➝ v2.5/2.5a ➝ ✅ v2.6
 ---
-## 🚀 Next Phase (Future Work)
+## 🚀 Next Phase (Future Work – Post v2.6)
 
-- 🤖 **Automate weight tuning** for methodology v2.5b  
-  – Implement GridSearchCV or Bayesian optimization over `class_weight` ratios (e.g., Mixed vs Qual vs Quant) and compare against manual weights.  
-- 🧪 **Expand methodology dataset**  
-  – Collect & label additional Mixed-Methods abstracts (target +50–100) to support robust CV with SMOTE or label smoothing.  
-- 🔄 **Integrate weighted macro-F1 into CI/CD**  
-  – Add per-class and macro-F1 checks to the evaluation pipeline (`scripts/evaluate_methodology.py`) for automatic monitoring on new commits.  
-- 🤖 **Fine-tune SciBERT / SPECTER** on the 1,138-paper corpus  
-  – Domain-adapt the embeddings via continued pre-training or adapter modules to boost downstream subfield and methodology accuracy.  
-- 🧭 **Implement hierarchical inference + fallback**  
-  – Discipline → Subfield → Methodology pipeline with dynamic invocation of the AI vs ML disambiguator and weight-aware methodology scorer.  
-- 📦 **Package as an API or app**  
-  – Prototype a Streamlit or FastAPI service that accepts an abstract and returns all three labels, including confidence scores and per-class explanations.  
-- 🧠 **Formalize experiment logging**  
-  – Standardize Notion/README templates; include experiment metadata (date, dataset size, model config, metrics) and automated artefact snapshots.  
+- ⚖️ **Rebalance methodology classifier using focal loss or cost-sensitive training**  
+  – Address the drop in Mixed-class F1 in v2.6 by penalizing false negatives more aggressively or applying `scale_pos_weight` in binary stage.
+
+- 🤖 **Fine-tune SPECTER or SciBERT on project corpus**  
+  – Explore parameter-efficient tuning (LoRA, adapters) or intermediate continued pretraining on the 2028-paper dataset to boost domain adaptation.
+
+- 🧪 **Expand and augment methodology dataset**  
+  – Collect and label 50–100 additional Mixed-method abstracts to reduce label imbalance; optionally apply back-translation or NLPAug on rare classes.
+
+- 🧮 **Experiment with multi-label classification**  
+  – Reframe methodology prediction as detecting presence of Qual/Quant individually; classify as Mixed if both are active (improves label generalization).
+
+- 🔄 **Threshold tuning + ensemble fallback logic**  
+  – Dynamically switch between v2.3 and v2.6 based on entropy/confidence; use v2.3 when v2.6 is low-confidence to recover lost Mixed recall.
+
 - 🧩 **Explore ensemble/meta-learning**  
-  – Stack the best TF-IDF+SVM, BERT+LR, and SPECTER+XGB models with a meta-classifier to handle borderline cases.  
-- 📊 **Ablation & error analysis report**  
-  – Deep-dive into misclassifications by methodology and subfield; generate confusion matrices and error clusters to guide v2.6 improvements.
+  – Stack outputs from TF-IDF+SVM, BERT+LR, and SPECTER+XGB using a meta-classifier (e.g., Logistic Regression or XGBoost) to improve robustness on borderline abstracts.
+
+- 🧭 **Integrate full hierarchical inference (Discipline → Subfield → Methodology)**  
+  – Include AI vs ML disambiguator in CS, discipline-aware subfield routing, and subfield-aware methodology conditioning in a unified pipeline.
+
+- 🧠 **Package as a research tool or demo app**  
+  – Build a Streamlit/FastAPI-based interface that accepts Title + Abstract and returns all three labels, confidence scores, and SHAP-style explanations.
+
+- 📊 **Extend error analysis and ablations**  
+  – Perform per-class error clustering across v2.3 and v2.6 outputs; analyze confusion trends between Qual/Quant/Mixed to guide v2.7 direction.
+
+- 🔄 **Upgrade evaluation pipeline**  
+  – Add threshold sweep, macro-F1 tracking, and automatic version logging to `scripts/evaluate_methodology.py` with exportable JSON logs.
+
+- 📝 **Standardize experiment tracking**  
+  – Maintain Notion or README metadata per model version (date, config, metrics, threshold, F1 scores) and save artefact hashes for reproducibility.
 ---
 
 ## 🗂️ Repository Structure
@@ -126,6 +158,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `is_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IS subfield classifiers (374-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
 | `ai_vs_ml_disambiguator.ipynb` | 🧩 Binary fallback classifier (LogReg + SPECTER) to disambiguate AI vs ML within CS pipeline |
 | `methodology_classifier_specter_xgboost_(v2.3,_v2.4_and_v2.5).ipynb` | SPECTER + XGBoost methodology classifier notebook (v2.3 → v2.4 → v2.5a) |
+| `methodology_classifier_specter_xgboost_v2.6.ipynb` | ✅ Two-stage methodology classifier (Mixed vs Non-Mixed ➝ Qual/Quant) using SPECTER + XGBoost + threshold tuning (v2.6) |
 ---
 
 ## 📊 Data Files (`/Data/`)
@@ -195,39 +228,43 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `methodology_label_encoder_v2.3.pkl`         | Label encoder for methodology classifier (v2.3)                                |                   | `methodology_xgb_model_v2.4_tuned.pkl`       | Tuned methodology classifier model (v2.4: SPECTER + XGBoost + SMOTE)           |
 | `methodology_xgb_manual_weights_v2.5a.pkl`   | Methodology classifier model with manual class weights (v2.5a: Mixed=2, Qualitative=1, Quantitative=1) |
 | `methodology_xgb_class_weighted_v2.5.pkl`    | Methodology classifier model with optimized class weights (v2.5: grid-tuned ratios) |
+| `methodology_binary_mixed_model_v2.6.pkl`     | Binary XGBoost classifier for detecting Mixed vs Non-Mixed (Stage 1 of v2.6 two-stage model) |
+| `methodology_qual_quant_model_v2.6.pkl`       | XGBoost classifier for classifying Qualitative vs Quantitative (Stage 2)                     |
+| `methodology_mixed_threshold_v2.6.pkl`        | Threshold value (float = 0.15) used in Stage 1 classification                                |
+| `methodology_specter_embeddings_v2.6.pkl`     | 768-dim SPECTER embeddings generated from Title + Abstract for all 2028 methodology samples  |
 ---
 ### Data Collection Scripts (`/Scripts/`)
 
 | Script                             | Description                                                                                               |
 |-------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| arxiv_cs.py                        | Scrape general Computer Science papers from arXiv.                                                        |
-| arxiv_cs_se_scraper.py              | Scrape Software Engineering papers from arXiv for IT/SE dataset (requires manual review for IT relevance).|
-| arxiv_csdc_scraper.py               | Scrape Data Center topic papers from arXiv (IT infrastructure).                                           |
-| arxiv_csni_scraper.py               | Scrape Network Infrastructure papers from arXiv (for IT dataset).                                         |
-| download_it_papers_no_pandas_v3.py  | Download and parse IT papers from multiple sources (cloud, edge, etc.); no pandas dependency.             |
-| harvest_it_links.py                 | Collect/harvest links for IT papers prior to full metadata scraping.                                      |
-| is_scraper.py                       | Scrape AMCIS Information Systems conference papers (IS dataset).                                          |
-| is_scraper_ss.py                    | Scrape Information Systems papers from Semantic Scholar (supplements AMCIS collection).                   |
-| it_core.py                          | Core IT domain paper collector (scraping, metadata extraction, discipline filtering).                     |
-| it_v2.py                            | Updated version of IT paper collector/validator (improved over it_core.py).                               |
-| IT.py                               | General-purpose IT paper downloader and cleaner; aggregates outputs from multiple IT scripts.             |
-| itc.py                              | Custom/incremental IT collection script (handles specific IT subtopics or custom link batches).           |
-| semantic_scholar_web_scraper_loose.py| Looser Semantic Scholar scraper for additional computing papers (CS/IS/IT) for manual review.            |
-| fetch_arxiv_cs_subfields_balanced.py | Collect up to 300 recent arXiv papers per CS subfield (AI, ML, CV, CYB, PAST) to create a balanced 1498-paper dataset for training v2.3 and v2.4 classifiers |
-| is_bsp.py                           | Scrape IS papers for BSP (Blockchain, Security & Privacy) subfield from Semantic Scholar                 |
-| is_dsa.py                           | Scrape IS papers for DSA (Decision Support & Analytics) subfield from Semantic Scholar                   |
-| is_ent.py                           | Scrape IS papers for ENT (Enterprise Systems) subfield from Semantic Scholar                             |
-| is_gov.py                           | Scrape IS papers for GOV (e-Governance & Public Systems) subfield from Semantic Scholar                  |
-| is_imp.py                           | Scrape IS papers for IMP (Tech Adoption & Impact) subfield from Semantic Scholar                         |
-| extra_papers.py                     | Supplement and validate additional IT papers (OPS and IOTNET) from Semantic Scholar                      |
-| it_ss.py                            | Scrape IT subfield papers (IoT, Edge, Cloud, etc.) from Semantic Scholar                                 |
-| it_arxiv.py                         | Scrape IT-specific papers (Cloud, Edge, Infrastructure, etc.) from arXiv                                 |
-| reclassify_discipline.py    | Auto-relabel or remove abstracts based on updated discipline definitions and context (discipline reclassification)|
-| methodology_ss.py           | Scrape methodology-related papers from Semantic Scholar to expand the methodology dataset                        |
-| methodology_checker_v3.py   | Advanced methodology label validation (v3) for detecting and correcting methodology annotation errors            |
-| discipline_auditor.py       | Audit and report on discipline label consistency across all datasets                                             |
-| methodology_checker.py      | Initial methodology label checker for basic validation of methodology categories                                 |
-| arxiv_methodology.py        | Fetch and filter arXiv abstracts using methodology-focused keywords to build the methodology corpus              |
+| `arxiv_cs.py`                        | Scrape general Computer Science papers from arXiv.                                                        |
+| `arxiv_cs_se_scraper.py`              | Scrape Software Engineering papers from arXiv for IT/SE dataset (requires manual review for IT relevance).|
+| `arxiv_csdc_scraper.py`               | Scrape Data Center topic papers from arXiv (IT infrastructure).                                           |
+| `arxiv_csni_scraper.py`               | Scrape Network Infrastructure papers from arXiv (for IT dataset).                                         |
+| `download_it_papers_no_pandas_v3.py`  | Download and parse IT papers from multiple sources (cloud, edge, etc.); no pandas dependency.             |
+| `harvest_it_links.py`                 | Collect/harvest links for IT papers prior to full metadata scraping.                                      |
+| `is_scraper.py`                       | Scrape AMCIS Information Systems conference papers (IS dataset).                                          |
+| `is_scraper_ss.py`                    | Scrape Information Systems papers from Semantic Scholar (supplements AMCIS collection).                   |
+| `it_core.py`                          | Core IT domain paper collector (scraping, metadata extraction, discipline filtering).                     |
+| `it_v2.py`                            | Updated version of IT paper collector/validator (improved over it_core.py).                               |
+| `IT.py`                               | General-purpose IT paper downloader and cleaner; aggregates outputs from multiple IT scripts.             |
+| `itc.py`                              | Custom/incremental IT collection script (handles specific IT subtopics or custom link batches).           |
+| `semantic_scholar_web_scraper_loose.py`| Looser Semantic Scholar scraper for additional computing papers (CS/IS/IT) for manual review.            |
+| `fetch_arxiv_cs_subfields_balanced.py` | Collect up to 300 recent arXiv papers per CS subfield (AI, ML, CV, CYB, PAST) to create a balanced 1498-paper dataset for training v2.3 and v2.4 classifiers |
+| `is_bsp.py`                           | Scrape IS papers for BSP (Blockchain, Security & Privacy) subfield from Semantic Scholar                 |
+| `is_dsa.py`                           | Scrape IS papers for DSA (Decision Support & Analytics) subfield from Semantic Scholar                   |
+| `is_ent.py`                           | Scrape IS papers for ENT (Enterprise Systems) subfield from Semantic Scholar                             |
+| `is_gov.py`                           | Scrape IS papers for GOV (e-Governance & Public Systems) subfield from Semantic Scholar                  |
+| `is_imp.py`                           | Scrape IS papers for IMP (Tech Adoption & Impact) subfield from Semantic Scholar                         |
+| `extra_papers.py`                     | Supplement and validate additional IT papers (OPS and IOTNET) from Semantic Scholar                      |
+| `it_ss.py`                            | Scrape IT subfield papers (IoT, Edge, Cloud, etc.) from Semantic Scholar                                 |
+| `it_arxiv.py `                        | Scrape IT-specific papers (Cloud, Edge, Infrastructure, etc.) from arXiv                                 |
+| `reclassify_discipline.py`    | Auto-relabel or remove abstracts based on updated discipline definitions and context (discipline reclassification)|
+| `methodology_ss.py`          | Scrape methodology-related papers from Semantic Scholar to expand the methodology dataset                        |
+| `methodology_checker_v3.py`  | Advanced methodology label validation (v3) for detecting and correcting methodology annotation errors            |
+| `discipline_auditor.py`       | Audit and report on discipline label consistency across all datasets                                             |
+| `methodology_checker.py`      | Initial methodology label checker for basic validation of methodology categories                                 |
+| `arxiv_methodology.py`        | Fetch and filter arXiv abstracts using methodology-focused keywords to build the methodology corpus              |
 ---
 
 ## 🔁 Discipline Version Map
@@ -274,6 +311,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | v2.4   | `methodology_xgb_model_v2.4_tuned.pkl`       | `SPECTER (768-dim)`                     | XGBoost tuned via GridSearchCV on SPECTER embeddings              |
 | v2.5   | `methodology_xgb_class_weighted_v2.5.pkl`    | `SPECTER (768-dim)`                     | Balanced weights via `compute_class_weight(class_weight="balanced")` |
 | v2.5a  | `methodology_xgb_manual_weights_v2.5a.pkl`   | `SPECTER (768-dim)`                     | Manual weights (Mixed=2, Qualitative=1, Quantitative=1); Mixed F1 ↑0.11→0.19 |
+| v2.6   | `methodology_binary_mixed_model_v2.6.pkl` + `methodology_qual_quant_model_v2.6.pkl` | `SPECTER (768-dim)` | Two-stage model: Mixed vs Non-Mixed → Qual vs Quant. Threshold = 0.15 (saved separately). |
 
 > ℹ️ Version 1.0 classifier notebooks were overwritten. Only `.pkl` artifacts retained for comparison and version history.
 
@@ -318,6 +356,8 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | Methodology | v2.4  | 2,028 | Test split | 0.73 | – | Marginal drop in Mixed F1 to 0.11; Qual stable (0.83), Quant slight dip (0.79) |
 | Methodology | v2.5  | 2,028 | Test split | 0.74 | – | Balanced weights improved Mixed F1 to 0.20; maintained Qual (0.83) & Quant (0.79) |
 | Methodology | v2.5a | 2,028 | Test split | 0.74 | – | Manual weights maintained Mixed F1 ≈ 0.19; robust Qual (0.82) & Quant (0.80) |
+| Methodology | v2.6  | 2,028 | Test split | 0.77 | – | Two-stage XGBoost + SPECTER; Mixed vs Non-Mixed → Qual vs Quant; threshold = 0.15; Mixed F1 = 0.25, Qual F1 = 0.91, Quant F1 = 0.81 |
+
 > **Notes:**  
 > - “Test split” means a standard train/test split (often 80/20 or similar), not cross-validation.  
 > - v2.2 discipline classifier (SciBERT + XGBoost) is on the full 1,138-paper dataset.  
@@ -326,7 +366,8 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 > - v2.3 methodology (SPECTER + XGBoost default) gave a major boost in Mixed F1 (0.35) while retaining strong Qual (0.83) & Quant (0.81).  
 > - v2.4 methodology (GridSearchCV-tuned XGBoost on SPECTER) saw a drop in Mixed F1 (0.11) but maintained Qual (0.83) & Quant (0.79).  
 > - v2.5 methodology (balanced class weights via `compute_class_weight`) improved Mixed F1 to 0.20 and kept Qual (0.83) & Quant (0.79).  
-> - v2.5a methodology (manual weights Mixed=2, Qualitative=1, Quantitative=1) achieved Mixed F1 ≈ 0.19, Qual F1 ≈ 0.82, Quant F1 ≈ 0.80.  
+> - v2.5a methodology (manual weights Mixed=2, Qualitative=1, Quantitative=1) achieved Mixed F1 ≈ 0.19, Qual F1 ≈ 0.82, Quant F1 ≈ 0.80.
+> - v2.6 methodology (two-stage XGBoost with threshold = 0.15) improved Qual F1 to 0.91 and Quant F1 to 0.81, but Mixed F1 dropped to 0.25. Represents tradeoff between Mixed recall and overall balance.
 > - v2.3 and v2.4 CS subfield classifiers are trained on a 1,498-paper arXiv dataset with SPECTER embeddings.  
 > - v2.3 and v2.4 IS subfield classifiers are trained on a 374-paper Semantic Scholar dataset with SPECTER embeddings.  
 > - v2.3 and v2.4 IT subfield classifiers are trained on a 504-paper arXiv + Semantic Scholar dataset with SPECTER embeddings.  
