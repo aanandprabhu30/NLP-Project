@@ -113,7 +113,7 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - [x] Train and evaluate XGBoost classifier on SciBERT embeddings for discipline (v2.2)
 - [x] Save discipline artefacts: classifier, embeddings, label encoder (`/Artefacts/`)
 - [x] Document discipline v2.2 workflow, metrics, and insights in README and Notion
-- [x] Update all tables and results to reflect discipline model’s expanded dataset and new architecture
+- [x] Update all tables and results to reflect discipline model's expanded dataset and new architecture
 
 ---
 
@@ -218,9 +218,13 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
     - New scraping and validation scripts: `arxiv_methodology.py`, `methodology_ss.py`, `methodology_checker.py`, `methodology_checker_v3.py`, `discipline_auditor.py`, `reclassify_discipline.py`
 - Updated:
     - `README.md`: Added new version maps, artefact paths, dataset entries, version comparison and notes
-    - `TASKS.md`: Refreshed “Upcoming Phase” with v2.5b weight-tuning and next steps
+    - `TASKS.md`: Refreshed "Upcoming Phase" with v2.5b weight-tuning and next steps
     - Notion: Logged v2.5a results and checkpointed methodology pipeline progress
+    - Implement SPECTER + XGBoost (v2.3) on 2028-paper dataset
+    - Tune XGBoost using GridSearchCV (v2.4) and add weighted variant (v2.5)
+
 ----
+
 ## ⚙️ Upcoming Phase – Modular Inference, Deployment & Future Scaling
 
 - [ ] Automate weight tuning for methodology v2.5b  

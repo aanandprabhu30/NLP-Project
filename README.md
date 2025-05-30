@@ -52,14 +52,14 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 
 ✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers) and IT (504 papers)**
 
-✅ **Methodology classifier tuned and validated on 105-paper labeled subset**
+✅ **Methodology classifier tuned and validated on 2028-paper labeled subset**
 
 - **Discipline Model (1138 papers):**  
   - `XGBoost + SciBERT (768-dim)` trained on full, hand-validated dataset  
 - **Subfield Models:**  
   - `XGBoost (tuned) + SPECTER (768-dim)` (CS - 1498 papers, IS - 374 papers and IT - 504 papers)  
-- **Methodology Model (105 papers):**  
-  - `XGBoost + SMOTE + SciBERT (768-dim)` (2028 papers)  
+- **Methodology Model (2028 papers):**  
+  - `v2.3+: SPECTER + XGBoost + SMOTE (2028 papers)` → High macro F1 (v2.3 = 0.66, v2.5 = 0.61)
 - **Evaluation:**  
   - 5-fold stratified cross-validation and ablation studies conducted on the 105-paper labeled set (subfield/methodology tasks)  
   - Results include accuracy, standard deviation, fold-wise breakdown, and version comparison  
