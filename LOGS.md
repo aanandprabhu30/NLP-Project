@@ -4,6 +4,15 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 
 ---
 
+## 🗂️ ✅ Completed Setup & Milestone Tracker (v0 → v2.2.1)
+
+> Archive of all setup, preprocessing, dataset creation, and baseline experiments.  
+> This section covers TF-IDF models, cross-validation, and v1.0 to v2.2.1 classifier training.  
+> All progress from v2.3 onward is tracked under version-specific entries above.
+
+<details>
+<summary>Click to expand full milestone list</summary>
+
 ## 🚀 Project Initialization
 - [x] Initialize GitHub repo
 - [x] Create initial Jupyter notebook file
@@ -86,6 +95,7 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - [x] Update version comparison table to show v2.0 → v2.1.1 → v2.2.1 performance changes
 - [x] Update README to include new architecture, model artefacts, goals, and full CV results
 ---
+</details>
 
 ## ✅ Current Status: May 3, 2025
 
@@ -113,7 +123,7 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - [x] Train and evaluate XGBoost classifier on SciBERT embeddings for discipline (v2.2)
 - [x] Save discipline artefacts: classifier, embeddings, label encoder (`/Artefacts/`)
 - [x] Document discipline v2.2 workflow, metrics, and insights in README and Notion
-- [x] Update all tables and results to reflect discipline model’s expanded dataset and new architecture
+- [x] Update all tables and results to reflect discipline model's expanded dataset and new architecture
 
 ---
 
@@ -218,27 +228,68 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
     - New scraping and validation scripts: `arxiv_methodology.py`, `methodology_ss.py`, `methodology_checker.py`, `methodology_checker_v3.py`, `discipline_auditor.py`, `reclassify_discipline.py`
 - Updated:
     - `README.md`: Added new version maps, artefact paths, dataset entries, version comparison and notes
-    - `TASKS.md`: Refreshed “Upcoming Phase” with v2.5b weight-tuning and next steps
+    - `TASKS.md`: Refreshed "Upcoming Phase" with v2.5b weight-tuning and next steps
     - Notion: Logged v2.5a results and checkpointed methodology pipeline progress
+    - Implement SPECTER + XGBoost (v2.3) on 2028-paper dataset
+    - Tune XGBoost using GridSearchCV (v2.4) and add weighted variant (v2.5)
+
+----
+## 🗓 2025–05–30 – Methodology Classifier v2.6 (Two-Stage + Threshold Tuning)
+
+- Added `methodology_classifier_specter_xgboost_v2.6.ipynb` notebook:
+    - Introduced a two-stage classification pipeline using SPECTER + XGBoost
+    - Stage 1: Binary classifier (Mixed vs Non-Mixed)
+    - Stage 2: Qual vs Quant classifier (only for Non-Mixed abstracts)
+    - Conducted threshold tuning (0.10 to 0.55); selected threshold = 0.15 for balanced macro F1
+
+- Final evaluation (test split):
+    - Accuracy = 0.77
+    - Macro F1 = 0.66
+    - Mixed F1 = 0.25 | Qual F1 = 0.91 | Quant F1 = 0.81
+
+- Saved the following artefacts in `/Artefacts/`:
+    - `methodology_binary_mixed_model_v2.6.pkl`
+    - `methodology_qual_quant_model_v2.6.pkl`
+    - `methodology_mixed_threshold_v2.6.pkl`
+    - `methodology_specter_embeddings_v2.6.pkl`
+
+- Generated final confusion matrix + per-class classification report (label-aligned)
+- Updated:
+    - `README.md`: new version entry, artefacts, version map, comparison table, and next phase
+    - `Version Comparison Table`: added v2.6 results for methodology
+    - `Methodology Version Map`: documented two-stage setup and threshold logic
+    - `Model Artifacts`: added all four v2.6 artefacts
 ----
 ## ⚙️ Upcoming Phase – Modular Inference, Deployment & Future Scaling
 
-- [ ] Automate weight tuning for methodology v2.5b  
-  - Implement GridSearchCV or Bayesian optimization over class_weight ratios (Mixed vs Qual vs Quant)  
-- [ ] Expand methodology dataset  
-  - Collect & annotate +50–100 additional Mixed-Methods abstracts to support robust SMOTE or label smoothing  
-- [ ] Integrate weighted macro-F1 into CI/CD  
-- [ ] Fine-tune SciBERT / SPECTER on domain corpus  
-  - Domain-adapt embeddings via continued pre-training or adapters on your 2,028-paper dataset  
-- [ ] Implement hierarchical inference + fallback  
-  - Build Discipline → Subfield → Methodology pipeline  
-  - Plug in AI vs ML disambiguator when CS predicts AI or ML  
-- [ ] Package full pipeline as API/app  
-  - Prototype a Streamlit or FastAPI service exposing all three classifiers with confidence scores  
-- [ ] Formalize experiment logging  
-  - Standardize Notion/README templates for experiment metadata, configs, artefacts, metrics snapshots  
-- [ ] Explore ensemble & meta-learning  
-  - Stack TF-IDF+SVM, BERT+LR, SPECTER+XGB with a meta-classifier to handle edge cases  
-- [ ] Conduct ablation & error analysis  
-  - Generate confusion matrices, error clusters, and a report to guide v2.6 improvements  
+- ✅ Implement two-stage methodology classifier with threshold tuning (v2.6)  
+  - Used SPECTER + XGBoost; binary Mixed-vs-NonMixed classifier followed by Qual vs Quant; threshold = 0.15  
+
+- [ ] Rebalance Mixed-class performance post-v2.6  
+  - Explore focal loss, `scale_pos_weight`, or cost-sensitive XGBoost to recover Mixed F1 without harming Qual  
+
+- [ ] Expand and augment methodology dataset  
+  - Collect & annotate +50–100 new Mixed-method abstracts; apply back-translation or NLPAug for underrepresented classes  
+
+- [ ] Integrate macro-F1 + per-class F1 into CI/CD  
+  - Add evaluation summary and threshold-sweep tracking into `scripts/evaluate_methodology.py`  
+
+- [ ] Fine-tune SciBERT or SPECTER on domain corpus  
+  - Use LoRA or adapters on 2,028-paper abstract corpus for improved subfield/methodology performance  
+
+- [ ] Implement full hierarchical inference pipeline  
+  - Route predictions: Discipline → Subfield → Methodology  
+  - Dynamically invoke fallback disambiguators (e.g., AI vs ML) or secondary subfield scorers  
+
+- [ ] Package as an API or lightweight app  
+  - Build Streamlit or FastAPI demo with full pipeline + SHAP-style explanations  
+
+- [ ] Standardize experiment tracking & artefact versioning  
+  - Log configs, metrics, and hashes per version in Notion and README  
+
+- [ ] Explore model ensembling or meta-learning  
+  - Stack TF-IDF+SVM, BERT+LR, and SPECTER+XGB models via a meta-classifier for ambiguous abstracts  
+
+- [ ] Conduct structured ablation & error analysis  
+  - Compare v2.3 vs v2.6 confusion matrices, focus on Qual–Mixed boundaries and low-confidence Mixed errors  
 ---
