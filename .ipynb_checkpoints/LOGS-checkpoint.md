@@ -260,10 +260,44 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
     - `Methodology Version Map`: documented two-stage setup and threshold logic
     - `Model Artifacts`: added all four v2.6 artefacts
 ----
-## ⚙️ Upcoming Phase – Modular Inference, Deployment & Future Scaling
+## 🧠 2025–06–04 – Discipline Classifier v3.0 (DeBERTa + LoRA)
 
-- ✅ Implement two-stage methodology classifier with threshold tuning (v2.6)  
-  - Used SPECTER + XGBoost; binary Mixed-vs-NonMixed classifier followed by Qual vs Quant; threshold = 0.15  
+- Added `discipline_classifier_deberta_lora_v3.0.ipynb` notebook:
+  - Implemented LoRA (Low-Rank Adaptation) on `microsoft/deberta-base` for 3-class discipline classification
+  - Used Hugging Face `peft`, `transformers`, and `datasets` libraries in a modular pipeline
+  - Trained on the full 1138-paper dataset; batch size 8, 5 epochs, learning rate = 2e-5
+
+- **Final Evaluation (Test Split):**
+  - Accuracy = 0.54
+  - Macro F1 = 0.38
+  - Per-class F1 scores:  
+    - CS = 0.67  
+    - IS = 0.47  
+    - IT = 0.00 (unclassified)
+
+- **Artefacts Saved to `/Artefacts/`:**
+  - `discipline_classifier_deberta_lora_v3.0.pkl`
+  - `tokenizer_deberta_lora_v3.0.pkl`
+  - `label2id_deberta_lora_v3.0.pkl`
+
+- **Project Updated:**
+  - `README.md`: All references updated — version map, current phase, comparison table, model artefacts, footnotes
+  - `.gitignore`: Added `*.pkl` to exclude large binaries from future commits
+  - `requirements.txt`: Appended `transformers`, `peft`, `datasets`, `evaluate`, `bitsandbytes`
+  - `LOGS.md`: This entry
+  - `Notion`: v3.0 logged as experimental classifier (retained but not selected)
+
+- **Remarks:**  
+  While CS recall was strong (0.95), model failed to predict IT entirely. v2.2 remains the deployed version for discipline classification.
+----
+
+## 🚀 Post-v3.0 Phase – Modular Inference, Generalization & Deployment
+
+Following the completion of all v2.x series and the experimental DeBERTa + LoRA classifier (v3.0), the next stage focuses on boosting generalization, Mixed-class F1, and preparing for modular deployment.
+
+- [x] Document and close experimental DeBERTa + LoRA classifier (v3.0)  
+  - Accuracy = 54%, Macro F1 = 0.38, strong CS recall (0.67) but failed IT completely  
+  - v2.2 (SciBERT + XGBoost) remains the final deployed discipline classifier  
 
 - [ ] Rebalance Mixed-class performance post-v2.6  
   - Explore focal loss, `scale_pos_weight`, or cost-sensitive XGBoost to recover Mixed F1 without harming Qual  
@@ -274,8 +308,8 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - [ ] Integrate macro-F1 + per-class F1 into CI/CD  
   - Add evaluation summary and threshold-sweep tracking into `scripts/evaluate_methodology.py`  
 
-- [ ] Fine-tune SciBERT or SPECTER on domain corpus  
-  - Use LoRA or adapters on 2,028-paper abstract corpus for improved subfield/methodology performance  
+- [ ] Fine-tune SciBERT or SPECTER on domain corpus (beyond DeBERTa-v3.0)  
+  - Explore continued pretraining or adapter-tuning on 2,028-paper abstract corpus for improved subfield/methodology performance  
 
 - [ ] Implement full hierarchical inference pipeline  
   - Route predictions: Discipline → Subfield → Methodology  
@@ -292,4 +326,5 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 
 - [ ] Conduct structured ablation & error analysis  
   - Compare v2.3 vs v2.6 confusion matrices, focus on Qual–Mixed boundaries and low-confidence Mixed errors  
+
 ---

@@ -33,7 +33,7 @@ This project was executed using a dedicated virtual environment and Jupyter kern
 
     # Step 1: Create a virtual environment
     python3 -m venv nlp-bert
-    source nlp-bert/bin/activate
+    source nlp-bert/bin/activateate
 
     # Step 2: Install dependencies
     pip install -r requirements.txt
@@ -45,90 +45,99 @@ This project was executed using a dedicated virtual environment and Jupyter kern
 You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-bert)**.
 
 ---
-## 📍 Current Phase (as of 30th May 2025)
+## 📍 Current Phase (as of 4th June 2025)
 
-✅ **Discipline classifier finalized for 1138-paper dataset**
+✅ **Discipline classifier finalized for 1138-paper dataset (v2.2 – SciBERT + XGBoost)**  
+🔬 **v3.0 (DeBERTa + LoRA) tested and retained for documentation, but underperformed (F1 = 0.38)**
 
-✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers), and IT (504 papers)**
-
+✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers), and IT (504 papers)**  
 ✅ **Methodology classifier upgraded to two-stage architecture with threshold tuning (2028-paper labeled set)**
 
+---
+
 - **Discipline Model (1138 papers):**  
-  - `XGBoost + SciBERT (768-dim)` trained on full, hand-validated dataset  
+  - ✅ `v2.2`: SciBERT + XGBoost → Accuracy = 91%, Macro F1 = 0.89  
+  - ❌ `v3.0`: DeBERTa + LoRA → Accuracy = 54%, Macro F1 = 0.38  
+  - Failed to predict IT class; strong CS bias; retained for documentation
 
 - **Subfield Models:**  
-  - `XGBoost (tuned) + SPECTER (768-dim)`  
-  - Datasets: CS (1498 papers), IS (374 papers), IT (504 papers)  
+  - ✅ CS: `v2.3`: XGBoost + SPECTER (default) → Accuracy = 76%, Macro F1 = 0.75  
+  - ✅ IS: `v2.4`: XGBoost (tuned) + SPECTER → Accuracy = 89%, Macro F1 = 0.90  
+  - ✅ IT: `v2.4`: XGBoost (tuned) + SPECTER → Accuracy = 83%, Macro F1 = 0.80  
 
 - **Methodology Models (2028 papers):**  
-  - `v2.3`: SPECTER + XGBoost + SMOTE → Macro F1 = 0.66  
+  - `v2.3`: SPECTER + XGBoost + SMOTE → Macro F1 = 0.66 (Mixed F1 = 0.35)  
   - `v2.5a`: SPECTER + XGBoost (manual class weights) → Macro F1 = 0.61  
-  - `✅ v2.6`: Two-stage XGBoost (Mixed vs Non-Mixed → Qual vs Quant)  
-    - SPECTER embeddings  
-    - Optimal threshold for Mixed = 0.10 (F1 = 0.27)  
-    - Final deployed threshold = 0.15 → Macro F1 = 0.66, Mixed F1 = 0.25  
+  - ✅ `v2.6`: Two-stage XGBoost (Mixed vs Non-Mixed → Qual vs Quant)  
+    - Mixed Threshold = 0.15 → Macro F1 = 0.66  
+    - Class F1s: Qual = 0.91, Quant = 0.81, Mixed = 0.25  
 
 - **Evaluation:**  
-  - 5-fold stratified CV and ablation studies conducted on 105-paper labeled set  
-  - Metrics include accuracy, macro/weighted F1, fold-wise breakdown, and per-class F1 scores  
-  - v2.6 uses dynamic label alignment and heatmap-based visualizations  
+  - Full 80/20 stratified split used for final performance reporting  
+  - 5-fold CV retained for early versions (v2.0–v2.2.1)  
+  - Metrics include per-class F1, macro/weighted F1, and confusion heatmaps  
 
 - **Artefacts:**  
-  - All trained models, threshold values, and SPECTER embeddings saved as `.pkl` in `/Artefacts`  
-  - Two-stage architecture components (binary + qual/quant classifiers) saved separately  
+  - All models, tokenizers, vectorizers saved as `.pkl` files under `/Artefacts`  
+  - Two-stage methodology components (v2.6) stored as separate classifiers + threshold  
 
 - **Documentation:**  
-  - Project evolution, version logs, and experimental notes maintained in Notion  
-  - Major versions documented via markdown in notebooks and README  
+  - Project versions and training logs tracked in Notion  
+  - Final results and artefact names synced in README and TASKS.md  
 
 - **Scripts:**  
-  - Data scraping, embedding generation, model training, and evaluation scripts stored in `Scripts/`  
+  - Modular scripts for data scraping, embedding generation, classifier training, and evaluation in `Scripts/`
 
 > 🔁 **Final architectures:**  
-> - `Discipline`: XGBoost + SciBERT (768-dim, 1138 papers)  
-> - `Subfield`: XGBoost (tuned) + SPECTER (768-dim, CS – 1498 papers, IS – 374 papers, IT – 504 papers)  
+> - `Discipline`: ✅ v2.2 (SciBERT + XGBoost)  
+> - `Subfield`: ✅ v2.3/v2.4 (SPECTER + XGBoost tuned)  
 > - `Methodology`:  
->   - v2.3+: XGBoost + SMOTE + SPECTER (single model)  
->   - v2.6: Two-Stage XGBoost + SPECTER with threshold tuning (Mixed = 0.15)  
+>   - `v2.3`: Single-stage (SMOTE + XGBoost)  
+>   - ✅ `v2.6`: Two-stage XGBoost with threshold tuning (Mixed threshold = 0.15)
 
 > ℹ️ Version Notes:  
-> - v1.1 skipped to align with core redesigns  
-> - Key methodology versions: v2.0 ➝ v2.2.1 ➝ v2.3 ➝ v2.4 ➝ v2.5/2.5a ➝ ✅ v2.6
+> - `v1.x` series used TF-IDF + classical models (LogReg, SVM)  
+> - `v2.x` used contextual embeddings (SciBERT, SPECTER)  
+> - `v3.0`: LoRA-tuned DeBERTa tested (Discipline), not retained due to poor IT recall
+
 ---
-## 🚀 Next Phase (Future Work – Post v2.6)
+## 🚀 Next Phase (Future Work – Post v3.0)
+
+Following the completion of all v2.x series and the DeBERTa + LoRA experiment for Discipline (`v3.0`), the next phase focuses on boosting performance, generalizability, and deployment readiness.
 
 - ⚖️ **Rebalance methodology classifier using focal loss or cost-sensitive training**  
-  – Address the drop in Mixed-class F1 in v2.6 by penalizing false negatives more aggressively or applying `scale_pos_weight` in binary stage.
+  – Improve Mixed-class F1 by penalizing false negatives more aggressively or using `scale_pos_weight` in the binary Mixed-vs-NonMixed stage.
 
 - 🤖 **Fine-tune SPECTER or SciBERT on project corpus**  
-  – Explore parameter-efficient tuning (LoRA, adapters) or intermediate continued pretraining on the 2028-paper dataset to boost domain adaptation.
+  – Explore parameter-efficient tuning (LoRA, adapters) or continued pretraining on the 2028-paper dataset to enhance domain alignment.
 
 - 🧪 **Expand and augment methodology dataset**  
-  – Collect and label 50–100 additional Mixed-method abstracts to reduce label imbalance; optionally apply back-translation or NLPAug on rare classes.
+  – Label 50–100 additional Mixed-method abstracts to address imbalance; optionally apply NLPAug or back-translation to synthetically boost rare classes.
 
-- 🧮 **Experiment with multi-label classification**  
-  – Reframe methodology prediction as detecting presence of Qual/Quant individually; classify as Mixed if both are active (improves label generalization).
+- 🧮 **Experiment with multi-label formulation**  
+  – Predict Qualitative and Quantitative presence separately; treat as Mixed if both are active — improves generalization across method combinations.
 
 - 🔄 **Threshold tuning + ensemble fallback logic**  
-  – Dynamically switch between v2.3 and v2.6 based on entropy/confidence; use v2.3 when v2.6 is low-confidence to recover lost Mixed recall.
+  – Dynamically switch between `v2.3` and `v2.6` based on entropy/confidence; fallback to `v2.3` for borderline cases to recover Mixed recall.
 
 - 🧩 **Explore ensemble/meta-learning**  
-  – Stack outputs from TF-IDF+SVM, BERT+LR, and SPECTER+XGB using a meta-classifier (e.g., Logistic Regression or XGBoost) to improve robustness on borderline abstracts.
+  – Combine outputs from TF-IDF+SVM, BERT+LR, and SPECTER+XGB via a meta-classifier (e.g., Logistic Regression or XGBoost) for more robust edge-case classification.
 
-- 🧭 **Integrate full hierarchical inference (Discipline → Subfield → Methodology)**  
-  – Include AI vs ML disambiguator in CS, discipline-aware subfield routing, and subfield-aware methodology conditioning in a unified pipeline.
+- 🧭 **Integrate full hierarchical inference pipeline**  
+  – Sequence the inference: Discipline → Subfield → Methodology; invoke AI/ML disambiguator and discipline-specific routing logic.
 
-- 🧠 **Package as a research tool or demo app**  
-  – Build a Streamlit/FastAPI-based interface that accepts Title + Abstract and returns all three labels, confidence scores, and SHAP-style explanations.
+- 🧠 **Deploy as a research assistant tool**  
+  – Build a Streamlit or FastAPI web interface to accept Title + Abstract input and return all three labels with class-wise confidence + SHAP explanations.
 
-- 📊 **Extend error analysis and ablations**  
-  – Perform per-class error clustering across v2.3 and v2.6 outputs; analyze confusion trends between Qual/Quant/Mixed to guide v2.7 direction.
+- 📊 **Extend error analysis and ablation studies**  
+  – Perform per-class confusion and error clustering across `v2.3`, `v2.6`, and `v3.0`; study edge-case drift to guide `v3.1+` improvements.
 
 - 🔄 **Upgrade evaluation pipeline**  
-  – Add threshold sweep, macro-F1 tracking, and automatic version logging to `scripts/evaluate_methodology.py` with exportable JSON logs.
+  – Enhance `scripts/evaluate_methodology.py` to include threshold sweeps, exportable metrics (F1, confusion matrices), and automatic version logging.
 
-- 📝 **Standardize experiment tracking**  
-  – Maintain Notion or README metadata per model version (date, config, metrics, threshold, F1 scores) and save artefact hashes for reproducibility.
+- 📝 **Standardize experiment and artefact tracking**  
+  – Maintain consistent Notion + README logs for each version (date, config, thresholds, metrics), and hash all `.pkl` artefacts for reproducibility.
+
 ---
 
 ## 🗂️ Repository Structure
@@ -159,6 +168,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `ai_vs_ml_disambiguator.ipynb` | 🧩 Binary fallback classifier (LogReg + SPECTER) to disambiguate AI vs ML within CS pipeline |
 | `methodology_classifier_specter_xgboost_(v2.3,_v2.4_and_v2.5).ipynb` | SPECTER + XGBoost methodology classifier notebook (v2.3 → v2.4 → v2.5a) |
 | `methodology_classifier_specter_xgboost_v2.6.ipynb` | ✅ Two-stage methodology classifier (Mixed vs Non-Mixed ➝ Qual/Quant) using SPECTER + XGBoost + threshold tuning (v2.6) |
+| `discipline_classifier_deberta_lora_v3.0.ipynb` | 🧪 Experimental v3.0 discipline classifier using DeBERTa + LoRA (PEFT) on 1138-paper dataset – not selected due to low IT recall (F1 = 0.38) |
 ---
 
 ## 📊 Data Files (`/Data/`)
@@ -232,6 +242,9 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | `methodology_qual_quant_model_v2.6.pkl`       | XGBoost classifier for classifying Qualitative vs Quantitative (Stage 2)                     |
 | `methodology_mixed_threshold_v2.6.pkl`        | Threshold value (float = 0.15) used in Stage 1 classification                                |
 | `methodology_specter_embeddings_v2.6.pkl`     | 768-dim SPECTER embeddings generated from Title + Abstract for all 2028 methodology samples  |
+| `discipline_classifier_deberta_lora_v3.0.pkl` | 🧪 LoRA-tuned DeBERTa discipline classifier (v3.0); strong CS recall but failed IT prediction (F1 = 0.38); not selected |
+| `tokenizer_deberta_lora_v3.0.pkl`             | Tokenizer used for v3.0 DeBERTa classifier (HuggingFace `microsoft/deberta-base`) |
+| `label2id_deberta_lora_v3.0.pkl`              | Manual mapping: {'CS': 0, 'IS': 1, 'IT': 2} for v3.0 LoRA classifier |
 ---
 ### Data Collection Scripts (`/Scripts/`)
 
@@ -274,6 +287,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | v1.0      | Logistic Regression                       | TF-IDF (unigram)                      | 105                   | Baseline, small dataset     |
 | v1.1      | Logistic Regression                       | TF-IDF (bigram)                       | 105                   | Improved context, 80/20 CV  |
 | v2.2      | XGBoost (`disc_scibert_xgboost_v2.2.pkl`) | SciBERT (768-dim, Title+Abstract)    | **1138**              | ✅ Final, full dataset      |
+| v3.0      | XGBoost + LoRA-tuned DeBERTa (`discipline_classifier_deberta_lora_v3.0.pkl`) | DeBERTa (768-dim, PEFT via LoRA) | **1138** | Experimental; strong CS recall (F1 = 0.67), but failed IT class (F1 = 0.00); retained for documentation only |
 
 ---
 ## 🧠 Subfield Version Map
@@ -342,6 +356,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 | Discipline   | v1.1        | 105              | 5-fold CV       | 0.7714       | 0.1151      | LogReg + bigram TF-IDF                   |
 | Discipline   | v1.1        | 105              | Test split      | 0.9048       | —           | LogReg + bigram TF-IDF                   |
 | Discipline   | v2.2        | 1138             | Test split      | 0.91         | —           | SciBERT + XGBoost                        |
+| Discipline   | v3.0        | 1138             | Test split      | 0.54         | —           | DeBERTa (PEFT via LoRA); strong CS recall (F1 = 0.67), but failed IT class (F1 = 0.00); not selected |
 | Subfield – CS| v2.3        | 1498             | Test split      | 0.76         | –           | XGBoost (default) + SPECTER (768-dim); strong CV/CYB/PAST performance |
 | Subfield – CS| v2.4        | 1498             | Test split      | 0.75         | –           | XGBoost (tuned) + SPECTER (768-dim); regularized, improved PAST/CYB   |
 | Subfield – IS| v2.3        | 374               | Test split      | 0.88         | –           | XGBoost (default) + SPECTER (768-dim); huge jump over v1.2             |
@@ -371,7 +386,9 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 > - v2.3 and v2.4 CS subfield classifiers are trained on a 1,498-paper arXiv dataset with SPECTER embeddings.  
 > - v2.3 and v2.4 IS subfield classifiers are trained on a 374-paper Semantic Scholar dataset with SPECTER embeddings.  
 > - v2.3 and v2.4 IT subfield classifiers are trained on a 504-paper arXiv + Semantic Scholar dataset with SPECTER embeddings.  
-> - v2.4 subfield pipeline includes a second-stage AI/ML disambiguator (Logistic Regression on SPECTER) that can be invoked when the main CS classifier predicts AI or ML.  
+> - v2.4 subfield pipeline includes a second-stage AI/ML disambiguator (Logistic Regression on SPECTER) that can be invoked when the main CS classifier predicts AI or ML.
+> - v3.0 discipline classifier (DeBERTa + LoRA) was trained on the same 1,138-paper dataset but failed to generalize; strong CS recall (F1 = 0.67), but IT recall = 0.00; accuracy = 54%, macro F1 = 0.38 — not selected.  
+ 
 ---
 
 ## 🎯 Project Goals
