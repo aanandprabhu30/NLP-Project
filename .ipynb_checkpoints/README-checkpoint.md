@@ -4,66 +4,71 @@ This project classifies computing research abstracts by:
 
 - 🧐 **Discipline** – Computer Science (CS), Information Systems (IS), Information Technology (IT)
 - 🧐 **Subfield** – AI, ML, CV, CYB, BSP, SEC, CLD, etc.
-- 🧐 **Research Methodology** – Qualitative, Quantitative, Mixed Methods
+- 🧐 **Research Methodology** – Qualitative, Quantitative, Mixed 
 
 ---
 
 ## 🛠 Built With
 
 - Python
-- Jupyter Notebook
+- Jupyter Notebook / Google Colab
 - scikit-learn
-- pandas
-- seaborn
-- matplotlib
+- XGBoost
+- Hugging Face Transformers
+- PEFT (LoRA)
+- pandas, seaborn, matplotlib
 - joblib
 
 ---
 
-## 🧪 Environment Setup (nlp-bert kernel)
-This project was executed using a dedicated virtual environment and Jupyter kernel named **`nlp-bert`**, created specifically for BERT and XGBoost model stability.
+## 🧪 Environment Setup (nlp-bert kernel for local use)
 
-> 🔧 **Note:** The `xgboost` models repeatedly crashed when run under the default Anaconda kernel. Switching to a clean virtualenv-based kernel (`nlp-bert`) resolved the issue.
+Most of the project was executed locally using a dedicated virtual environment and Jupyter kernel named **`nlp-bert`**, created specifically for BERT and XGBoost model stability.
+
+> 🔧 **Note:** The `xgboost` models repeatedly crashed under the default Anaconda kernel. A clean virtualenv-based kernel (`nlp-bert`) resolved this.
 
 ### ⚙ Python Version
 - Python 3.11
 
+---
 
-### 📦 To Recreate the Environment:
+### 📦 To Recreate the Environment Locally:
 
-    # Step 1: Create a virtual environment
-    python3 -m venv nlp-bert
-    source nlp-bert/bin/activateate
+```bash
+# Step 1: Create a virtual environment
+python3 -m venv nlp-bert
+source nlp-bert/bin/activate
 
-    # Step 2: Install dependencies
-    pip install -r requirements.txt
+# Step 2: Install dependencies
+pip install -r requirements.txt
 
-    # Step 3: Register the kernel in Jupyter
-    pip install ipykernel
-    python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp-bert)"
+# Step 3: Register the kernel in Jupyter
+pip install ipykernel
+python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp-bert)"
+
 
 You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-bert)**.
 
 ---
-## 📍 Current Phase (as of 4th June 2025)
+## 📍 Current Phase (as of 5th June 2025)
 
-✅ **Discipline classifier finalized for 1138-paper dataset (v2.2 – SciBERT + XGBoost)**  
-🔬 **v3.0 (DeBERTa + LoRA) tested and retained for documentation, but underperformed (F1 = 0.38)**
-
+✅ **Discipline classifier v3.1 (SciBERT + LoRA) trained on full 5402-paper dataset**  
+🔬 `v3.0` (DeBERTa + LoRA) retained for documentation; underperformed (Macro F1 = 0.38)  
 ✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers), and IT (504 papers)**  
-✅ **Methodology classifier upgraded to two-stage architecture with threshold tuning (2028-paper labeled set)**
+✅ **Methodology classifier (2028-paper set) uses two-stage architecture with threshold tuning**
 
 ---
 
-- **Discipline Model (1138 papers):**  
-  - ✅ `v2.2`: SciBERT + XGBoost → Accuracy = 91%, Macro F1 = 0.89  
-  - ❌ `v3.0`: DeBERTa + LoRA → Accuracy = 54%, Macro F1 = 0.38  
-  - Failed to predict IT class; strong CS bias; retained for documentation
+- **Discipline Model:**  
+  - ✅ `v2.2`: SciBERT + XGBoost → Accuracy = 91%, Macro F1 = 0.89  (1138 papers)  
+  - ❌ `v3.0`: DeBERTa + LoRA → Accuracy = 54%, Macro F1 = 0.38  (1138 papers)  
+  - ✅ `v3.1`: SciBERT + LoRA → Accuracy = 82.05%, Macro F1 = 0.81  (5402 papers)  
+    - Class F1s: CS = 0.85, IS = 0.82, IT = 0.76  
 
 - **Subfield Models:**  
-  - ✅ CS: `v2.3`: XGBoost + SPECTER (default) → Accuracy = 76%, Macro F1 = 0.75  
-  - ✅ IS: `v2.4`: XGBoost (tuned) + SPECTER → Accuracy = 89%, Macro F1 = 0.90  
-  - ✅ IT: `v2.4`: XGBoost (tuned) + SPECTER → Accuracy = 83%, Macro F1 = 0.80  
+  - ✅ CS: `v2.3`: XGBoost + SPECTER (default) → Accuracy = 76%, Macro F1 = 0.75  (1498 papers)  
+  - ✅ IS: `v2.4`: XGBoost (tuned) + SPECTER → Accuracy = 89%, Macro F1 = 0.90  (374 papers)  
+  - ✅ IT: `v2.4`: XGBoost (tuned) + SPECTER → Accuracy = 83%, Macro F1 = 0.80  (504 papers)  
 
 - **Methodology Models (2028 papers):**  
   - `v2.3`: SPECTER + XGBoost + SMOTE → Macro F1 = 0.66 (Mixed F1 = 0.35)  
@@ -79,6 +84,7 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 
 - **Artefacts:**  
   - All models, tokenizers, vectorizers saved as `.pkl` files under `/Artefacts`  
+  - **All `.pkl` artefacts are tracked using Git LFS** to ensure scalable versioning  
   - Two-stage methodology components (v2.6) stored as separate classifiers + threshold  
 
 - **Documentation:**  
@@ -89,54 +95,57 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
   - Modular scripts for data scraping, embedding generation, classifier training, and evaluation in `Scripts/`
 
 > 🔁 **Final architectures:**  
-> - `Discipline`: ✅ v2.2 (SciBERT + XGBoost)  
+> - `Discipline`: ✅ v3.1 (SciBERT + LoRA)  
 > - `Subfield`: ✅ v2.3/v2.4 (SPECTER + XGBoost tuned)  
 > - `Methodology`:  
 >   - `v2.3`: Single-stage (SMOTE + XGBoost)  
 >   - ✅ `v2.6`: Two-stage XGBoost with threshold tuning (Mixed threshold = 0.15)
 
 > ℹ️ Version Notes:  
-> - `v1.x` series used TF-IDF + classical models (LogReg, SVM)  
-> - `v2.x` used contextual embeddings (SciBERT, SPECTER)  
-> - `v3.0`: LoRA-tuned DeBERTa tested (Discipline), not retained due to poor IT recall
+> - `v1.x`: TF-IDF + classical models (LogReg, SVM)  
+> - `v2.x`: Contextual embeddings (SciBERT, SPECTER)  
+> - `v3.0`: DeBERTa + LoRA (underperformed)  
+> - ✅ `v3.1`: SciBERT + LoRA (best contextual + PEFT performance so far)
+
 
 ---
-## 🚀 Next Phase (Future Work – Post v3.0)
+## 🚀 Next Phase (Future Work – Post v3.1)
 
-Following the completion of all v2.x series and the DeBERTa + LoRA experiment for Discipline (`v3.0`), the next phase focuses on boosting performance, generalizability, and deployment readiness.
+Following the completion of the full v2.x series and the new SciBERT + LoRA model for Discipline (`v3.1`), the next phase focuses on improving robustness, generalizability, and deployment readiness.
 
-- ⚖️ **Rebalance methodology classifier using focal loss or cost-sensitive training**  
-  – Improve Mixed-class F1 by penalizing false negatives more aggressively or using `scale_pos_weight` in the binary Mixed-vs-NonMixed stage.
+- ⚖️ **Rebalance Methodology classifier with cost-sensitive strategies**  
+  – Improve Mixed-class F1 by using `scale_pos_weight` or focal loss in the binary Mixed-vs-NonMixed stage.
 
-- 🤖 **Fine-tune SPECTER or SciBERT on project corpus**  
-  – Explore parameter-efficient tuning (LoRA, adapters) or continued pretraining on the 2028-paper dataset to enhance domain alignment.
+- 🤖 **Fine-tune SPECTER or SciBERT on the full corpus**  
+  – Apply parameter-efficient fine-tuning (LoRA, adapters) or continued pretraining on the 5402-paper set for better domain alignment.
 
-- 🧪 **Expand and augment methodology dataset**  
-  – Label 50–100 additional Mixed-method abstracts to address imbalance; optionally apply NLPAug or back-translation to synthetically boost rare classes.
+- 🧪 **Augment and expand the Methodology dataset**  
+  – Label 50–100 additional Mixed-method abstracts to balance classes; apply back-translation or NLPAug for synthetic variation.
 
-- 🧮 **Experiment with multi-label formulation**  
-  – Predict Qualitative and Quantitative presence separately; treat as Mixed if both are active — improves generalization across method combinations.
+- 🧮 **Try multi-label formulation for Methodology**  
+  – Predict Qualitative and Quantitative flags independently; infer Mixed if both are active to improve hybrid classification flexibility.
 
-- 🔄 **Threshold tuning + ensemble fallback logic**  
-  – Dynamically switch between `v2.3` and `v2.6` based on entropy/confidence; fallback to `v2.3` for borderline cases to recover Mixed recall.
+- 🔄 **Dynamic ensemble fallback for Methodology**  
+  – Switch between `v2.3` and `v2.6` using prediction entropy or confidence thresholds to recover Mixed recall.
 
-- 🧩 **Explore ensemble/meta-learning**  
-  – Combine outputs from TF-IDF+SVM, BERT+LR, and SPECTER+XGB via a meta-classifier (e.g., Logistic Regression or XGBoost) for more robust edge-case classification.
+- 🧩 **Explore ensemble/meta-classifiers**  
+  – Combine outputs from TF-IDF+SVM, BERT+LR, and SPECTER+XGB via meta-learning (e.g., Logistic Regression or XGBoost stacking).
 
 - 🧭 **Integrate full hierarchical inference pipeline**  
-  – Sequence the inference: Discipline → Subfield → Methodology; invoke AI/ML disambiguator and discipline-specific routing logic.
+  – Run classifiers in sequence: Discipline → Subfield → Methodology; invoke AI/ML disambiguator if needed.
 
-- 🧠 **Deploy as a research assistant tool**  
-  – Build a Streamlit or FastAPI web interface to accept Title + Abstract input and return all three labels with class-wise confidence + SHAP explanations.
+- 🧠 **Build an inference interface**  
+  – Create a lightweight web UI using Streamlit or FastAPI to classify abstracts and visualize model explanations (e.g., SHAP).
 
 - 📊 **Extend error analysis and ablation studies**  
-  – Perform per-class confusion and error clustering across `v2.3`, `v2.6`, and `v3.0`; study edge-case drift to guide `v3.1+` improvements.
+  – Analyze failure patterns across `v2.3`, `v2.6`, and `v3.1`; investigate class-specific confusion and drift to guide `v3.2`.
 
 - 🔄 **Upgrade evaluation pipeline**  
-  – Enhance `scripts/evaluate_methodology.py` to include threshold sweeps, exportable metrics (F1, confusion matrices), and automatic version logging.
+  – Refactor `evaluate_methodology.py` to support threshold sweeps, exportable results, and consistent version logging.
 
-- 📝 **Standardize experiment and artefact tracking**  
-  – Maintain consistent Notion + README logs for each version (date, config, thresholds, metrics), and hash all `.pkl` artefacts for reproducibility.
+- 📝 **Standardize tracking and version control**  
+  – Maintain updated Notion and README entries for each version; hash and verify `.pkl` artefacts (tracked with Git LFS) for reproducibility.
+
 
 ---
 
@@ -149,6 +158,11 @@ Following the completion of all v2.x series and the DeBERTa + LoRA experiment fo
 | `/Scripts/`| All Scripts used for scraping data|
 | `README.md` | This file |
 | `TASKS.md` | To-do log and milestones |
+| `/Notebooks/` | All experiment notebooks across v1.x, v2.x, and v3.x for Discipline, Subfield, Methodology |
+
+---
+## Notebooks (`/Notebooks/`)
+
 | `CrossValidation_AllModels (v1.0).ipynb` | Cross-validation for original pipeline |
 | `CrossValidation_AllModels (v1.2 and v2.0).ipynb` | Full CV for Subfield v1.2 and Methodology v2.0 |
 | `Evaluate_DisciplineClassifier (v1.0).ipynb` | Manual test set evaluation (9 entries) |
@@ -169,6 +183,8 @@ Following the completion of all v2.x series and the DeBERTa + LoRA experiment fo
 | `methodology_classifier_specter_xgboost_(v2.3,_v2.4_and_v2.5).ipynb` | SPECTER + XGBoost methodology classifier notebook (v2.3 → v2.4 → v2.5a) |
 | `methodology_classifier_specter_xgboost_v2.6.ipynb` | ✅ Two-stage methodology classifier (Mixed vs Non-Mixed ➝ Qual/Quant) using SPECTER + XGBoost + threshold tuning (v2.6) |
 | `discipline_classifier_deberta_lora_v3.0.ipynb` | 🧪 Experimental v3.0 discipline classifier using DeBERTa + LoRA (PEFT) on 1138-paper dataset – not selected due to low IT recall (F1 = 0.38) |
+| `lora_discipline_classifier(v3.1).ipynb` | ✅ Final v3.1 discipline classifier using **LoRA-wrapped SciBERT** (PEFT) on **5,402-paper dataset** – Accuracy = 82.05%, Macro F1 = 0.81 (CS F1 = 0.85, IS F1 = 0.82, IT F1 = 0.76) |
+
 ---
 
 ## 📊 Data Files (`/Data/`)
@@ -186,9 +202,14 @@ Following the completion of all v2.x series and the DeBERTa + LoRA experiment fo
 | `IS_subfields.csv`      | Final IS subfield dataset (374 papers, hand-labeled, multi-source) for v2.3 and v2.4 |
 | `IT_subfields.csv`      | Final IT subfield dataset (504 papers, hand-labeled, multi-source) for v2.3 and v2.4 |
 | `methodology.csv` | Final methodology dataset (2,028 papers, hand-labeled, arXiv and Semantic scholar) for v2.3-2.5a|
+| `Expanded Discipline Dataset.csv` | Combined 5,402-paper dataset (CS, IS, IT) used in `v3.1` SciBERT + LoRA discipline classifier |
+
 ---
 
 ## 🧠 Model Artifacts (`/Artefacts/`)
+
+> 💾 All `.pkl` artefacts below are tracked using **Git LFS** for efficient versioning and storage.
+
 
 | File | Description |
 |------|-------------|
@@ -245,6 +266,12 @@ Following the completion of all v2.x series and the DeBERTa + LoRA experiment fo
 | `discipline_classifier_deberta_lora_v3.0.pkl` | 🧪 LoRA-tuned DeBERTa discipline classifier (v3.0); strong CS recall but failed IT prediction (F1 = 0.38); not selected |
 | `tokenizer_deberta_lora_v3.0.pkl`             | Tokenizer used for v3.0 DeBERTa classifier (HuggingFace `microsoft/deberta-base`) |
 | `label2id_deberta_lora_v3.0.pkl`              | Manual mapping: {'CS': 0, 'IS': 1, 'IT': 2} for v3.0 LoRA classifier |
+| `lora_model_v3.1.pkl`                      | ✅ Final v3.1 discipline classifier (LoRA-tuned SciBERT); Accuracy = 82.05%, Macro F1 = 0.81 |
+| `tokenizer_v3.1.pkl`                       | Tokenizer used for v3.1 SciBERT + LoRA model (`allenai/scibert_scivocab_uncased`) |
+| `label2id_v3.1.pkl`                        | Label mapping: {'CS': 0, 'IS': 1, 'IT': 2} used for v3.1 |
+| `id2label_v3.1.pkl`                        | Reverse mapping for prediction decoding |
+| `model_info_v3.1.pkl`                      | Metadata JSON: accuracy, F1 scores, timestamp, and configuration for v3.1 |
+
 ---
 ### Data Collection Scripts (`/Scripts/`)
 
@@ -288,6 +315,7 @@ Following the completion of all v2.x series and the DeBERTa + LoRA experiment fo
 | v1.1      | Logistic Regression                       | TF-IDF (bigram)                       | 105                   | Improved context, 80/20 CV  |
 | v2.2      | XGBoost (`disc_scibert_xgboost_v2.2.pkl`) | SciBERT (768-dim, Title+Abstract)    | **1138**              | ✅ Final, full dataset      |
 | v3.0      | XGBoost + LoRA-tuned DeBERTa (`discipline_classifier_deberta_lora_v3.0.pkl`) | DeBERTa (768-dim, PEFT via LoRA) | **1138** | Experimental; strong CS recall (F1 = 0.67), but failed IT class (F1 = 0.00); retained for documentation only |
+| v3.1 | XGBoost + LoRA-wrapped SciBERT (`lora_model_v3.1.pkl`) | SciBERT (768-dim, PEFT via LoRA) | **5402** | ✅ Best generalization; CS F1 = 0.85, IS F1 = 0.82, IT F1 = 0.76 |
 
 ---
 ## 🧠 Subfield Version Map
@@ -357,6 +385,8 @@ Following the completion of all v2.x series and the DeBERTa + LoRA experiment fo
 | Discipline   | v1.1        | 105              | Test split      | 0.9048       | —           | LogReg + bigram TF-IDF                   |
 | Discipline   | v2.2        | 1138             | Test split      | 0.91         | —           | SciBERT + XGBoost                        |
 | Discipline   | v3.0        | 1138             | Test split      | 0.54         | —           | DeBERTa (PEFT via LoRA); strong CS recall (F1 = 0.67), but failed IT class (F1 = 0.00); not selected |
+| Discipline   | v3.1        | 5402             | Test split      | 0.8205       | —           | SciBERT (LoRA via PEFT); strong generalization across classes (CS F1 = 0.85, IS F1 = 0.82, IT F1 = 0.76) |
+
 | Subfield – CS| v2.3        | 1498             | Test split      | 0.76         | –           | XGBoost (default) + SPECTER (768-dim); strong CV/CYB/PAST performance |
 | Subfield – CS| v2.4        | 1498             | Test split      | 0.75         | –           | XGBoost (tuned) + SPECTER (768-dim); regularized, improved PAST/CYB   |
 | Subfield – IS| v2.3        | 374               | Test split      | 0.88         | –           | XGBoost (default) + SPECTER (768-dim); huge jump over v1.2             |
@@ -388,7 +418,8 @@ Following the completion of all v2.x series and the DeBERTa + LoRA experiment fo
 > - v2.3 and v2.4 IT subfield classifiers are trained on a 504-paper arXiv + Semantic Scholar dataset with SPECTER embeddings.  
 > - v2.4 subfield pipeline includes a second-stage AI/ML disambiguator (Logistic Regression on SPECTER) that can be invoked when the main CS classifier predicts AI or ML.
 > - v3.0 discipline classifier (DeBERTa + LoRA) was trained on the same 1,138-paper dataset but failed to generalize; strong CS recall (F1 = 0.67), but IT recall = 0.00; accuracy = 54%, macro F1 = 0.38 — not selected.  
- 
+> - v3.1 discipline classifier (SciBERT + LoRA via PEFT) was trained on a significantly larger 5,402-paper dataset and showed strong generalization across all classes — CS F1 = 0.85, IS F1 = 0.82, IT F1 = 0.76; overall Accuracy = 82.05%, Macro F1 = 0.81.
+
 ---
 
 ## 🎯 Project Goals
