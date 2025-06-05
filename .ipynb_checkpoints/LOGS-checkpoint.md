@@ -290,41 +290,85 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - **Remarks:**  
   While CS recall was strong (0.95), model failed to predict IT entirely. v2.2 remains the deployed version for discipline classification.
 ----
+## 🧠 2025–06–05 – Discipline Classifier v3.1 (SciBERT + LoRA)
+
+- Added `lora_discipline_classifier(v3.1).ipynb` notebook:
+  - Applied LoRA (Low-Rank Adaptation) using Hugging Face `peft` on `allenai/scibert_scivocab_uncased` for 3-class discipline classification
+  - Switched from Hugging Face `Trainer` to pure PyTorch training loop to ensure compatibility across `transformers`, `peft`, and `accelerate`
+  - Trained on **expanded 5,402-paper dataset** (CS/IS/IT balanced with cleaning and validation)
+  - LoRA config: `r=8`, `alpha=16`, `dropout=0.1`, `bias="none"`, 3 epochs, batch size 8, learning rate = 2e-4
+
+- **Final Evaluation (Test Split, 20%):**
+  - Accuracy = **82.05%**
+  - Macro F1 = **0.81**
+  - Per-class F1 scores:  
+    - CS = **0.85**  
+    - IS = **0.82**  
+    - IT = **0.76**
+
+- **Artefacts Saved to `/Artefacts/`:**
+  - `lora_model_v3.1.pkl`
+  - `tokenizer_v3.1.pkl`
+  - `label2id_v3.1.pkl`
+  - `id2label_v3.1.pkl`
+  - `model_info_v3.1.pkl` (metadata)
+
+- **Project Updated:**
+  - `README.md`: Added to current phase, version map, model artefacts, comparison table, and notes section
+  - `LOGS.md`: This entry
+  - `Notion`: v3.1 logged as best-performing discipline classifier
+  - `.gitattributes`: Ensured `.pkl` files under `/Artefacts` tracked via Git LFS
+  - `.gitignore`: Cleaned to avoid accidental large binary commits
+
+- **Remarks:**  
+  v3.1 shows strong class balance and generalization on a 5× larger dataset. While macro F1 (0.81) is slightly lower than v2.2 (0.89), v3.1 offers better scale, consistent IT recall (F1 = 0.76), and improved robustness — making it the preferred model for broader deployment.
+----
 
 ## 🚀 Post-v3.0 Phase – Modular Inference, Generalization & Deployment
 
 Following the completion of all v2.x series and the experimental DeBERTa + LoRA classifier (v3.0), the next stage focuses on boosting generalization, Mixed-class F1, and preparing for modular deployment.
 
-- [x] Document and close experimental DeBERTa + LoRA classifier (v3.0)  
-  - Accuracy = 54%, Macro F1 = 0.38, strong CS recall (0.67) but failed IT completely  
-  - v2.2 (SciBERT + XGBoost) remains the final deployed discipline classifier  
+- ✅ **Close v3.0 (DeBERTa + LoRA) experiment**  
+  - Accuracy = 54%, Macro F1 = 0.38  
+  - Strong CS recall (F1 = 0.67), but failed IT entirely (F1 = 0.00)  
+  - **Not selected** for deployment; retained for documentation
+
+- ✅ **Add and evaluate v3.1 (SciBERT + LoRA) for Discipline**  
+  - Trained on full 5,402-paper corpus  
+  - Accuracy = 82.05%, Macro F1 = 0.81  
+  - Per-class F1s: CS = 0.85, IS = 0.82, IT = 0.76  
+  - **More generalizable** than v2.2, with consistent IT recall and better scaling to full dataset
 
 - [ ] Rebalance Mixed-class performance post-v2.6  
-  - Explore focal loss, `scale_pos_weight`, or cost-sensitive XGBoost to recover Mixed F1 without harming Qual  
+  - Explore focal loss, `scale_pos_weight`, or cost-sensitive XGBoost to recover Mixed F1 without harming Qual
 
 - [ ] Expand and augment methodology dataset  
-  - Collect & annotate +50–100 new Mixed-method abstracts; apply back-translation or NLPAug for underrepresented classes  
+  - Collect & annotate +50–100 new Mixed-method abstracts  
+  - Apply back-translation or NLPAug for underrepresented classes
 
 - [ ] Integrate macro-F1 + per-class F1 into CI/CD  
-  - Add evaluation summary and threshold-sweep tracking into `scripts/evaluate_methodology.py`  
+  - Add evaluation summary and threshold-sweep tracking into `scripts/evaluate_methodology.py`
 
-- [ ] Fine-tune SciBERT or SPECTER on domain corpus (beyond DeBERTa-v3.0)  
-  - Explore continued pretraining or adapter-tuning on 2,028-paper abstract corpus for improved subfield/methodology performance  
+- [ ] Fine-tune SciBERT or SPECTER on domain corpus  
+  - Try continued pretraining or adapter tuning on 2,028-paper corpus  
+  - Improve subfield and methodology classifier alignment
 
 - [ ] Implement full hierarchical inference pipeline  
   - Route predictions: Discipline → Subfield → Methodology  
-  - Dynamically invoke fallback disambiguators (e.g., AI vs ML) or secondary subfield scorers  
+  - Dynamically invoke fallback disambiguators (e.g., AI vs ML)
 
 - [ ] Package as an API or lightweight app  
-  - Build Streamlit or FastAPI demo with full pipeline + SHAP-style explanations  
+  - Build Streamlit or FastAPI demo with full pipeline + SHAP-style confidence explanations
 
 - [ ] Standardize experiment tracking & artefact versioning  
-  - Log configs, metrics, and hashes per version in Notion and README  
+  - Log configs, metrics, and hashes per version in Notion and README
 
 - [ ] Explore model ensembling or meta-learning  
-  - Stack TF-IDF+SVM, BERT+LR, and SPECTER+XGB models via a meta-classifier for ambiguous abstracts  
+  - Stack outputs of TF-IDF+SVM, BERT+LR, SPECTER+XGB via meta-classifier (e.g., XGBoost)
 
 - [ ] Conduct structured ablation & error analysis  
-  - Compare v2.3 vs v2.6 confusion matrices, focus on Qual–Mixed boundaries and low-confidence Mixed errors  
+  - Compare confusion matrices across v2.3, v2.6, and v3.1  
+  - Focus on Mixed boundary errors and edge-case drift
+ 
 
 ---
