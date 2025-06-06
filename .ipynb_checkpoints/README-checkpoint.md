@@ -44,9 +44,8 @@ pip install -r requirements.txt
 
 # Step 3: Register the kernel in Jupyter
 pip install ipykernel
-python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp-bert)"
-
-
+python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp-bert)" 
+```
 ---
 ## 📍 Current Phase (as of 5th June 2025)
 
