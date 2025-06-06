@@ -106,12 +106,16 @@ You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-be
 > - `v2.x`: Contextual embeddings (SciBERT, SPECTER)  
 > - `v3.0`: DeBERTa + LoRA (underperformed)  
 > - ✅ `v3.1`: SciBERT + LoRA (best contextual + PEFT performance so far)
+> -  `v2.2` predictions used to generate trust scores for all 5,402 papers → retained 4,838 high-confidence samples (trust ≥ 0.8) for training `v4.0`
 
 
 ---
 ## 🚀 Next Phase (Future Work – Post v3.1)
 
-Following the completion of the full v2.x series and the new SciBERT + LoRA model for Discipline (`v3.1`), the next phase focuses on improving robustness, generalizability, and deployment readiness.
+Following the completion of the full v2.x series and the new SciBERT + LoRA model for Discipline (`v3.1`), the next phase focuses on improving robustness, generalizability, and deployment readiness — starting with `v4.0` trained on high-confidence labels.
+
+- 🎯 **Train `discipline_classifier_scilora_v4.0` on trusted subset (4,838 samples)**  
+  – Use curriculum learning, class weighting (based on effective sample size), and/or focal loss to improve IT F1 and push toward 95% macro accuracy.
 
 - ⚖️ **Rebalance Methodology classifier with cost-sensitive strategies**  
   – Improve Mixed-class F1 by using `scale_pos_weight` or focal loss in the binary Mixed-vs-NonMixed stage.
@@ -184,6 +188,7 @@ Following the completion of the full v2.x series and the new SciBERT + LoRA mode
 | `methodology_classifier_specter_xgboost_v2.6.ipynb` | ✅ Two-stage methodology classifier (Mixed vs Non-Mixed ➝ Qual/Quant) using SPECTER + XGBoost + threshold tuning (v2.6) |
 | `discipline_classifier_deberta_lora_v3.0.ipynb` | 🧪 Experimental v3.0 discipline classifier using DeBERTa + LoRA (PEFT) on 1138-paper dataset – not selected due to low IT recall (F1 = 0.38) |
 | `lora_discipline_classifier(v3.1).ipynb` | ✅ Final v3.1 discipline classifier using **LoRA-wrapped SciBERT** (PEFT) on **5,402-paper dataset** – Accuracy = 82.05%, Macro F1 = 0.81 (CS F1 = 0.85, IS F1 = 0.82, IT F1 = 0.76) |
+| `discipline_trust_score_filtering_v0.1.ipynb` | ✅ Trust score filtering pipeline using `v2.2` predictions → retained 4,838 high-confidence samples (trust ≥ 0.8) for v4.0 training |
 
 ---
 
@@ -203,7 +208,8 @@ Following the completion of the full v2.x series and the new SciBERT + LoRA mode
 | `IT_subfields.csv`      | Final IT subfield dataset (504 papers, hand-labeled, multi-source) for v2.3 and v2.4 |
 | `methodology.csv` | Final methodology dataset (2,028 papers, hand-labeled, arXiv and Semantic scholar) for v2.3-2.5a|
 | `Expanded Discipline Dataset.csv` | Combined 5,402-paper dataset (CS, IS, IT) used in `v3.1` SciBERT + LoRA discipline classifier |
-
+| `expanded_discipline_with_preds.csv` | All 5,402 papers with v2.2 predicted labels and trust scores (used for filtering) |
+| `trusted_discipline_dataset.csv` | High-confidence subset (4,838 papers, trust ≥ 0.8) used for training v4.0 |
 ---
 
 ## 🧠 Model Artifacts (`/Artefacts/`)
