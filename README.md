@@ -391,7 +391,6 @@ Following the completion of the full v2.x series and the new SciBERT + LoRA mode
 | Discipline   | v2.2        | 1138             | Test split      | 0.91         | —           | SciBERT + XGBoost                        |
 | Discipline   | v3.0        | 1138             | Test split      | 0.54         | —           | DeBERTa (PEFT via LoRA); strong CS recall (F1 = 0.67), but failed IT class (F1 = 0.00); not selected |
 | Discipline   | v3.1        | 5402             | Test split      | 0.8205       | —           | SciBERT (LoRA via PEFT); strong generalization across classes (CS F1 = 0.85, IS F1 = 0.82, IT F1 = 0.76) |
-
 | Subfield – CS| v2.3        | 1498             | Test split      | 0.76         | –           | XGBoost (default) + SPECTER (768-dim); strong CV/CYB/PAST performance |
 | Subfield – CS| v2.4        | 1498             | Test split      | 0.75         | –           | XGBoost (tuned) + SPECTER (768-dim); regularized, improved PAST/CYB   |
 | Subfield – IS| v2.3        | 374               | Test split      | 0.88         | –           | XGBoost (default) + SPECTER (768-dim); huge jump over v1.2             |
