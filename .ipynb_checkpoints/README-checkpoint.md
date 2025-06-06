@@ -47,8 +47,6 @@ pip install ipykernel
 python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp-bert)"
 
 
-You can now open the Jupyter notebooks and select the kernel: **Python 3 (nlp-bert)**.
-
 ---
 ## 📍 Current Phase (as of 5th June 2025)
 
