@@ -323,10 +323,36 @@ This markdown file tracks the step-by-step progress of the NLP classification pr
 - **Remarks:**  
   v3.1 shows strong class balance and generalization on a 5× larger dataset. While macro F1 (0.81) is slightly lower than v2.2 (0.89), v3.1 offers better scale, consistent IT recall (F1 = 0.76), and improved robustness — making it the preferred model for broader deployment.
 ----
+## 🧠 2025–06–06 – Trust-Based Filtering of Expanded Discipline Dataset
 
-## 🚀 Post-v3.0 Phase – Modular Inference, Generalization & Deployment
+- Added `discipline_trust_score_filtering_v0.1.ipynb` notebook to compute trust scores on the 5,402-paper discipline dataset using the `v2.2` SciBERT + XGBoost classifier.
+    - Embedded all abstracts using `allenai/scibert_scivocab_uncased` (title + abstract).
+    - Predicted class probabilities with `disc_scibert_xgboost_v2.2.pkl`.
+    - Computed `trust_score` as the max predicted probability across classes.
+    - Saved predictions and scores to `expanded_discipline_with_preds.csv`.
+    - Filtered dataset to retain only entries with `trust_score ≥ 0.8` → **4,838 high-confidence samples** (≈89.6%).
 
-Following the completion of all v2.x series and the experimental DeBERTa + LoRA classifier (v3.0), the next stage focuses on boosting generalization, Mixed-class F1, and preparing for modular deployment.
+- **Artefacts Saved:**
+    - `expanded_discipline_with_preds.csv`
+    - `trusted_discipline_dataset.csv` (used for v4.0 training)
+    - `scibert_embeddings_5402_v2.2.npy` (cached embeddings for reproducibility)
+
+- **Project Updated:**
+    - `README.md`: Added dataset filtering explanation and artefact references.
+    - `LOGS.md`: This entry.
+    - `Notion`: Sprint 1.0 marked complete (label cleanup and trust filtering).
+    - `.gitattributes`: Ensured Git LFS is tracking `.npy` and large `.csv` artefacts.
+    - `TASKS.md`: Updated under expanded dataset preparation.
+
+- **Remarks:**
+    - This concludes Sprint 1.0 – label quality enhancement via trust filtering.
+    - The `trusted_discipline_dataset.csv` will be used to train `discipline_classifier_scilora_v4.0`.
+    - Ensures cleaner supervision and curriculum learning during fine-tuning.
+----
+
+## 🚀 Post-v3.1 Phase – Modular Inference, Generalization & Deployment
+
+Following the completion of all v2.x series and the experimental DeBERTa + LoRA classifier (v3.0), this phase focuses on **label quality**, **model robustness**, and **preparation for large-scale deployment**.
 
 - ✅ **Close v3.0 (DeBERTa + LoRA) experiment**  
   - Accuracy = 54%, Macro F1 = 0.38  
@@ -337,7 +363,17 @@ Following the completion of all v2.x series and the experimental DeBERTa + LoRA 
   - Trained on full 5,402-paper corpus  
   - Accuracy = 82.05%, Macro F1 = 0.81  
   - Per-class F1s: CS = 0.85, IS = 0.82, IT = 0.76  
-  - **More generalizable** than v2.2, with consistent IT recall and better scaling to full dataset
+  - **More generalizable** than v2.2, with consistent IT recall and better scaling
+
+- ✅ **Perform trust-based label filtering using v2.2**  
+  - Used `disc_scibert_xgboost_v2.2.pkl` to assign predicted labels and trust scores  
+  - Saved `expanded_discipline_with_preds.csv` with model predictions and `trust_score`  
+  - Retained 4,838 abstracts with `trust_score ≥ 0.8` for high-quality fine-tuning  
+  - Output dataset: `trusted_discipline_dataset.csv` to be used in v4.0 fine-tuning
+
+- [ ] Begin `v4.0` – Curriculum-based SciBERT + LoRA training  
+  - Use trusted 4,838-paper subset with blended loss and label smoothing  
+  - Target: ≥95% Accuracy and Macro F1
 
 - [ ] Rebalance Mixed-class performance post-v2.6  
   - Explore focal loss, `scale_pos_weight`, or cost-sensitive XGBoost to recover Mixed F1 without harming Qual
@@ -369,6 +405,7 @@ Following the completion of all v2.x series and the experimental DeBERTa + LoRA 
 - [ ] Conduct structured ablation & error analysis  
   - Compare confusion matrices across v2.3, v2.6, and v3.1  
   - Focus on Mixed boundary errors and edge-case drift
+
  
 
 ---
