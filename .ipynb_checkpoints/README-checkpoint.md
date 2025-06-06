@@ -162,8 +162,10 @@ Following the completion of the full v2.x series and the new SciBERT + LoRA mode
 | `/Notebooks/` | All experiment notebooks across v1.x, v2.x, and v3.x for Discipline, Subfield, Methodology |
 
 ---
-## Notebooks (`/Notebooks/`)
+## 📓 Notebooks (`/Notebooks/`)
 
+| Notebook | Description |
+|----------|-------------|
 | `CrossValidation_AllModels (v1.0).ipynb` | Cross-validation for original pipeline |
 | `CrossValidation_AllModels (v1.2 and v2.0).ipynb` | Full CV for Subfield v1.2 and Methodology v2.0 |
 | `Evaluate_DisciplineClassifier (v1.0).ipynb` | Manual test set evaluation (9 entries) |
@@ -176,16 +178,16 @@ Following the completion of the full v2.x series and the new SciBERT + LoRA mode
 | `NLP_Methodology_Classifier (v1.2).ipynb` | SVM + SMOTE for Methodology |
 | `NLP_Methodology_Classifier (v2.0).ipynb` | Methodology with Title + Abstract (TF-IDF) |
 | `NLP_Pipeline_Prototype_15_Abstracts.ipynb` | Early 15-entry pipeline prototype |
-| `NLP_Classifier_DisciplineOnly_SciBERT_XGBoost_(v2.2).ipynb` | ✅ Final discipline classifier using SciBERT embeddings + XGBoost on 1138-paper dataset |
-| `cs_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final CS subfield classifiers (1498-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
-| `it_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IT subfield classifiers (504-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
-| `is_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IS subfield classifiers (374-paper dataset) using SPECTER embeddings + XGBoost (default and tuned) |
-| `ai_vs_ml_disambiguator.ipynb` | 🧩 Binary fallback classifier (LogReg + SPECTER) to disambiguate AI vs ML within CS pipeline |
-| `methodology_classifier_specter_xgboost_(v2.3,_v2.4_and_v2.5).ipynb` | SPECTER + XGBoost methodology classifier notebook (v2.3 → v2.4 → v2.5a) |
-| `methodology_classifier_specter_xgboost_v2.6.ipynb` | ✅ Two-stage methodology classifier (Mixed vs Non-Mixed ➝ Qual/Quant) using SPECTER + XGBoost + threshold tuning (v2.6) |
-| `discipline_classifier_deberta_lora_v3.0.ipynb` | 🧪 Experimental v3.0 discipline classifier using DeBERTa + LoRA (PEFT) on 1138-paper dataset – not selected due to low IT recall (F1 = 0.38) |
-| `lora_discipline_classifier(v3.1).ipynb` | ✅ Final v3.1 discipline classifier using **LoRA-wrapped SciBERT** (PEFT) on **5,402-paper dataset** – Accuracy = 82.05%, Macro F1 = 0.81 (CS F1 = 0.85, IS F1 = 0.82, IT F1 = 0.76) |
-| `discipline_trust_score_filtering_v0.1.ipynb` | ✅ Trust score filtering pipeline using `v2.2` predictions → retained 4,838 high-confidence samples (trust ≥ 0.8) for v4.0 training |
+| `NLP_Classifier_DisciplineOnly_SciBERT_XGBoost_(v2.2).ipynb` | ✅ Final discipline classifier using SciBERT + XGBoost (1138-paper set) |
+| `cs_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final CS subfield classifiers (1498 papers, default + tuned) |
+| `it_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IT subfield classifiers (504 papers) |
+| `is_subfield_classifier_specter_xgboost (v2.3 and v2.4).ipynb` | ✅ Final IS subfield classifiers (374 papers) |
+| `ai_vs_ml_disambiguator.ipynb` | 🧩 Fallback classifier to separate AI/ML in CS |
+| `methodology_classifier_specter_xgboost_(v2.3,_v2.4_and_v2.5).ipynb` | SPECTER + XGBoost Methodology pipeline (default → tuned → weighted) |
+| `methodology_classifier_specter_xgboost_v2.6.ipynb` | ✅ Two-stage Methodology Classifier (Mixed ➝ Qual/Quant) |
+| `discipline_classifier_deberta_lora_v3.0.ipynb` | 🧪 DeBERTa + LoRA experiment (F1 = 0.38, not selected) |
+| `lora_discipline_classifier(v3.1).ipynb` | ✅ Final v3.1 discipline classifier using LoRA-tuned SciBERT (F1 = 0.81) |
+| `discipline_trust_score_filtering_v0.1.ipynb` | ✅ Used v2.2 predictions to generate trust scores and filter 4,838 high-confidence samples |
 
 ---
 
