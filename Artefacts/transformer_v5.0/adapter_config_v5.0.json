@@ -1,27 +1,3 @@
-{
-  "alpha_pattern": {},
-  "auto_mapping": null,
-  "base_model_name_or_path": "allenai/scibert_scivocab_uncased",
-  "bias": "none",
-  "fan_in_fan_out": false,
-  "inference_mode": true,
-  "init_lora_weights": true,
-  "layers_pattern": null,
-  "layers_to_transform": null,
-  "loftq_config": {},
-  "lora_alpha": 32,
-  "lora_dropout": 0.1,
-  "megatron_config": null,
-  "megatron_core": "megatron.core",
-  "modules_to_save": null,
-  "peft_type": "LORA",
-  "r": 16,
-  "rank_pattern": {},
-  "revision": null,
-  "target_modules": [
-    "value",
-    "query"
-  ],
-  "task_type": "SEQ_CLS",
-  "use_rslora": false
-} 
+version https://git-lfs.github.com/spec/v1
+oid sha256:78cb938d6e4554597f911fdf2faebc56fb8d71a1cf3719b86a984ceaccc3a3da
+size 605
