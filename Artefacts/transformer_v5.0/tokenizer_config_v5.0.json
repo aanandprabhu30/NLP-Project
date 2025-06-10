@@ -55,3 +55,4 @@
   "tokenizer_class": "BertTokenizer",
   "unk_token": "[UNK]"
 }
+ 
