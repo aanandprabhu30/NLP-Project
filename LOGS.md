@@ -34,9 +34,17 @@ The project follows a modular architecture with three main components:
 
 ### 🎯 Key Achievements
 
+✅ **Discipline Classifier v5.0**
+
+- **Ensemble Accuracy: 92.69%** (30% SciBERT + 70% XGBoost)
+- **Individual Components**: SciBERT = 88.96%, XGBoost = 92.41%
+- Optimized for Colab Pro (no bitsandbytes dependency)
+- Enhanced nlpaug synonym-based augmentation
+- Dataset: 6,187 papers (augmented from 5,402 base)
+
 ✅ **Discipline Classifier v4.0**
 
-- Accuracy: 89.7% (transformer), 92.76% (ensemble)
+- Accuracy: 89.7% (transformer), 92.76% (XGBoost standalone)
 - IT F1 improved from 0.68 → 0.87
 - Balanced dataset: 7,037 papers (CS=3037, IS=2000, IT=2000)
 
@@ -54,6 +62,7 @@ The project follows a modular architecture with three main components:
 
 ### 📅 Latest Updates
 
+- **NEW: v5.0 discipline classifier with ensemble optimization and dependency improvements**
 - Added v4.0 discipline classifier with focal loss and augmentation
 - Implemented XGBoost ensemble achieving 92.76% accuracy
 - Completed trust-based filtering of expanded dataset
@@ -61,9 +70,47 @@ The project follows a modular architecture with three main components:
 
 ## 📅 Development Timeline
 
+### 🧠 June 10, 2025 – Discipline Classifier v5.0
+
+#### Implementation (v5.0)
+
+- **Ensemble Approach**: Optimized weighting (30% SciBERT + 70% XGBoost)
+- **Dependency Optimization**: Removed bitsandbytes for Colab Pro compatibility
+- **Enhanced Augmentation**: nlpaug with WordNet synonym replacement (30% rate)
+- **Memory Optimization**: Tesla T4 GPU optimized training pipeline
+- **Trust Score Integration**: Used v2.2 high-confidence predictions for training
+- **Target Balancing**: 80% of max class size (2,429 samples per minority class)
+
+#### Results (v5.0)
+
+- **Ensemble Model**
+  - Accuracy: 92.69%
+  - Macro F1: 92.63%
+  - Per-class F1: CS = 0.93, IS = 0.93, IT = 0.92
+- **Component Performance**
+  - SciBERT + LoRA + Focal Loss: 88.96% accuracy
+  - XGBoost (TF-IDF): 92.41% accuracy
+- **Dataset**: 6,187 augmented papers (from 5,402 base)
+
+#### Artifacts (v5.0)
+
+- `discipline_classifier_v5_0_colab_pro.ipynb` (training notebook)
+- `classifier_final_20250610_110300/` (model directory)
+  - `transformer/` (SciBERT + LoRA model)
+  - `xgboost.pkl` (XGBoost model)
+  - `tfidf.pkl` (TF-IDF vectorizer)
+  - `config.json` (ensemble configuration)
+
+#### Key Improvements over v4.0
+
+- **Deployment Ready**: Simplified dependencies for production use
+- **Comparable Performance**: 92.69% vs 92.76% (only 0.07% difference)
+- **Efficient Training**: Optimized for cloud environments
+- **Enhanced Augmentation**: Better synonym-based text variation
+
 ### 🧠 June 10, 2025 – Discipline Classifier v4.0
 
-#### Implementation
+#### Implementation (v4.0)
 
 - SciBERT + LoRA + Focal Loss + Augmentation
 - Targeted data augmentation for minority classes
@@ -71,7 +118,7 @@ The project follows a modular architecture with three main components:
 - LoRA fine-tuning (1.5M trainable parameters)
 - XGBoost ensemble on TF-IDF features
 
-#### Results
+#### Results (v4.0)
 
 - **Transformer Model**
   - Accuracy: 89.7%
@@ -81,7 +128,7 @@ The project follows a modular architecture with three main components:
   - Accuracy: 92.76%
   - Macro F1: 0.93
 
-#### Artifacts
+#### Artifacts (v4.0)
 
 - `adapter_model_v4.0.safetensors` (1.2 MB)
 - `adapter_config_v4.0.json`
@@ -106,19 +153,19 @@ The project follows a modular architecture with three main components:
 
 ### 🧠 June 5, 2025 – Discipline Classifier v3.1
 
-#### Implementation
+#### Implementation (v3.1)
 
 - SciBERT + LoRA on 5,402-paper dataset
 - LoRA config: r=8, alpha=16, dropout=0.1
 - 3 epochs, batch size 8, learning rate = 2e-4
 
-#### Results
+#### Results (v3.1)
 
 - Accuracy: 82.05%
 - Macro F1: 0.81
 - Per-class F1: CS = 0.85, IS = 0.82, IT = 0.76
 
-#### Artifacts
+#### Artifacts (v3.1)
 
 - `lora_model_v3.1.pkl`
 - `tokenizer_v3.1.pkl`
@@ -128,20 +175,20 @@ The project follows a modular architecture with three main components:
 
 ### 🧠 June 4, 2025 – Discipline Classifier v3.0
 
-#### Implementation
+#### Implementation (v3.0)
 
 - DeBERTa + LoRA experiment
 - Trained on 1,138-paper dataset
 - Batch size 8, 5 epochs, learning rate = 2e-5
 
-#### Results
+#### Results (v3.0)
 
 - Accuracy: 54%
 - Macro F1: 0.38
 - Per-class F1: CS = 0.67, IS = 0.47, IT = 0.00
 - **Not selected** for deployment
 
-#### Artifacts
+#### Artifacts (v3.0)
 
 - `discipline_classifier_deberta_lora_v3.0.pkl`
 - `tokenizer_deberta_lora_v3.0.pkl`
@@ -149,20 +196,20 @@ The project follows a modular architecture with three main components:
 
 ### 🧠 May 30, 2025 – Methodology Classifier v2.6
 
-#### Implementation
+#### Implementation (v2.6)
 
 - Two-stage classification pipeline
 - Stage 1: Binary classifier (Mixed vs Non-Mixed)
 - Stage 2: Qual vs Quant classifier
 - Threshold tuning (selected: 0.15)
 
-#### Results
+#### Results (v2.6)
 
 - Accuracy: 77%
 - Macro F1: 0.66
 - Per-class F1: Mixed = 0.25, Qual = 0.91, Quant = 0.81
 
-#### Artifacts
+#### Artifacts (v2.6)
 
 - `methodology_binary_mixed_model_v2.6.pkl`
 - `methodology_qual_quant_model_v2.6.pkl`
@@ -171,7 +218,7 @@ The project follows a modular architecture with three main components:
 
 ### 🧠 May 29, 2025 – Methodology Classifier v2.3-2.5a
 
-#### Implementation
+#### Implementation (v2.3-2.5a)
 
 - SPECTER + XGBoost variants on 2,028-paper dataset
 - v2.3: Default XGBoost
@@ -179,14 +226,14 @@ The project follows a modular architecture with three main components:
 - v2.5: Balanced class weights
 - v2.5a: Manual class weights (Mixed=2, Qualitative=1, Quantitative=1)
 
-#### Results
+#### Results (v2.3-2.5a)
 
 - **v2.3**: Mixed F1=0.35, Qual F1=0.83, Quant F1=0.81
 - **v2.4**: Mixed F1=0.11, Qual F1=0.83, Quant F1=0.79
 - **v2.5**: Mixed F1=0.20, Qual F1=0.83, Quant F1=0.79
 - **v2.5a**: Mixed F1≈0.19, Qual F1≈0.82, Quant F1≈0.80
 
-#### Artifacts
+#### Artifacts (v2.3-2.5a)
 
 - `methodology_xgb_v2.3.pkl`
 - `methodology_label_encoder_v2.3.pkl`
@@ -196,13 +243,13 @@ The project follows a modular architecture with three main components:
 
 ### 🧠 May 27, 2025 – IS & IT Subfield Classifiers
 
-#### Implementation
+#### Implementation (IS & IT)
 
 - SPECTER + XGBoost (v2.3/v2.4) for both IS and IT
 - IS dataset: 374 papers (multi-source, hand-labeled)
 - IT dataset: 504 papers (multi-source, hand-labeled)
 
-#### Results
+#### Results (IS & IT)
 
 - **IS Classifier**
   - v2.3: Default XGBoost
@@ -211,7 +258,7 @@ The project follows a modular architecture with three main components:
   - v2.3: Default XGBoost
   - v2.4: GridSearchCV-tuned (Macro F1: 0.80)
 
-#### Artifacts
+#### Artifacts (IS & IT)
 
 - `is_subfield_xgb_model_v2.3.pkl`
 - `is_subfield_xgb_model_v2.4_tuned.pkl`
@@ -222,13 +269,13 @@ The project follows a modular architecture with three main components:
 
 ### 🧠 May 20, 2025 – CS Subfield Classifier
 
-#### Implementation
+#### Implementation (CS)
 
 - SPECTER + XGBoost (v2.3/v2.4) on 1,498-paper CS dataset
 - Added AI/ML disambiguator as fallback
 - Dataset collected via arXiv API
 
-#### Results
+#### Results (CS)
 
 - **Main Classifier**
   - v2.3: Default XGBoost
@@ -237,7 +284,7 @@ The project follows a modular architecture with three main components:
   - Accuracy: 68%
   - Macro F1: 0.67 (balanced for AI and ML)
 
-#### Artifacts
+#### Artifacts (CS)
 
 - `cs_subfield_xgb_model_v2.3.pkl`
 - `cs_subfield_xgb_model_v2.4_tuned.pkl`
@@ -262,7 +309,7 @@ The project follows a modular architecture with three main components:
   - Implement targeted data augmentation
   - Fine-tune class weights
 
-### 🔬 Research & Development 
+### 🔬 Research & Development
 
 - [ ] Implement advanced ensemble techniques
   - Stacking with multiple base models

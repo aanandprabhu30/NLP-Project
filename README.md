@@ -10,32 +10,33 @@ This project classifies computing research abstracts by:
 
 ## 📊 Current Status (as of 10th June 2025)
 
-✅ **Discipline classifier v4.0 achieved 89.7% accuracy (SciBERT + LoRA + Focal Loss)**  
-✅ **XGBoost ensemble reached 92.76% accuracy on augmented balanced dataset**  
+✅ **Discipline classifier v5.0 achieved 92.69% accuracy (ensemble approach)**  
+✅ **SciBERT + LoRA + Focal Loss reached 88.96% accuracy**  
+✅ **XGBoost standalone achieved 92.41% accuracy on TF-IDF features**  
 ✅ **IT class F1 improved dramatically from 0.68 → 0.87 through targeted augmentation**  
-🔬 **v3.1 (SciBERT + LoRA) retained as baseline; v4.0 shows significant improvement** 
+🔬 **v5.0 optimized without bitsandbytes dependency for Colab Pro compatibility**
+✅ **Enhanced data augmentation using nlpaug with synonym-based techniques**  
 ✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers), and IT (504 papers)**  
 ✅ **Methodology classifier (2028-paper set) uses two-stage architecture with threshold tuning**
 
-## 🚀 Key Improvements in v4.0
+## 🚀 Key Improvements in v5.0
 
-- **Data Augmentation**: Balanced dataset through targeted augmentation (IT: 721→2000, IS: 1644→2000)
-- **Focal Loss**: Addressed class imbalance, particularly improving IT classification
-- **LoRA Fine-tuning**: Efficient parameter updates (only 1.5M trainable params vs 110M)
-- **Ensemble Approach**: XGBoost on TF-IDF features achieved 92.76% accuracy
-- **Trust Score Filtering**: Used high-confidence samples from v2.2 predictions
-
-## 🎯 Quick Results
-
-- **Discipline Classification**: 92.76% accuracy (XGBoost ensemble)
-- **IT Class Performance**: F1 improved from 0.68 → 0.87
-- **Target Achievement**: Near 95% goal (92.76% vs 95% target)
+- **Dependency Optimization**: Removed bitsandbytes dependency for better Colab Pro compatibility
+- **Enhanced Data Augmentation**: Implemented nlpaug with WordNet synonym augmentation (30% replacement rate)
+- **Memory Efficiency**: Optimized for Tesla T4 GPU environment in Colab Pro
+- **Trust Score Integration**: Leveraged high-confidence v2.2 predictions with trust score weighting
+- **Advanced Augmentation Strategy**: Target count balancing (80% of max class size = 2,429 samples)
+- **Ensemble Optimization**: Found optimal weights (Transformer: 30%, XGBoost: 70%)
+- **Focal Loss Implementation**: Applied Focal Loss with gamma=2.0 for class imbalance handling
 
 ## 🚀 Next Steps
 
-- Deploy ensemble model for production use
-- Experiment with SciNCL/SPECTER2 for 95%+ accuracy
-- Build web interface for abstract classification
+- Investigate techniques to bridge remaining 2.31% gap to reach 95% target
+- Experiment with advanced ensemble methods (stacking, voting classifiers)
+- Explore newer transformer models (SPECTER2, SciNCL) for potential improvements
+- Implement production web interface for abstract classification
+- Document deployment pipeline and inference optimization
+- Consider additional data sources to expand training set beyond 6,187 samples
 
 ## 🛠 Built With
 
@@ -75,7 +76,8 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 
 ## 🔁 Final Architectures
 
-> - `Discipline`: ✅ v4.0 (SciBERT + LoRA + Focal Loss) with XGBoost ensemble
+> - `Discipline`: ✅ **v5.0 (Ensemble: SciBERT + XGBoost) - 92.69% accuracy**
+> - `Discipline`: ✅ v4.0 (SciBERT + LoRA + Focal Loss) with XGBoost ensemble - 92.76%
 > - `Subfield`: ✅ v2.3/v2.4 (SPECTER + XGBoost tuned)  
 > - `Methodology`:  
 >   - `v2.3`: Single-stage (SMOTE + XGBoost)  
@@ -101,8 +103,10 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 
 | **Task**     | **Version** | **Dataset Size** | **Accuracy** | **Notes**                                |
 |--------------|-------------|------------------|--------------|------------------------------------------|
+| Discipline   | **v5.0**    | **6187 (augmented)** | **0.9269** | **Ensemble: SciBERT (30%) + XGBoost (70%), nlpaug augmentation** |
+| Discipline   | v4.0-XGB    | 7037 (augmented) | 0.9276       | XGBoost standalone (TF-IDF features, best single model) |
+| Discipline   | v4.0-BERT   | 7037 (augmented) | 0.8970       | SciBERT + LoRA + Focal Loss standalone |
 | Discipline   | v3.1        | 5402             | 0.8205       | SciBERT (LoRA via PEFT); strong generalization |
-| Discipline   | v4.0        | 7037 (augmented) | 0.897        | SciBERT + LoRA + Focal Loss; XGBoost ensemble = 0.9276 |
 | Subfield – CS| v2.4        | 1498             | 0.75         | XGBoost (tuned) + SPECTER (768-dim) |
 | Subfield – IS| v2.4        | 374              | 0.89         | XGBoost (tuned) + SPECTER (768-dim) |
 | Subfield – IT| v2.4        | 504              | 0.83         | XGBoost (tuned) + SPECTER (768-dim) |
@@ -111,22 +115,24 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 > **Notes:**  
 >
 > - "Test split" means a standard train/test split (often 80/20 or similar), not cross-validation.  
-> - v4.0 discipline classifier was trained on 7,037 augmented papers (balanced via targeted augmentation for IT and IS classes); achieved significant improvements — CS F1 = 0.92, IS F1 = 0.89, IT F1 = 0.87; overall Accuracy = 89.7%, Macro F1 = 0.89. XGBoost ensemble on TF-IDF features achieved 92.76% accuracy.
+> - v4.0 discipline classifier was trained on 7,037 augmented papers (balanced via targeted augmentation for IT and IS classes); achieved SciBERT accuracy = 89.7%, Macro F1 = 0.89 (CS F1 = 0.92, IS F1 = 0.89, IT F1 = 0.87). XGBoost standalone achieved 92.76% accuracy.
+> - v5.0 discipline classifier trained on 6,187 augmented papers with nlpaug synonym-based augmentation; achieved ensemble accuracy = 92.69% using optimized weighting (30% SciBERT + 70% XGBoost). Improved dependency management by removing bitsandbytes requirement for Colab Pro compatibility.
 
 ## 🎯 Project Goals
 
 ✅ Build a scalable, modular NLP pipeline for automated classification of computing research abstracts  
-✅ Achieve near-target accuracy of 92.76% (vs 95% goal) for discipline classification  
-✅ Handle large-scale datasets (7,037 augmented abstracts) with class imbalance  
+✅ Achieve strong performance: v4.0 = 92.76%, v5.0 = 92.69% (approaching 95% goal)  
+✅ Handle large-scale datasets with class imbalance (v4.0: 7,037 samples, v5.0: 6,187 samples)  
 ✅ Successfully implement data augmentation to improve minority class performance (IT F1: 0.68 → 0.87)  
 ✅ Demonstrate evolution from classical models (TF-IDF) to state-of-the-art transformers (SciBERT + LoRA)  
 ✅ Integrate parameter-efficient fine-tuning (PEFT) with LoRA for efficient training  
 ✅ Implement advanced loss functions (Focal Loss) for handling class imbalance  
-✅ Create ensemble approach combining transformer and XGBoost for optimal performance  
+✅ Create ensemble approaches: v4.0 XGBoost standalone, v5.0 optimized transformer-XGBoost ensemble  
 ✅ Design hierarchical pipeline: Discipline → Subfield → Methodology classification  
 ✅ Save all artifacts with Git LFS for version control and reproducibility  
-✅ Document complete pipeline with clear versioning (v1.0 through v4.0)  
-✅ Establish foundation for production deployment and future improvements
+✅ Document complete pipeline with clear versioning (v1.0 through v5.0)  
+✅ Optimize for production deployment: v5.0 removes complex dependencies for better compatibility  
+✅ Establish robust foundation with consistent 92%+ performance across versions
 
 ## 👨‍💻 Author
 
