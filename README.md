@@ -8,35 +8,46 @@ This project classifies computing research abstracts by:
 
 ---
 
-## 📊 Current Status (as of 10th June 2025)
+## 📊 Current Status (as of 11th June 2025)
 
-✅ **Discipline classifier v5.0 achieved 92.69% accuracy (ensemble approach)**  
-✅ **SciBERT + LoRA + Focal Loss reached 88.96% accuracy**  
-✅ **XGBoost standalone achieved 92.41% accuracy on TF-IDF features**  
-✅ **IT class F1 improved dramatically from 0.68 → 0.87 through targeted augmentation**  
-🔬 **v5.0 optimized without bitsandbytes dependency for Colab Pro compatibility**
-✅ **Enhanced data augmentation using nlpaug with synonym-based techniques**  
-✅ **Subfield classifiers finalized for CS (1498 papers), IS (374 papers), and IT (504 papers)**  
-✅ **Methodology classifier (2028-paper set) uses two-stage architecture with threshold tuning**
+✅ **Discipline classifier v6.0 achieved 94.77% accuracy (single XGBoost model)**  
+✅ **Significant improvement: +2.08% over v5.0 (92.69%)**  
+✅ **Enhanced feature engineering with 46 domain-specific features**  
+✅ **Advanced TF-IDF pipeline with 11,500 features across 4 configurations**  
+✅ **Targeted data augmentation: 8,128 total samples (2,726 augmented)**  
+✅ **Excellent per-class performance: CS=92.60%, IS=94.86%, IT=97.27%**  
+✅ **Gap to 95% target reduced to just 0.23%**  
+✅ **Production-ready pipeline with complete artifact management**
 
-## 🚀 Key Improvements in v5.0
+## 🚀 Key Improvements in v6.0
 
-- **Dependency Optimization**: Removed bitsandbytes dependency for better Colab Pro compatibility
-- **Enhanced Data Augmentation**: Implemented nlpaug with WordNet synonym augmentation (30% replacement rate)
-- **Memory Efficiency**: Optimized for Tesla T4 GPU environment in Colab Pro
-- **Trust Score Integration**: Leveraged high-confidence v2.2 predictions with trust score weighting
-- **Advanced Augmentation Strategy**: Target count balancing (80% of max class size = 2,429 samples)
-- **Ensemble Optimization**: Found optimal weights (Transformer: 30%, XGBoost: 70%)
-- **Focal Loss Implementation**: Applied Focal Loss with gamma=2.0 for class imbalance handling
+- **Advanced Feature Engineering**: 46 domain-specific features including keyword ratios, technical patterns, and research type indicators
+- **Multi-Configuration TF-IDF**: 4 different TF-IDF setups (standard, extended n-grams, character-level, technical terms)
+- **Sophisticated Data Augmentation**: Sentence shuffling, keyword injection, and text combination strategies
+- **Optimal Single Model**: XGBoost with proven parameters achieving 94.77% accuracy
+- **Comprehensive Ensemble Testing**: Evaluated 7-model ensemble and stacking approaches
+- **Production Pipeline**: Complete DisciplineClassifierV6 class with save/load functionality
+- **Enhanced Error Analysis**: Detailed misclassification pattern analysis and SHAP interpretability
 
 ## 🚀 Next Steps
 
-- Investigate techniques to bridge remaining 2.31% gap to reach 95% target
-- Experiment with advanced ensemble methods (stacking, voting classifiers)
-- Explore newer transformer models (SPECTER2, SciNCL) for potential improvements
-- Implement production web interface for abstract classification
-- Document deployment pipeline and inference optimization
-- Consider additional data sources to expand training set beyond 6,187 samples
+## Discipline Classification: COMPLETE at v6.0 (94.77% accuracy)
+
+### 🎯 Future Work (Optional Extensions)
+
+- **Subfield Classifier Enhancement**: Update CS/IS/IT subfield classifiers with v6.0 techniques
+- **Methodology Classifier Improvement**: Apply advanced feature engineering to methodology classification
+- **Integrated Pipeline**: Combine discipline → subfield → methodology in single workflow
+- **Production Deployment**: Deploy discipline classifier v6.0 as standalone service
+- **Research Publication**: Document methodology and results for academic contribution
+
+### 💡 Discipline Classifier: Project Complete
+
+- 94.77% accuracy achieved (0.23% from 95% target)
+- Production-ready pipeline with complete artifact management
+- Advanced feature engineering with 11,546 features
+- Robust augmentation strategy and comprehensive evaluation
+- **Decision**: Stopping here due to diminishing returns on further optimization
 
 ## 🛠 Built With
 
@@ -74,14 +85,15 @@ pip install ipykernel
 python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp-bert)" 
 ```
 
-## 🔁 Final Architectures
+## 🔁 Model Architecture Summary
 
-> - `Discipline`: ✅ **v5.0 (Ensemble: SciBERT + XGBoost) - 92.69% accuracy**
-> - `Discipline`: ✅ v4.0 (SciBERT + LoRA + Focal Loss) with XGBoost ensemble - 92.76%
-> - `Subfield`: ✅ v2.3/v2.4 (SPECTER + XGBoost tuned)  
-> - `Methodology`:  
->   - `v2.3`: Single-stage (SMOTE + XGBoost)  
->   - ✅ `v2.6`: Two-stage XGBoost with threshold tuning (Mixed threshold = 0.15)
+> **Discipline Classification: COMPLETE**
+>
+> - `Discipline`: ✅ **v6.0 (XGBoost + Advanced Features) - 94.77% accuracy - FINAL**
+> **Other Classifiers: Functional but not updated to v6.0 standards**
+>
+> - `Subfield`: ✅ v2.4 (SPECTER + XGBoost tuned) - CS: 75%, IS: 89%, IT: 83%
+> - `Methodology`: ✅ v2.6 (Two-stage XGBoost with threshold tuning) - 77% accuracy
 
 ## 🗂️ Repository Structure
 
@@ -93,17 +105,29 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 | `README.md` | This file |
 | `/Notebooks/` | All experiment notebooks across v1.x, v2.x, v3.x and v4.x |
 
-## 📦 Key Model Files as of v4.0
+## 📦 Key Model Files (v6.0 - Final)
 
-- `adapter_model_v4.0.safetensors` - LoRA weights (1.2 MB)
-- `xgb_model_v4.0.pkl` - XGBoost ensemble (92.76% accuracy)
-- `tokenizer_v4.0.json` - Fast tokenizer
+### Discipline Classifier v6.0 (Production Ready)
+
+- `discipline_classifier_v6.0_pipeline.pkl` - Complete production pipeline (94.77% accuracy)
+- `xgb_final_model_v6.0.pkl` - Best single XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` - Domain-specific feature extractor (46 features)
+- `complete_checkpoint_v6.0.pkl` - Full training state for reproducibility
+- `results_summary_v6.0.json` - Performance metrics and analysis
+
+### Legacy Models (Functional)
+
+- Previous versions (v4.0, v5.0) available for comparison
+- Subfield classifiers (v2.4) for CS/IS/IT classification  
+- Methodology classifier (v2.6) for Qual/Quant/Mixed classification
 
 ## 📊 Version Comparison
 
 | **Task**     | **Version** | **Dataset Size** | **Accuracy** | **Notes**                                |
 |--------------|-------------|------------------|--------------|------------------------------------------|
-| Discipline   | **v5.0**    | **6187 (augmented)** | **0.9269** | **Ensemble: SciBERT (30%) + XGBoost (70%), nlpaug augmentation** |
+| Discipline   | **v6.0**    | **8128 (augmented)** | **0.9477** | **Single XGBoost model, advanced feature engineering** |
+| Discipline   | v5.0    | 6187 (augmented) | 0.9269 | Ensemble: SciBERT (30%) + XGBoost (70%), nlpaug augmentation |
 | Discipline   | v4.0-XGB    | 7037 (augmented) | 0.9276       | XGBoost standalone (TF-IDF features, best single model) |
 | Discipline   | v4.0-BERT   | 7037 (augmented) | 0.8970       | SciBERT + LoRA + Focal Loss standalone |
 | Discipline   | v3.1        | 5402             | 0.8205       | SciBERT (LoRA via PEFT); strong generalization |
@@ -117,22 +141,51 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 > - "Test split" means a standard train/test split (often 80/20 or similar), not cross-validation.  
 > - v4.0 discipline classifier was trained on 7,037 augmented papers (balanced via targeted augmentation for IT and IS classes); achieved SciBERT accuracy = 89.7%, Macro F1 = 0.89 (CS F1 = 0.92, IS F1 = 0.89, IT F1 = 0.87). XGBoost standalone achieved 92.76% accuracy.
 > - v5.0 discipline classifier trained on 6,187 augmented papers with nlpaug synonym-based augmentation; achieved ensemble accuracy = 92.69% using optimized weighting (30% SciBERT + 70% XGBoost). Improved dependency management by removing bitsandbytes requirement for Colab Pro compatibility.
+> - **v6.0 discipline classifier** trained on 8,128 augmented papers with sophisticated augmentation strategies (sentence shuffling, keyword injection, text combination); achieved 94.77% accuracy using single XGBoost model with advanced feature engineering (11,546 features: 11,500 TF-IDF + 46 domain-specific). Represents final iteration for discipline classification.
+> - **Subfield classifiers (v2.4)** achieve strong performance: CS = 75%, IS = 89%, IT = 83% using SPECTER embeddings + tuned XGBoost on respective domain-specific datasets.
+> - **Methodology classifier (v2.6)** uses two-stage architecture with threshold tuning, achieving 77% accuracy on qualitative/quantitative/mixed classification.
 
 ## 🎯 Project Goals
 
-✅ Build a scalable, modular NLP pipeline for automated classification of computing research abstracts  
-✅ Achieve strong performance: v4.0 = 92.76%, v5.0 = 92.69% (approaching 95% goal)  
-✅ Handle large-scale datasets with class imbalance (v4.0: 7,037 samples, v5.0: 6,187 samples)  
-✅ Successfully implement data augmentation to improve minority class performance (IT F1: 0.68 → 0.87)  
-✅ Demonstrate evolution from classical models (TF-IDF) to state-of-the-art transformers (SciBERT + LoRA)  
-✅ Integrate parameter-efficient fine-tuning (PEFT) with LoRA for efficient training  
-✅ Implement advanced loss functions (Focal Loss) for handling class imbalance  
-✅ Create ensemble approaches: v4.0 XGBoost standalone, v5.0 optimized transformer-XGBoost ensemble  
-✅ Design hierarchical pipeline: Discipline → Subfield → Methodology classification  
-✅ Save all artifacts with Git LFS for version control and reproducibility  
-✅ Document complete pipeline with clear versioning (v1.0 through v5.0)  
-✅ Optimize for production deployment: v5.0 removes complex dependencies for better compatibility  
-✅ Establish robust foundation with consistent 92%+ performance across versions
+### ✅ Core Classification Pipeline (Three-Tier System)
+
+#### Discipline Classification (v6.0) - PRODUCTION READY
+
+- 94.77% accuracy - Distinguishes CS/IS/IT disciplines
+- Advanced feature engineering with 11,546 features (11,500 TF-IDF + 46 domain-specific)
+- Sophisticated data augmentation strategies for 8,128 samples
+- Production-ready DisciplineClassifierV6 pipeline with complete artifact management
+- Evolution from 90% → 94.77% across six major versions
+
+#### Subfield Classification (v2.4) - FUNCTIONAL
+
+- CS Subfield Classifier: 75% accuracy on 1,498 papers (AI, ML, CV, CYB, etc.)
+- IS Subfield Classifier: 89% accuracy on 374 papers (BSP, DSA, ENT, GOV, etc.)  
+- IT Subfield Classifier: 83% accuracy on 504 papers (CLD, EDG, IOT, NET, etc.)
+- SPECTER embeddings + tuned XGBoost architecture across all domains
+
+#### Methodology Classification (v2.6) - FUNCTIONAL
+
+- Two-stage classification pipeline (Binary → Ternary)
+- Threshold tuning optimization (Mixed threshold = 0.15)
+- 77% accuracy on 2,028-paper dataset
+- Handles challenging Mixed methodology detection
+
+#### System-Wide Technical Achievements
+
+- Scalable, modular NLP pipeline for automated classification
+- Handle large-scale datasets with class imbalance across all tiers
+- Comprehensive data augmentation and preprocessing pipelines
+- Evolution from classical models to advanced feature engineering
+- Complete artifact management and version control
+- Hierarchical pipeline: Discipline → Subfield → Methodology classification
+
+### 🎯 Project Status Summary
+
+- Discipline classifier: PRODUCTION READY at 94.77% accuracy
+- Subfield and methodology classifiers: FUNCTIONAL with room for enhancement
+- Complete three-tier system demonstrates full research paper classification capability
+- Primary focus achieved: High-performance discipline classification with production deployment
 
 ## 👨‍💻 Author
 
