@@ -30,50 +30,102 @@ The project follows a modular architecture with three main components:
    - Performance metrics tracking
    - Error analysis and model debugging
 
-## 📊 Current Status (June 11, 2025)
+## 📊 Project Status (June 19, 2025)
 
-### 🎯 Key Achievements
+### ✅ Discipline Classifier: PRODUCTION READY (v6.0)
 
-#### Discipline Classifier v6.0 (PRODUCTION READY)
-
-- Single Model Accuracy: 94.77% (XGBoost with advanced feature engineering)
-- Feature Engineering: 11,546 total features (11,500 TF-IDF + 46 domain-specific)
-- Dataset: 8,128 papers (augmented from 5,402 base with sophisticated strategies)
-- Performance: CS=92.60%, IS=94.86%, IT=97.27% per-class accuracy
-- Gap to Target: Only 0.23% short of 95% goal
+- Accuracy: 94.77% (XGBoost, Macro F1: 0.9483, 0.23% from 95% target)
+- Per-class accuracy: CS = 92.60%, IS = 94.86%, IT = 97.27%
+- Features: 11,546 (11,500 TF-IDF + 46 domain-specific)
+- Dataset: 8,128 (5,402 original + 2,726 augmented)
 - Status: PRODUCTION READY with complete deployment pipeline
 
-#### Discipline Classifier v5.0
+### ✅ Methodology Classifier: PRODUCTION READY (v6.0)
 
-- Ensemble Accuracy: 92.69% (30% SciBERT + 70% XGBoost)
-- Individual Components: SciBERT = 88.96%, XGBoost = 92.41%
-- Optimized for Colab Pro (no bitsandbytes dependency)
-- Enhanced nlpaug synonym-based augmentation
-- Dataset: 6,187 papers (augmented from 5,402 base)
+- Accuracy: 91.87% (ensemble, Macro F1: 0.9180, 3.13% from 95% target)
+- Features: 11,527 (11,500 TF-IDF + 27 domain-specific)
+- Dataset: 4,675 (3,288 original + 1,387 augmented)
+- Status: PRODUCTION READY with complete deployment pipeline
 
-#### Discipline Classifier v4.0
+**Per-Class Metrics (Methodology v6.0):**
 
-- Accuracy: 89.7% (transformer), 92.76% (XGBoost standalone)
-- IT F1 improved from 0.68 → 0.87
-- Balanced dataset: 7,037 papers (CS=3037, IS=2000, IT=2000)
+| Methodology   | Precision | Recall | F1-score | Support |
+|--------------|-----------|--------|----------|---------|
+| Mixed        | 0.91      | 0.89   | 0.90     |   294   |
+| Qualitative  | 0.94      | 0.91   | 0.92     |   294   |
+| Quantitative | 0.91      | 0.95   | 0.93     |   347   |
 
-#### Subfield Classifiers (v2.4) - FUNCTIONAL
+### 🔬 Remaining Components (Functional but Not Production-Ready)
 
-- CS: 75% accuracy (1498 papers)
-- IS: 89% accuracy (374 papers)
-- IT: 83% accuracy (504 papers)
+#### Subfield Classifiers (v2.4)
 
-#### Methodology Classifier (v2.6) - FUNCTIONAL
+- [ ] Apply v6.0 advanced feature engineering techniques
+- [ ] Implement sophisticated data augmentation strategies  
+- [ ] Upgrade to production-ready pipeline architecture
+- [ ] Current performance: CS=75%, IS=89%, IT=83%
 
-- Two-stage architecture with threshold tuning
-- Accuracy: 77%, Macro F1: 0.66
-- Mixed F1: 0.25, Qual F1: 0.91, Quant F1: 0.81
+### 🌟 Future Research Directions (Optional)
+
+1. **System Integration**
+   - Combine all three classifiers into unified pipeline
+   - Implement confidence-based routing
+   - Create comprehensive evaluation framework
+2. **Advanced Techniques**
+   - Apply SPECTER2 or SciNCL embeddings to all components
+   - Implement multi-task learning across all classification tasks
+   - Explore few-shot learning for emerging subfields
+3. **Production Deployment**
+   - Deploy discipline and methodology classifiers v6.0 as API services
+   - Create web interface for abstract classification
+   - Implement monitoring and performance tracking
+
+---
 
 ## 📅 Development Timeline
 
+### 🧠 June 19, 2025 – Methodology Classifier v6.0 (FINAL PRODUCTION VERSION)
+
+#### Implementation (Methodology v6.0)
+
+- Architecture: Matches discipline classifier v6.0 (multi-config TF-IDF, 27 domain features, targeted augmentation, 7-model ensemble, production-ready pipeline)
+- Dataset: 4,675 samples (3,288 original + 1,387 augmented)
+- Features: 11,527 (11,500 TF-IDF + 27 domain-specific)
+- Data Augmentation: Targeted for class balance, especially Mixed
+- Hyperparameter Optimization: Best params selected for XGBoost
+- Production Pipeline: Complete MethodologyClassifierV6 class with artifact management
+
+#### Results (Methodology v6.0)
+
+- Best Model: Ensemble (7-model)
+- Accuracy: 91.87%
+- Macro F1: 0.9180
+- Per-class metrics:
+
+  | Methodology   | Precision | Recall | F1-score | Support |
+  |--------------|-----------|--------|----------|---------|
+  | Mixed        | 0.91      | 0.89   | 0.90     |   294   |
+  | Qualitative  | 0.94      | 0.91   | 0.92     |   294   |
+  | Quantitative | 0.91      | 0.95   | 0.93     |   347   |
+
+- Gap to Target: 3.13% from 95% goal
+- Status: PRODUCTION READY with complete deployment pipeline
+
+#### Artifacts (Methodology v6.0)
+
+- `methodology_classifier_v6.0_pipeline.pkl` – Complete production pipeline (91.87% accuracy)
+- `xgb_final_model_v6.0.pkl` – Best single XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` – 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` – Domain-specific feature extractor (27 features)
+- `ensemble_models_v6.0.pkl` – 7-model ensemble for optimal performance
+- `label_encoder_v6.0.pkl` – Label encoder for methodology classes
+- `best_params_v6.0.pkl` – Best hyperparameters for the final model
+- `results_summary_v6.0.json` – Performance metrics and analysis
+
+---
+
 ### 🧠 June 11, 2025 – Discipline Classifier v6.0 (FINAL PRODUCTION VERSION)
 
-#### Implementation (v6.0)
+#### Implementation (Discipline v6.0)
 
 - Advanced Feature Engineering: 46 domain-specific features targeting CS/IS/IT classification
 - Multi-TF-IDF Pipeline: 4 configurations (standard, extended n-grams, character-level, technical terms)
@@ -83,11 +135,11 @@ The project follows a modular architecture with three main components:
 - Ensemble Exploration: Tested 7-model ensemble and stacking (94.59-94.71% range)
 - Production Pipeline: Complete DisciplineClassifierV6 class with artifact management
 
-#### Results (v6.0)
+#### Results (Discipline v6.0)
 
 - Single XGBoost Model (SELECTED)
   - Accuracy: 94.77%
-  - Macro F1: 94.83%
+  - Macro F1: 0.9483
   - Per-class accuracy: CS = 92.60%, IS = 94.86%, IT = 97.27%
   - Feature matrix: 11,546 features (11,500 TF-IDF + 46 domain)
 - Ensemble Attempts (NOT SELECTED)
@@ -96,34 +148,25 @@ The project follows a modular architecture with three main components:
   - Stacking classifier: 94.59%
 - Final Achievement: +2.08% over v5.0, gap to 95% target: 0.23%
 
-#### Artifacts (v6.0)
+#### Artifacts (Discipline v6.0)
 
-- `discipline_classifier_v6.0_pipeline.pkl` (complete production pipeline)
-- `xgb_final_model_v6.0.pkl` (best single model)
-- `tfidf_vectorizers_v6.0.pkl` (4 TF-IDF configurations)
-- `feature_extractor_v6.0.pkl` (domain feature extractor)
-- `ensemble_models_v6.0.pkl` (7 ensemble models for comparison)
-- `complete_checkpoint_v6.0.pkl` (full training state)
-- `results_summary_v6.0.json` (performance metrics)
+- `discipline_classifier_v6.0_pipeline.pkl` – Complete production pipeline (94.77% accuracy)
+- `xgb_final_model_v6.0.pkl` – Best single XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` – 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` – Domain-specific feature extractor (46 features)
+- `ensemble_models_v6.0.pkl` – 7-model ensemble for optimal performance
+- `label_encoder_v6.0.pkl` – Label encoder for discipline classes
+- `best_params_v6.0.pkl` – Best hyperparameters for the final model
+- `complete_checkpoint_v6.0.pkl` – Full training state for reproducibility
+- `results_summary_v6.0.json` – Performance metrics and analysis
 
-#### Key Technical Innovations
+---
 
-- Domain Feature Extraction: CS/IS/IT keyword ratios, technical pattern detection, research methodology indicators
-- Advanced Augmentation Strategy: Class-balanced targeting with 85% of max class size (2,581 samples per class)
-- Feature Importance Analysis: IT keyword count (0.0164), partial matches (0.0095), IS ratio (0.0089) as top features
-- SHAP Interpretability: Model explanation with feature importance visualization
-- Production Architecture: Modular design with preprocessing, feature extraction, and prediction pipelines
-
-#### Project Completion Decision
-
-- Strategic Completion: 94.77% accuracy represents optimal stopping point
-- Diminishing Returns: Further improvements would require disproportionate effort for 0.23% gain
-- Production Ready: Complete pipeline with comprehensive artifact management
-- Status: FINAL VERSION for discipline classification component
+## 🗂️ Legacy Models and Experiments
 
 ### 🧠 June 10, 2025 – Discipline Classifier v5.0
 
-#### Implementation (v5.0)
+#### Implementation (Discipline v5.0)
 
 - **Ensemble Approach**: Optimized weighting (30% SciBERT + 70% XGBoost)
 - **Dependency Optimization**: Removed bitsandbytes for Colab Pro compatibility
@@ -132,18 +175,14 @@ The project follows a modular architecture with three main components:
 - **Trust Score Integration**: Used v2.2 high-confidence predictions for training
 - **Target Balancing**: 80% of max class size (2,429 samples per minority class)
 
-#### Results (v5.0)
+#### Results (Discipline v5.0)
 
-- **Ensemble Model**
-  - Accuracy: 92.69%
-  - Macro F1: 92.63%
-  - Per-class F1: CS = 0.93, IS = 0.93, IT = 0.92
-- **Component Performance**
-  - SciBERT + LoRA + Focal Loss: 88.96% accuracy
-  - XGBoost (TF-IDF): 92.41% accuracy
-- **Dataset**: 6,187 augmented papers (from 5,402 base)
+- Ensemble Model: Accuracy: 92.69%, Macro F1: 92.63%
+- Per-class F1: CS = 0.93, IS = 0.93, IT = 0.92
+- Component Performance: SciBERT + LoRA + Focal Loss: 88.96% accuracy; XGBoost (TF-IDF): 92.41% accuracy
+- Dataset: 6,187 augmented papers (from 5,402 base)
 
-#### Artifacts (v5.0)
+#### Artifacts (Discipline v5.0)
 
 - `discipline_classifier_v5_0_colab_pro.ipynb` (training notebook)
 - `classifier_final_20250610_110300/` (model directory)
@@ -152,16 +191,11 @@ The project follows a modular architecture with three main components:
   - `tfidf.pkl` (TF-IDF vectorizer)
   - `config.json` (ensemble configuration)
 
-#### Key Improvements over v4.0
-
-- **Deployment Ready**: Simplified dependencies for production use
-- **Comparable Performance**: 92.69% vs 92.76% (only 0.07% difference)
-- **Efficient Training**: Optimized for cloud environments
-- **Enhanced Augmentation**: Better synonym-based text variation
+---
 
 ### 🧠 June 10, 2025 – Discipline Classifier v4.0
 
-#### Implementation (v4.0)
+#### Implementation (Discipline v4.0)
 
 - SciBERT + LoRA + Focal Loss + Augmentation
 - Targeted data augmentation for minority classes
@@ -169,17 +203,12 @@ The project follows a modular architecture with three main components:
 - LoRA fine-tuning (1.5M trainable parameters)
 - XGBoost ensemble on TF-IDF features
 
-#### Results (v4.0)
+#### Results (Discipline v4.0)
 
-- **Transformer Model**
-  - Accuracy: 89.7%
-  - Macro F1: 0.89
-  - Per-class F1: CS = 0.92, IS = 0.89, IT = 0.87
-- **XGBoost Ensemble**
-  - Accuracy: 92.76%
-  - Macro F1: 0.93
+- Transformer Model: Accuracy: 89.7%, Macro F1: 0.89, Per-class F1: CS = 0.92, IS = 0.89, IT = 0.87
+- XGBoost Ensemble: Accuracy: 92.76%, Macro F1: 0.93
 
-#### Artifacts (v4.0)
+#### Artifacts (Discipline v4.0)
 
 - `adapter_model_v4.0.safetensors` (1.2 MB)
 - `adapter_config_v4.0.json`
@@ -188,109 +217,52 @@ The project follows a modular architecture with three main components:
 - `xgb_model_v4.0.pkl` (ensemble model)
 - `tfidf_vectorizer_v4.0.pkl`
 
-### 🧠 June 6, 2025 – Trust-Based Filtering
+---
 
-#### Implementation
+### 🧠 May 30, 2025 – Methodology Classifier v2.6 (Superseded by v6.0)
 
-- Filtered 5,402-paper dataset using v2.2 predictions
-- Computed trust scores based on prediction probabilities
-- Retained 4,838 high-confidence samples (trust_score ≥ 0.8)
+#### Implementation (Methodology v2.6)
 
-#### Output
-
-- `expanded_discipline_with_preds.csv`
-- `trusted_discipline_dataset.csv` (for v4.0 training)
-- `scibert_embeddings_5402_v2.2.npy`
-
-### 🧠 June 5, 2025 – Discipline Classifier v3.1
-
-#### Implementation (v3.1)
-
-- SciBERT + LoRA on 5,402-paper dataset
-- LoRA config: r=8, alpha=16, dropout=0.1
-- 3 epochs, batch size 8, learning rate = 2e-4
-
-#### Results (v3.1)
-
-- Accuracy: 82.05%
-- Macro F1: 0.81
-- Per-class F1: CS = 0.85, IS = 0.82, IT = 0.76
-
-#### Artifacts (v3.1)
-
-- `lora_model_v3.1.pkl`
-- `tokenizer_v3.1.pkl`
-- `label2id_v3.1.pkl`
-- `id2label_v3.1.pkl`
-- `model_info_v3.1.pkl`
-
-### 🧠 June 4, 2025 – Discipline Classifier v3.0
-
-#### Implementation (v3.0)
-
-- DeBERTa + LoRA experiment
-- Trained on 1,138-paper dataset
-- Batch size 8, 5 epochs, learning rate = 2e-5
-
-#### Results (v3.0)
-
-- Accuracy: 54%
-- Macro F1: 0.38
-- Per-class F1: CS = 0.67, IS = 0.47, IT = 0.00
-- **Not selected** for deployment
-
-#### Artifacts (v3.0)
-
-- `discipline_classifier_deberta_lora_v3.0.pkl`
-- `tokenizer_deberta_lora_v3.0.pkl`
-- `label2id_deberta_lora_v3.0.pkl`
-
-### 🧠 May 30, 2025 – Methodology Classifier v2.6
-
-#### Implementation (v2.6)
-
-- Two-stage classification pipeline
-- Stage 1: Binary classifier (Mixed vs Non-Mixed)
-- Stage 2: Qual vs Quant classifier
+- Two-stage classification pipeline: Stage 1 (Binary: Mixed vs Non-Mixed), Stage 2 (Qual vs Quant)
 - Threshold tuning (selected: 0.15)
 
-#### Results (v2.6)
+#### Results (Methodology v2.6)
 
-- Accuracy: 77%
-- Macro F1: 0.66
+- Accuracy: 77%, Macro F1: 0.66
 - Per-class F1: Mixed = 0.25, Qual = 0.91, Quant = 0.81
 
-#### Artifacts (v2.6)
+#### Artifacts (Methodology v2.6)
 
 - `methodology_binary_mixed_model_v2.6.pkl`
 - `methodology_qual_quant_model_v2.6.pkl`
 - `methodology_mixed_threshold_v2.6.pkl`
 - `methodology_specter_embeddings_v2.6.pkl`
 
+---
+
 ### 🧠 May 29, 2025 – Methodology Classifier v2.3-2.5a
 
-#### Implementation (v2.3-2.5a)
+#### Implementation (Methodology v2.3-2.5a)
 
 - SPECTER + XGBoost variants on 2,028-paper dataset
-- v2.3: Default XGBoost
-- v2.4: GridSearchCV-tuned XGBoost
-- v2.5: Balanced class weights
-- v2.5a: Manual class weights (Mixed=2, Qualitative=1, Quantitative=1)
+- v2.3: Default XGBoost; v2.4: GridSearchCV-tuned XGBoost; v2.5: Balanced class weights; v2.5a: Manual class weights (Mixed=2, Qualitative=1, Quantitative=1)
 
-#### Results (v2.3-2.5a)
+#### Results (Methodology v2.3-2.5a)
 
-- **v2.3**: Mixed F1=0.35, Qual F1=0.83, Quant F1=0.81
-- **v2.4**: Mixed F1=0.11, Qual F1=0.83, Quant F1=0.79
-- **v2.5**: Mixed F1=0.20, Qual F1=0.83, Quant F1=0.79
-- **v2.5a**: Mixed F1≈0.19, Qual F1≈0.82, Quant F1≈0.80
+- v2.3: Mixed F1=0.35, Qual F1=0.83, Quant F1=0.81
+- v2.4: Mixed F1=0.11, Qual F1=0.83, Quant F1=0.79
+- v2.5: Mixed F1=0.20, Qual F1=0.83, Quant F1=0.79
+- v2.5a: Mixed F1≈0.19, Qual F1≈0.82, Quant F1≈0.80
 
-#### Artifacts (v2.3-2.5a)
+#### Artifacts (Methodology v2.3-2.5a)
 
 - `methodology_xgb_v2.3.pkl`
 - `methodology_label_encoder_v2.3.pkl`
 - `methodology_xgb_model_v2.4_tuned.pkl`
 - `methodology_xgb_class_weighted_v2.5.pkl`
 - `methodology_xgb_manual_weights_v2.5a.pkl`
+
+---
 
 ### 🧠 May 27, 2025 – IS & IT Subfield Classifiers
 
@@ -302,12 +274,8 @@ The project follows a modular architecture with three main components:
 
 #### Results (IS & IT)
 
-- **IS Classifier**
-  - v2.3: Default XGBoost
-  - v2.4: GridSearchCV-tuned (Macro F1: 0.90)
-- **IT Classifier**
-  - v2.3: Default XGBoost
-  - v2.4: GridSearchCV-tuned (Macro F1: 0.80)
+- IS Classifier: v2.3: Default XGBoost; v2.4: GridSearchCV-tuned (Macro F1: 0.90)
+- IT Classifier: v2.3: Default XGBoost; v2.4: GridSearchCV-tuned (Macro F1: 0.80)
 
 #### Artifacts (IS & IT)
 
@@ -317,6 +285,8 @@ The project follows a modular architecture with three main components:
 - `it_subfield_xgb_model_v2.3.pkl`
 - `it_subfield_xgb_model_v2.4_tuned.pkl`
 - `it_subfield_label_encoder_v2.3.pkl`
+
+---
 
 ### 🧠 May 20, 2025 – CS Subfield Classifier
 
@@ -328,12 +298,8 @@ The project follows a modular architecture with three main components:
 
 #### Results (CS)
 
-- **Main Classifier**
-  - v2.3: Default XGBoost
-  - v2.4: GridSearchCV-tuned
-- **AI/ML Disambiguator**
-  - Accuracy: 68%
-  - Macro F1: 0.67 (balanced for AI and ML)
+- Main Classifier: v2.3: Default XGBoost; v2.4: GridSearchCV-tuned
+- AI/ML Disambiguator: Accuracy: 68%, Macro F1: 0.67 (balanced for AI and ML)
 
 #### Artifacts (CS)
 
@@ -343,48 +309,7 @@ The project follows a modular architecture with three main components:
 - `ai_ml_disambiguator_logreg_v1.pkl`
 - `ai_ml_label_encoder.pkl`
 
-## 🚀 Next Steps
-
-## 🚀 Project Status: DISCIPLINE CLASSIFICATION COMPLETE
-
-### ✅ Discipline Classifier: PRODUCTION READY (v6.0)
-
-- **FINAL STATUS**: 94.77% accuracy achieved (0.23% from 95% target)
-- **DECISION**: Project complete due to diminishing returns
-- **READY FOR**: Production deployment and real-world application
-
-### 🔬 Remaining Components (Functional but Not Production-Ready)
-
-#### Subfield Classifiers (v2.4)
-
-- [ ] Apply v6.0 advanced feature engineering techniques
-- [ ] Implement sophisticated data augmentation strategies  
-- [ ] Upgrade to production-ready pipeline architecture
-- [ ] Current performance: CS=75%, IS=89%, IT=83%
-
-#### Methodology Classifier (v2.6)
-
-- [ ] Apply v6.0 feature engineering approach
-- [ ] Enhance data augmentation for Mixed class detection
-- [ ] Implement production pipeline architecture
-- [ ] Current performance: 77% accuracy
-
-### 🌟 Future Research Directions (Optional)
-
-1. **System Integration**
-   - Combine all three classifiers into unified pipeline
-   - Implement confidence-based routing
-   - Create comprehensive evaluation framework
-
-2. **Advanced Techniques**
-   - Apply SPECTER2 or SciNCL embeddings to all components
-   - Implement multi-task learning across all classification tasks
-   - Explore few-shot learning for emerging subfields
-
-3. **Production Deployment**
-   - Deploy discipline classifier v6.0 as API service
-   - Create web interface for abstract classification
-   - Implement monitoring and performance tracking
+---
 
 ## 📚 Early Development (v0 → v2.2.1)
 
@@ -481,4 +406,4 @@ Aanand Prabhu
 
 > _Submitted as part of my BSc Final Year Project in Computer Science – University of London_
 >
-> Project Status: Discipline Classification component completed at production-ready 94.77% accuracy (June 2025)
+> Project Status: Discipline (v6.0, 94.77% accuracy, June 11, 2025) and Methodology (v6.0, 91.87% accuracy, June 19, 2025) components completed at production-ready level.

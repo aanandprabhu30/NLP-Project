@@ -11,15 +11,17 @@ This project classifies computing research abstracts by:
 ## 📊 Current Status (as of 11th June 2025)
 
 ✅ **Discipline classifier v6.0 achieved 94.77% accuracy (single XGBoost model)**  
-✅ **Significant improvement: +2.08% over v5.0 (92.69%)**  
-✅ **Enhanced feature engineering with 46 domain-specific features**  
+✅ **Methodology classifier v6.0 achieved 91.87% accuracy (ensemble model)**  
+✅ **Significant improvements: Discipline +2.08% over v5.0, Methodology +14.87% over v2.6**  
+✅ **Enhanced feature engineering with 46 domain-specific features (discipline) and 27 features (methodology)**  
 ✅ **Advanced TF-IDF pipeline with 11,500 features across 4 configurations**  
-✅ **Targeted data augmentation: 8,128 total samples (2,726 augmented)**  
-✅ **Excellent per-class performance: CS=92.60%, IS=94.86%, IT=97.27%**  
-✅ **Gap to 95% target reduced to just 0.23%**  
-✅ **Production-ready pipeline with complete artifact management**
+✅ **Targeted data augmentation: 8,128 total samples (discipline), 4,675 total samples (methodology)**  
+✅ **Excellent per-class performance across both classifiers**  
+✅ **Production-ready pipelines with complete artifact management**
 
 ## 🚀 Key Improvements in v6.0
+
+### Discipline Classification (94.77% accuracy)
 
 - **Advanced Feature Engineering**: 46 domain-specific features including keyword ratios, technical patterns, and research type indicators
 - **Multi-Configuration TF-IDF**: 4 different TF-IDF setups (standard, extended n-grams, character-level, technical terms)
@@ -29,25 +31,37 @@ This project classifies computing research abstracts by:
 - **Production Pipeline**: Complete DisciplineClassifierV6 class with save/load functionality
 - **Enhanced Error Analysis**: Detailed misclassification pattern analysis and SHAP interpretability
 
+### Methodology Classification (91.87% accuracy)
+
+- **Production-Ready Architecture**: Following discipline classifier v6.0 structure for consistency
+- **Advanced Feature Engineering**: 27 domain-specific features for methodology detection
+- **Multi-Configuration TF-IDF**: 4 TF-IDF configurations optimized for methodology classification
+- **Sophisticated Data Augmentation**: 1,387 augmented samples for balanced training
+- **Ensemble Optimization**: 7-model ensemble achieving 91.87% accuracy
+- **Complete Pipeline**: MethodologyClassifierV6 class with full artifact management
+- **Target Achievement**: 3.13% gap remaining to 95% target
+
 ## 🚀 Next Steps
 
 ## Discipline Classification: COMPLETE at v6.0 (94.77% accuracy)
 
+## Methodology Classification: COMPLETE at v6.0 (91.87% accuracy)
+
 ### 🎯 Future Work (Optional Extensions)
 
 - **Subfield Classifier Enhancement**: Update CS/IS/IT subfield classifiers with v6.0 techniques
-- **Methodology Classifier Improvement**: Apply advanced feature engineering to methodology classification
 - **Integrated Pipeline**: Combine discipline → subfield → methodology in single workflow
-- **Production Deployment**: Deploy discipline classifier v6.0 as standalone service
+- **Production Deployment**: Deploy both classifiers v6.0 as standalone services
 - **Research Publication**: Document methodology and results for academic contribution
 
-### 💡 Discipline Classifier: Project Complete
+### 💡 Both Classifiers: Project Complete
 
-- 94.77% accuracy achieved (0.23% from 95% target)
-- Production-ready pipeline with complete artifact management
-- Advanced feature engineering with 11,546 features
-- Robust augmentation strategy and comprehensive evaluation
-- **Decision**: Stopping here due to diminishing returns on further optimization
+- **Discipline**: 94.77% accuracy achieved (0.23% from 95% target)
+- **Methodology**: 91.87% accuracy achieved (3.13% from 95% target)
+- Production-ready pipelines with complete artifact management
+- Advanced feature engineering with 11,546 features (discipline) and 11,527 features (methodology)
+- Robust augmentation strategies and comprehensive evaluation
+- **Decision**: Both classifiers achieve excellent performance with diminishing returns on further optimization
 
 ## 🛠 Built With
 
@@ -90,10 +104,10 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 > **Discipline Classification: COMPLETE**
 >
 > - `Discipline`: ✅ **v6.0 (XGBoost + Advanced Features) - 94.77% accuracy - FINAL**
+> - `Methodology`: ✅ **v6.0 (Ensemble + Advanced Features) - 91.87% accuracy - FINAL**
 > **Other Classifiers: Functional but not updated to v6.0 standards**
 >
 > - `Subfield`: ✅ v2.4 (SPECTER + XGBoost tuned) - CS: 75%, IS: 89%, IT: 83%
-> - `Methodology`: ✅ v2.6 (Two-stage XGBoost with threshold tuning) - 77% accuracy
 
 ## 🗂️ Repository Structure
 
@@ -113,28 +127,43 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 - `xgb_final_model_v6.0.pkl` - Best single XGBoost model
 - `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
 - `feature_extractor_v6.0.pkl` - Domain-specific feature extractor (46 features)
+- `ensemble_models_v6.0.pkl` - 7-model ensemble for optimal performance
+- `label_encoder_v6.0.pkl` - Label encoder for discipline classes
+- `best_params_v6.0.pkl` - Best hyperparameters for the final model
 - `complete_checkpoint_v6.0.pkl` - Full training state for reproducibility
+- `results_summary_v6.0.json` - Performance metrics and analysis
+
+### Methodology Classifier v6.0 (Production Ready)
+
+- `methodology_classifier_v6.0_pipeline.pkl` - Complete production pipeline (91.87% accuracy)
+- `xgb_final_model_v6.0.pkl` - Best single XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` - Domain-specific feature extractor (27 features)
+- `ensemble_models_v6.0.pkl` - 7-model ensemble for optimal performance
+- `label_encoder_v6.0.pkl` - Label encoder for methodology classes
+- `best_params_v6.0.pkl` - Best hyperparameters for the final model
 - `results_summary_v6.0.json` - Performance metrics and analysis
 
 ### Legacy Models (Functional)
 
 - Previous versions (v4.0, v5.0) available for comparison
 - Subfield classifiers (v2.4) for CS/IS/IT classification  
-- Methodology classifier (v2.6) for Qual/Quant/Mixed classification
+- Previous methodology classifier (v2.6) for comparison
 
 ## 📊 Version Comparison
 
 | **Task**     | **Version** | **Dataset Size** | **Accuracy** | **Notes**                                |
 |--------------|-------------|------------------|--------------|------------------------------------------|
 | Discipline   | **v6.0**    | **8128 (augmented)** | **0.9477** | **Single XGBoost model, advanced feature engineering** |
+| Methodology  | **v6.0**    | **4675 (augmented)** | **0.9187** | **Ensemble model, advanced feature engineering** |
 | Discipline   | v5.0    | 6187 (augmented) | 0.9269 | Ensemble: SciBERT (30%) + XGBoost (70%), nlpaug augmentation |
+| Methodology  | v2.6        | 2028             | 0.77         | Two-stage XGBoost + SPECTER |
 | Discipline   | v4.0-XGB    | 7037 (augmented) | 0.9276       | XGBoost standalone (TF-IDF features, best single model) |
 | Discipline   | v4.0-BERT   | 7037 (augmented) | 0.8970       | SciBERT + LoRA + Focal Loss standalone |
 | Discipline   | v3.1        | 5402             | 0.8205       | SciBERT (LoRA via PEFT); strong generalization |
 | Subfield – CS| v2.4        | 1498             | 0.75         | XGBoost (tuned) + SPECTER (768-dim) |
 | Subfield – IS| v2.4        | 374              | 0.89         | XGBoost (tuned) + SPECTER (768-dim) |
 | Subfield – IT| v2.4        | 504              | 0.83         | XGBoost (tuned) + SPECTER (768-dim) |
-| Methodology  | v2.6        | 2028             | 0.77         | Two-stage XGBoost + SPECTER |
 
 > **Notes:**  
 >
@@ -142,8 +171,8 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 > - v4.0 discipline classifier was trained on 7,037 augmented papers (balanced via targeted augmentation for IT and IS classes); achieved SciBERT accuracy = 89.7%, Macro F1 = 0.89 (CS F1 = 0.92, IS F1 = 0.89, IT F1 = 0.87). XGBoost standalone achieved 92.76% accuracy.
 > - v5.0 discipline classifier trained on 6,187 augmented papers with nlpaug synonym-based augmentation; achieved ensemble accuracy = 92.69% using optimized weighting (30% SciBERT + 70% XGBoost). Improved dependency management by removing bitsandbytes requirement for Colab Pro compatibility.
 > - **v6.0 discipline classifier** trained on 8,128 augmented papers with sophisticated augmentation strategies (sentence shuffling, keyword injection, text combination); achieved 94.77% accuracy using single XGBoost model with advanced feature engineering (11,546 features: 11,500 TF-IDF + 46 domain-specific). Represents final iteration for discipline classification.
+> - **v6.0 methodology classifier** trained on 4,675 augmented papers (3,288 original + 1,387 augmented) with advanced feature engineering (11,527 features: 11,500 TF-IDF + 27 domain-specific); achieved 91.87% accuracy using 7-model ensemble. Represents final iteration for methodology classification.
 > - **Subfield classifiers (v2.4)** achieve strong performance: CS = 75%, IS = 89%, IT = 83% using SPECTER embeddings + tuned XGBoost on respective domain-specific datasets.
-> - **Methodology classifier (v2.6)** uses two-stage architecture with threshold tuning, achieving 77% accuracy on qualitative/quantitative/mixed classification.
 
 ## 🎯 Project Goals
 
@@ -157,19 +186,21 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 - Production-ready DisciplineClassifierV6 pipeline with complete artifact management
 - Evolution from 90% → 94.77% across six major versions
 
+#### Methodology Classification (v6.0) - PRODUCTION READY
+
+- 91.87% accuracy - Distinguishes Qualitative/Quantitative/Mixed methodologies
+- Advanced feature engineering with 11,527 features (11,500 TF-IDF + 27 domain-specific)
+- Sophisticated data augmentation strategies for 4,675 samples
+- Production-ready MethodologyClassifierV6 pipeline with complete artifact management
+- 7-model ensemble optimization for optimal performance
+- Evolution from 77% → 91.87% across major versions
+
 #### Subfield Classification (v2.4) - FUNCTIONAL
 
 - CS Subfield Classifier: 75% accuracy on 1,498 papers (AI, ML, CV, CYB, etc.)
 - IS Subfield Classifier: 89% accuracy on 374 papers (BSP, DSA, ENT, GOV, etc.)  
 - IT Subfield Classifier: 83% accuracy on 504 papers (CLD, EDG, IOT, NET, etc.)
 - SPECTER embeddings + tuned XGBoost architecture across all domains
-
-#### Methodology Classification (v2.6) - FUNCTIONAL
-
-- Two-stage classification pipeline (Binary → Ternary)
-- Threshold tuning optimization (Mixed threshold = 0.15)
-- 77% accuracy on 2,028-paper dataset
-- Handles challenging Mixed methodology detection
 
 #### System-Wide Technical Achievements
 
@@ -182,10 +213,11 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 
 ### 🎯 Project Status Summary
 
-- Discipline classifier: PRODUCTION READY at 94.77% accuracy
-- Subfield and methodology classifiers: FUNCTIONAL with room for enhancement
+- **Discipline classifier**: PRODUCTION READY at 94.77% accuracy
+- **Methodology classifier**: PRODUCTION READY at 91.87% accuracy
+- **Subfield classifiers**: FUNCTIONAL with room for enhancement
 - Complete three-tier system demonstrates full research paper classification capability
-- Primary focus achieved: High-performance discipline classification with production deployment
+- **Primary focus achieved**: High-performance discipline and methodology classification with production deployment
 
 ## 👨‍💻 Author
 
