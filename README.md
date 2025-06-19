@@ -8,7 +8,7 @@ This project classifies computing research abstracts by:
 
 ---
 
-## 📊 Current Status (as of 11th June 2025)
+## 📊 Current Status (as of 19th June 2025)
 
 ✅ **Discipline classifier v6.0 achieved 94.77% accuracy (single XGBoost model)**  
 ✅ **Methodology classifier v6.0 achieved 91.87% accuracy (ensemble model)**  
