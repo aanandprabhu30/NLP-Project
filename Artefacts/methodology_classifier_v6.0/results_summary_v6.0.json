@@ -1,0 +1,28 @@
+{
+  "version": "6.0",
+  "dataset_size": 4675,
+  "original_size": 3288,
+  "augmented_samples": 1387,
+  "feature_count": 11527,
+  "tfidf_features": 11500,
+  "domain_features": 27,
+  "single_model_accuracy": 0.9176470588235294,
+  "single_model_f1": 0.9168855262218355,
+  "ensemble_accuracy": 0.9187165775401069,
+  "ensemble_f1": 0.9180374149500655,
+  "best_accuracy": 0.9187165775401069,
+  "best_f1": 0.9180374149500655,
+  "best_method": "ensemble",
+  "best_hyperparameters": {
+    "n_estimators": 500,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "subsample": 0.85,
+    "colsample_bytree": 0.85,
+    "gamma": 0.1,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.5,
+    "min_child_weight": 3
+  },
+  "timestamp": "2025-06-19T10:27:07.380787"
+}
