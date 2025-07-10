@@ -17,6 +17,10 @@ peft==0.10.0
 evaluate==0.4.1
 bitsandbytes==0.43.1
 
+# Model interpretation and analysis (v6.0 subfield classifier)
+shap>=0.44.0
+tqdm>=4.65.0
+
 # Jupyter support
 notebook
 ipykernel

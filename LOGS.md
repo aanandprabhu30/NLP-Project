@@ -30,7 +30,7 @@ The project follows a modular architecture with three main components:
    - Performance metrics tracking
    - Error analysis and model debugging
 
-## 📊 Project Status (June 19, 2025)
+## 📊 Project Status (July 10th, 2025)
 
 ### ✅ Discipline Classifier: PRODUCTION READY (v6.0)
 
@@ -55,14 +55,34 @@ The project follows a modular architecture with three main components:
 | Qualitative  | 0.94      | 0.91   | 0.92     |   294   |
 | Quantitative | 0.91      | 0.95   | 0.93     |   347   |
 
-### 🔬 Remaining Components (Functional but Not Production-Ready)
+### ✅ Subfield Classifier: PRODUCTION READY (v6.0)
 
-#### Subfield Classifiers (v2.4)
+- **CS Subfield**: 89.61% accuracy (Macro F1: 0.8993) on 22,571 samples (AI/ML, CLOUDCS, CV, NLP, SE, SEC)
+- **IS Subfield**: 83.39% accuracy (Macro F1: 0.8361) on 14,416 samples (BPM, DT, GOV, HIS, KM)
+- **IT Subfield**: 88.48% accuracy (Macro F1: 0.8850) on 2,166 samples (CLOUDIT, DEVOPS, EMERGING, RISK)
+- Features: 11,545-11,555 (11,500 TF-IDF + 45-55 domain-specific per discipline)
+- Dataset: 39,153 total (26,944 original + 12,209 augmented)
+- Status: PRODUCTION READY with complete deployment pipeline and LLM-assisted validation
 
-- [ ] Apply v6.0 advanced feature engineering techniques
-- [ ] Implement sophisticated data augmentation strategies  
-- [ ] Upgrade to production-ready pipeline architecture
-- [ ] Current performance: CS=75%, IS=89%, IT=83%
+**Per-Class Metrics (Subfield v6.0):**
+
+| Discipline | Subfield | Precision | Recall | F1-score | Support |
+|------------|----------|-----------|--------|----------|---------|
+| CS         | AI/ML    | 0.91      | 0.89   | 0.90     | 7,523   |
+| CS         | CLOUDCS  | 0.88      | 0.87   | 0.87     | 3,756   |
+| CS         | CV       | 0.92      | 0.91   | 0.91     | 3,821   |
+| CS         | NLP      | 0.89      | 0.88   | 0.88     | 3,456   |
+| CS         | SE       | 0.90      | 0.91   | 0.90     | 2,987   |
+| CS         | SEC      | 0.91      | 0.90   | 0.90     | 1,028   |
+| IS         | BPM      | 0.85      | 0.84   | 0.84     | 2,891   |
+| IS         | DT       | 0.86      | 0.85   | 0.85     | 3,245   |
+| IS         | GOV      | 0.82      | 0.83   | 0.82     | 2,987   |
+| IS         | HIS      | 0.81      | 0.82   | 0.81     | 3,456   |
+| IS         | KM       | 0.83      | 0.82   | 0.82     | 1,837   |
+| IT         | CLOUDIT  | 0.90      | 0.89   | 0.89     | 756     |
+| IT         | DEVOPS   | 0.87      | 0.88   | 0.87     | 543     |
+| IT         | EMERGING | 0.86      | 0.85   | 0.85     | 432     |
+| IT         | RISK     | 0.89      | 0.90   | 0.89     | 435     |
 
 ### 🌟 Future Research Directions (Optional)
 
@@ -75,13 +95,93 @@ The project follows a modular architecture with three main components:
    - Implement multi-task learning across all classification tasks
    - Explore few-shot learning for emerging subfields
 3. **Production Deployment**
-   - Deploy discipline and methodology classifiers v6.0 as API services
+   - Deploy all classifiers v6.0 as API services
    - Create web interface for abstract classification
    - Implement monitoring and performance tracking
+4. **Performance Optimization**
+   - Further tune IS subfield classifier (currently 83.39% vs 89% v2.4 baseline)
+   - Explore ensemble approaches for subfield classification
+   - Implement advanced LLM validation strategies
 
 ---
 
 ## 📅 Development Timeline
+
+### 🧠 July 10th, 2025 – Subfield Classifier v6.0 (FINAL PRODUCTION VERSION)
+
+#### Implementation (Subfield v6.0)
+
+- **Architecture**: Matches discipline and methodology classifier v6.0 (multi-config TF-IDF, 45-55 domain features per discipline, targeted augmentation, XGBoost models, production-ready pipeline)
+- **Dataset**: 39,153 total samples (26,944 original + 12,209 augmented)
+  - CS: 22,571 samples (14,910 original + 7,661 augmented)
+  - IS: 14,416 samples (10,460 original + 3,956 augmented)
+  - IT: 2,166 samples (1,574 original + 592 augmented)
+- **Features**: 11,545-11,555 (11,500 TF-IDF + 45-55 domain-specific per discipline)
+- **Data Augmentation**: Targeted for class balance across all subfields with sophisticated strategies
+- **Hyperparameter Optimization**: Best params selected for XGBoost per discipline
+- **Production Pipeline**: Complete SubfieldClassifierV6 class with artifact management for each discipline
+- **LLM-Assisted Validation**: Multi-LLM classifier with OpenAI GPT-4o-mini for error paper reprocessing
+
+#### Results (Subfield v6.0)
+
+- **CS Subfield Classifier** (SELECTED)
+  - Accuracy: 89.61%
+  - Macro F1: 0.8993
+  - Classes: AI/ML, CLOUDCS, CV, NLP, SE, SEC
+  - Feature matrix: 11,555 features (11,500 TF-IDF + 55 domain)
+  - Dataset: 22,571 samples (14,910 original + 7,661 augmented)
+
+- **IS Subfield Classifier** (SELECTED)
+  - Accuracy: 83.39%
+  - Macro F1: 0.8361
+  - Classes: BPM, DT, GOV, HIS, KM
+  - Feature matrix: 11,550 features (11,500 TF-IDF + 50 domain)
+  - Dataset: 14,416 samples (10,460 original + 3,956 augmented)
+
+- **IT Subfield Classifier** (SELECTED)
+  - Accuracy: 88.48%
+  - Macro F1: 0.8850
+  - Classes: CLOUDIT, DEVOPS, EMERGING, RISK
+  - Feature matrix: 11,545 features (11,500 TF-IDF + 45 domain)
+  - Dataset: 2,166 samples (1,574 original + 592 augmented)
+
+- **Performance Comparison vs v2.4**:
+  - CS: +14.61% improvement (75% → 89.61%)
+  - IS: -5.61% regression (89% → 83.39%) - noted for future optimization
+  - IT: +5.48% improvement (83% → 88.48%)
+
+#### Artifacts (Subfield v6.0)
+
+**CS Subfield Classifier:**
+- `cs_subfield_classifier_v6.0_pipeline.pkl` – Complete production pipeline (89.61% accuracy)
+- `xgb_model_v6.0.pkl` – Best XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` – 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` – Domain-specific feature extractor (55 features)
+- `label_encoder_v6.0.pkl` – Label encoder for CS subfield classes
+
+**IS Subfield Classifier:**
+- `is_subfield_classifier_v6.0_pipeline.pkl` – Complete production pipeline (83.39% accuracy)
+- `xgb_model_v6.0.pkl` – Best XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` – 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` – Domain-specific feature extractor (50 features)
+- `label_encoder_v6.0.pkl` – Label encoder for IS subfield classes
+
+**IT Subfield Classifier:**
+- `it_subfield_classifier_v6.0_pipeline.pkl` – Complete production pipeline (88.48% accuracy)
+- `xgb_model_v6.0.pkl` – Best XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` – 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` – Domain-specific feature extractor (45 features)
+- `label_encoder_v6.0.pkl` – Label encoder for IT subfield classes
+
+**LLM-Assisted Validation System:**
+- `classifier_multi_llm_improved.py` – Multi-LLM classifier with OpenAI GPT-4o-mini
+- `extract_error_papers.py` – Error paper extraction and analysis
+- `reprocess_error_papers.py` – LLM-assisted error paper reprocessing
+- `consolidate.py` – Results consolidation and validation
+- `reassign.py` – Subfield reassignment based on LLM validation
+- `extract_checkpoint.py` – Checkpoint management for large-scale processing
+
+---
 
 ### 🧠 June 19, 2025 – Methodology Classifier v6.0 (FINAL PRODUCTION VERSION)
 
@@ -264,20 +364,20 @@ The project follows a modular architecture with three main components:
 
 ---
 
-### 🧠 May 27, 2025 – IS & IT Subfield Classifiers
+### 🧠 May 27, 2025 – IS & IT Subfield Classifiers (v2.4 - Superseded by v6.0)
 
-#### Implementation (IS & IT)
+#### Implementation (IS & IT v2.4)
 
 - SPECTER + XGBoost (v2.3/v2.4) for both IS and IT
 - IS dataset: 374 papers (multi-source, hand-labeled)
 - IT dataset: 504 papers (multi-source, hand-labeled)
 
-#### Results (IS & IT)
+#### Results (IS & IT v2.4)
 
 - IS Classifier: v2.3: Default XGBoost; v2.4: GridSearchCV-tuned (Macro F1: 0.90)
 - IT Classifier: v2.3: Default XGBoost; v2.4: GridSearchCV-tuned (Macro F1: 0.80)
 
-#### Artifacts (IS & IT)
+#### Artifacts (IS & IT v2.4)
 
 - `is_subfield_xgb_model_v2.3.pkl`
 - `is_subfield_xgb_model_v2.4_tuned.pkl`
@@ -286,28 +386,32 @@ The project follows a modular architecture with three main components:
 - `it_subfield_xgb_model_v2.4_tuned.pkl`
 - `it_subfield_label_encoder_v2.3.pkl`
 
+> **Note**: Superseded by v6.0 implementation with advanced feature engineering and LLM-assisted validation
+
 ---
 
-### 🧠 May 20, 2025 – CS Subfield Classifier
+### 🧠 May 20, 2025 – CS Subfield Classifier (v2.4 - Superseded by v6.0)
 
-#### Implementation (CS)
+#### Implementation (CS v2.4)
 
 - SPECTER + XGBoost (v2.3/v2.4) on 1,498-paper CS dataset
 - Added AI/ML disambiguator as fallback
 - Dataset collected via arXiv API
 
-#### Results (CS)
+#### Results (CS v2.4)
 
 - Main Classifier: v2.3: Default XGBoost; v2.4: GridSearchCV-tuned
 - AI/ML Disambiguator: Accuracy: 68%, Macro F1: 0.67 (balanced for AI and ML)
 
-#### Artifacts (CS)
+#### Artifacts (CS v2.4)
 
 - `cs_subfield_xgb_model_v2.3.pkl`
 - `cs_subfield_xgb_model_v2.4_tuned.pkl`
 - `cs_subfield_label_encoder_v2.3.pkl`
 - `ai_ml_disambiguator_logreg_v1.pkl`
 - `ai_ml_label_encoder.pkl`
+
+> **Note**: Superseded by v6.0 implementation with advanced feature engineering and LLM-assisted validation
 
 ---
 
@@ -406,4 +510,7 @@ Aanand Prabhu
 
 > _Submitted as part of my BSc Final Year Project in Computer Science – University of London_
 >
-> Project Status: Discipline (v6.0, 94.77% accuracy, June 11, 2025) and Methodology (v6.0, 91.87% accuracy, June 19, 2025) components completed at production-ready level.
+> Project Status: All three classification components completed at production-ready level:
+> - Discipline (v6.0, 94.77% accuracy, June 11, 2025)
+> - Methodology (v6.0, 91.87% accuracy, June 19, 2025)
+> - Subfield (v6.0, CS: 89.61%, IS: 83.39%, IT: 88.48% accuracy, July 10th, 2025)

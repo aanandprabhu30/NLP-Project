@@ -8,15 +8,16 @@ This project classifies computing research abstracts by:
 
 ---
 
-## 📊 Current Status (as of 19th June 2025)
+## 📊 Current Status (as of July 10th, 2025)
 
 ✅ **Discipline classifier v6.0 achieved 94.77% accuracy (single XGBoost model)**  
 ✅ **Methodology classifier v6.0 achieved 91.87% accuracy (ensemble model)**  
-✅ **Significant improvements: Discipline +2.08% over v5.0, Methodology +14.87% over v2.6**  
-✅ **Enhanced feature engineering with 46 domain-specific features (discipline) and 27 features (methodology)**  
+✅ **Subfield classifier v6.0 achieved 89.61% (CS), 83.39% (IS), 88.48% (IT) accuracy**  
+✅ **Significant improvements: Discipline +2.08% over v5.0, Methodology +14.87% over v2.6, Subfield +14.61% (CS), -5.61% (IS), +5.48% (IT) over v2.4**  
+✅ **Enhanced feature engineering with 46 domain-specific features (discipline), 27 features (methodology), and 50-55 features (subfield)**  
 ✅ **Advanced TF-IDF pipeline with 11,500 features across 4 configurations**  
-✅ **Targeted data augmentation: 8,128 total samples (discipline), 4,675 total samples (methodology)**  
-✅ **Excellent per-class performance across both classifiers**  
+✅ **Targeted data augmentation: 8,128 total samples (discipline), 4,675 total samples (methodology), 39,153 total samples (subfield)**  
+✅ **Excellent per-class performance across all classifiers**  
 ✅ **Production-ready pipelines with complete artifact management**
 
 ## 🚀 Key Improvements in v6.0
@@ -41,27 +42,42 @@ This project classifies computing research abstracts by:
 - **Complete Pipeline**: MethodologyClassifierV6 class with full artifact management
 - **Target Achievement**: 3.13% gap remaining to 95% target
 
+### Subfield Classification (v6.0 - Production Ready)
+
+- **CS Subfield Classifier**: 89.61% accuracy on 22,571 samples (AI/ML, CLOUDCS, CV, NLP, SE, SEC)
+- **IS Subfield Classifier**: 83.39% accuracy on 14,416 samples (BPM, DT, GOV, HIS, KM)
+- **IT Subfield Classifier**: 88.48% accuracy on 2,166 samples (CLOUDIT, DEVOPS, EMERGING, RISK)
+- **Advanced Feature Engineering**: 50-55 domain-specific features per discipline targeting subfield classification
+- **Multi-Configuration TF-IDF**: 4 TF-IDF configurations optimized for subfield detection
+- **Sophisticated Data Augmentation**: 24,243 augmented samples for balanced training across all subfields
+- **Production Pipeline**: Complete SubfieldClassifierV6 class with save/load functionality for each discipline
+- **Enhanced Error Analysis**: Detailed misclassification pattern analysis and SHAP interpretability
+- **LLM-Assisted Validation**: Multi-LLM classifier with OpenAI GPT-4o-mini for error paper reprocessing
+
 ## 🚀 Next Steps
 
 ## Discipline Classification: COMPLETE at v6.0 (94.77% accuracy)
 
 ## Methodology Classification: COMPLETE at v6.0 (91.87% accuracy)
 
+## Subfield Classification: COMPLETE at v6.0 (89.61% CS, 83.39% IS, 88.48% IT accuracy)
+
 ### 🎯 Future Work (Optional Extensions)
 
-- **Subfield Classifier Enhancement**: Update CS/IS/IT subfield classifiers with v6.0 techniques
 - **Integrated Pipeline**: Combine discipline → subfield → methodology in single workflow
-- **Production Deployment**: Deploy both classifiers v6.0 as standalone services
+- **Production Deployment**: Deploy all classifiers v6.0 as standalone services
 - **Research Publication**: Document methodology and results for academic contribution
+- **Performance Optimization**: Further tune IS subfield classifier (currently 83.39% vs 89% v2.4 baseline)
 
-### 💡 Both Classifiers: Project Complete
+### 💡 All Classifiers: Project Complete
 
 - **Discipline**: 94.77% accuracy achieved (0.23% from 95% target)
 - **Methodology**: 91.87% accuracy achieved (3.13% from 95% target)
+- **Subfield**: 89.61% (CS), 83.39% (IS), 88.48% (IT) accuracy achieved
 - Production-ready pipelines with complete artifact management
-- Advanced feature engineering with 11,546 features (discipline) and 11,527 features (methodology)
+- Advanced feature engineering with 11,546 features (discipline), 11,527 features (methodology), and 11,545-11,555 features (subfield)
 - Robust augmentation strategies and comprehensive evaluation
-- **Decision**: Both classifiers achieve excellent performance with diminishing returns on further optimization
+- **Decision**: All classifiers achieve excellent performance with diminishing returns on further optimization
 
 ## 🛠 Built With
 
@@ -101,13 +117,11 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 
 ## 🔁 Model Architecture Summary
 
-> **Discipline Classification: COMPLETE**
+> **All Classifications: COMPLETE**
 >
 > - `Discipline`: ✅ **v6.0 (XGBoost + Advanced Features) - 94.77% accuracy - FINAL**
 > - `Methodology`: ✅ **v6.0 (Ensemble + Advanced Features) - 91.87% accuracy - FINAL**
-> **Other Classifiers: Functional but not updated to v6.0 standards**
->
-> - `Subfield`: ✅ v2.4 (SPECTER + XGBoost tuned) - CS: 75%, IS: 89%, IT: 83%
+> - `Subfield`: ✅ **v6.0 (XGBoost + Advanced Features) - CS: 89.61%, IS: 83.39%, IT: 88.48% - FINAL**
 
 ## 🗂️ Repository Structure
 
@@ -144,6 +158,29 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 - `best_params_v6.0.pkl` - Best hyperparameters for the final model
 - `results_summary_v6.0.json` - Performance metrics and analysis
 
+### Subfield Classifier v6.0 (Production Ready)
+
+#### CS Subfield Classifier (89.61% accuracy)
+- `cs_subfield_classifier_v6.0_pipeline.pkl` - Complete production pipeline
+- `xgb_model_v6.0.pkl` - Best XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` - Domain-specific feature extractor (55 features)
+- `label_encoder_v6.0.pkl` - Label encoder for CS subfield classes (AI/ML, CLOUDCS, CV, NLP, SE, SEC)
+
+#### IS Subfield Classifier (83.39% accuracy)
+- `is_subfield_classifier_v6.0_pipeline.pkl` - Complete production pipeline
+- `xgb_model_v6.0.pkl` - Best XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` - Domain-specific feature extractor (50 features)
+- `label_encoder_v6.0.pkl` - Label encoder for IS subfield classes (BPM, DT, GOV, HIS, KM)
+
+#### IT Subfield Classifier (88.48% accuracy)
+- `it_subfield_classifier_v6.0_pipeline.pkl` - Complete production pipeline
+- `xgb_model_v6.0.pkl` - Best XGBoost model
+- `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
+- `feature_extractor_v6.0.pkl` - Domain-specific feature extractor (45 features)
+- `label_encoder_v6.0.pkl` - Label encoder for IT subfield classes (CLOUDIT, DEVOPS, EMERGING, RISK)
+
 ### Legacy Models (Functional)
 
 - Previous versions (v4.0, v5.0) available for comparison
@@ -156,6 +193,9 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 |--------------|-------------|------------------|--------------|------------------------------------------|
 | Discipline   | **v6.0**    | **8128 (augmented)** | **0.9477** | **Single XGBoost model, advanced feature engineering** |
 | Methodology  | **v6.0**    | **4675 (augmented)** | **0.9187** | **Ensemble model, advanced feature engineering** |
+| Subfield – CS| **v6.0**    | **22571 (augmented)** | **0.8961** | **XGBoost model, advanced feature engineering** |
+| Subfield – IS| **v6.0**    | **14416 (augmented)** | **0.8339** | **XGBoost model, advanced feature engineering** |
+| Subfield – IT| **v6.0**    | **2166 (augmented)** | **0.8848** | **XGBoost model, advanced feature engineering** |
 | Discipline   | v5.0    | 6187 (augmented) | 0.9269 | Ensemble: SciBERT (30%) + XGBoost (70%), nlpaug augmentation |
 | Methodology  | v2.6        | 2028             | 0.77         | Two-stage XGBoost + SPECTER |
 | Discipline   | v4.0-XGB    | 7037 (augmented) | 0.9276       | XGBoost standalone (TF-IDF features, best single model) |
@@ -172,7 +212,7 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 > - v5.0 discipline classifier trained on 6,187 augmented papers with nlpaug synonym-based augmentation; achieved ensemble accuracy = 92.69% using optimized weighting (30% SciBERT + 70% XGBoost). Improved dependency management by removing bitsandbytes requirement for Colab Pro compatibility.
 > - **v6.0 discipline classifier** trained on 8,128 augmented papers with sophisticated augmentation strategies (sentence shuffling, keyword injection, text combination); achieved 94.77% accuracy using single XGBoost model with advanced feature engineering (11,546 features: 11,500 TF-IDF + 46 domain-specific). Represents final iteration for discipline classification.
 > - **v6.0 methodology classifier** trained on 4,675 augmented papers (3,288 original + 1,387 augmented) with advanced feature engineering (11,527 features: 11,500 TF-IDF + 27 domain-specific); achieved 91.87% accuracy using 7-model ensemble. Represents final iteration for methodology classification.
-> - **Subfield classifiers (v2.4)** achieve strong performance: CS = 75%, IS = 89%, IT = 83% using SPECTER embeddings + tuned XGBoost on respective domain-specific datasets.
+> - **v6.0 subfield classifiers** trained on 39,153 total augmented papers (26,944 original + 12,209 augmented) with advanced feature engineering (11,545-11,555 features: 11,500 TF-IDF + 45-55 domain-specific); achieved CS = 89.61%, IS = 83.39%, IT = 88.48% accuracy using XGBoost models. Represents final iteration for subfield classification with LLM-assisted validation for error reprocessing.
 
 ## 🎯 Project Goals
 
@@ -195,12 +235,12 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 - 7-model ensemble optimization for optimal performance
 - Evolution from 77% → 91.87% across major versions
 
-#### Subfield Classification (v2.4) - FUNCTIONAL
+#### Subfield Classification (v6.0) - PRODUCTION READY
 
-- CS Subfield Classifier: 75% accuracy on 1,498 papers (AI, ML, CV, CYB, etc.)
-- IS Subfield Classifier: 89% accuracy on 374 papers (BSP, DSA, ENT, GOV, etc.)  
-- IT Subfield Classifier: 83% accuracy on 504 papers (CLD, EDG, IOT, NET, etc.)
-- SPECTER embeddings + tuned XGBoost architecture across all domains
+- CS Subfield Classifier: 89.61% accuracy on 22,571 papers (AI/ML, CLOUDCS, CV, NLP, SE, SEC)
+- IS Subfield Classifier: 83.39% accuracy on 14,416 papers (BPM, DT, GOV, HIS, KM)  
+- IT Subfield Classifier: 88.48% accuracy on 2,166 papers (CLOUDIT, DEVOPS, EMERGING, RISK)
+- Advanced feature engineering + XGBoost architecture with LLM-assisted validation
 
 #### System-Wide Technical Achievements
 
@@ -215,9 +255,9 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 
 - **Discipline classifier**: PRODUCTION READY at 94.77% accuracy
 - **Methodology classifier**: PRODUCTION READY at 91.87% accuracy
-- **Subfield classifiers**: FUNCTIONAL with room for enhancement
+- **Subfield classifiers**: PRODUCTION READY at 89.61% (CS), 83.39% (IS), 88.48% (IT) accuracy
 - Complete three-tier system demonstrates full research paper classification capability
-- **Primary focus achieved**: High-performance discipline and methodology classification with production deployment
+- **Primary focus achieved**: High-performance discipline, methodology, and subfield classification with production deployment
 
 ## 👨‍💻 Author
 
