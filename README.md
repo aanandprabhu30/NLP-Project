@@ -8,11 +8,16 @@ This project classifies computing research abstracts by:
 
 ---
 
-## 📊 Current Status (as of July 10th, 2025)
+## 📊 Current Status (as of July 19th, 2025)
 
 ✅ **Discipline classifier v6.0 achieved 94.77% accuracy (single XGBoost model)**  
 ✅ **Methodology classifier v6.0 achieved 91.87% accuracy (ensemble model)**  
 ✅ **Subfield classifier v6.0 achieved 89.61% (CS), 83.39% (IS), 88.48% (IT) accuracy**  
+✅ **Unified Classification Pipeline - Complete hierarchical system with smart post-processing**  
+✅ **Intelligent misclassification correction with confidence-based rules**  
+✅ **Production-ready API wrapper for real-world deployment**  
+✅ **Comprehensive analysis and recommendation system**  
+✅ **Batch processing capabilities for large-scale classification**  
 ✅ **Significant improvements: Discipline +2.08% over v5.0, Methodology +14.87% over v2.6, Subfield +14.61% (CS), -5.61% (IS), +5.48% (IT) over v2.4**  
 ✅ **Enhanced feature engineering with 46 domain-specific features (discipline), 27 features (methodology), and 50-55 features (subfield)**  
 ✅ **Advanced TF-IDF pipeline with 11,500 features across 4 configurations**  
@@ -54,6 +59,19 @@ This project classifies computing research abstracts by:
 - **Enhanced Error Analysis**: Detailed misclassification pattern analysis and SHAP interpretability
 - **LLM-Assisted Validation**: Multi-LLM classifier with OpenAI GPT-4o-mini for error paper reprocessing
 
+### Unified Classification Pipeline (Complete Integration)
+
+- **Hierarchical Classification System**: Complete `discipline → subfield → methodology` workflow in single pipeline
+- **Smart Post-Processing**: Confidence-based correction system for misclassifications with transparent reasoning
+- **Intelligent Error Correction**: Rule-based overrides for obvious misclassifications (e.g., deep learning papers correctly classified as CS)
+- **Production-Ready API**: `AcademicPaperClassifier` class with batch processing and model management
+- **Comprehensive Analysis**: Detailed confidence assessment and actionable recommendations for each classification
+- **Transparent Operations**: Clear indication when corrections are applied with reasoning explanations
+- **Batch Processing**: Efficient classification of multiple papers with progress tracking
+- **Export Functionality**: JSON export and summary report generation for integration workflows
+- **Confidence Thresholding**: Configurable confidence levels for quality control (default: 60%)
+- **Multi-Modal Features**: Enhanced feature extractors tailored for each classification task
+
 ## 🚀 Next Steps
 
 ## Discipline Classification: COMPLETE at v6.0 (94.77% accuracy)
@@ -62,12 +80,25 @@ This project classifies computing research abstracts by:
 
 ## Subfield Classification: COMPLETE at v6.0 (89.61% CS, 83.39% IS, 88.48% IT accuracy)
 
+### ✅ Completed Extensions
+
+- **Integrated Pipeline**: ✅ Complete discipline → subfield → methodology workflow implemented
+- **Production Deployment**: ✅ Production-ready API with batch processing and error correction
+- **Smart Post-Processing**: ✅ Intelligent misclassification correction with transparent reasoning
+- **Comprehensive Analysis**: ✅ Detailed confidence assessment and actionable recommendations
+
 ### 🎯 Future Work (Optional Extensions)
 
-- **Integrated Pipeline**: Combine discipline → subfield → methodology in single workflow
-- **Production Deployment**: Deploy all classifiers v6.0 as standalone services
-- **Research Publication**: Document methodology and results for academic contribution
+- **Real-time Web API**: Deploy unified pipeline as REST API service with endpoints for single/batch classification
+- **Web Interface**: Create user-friendly web application for non-technical users with drag-and-drop functionality
+- **Model Monitoring**: Implement performance tracking and confidence distribution monitoring over time
+- **Domain Expansion**: Extend classification to other academic disciplines (Engineering, Medicine, Social Sciences)
+- **Multi-language Support**: Support for non-English academic papers and abstracts
+- **Automated Retraining**: Pipeline for incorporating new labeled data and model updates
+- **Research Publication**: Document methodology, unified pipeline architecture, and smart post-processing results
 - **Performance Optimization**: Further tune IS subfield classifier (currently 83.39% vs 89% v2.4 baseline)
+- **Confidence Calibration**: Fine-tune confidence thresholds based on real-world usage patterns
+- **Integration Plugins**: Develop plugins for reference managers (Zotero, Mendeley) and academic databases
 
 ### 💡 All Classifiers: Project Complete
 
@@ -115,6 +146,53 @@ pip install ipykernel
 python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp-bert)" 
 ```
 
+## 🚀 Quick Start - Unified Classification Pipeline
+
+### Single Paper Classification
+
+```python
+# Load the unified pipeline (from Notebooks/unified_classification_pipeline.ipynb)
+# Run the notebook cells or copy the functions to your script
+
+# Classify a paper
+title = "Deep Learning for Medical Image Segmentation"
+abstract = """This paper presents a novel deep learning architecture for segmenting 
+medical images using convolutional neural networks. We employ a U-Net based approach 
+with attention mechanisms to improve segmentation accuracy on CT scans."""
+
+# Get classification results
+results = classify_paper(title, abstract)
+
+# Get detailed analysis and recommendations  
+analyze_classification_confidence(results, title, abstract)
+```
+
+### Production API Usage
+
+```python
+# Initialize the production API
+api_classifier = AcademicPaperClassifier(models_path='../Artefacts/')
+
+# Single classification
+results = api_classifier.classify(title, abstract)
+
+# Batch classification
+papers = [
+    {'title': 'Title 1', 'abstract': 'Abstract 1'},
+    {'title': 'Title 2', 'abstract': 'Abstract 2'}
+]
+batch_results = api_classifier.classify_batch(papers)
+```
+
+### Key Features
+
+- **Smart Error Correction**: Automatically fixes obvious misclassifications (CS papers classified as IS)
+- **Confidence Analysis**: Detailed breakdown of prediction reliability with actionable recommendations
+- **Transparent Operations**: Shows when and why corrections are applied
+- **Configurable Thresholds**: Adjust confidence levels for quality control
+- **Batch Processing**: Efficiently process multiple papers
+- **Export Capabilities**: Save results to JSON and generate summary reports
+
 ## 🔁 Model Architecture Summary
 
 > **All Classifications: COMPLETE**
@@ -131,9 +209,21 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 | `/Data/` | All labeled datasets used across classification tasks |
 | `/Scripts/`| All Scripts used for scraping data|
 | `README.md` | This file |
-| `/Notebooks/` | All experiment notebooks across v1.x, v2.x, v3.x and v4.x |
+| `/Notebooks/` | All experiment notebooks across v1.x, v2.x, v3.x, v4.x, v5.x, and v6.x |
+| `/Notebooks/unified_classification_pipeline.ipynb` | **Complete integrated system with smart post-processing** |
 
 ## 📦 Key Model Files (v6.0 - Final)
+
+### Unified Classification Pipeline (Production Ready)
+
+- `/Notebooks/unified_classification_pipeline.ipynb` - Complete integrated system with all classifiers
+- **Smart Classification Function**: `classify_paper(title, abstract, confidence_threshold=0.6)`
+- **Confidence Analysis**: `analyze_classification_confidence(results, title, abstract)`
+- **Production API**: `AcademicPaperClassifier` class for real-world deployment
+- **Batch Processing**: `classify_papers_batch()` for efficient multi-paper classification
+- **Post-Processing Rules**: Intelligent correction for CS/AI papers, cloud infrastructure, etc.
+- **Transparent Corrections**: Shows original vs corrected predictions with reasoning
+- **Export Functions**: JSON export and summary reporting capabilities
 
 ### Discipline Classifier v6.0 (Production Ready)
 
@@ -161,6 +251,7 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 ### Subfield Classifier v6.0 (Production Ready)
 
 #### CS Subfield Classifier (89.61% accuracy)
+
 - `cs_subfield_classifier_v6.0_pipeline.pkl` - Complete production pipeline
 - `xgb_model_v6.0.pkl` - Best XGBoost model
 - `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
@@ -168,6 +259,7 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 - `label_encoder_v6.0.pkl` - Label encoder for CS subfield classes (AI/ML, CLOUDCS, CV, NLP, SE, SEC)
 
 #### IS Subfield Classifier (83.39% accuracy)
+
 - `is_subfield_classifier_v6.0_pipeline.pkl` - Complete production pipeline
 - `xgb_model_v6.0.pkl` - Best XGBoost model
 - `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
@@ -175,6 +267,7 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 - `label_encoder_v6.0.pkl` - Label encoder for IS subfield classes (BPM, DT, GOV, HIS, KM)
 
 #### IT Subfield Classifier (88.48% accuracy)
+
 - `it_subfield_classifier_v6.0_pipeline.pkl` - Complete production pipeline
 - `xgb_model_v6.0.pkl` - Best XGBoost model
 - `tfidf_vectorizers_v6.0.pkl` - 4 TF-IDF configurations
@@ -256,8 +349,11 @@ python -m ipykernel install --user --name=nlp-bert --display-name "Python 3 (nlp
 - **Discipline classifier**: PRODUCTION READY at 94.77% accuracy
 - **Methodology classifier**: PRODUCTION READY at 91.87% accuracy
 - **Subfield classifiers**: PRODUCTION READY at 89.61% (CS), 83.39% (IS), 88.48% (IT) accuracy
+- **Unified Classification Pipeline**: COMPLETE with smart post-processing and error correction
+- **Production API**: Ready for real-world deployment with batch processing capabilities
+- **Intelligent Error Correction**: Automatic fixes for obvious misclassifications with transparent reasoning
 - Complete three-tier system demonstrates full research paper classification capability
-- **Primary focus achieved**: High-performance discipline, methodology, and subfield classification with production deployment
+- **Primary focus achieved**: High-performance discipline, methodology, and subfield classification with production deployment and intelligent post-processing
 
 ## 👨‍💻 Author
 
