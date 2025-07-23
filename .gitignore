@@ -110,7 +110,7 @@ ipython_config.py
 # -----------------------------------------------------------------------------
 # Machine Learning Specific
 # -----------------------------------------------------------------------------
-# Large model files (keep organized ones in Artefacts/)
+# Large model files (but keep organized artifacts in Artefacts/)
 *.pkl
 *.joblib
 *.h5
@@ -120,10 +120,12 @@ ipython_config.py
 *.onnx
 *.tflite
 
-# Exception: Keep organized artifacts (but this is handled by folder structure)
-!Artefacts/current/**/*.pkl
-!Artefacts/v6.0_educational/**/*.pkl
-!Artefacts/shared/**/*.pkl
+# Exception: Keep all organized artifacts in Artefacts folder
+!Artefacts/**/*.pkl
+!Artefacts/**/*.joblib
+!Artefacts/**/*.safetensors
+!Artefacts/**/*.json
+!Artefacts/**/*.bin
 
 # Tensorboard logs
 runs/
@@ -145,8 +147,9 @@ mlruns/
 *.txt
 *.tsv
 
-# Exception: Keep organized data and documentation
+# Exception: Keep organized data, artifacts, and documentation
 !Data/*.csv
+!Artefacts/**/*.txt
 !*.md
 !*.txt
 !requirements/*.txt
