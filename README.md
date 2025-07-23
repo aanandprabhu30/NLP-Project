@@ -48,10 +48,14 @@ This project classifies computing research abstracts by:
 
 ```python
 from joblib import load
+import pandas as pd
 
 # Load v7.0 production models (recommended)
 discipline_pipeline = load('Artefacts/current/discipline_classifier_v7/discipline_pipeline_v7.pkl')
 methodology_pipeline = load('Artefacts/current/methodology_classifier_v7/methodology_pipeline_v7.pkl')
+
+# Load production data
+df = pd.read_csv('Data/Master.csv')  # 26,944 papers with all labels
 
 # Classify a paper
 title = "Deep Learning for Medical Image Segmentation"
@@ -76,7 +80,7 @@ analyze_classification_confidence(results, title, abstract)
 | Folder | Description |
 |--------|-------------|
 | `/Artefacts/` | **current/**: v7.0 production models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
-| `/Data/` | Training datasets |
+| `/Data/` | **Master.csv**: Production dataset (37MB) - All papers with discipline, subfield, methodology labels |
 | `/Scripts/` | Data scraping scripts |
 | `/Notebooks/` | **current/**: v7.0 methodology \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
 | `/requirements/` | **requirements.txt**: Standard use \| **requirements-minimal.txt**: Production only \| **requirements-dev.txt**: Full development |
