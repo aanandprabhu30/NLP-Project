@@ -1,0 +1,8 @@
+# Minimal requirements for v7.0 Production Models Only
+# Install with: pip install -r requirements-minimal.txt
+
+joblib==1.5.0
+numpy==2.2.5
+pandas==2.2.3
+scikit-learn==1.6.1
+xgboost==3.0.0 

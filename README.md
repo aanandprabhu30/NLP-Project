@@ -49,9 +49,9 @@ This project classifies computing research abstracts by:
 ```python
 from joblib import load
 
-# Load classifiers
-discipline_pipeline = load('Artefacts/discipline_classifier_v7/discipline_pipeline_v7.pkl')
-methodology_pipeline = load('Artefacts/methodology_classifier_v7/methodology_pipeline_v7.pkl')
+# Load v7.0 production models (recommended)
+discipline_pipeline = load('Artefacts/current/discipline_classifier_v7/discipline_pipeline_v7.pkl')
+methodology_pipeline = load('Artefacts/current/methodology_classifier_v7/methodology_pipeline_v7.pkl')
 
 # Classify a paper
 title = "Deep Learning for Medical Image Segmentation"
@@ -64,7 +64,7 @@ methodology = methodology_pipeline.predict([abstract])
 ### Unified Pipeline (v6.0 Based)
 
 ```python
-# Load the unified pipeline (from Notebooks/unified_classification_pipeline.ipynb)
+# Load the unified pipeline (from Notebooks/unified/unified_classification_pipeline.ipynb)
 results = classify_paper(title, abstract)
 analyze_classification_confidence(results, title, abstract)
 ```
@@ -75,26 +75,31 @@ analyze_classification_confidence(results, title, abstract)
 
 | Folder | Description |
 |--------|-------------|
-| `/Artefacts/` | **v7.0**: Methodologically sound models (recommended) \| **v6.0**: High-performance but flawed models |
+| `/Artefacts/` | **current/**: v7.0 production models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
 | `/Data/` | Training datasets |
 | `/Scripts/` | Data scraping scripts |
-| `/Notebooks/` | Experiment notebooks (v1.x through v7.x) |
+| `/Notebooks/` | **current/**: v7.0 methodology \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
+| `/requirements/` | **requirements.txt**: Standard use \| **requirements-minimal.txt**: Production only \| **requirements-dev.txt**: Full development |
 
 ### Key Model Files
 
-**v7.0 (Recommended for Production):**
+**v7.0 (Production Ready):**
 
-- `discipline_classifier_v7/discipline_pipeline_v7.pkl`
-- `methodology_classifier_v7/methodology_pipeline_v7.pkl`
-- `cs_subfield_classifier_v7/cs_subfield_pipeline_v7.pkl`
-- `is_subfield_classifier_v7/is_subfield_pipeline_v7.pkl`
-- `it_subfield_classifier_v7/it_subfield_pipeline_v7.pkl`
+- `current/discipline_classifier_v7/discipline_pipeline_v7.pkl`
+- `current/methodology_classifier_v7/methodology_pipeline_v7.pkl`
+- `current/cs_subfield_classifier_v7/cs_subfield_pipeline_v7.pkl`
+- `current/is_subfield_classifier_v7/is_subfield_pipeline_v7.pkl`
+- `current/it_subfield_classifier_v7/it_subfield_pipeline_v7.pkl`
 
-**v6.0 (Educational/Research):**
+**v6.0 (Educational Examples):**
 
 - `unified_classification_pipeline.ipynb` - Complete system with post-processing
-- `discipline_classifier_v6.0/` - Advanced feature engineering approach
-- `methodology_classifier_v6.0/` - Ensemble approach
+- `v6.0_educational/discipline_classifier_v6.0/` - Shows data leakage issues
+- `v6.0_educational/methodology_classifier_v6.0/` - Shows overfitting problems
+
+**Shared Files:**
+
+- `shared/split_indices_v7.pkl` - Consistent data splits for v7.0
 
 ---
 
@@ -119,11 +124,17 @@ analyze_classification_confidence(results, title, abstract)
 python3 -m venv nlp-bert
 source nlp-bert/bin/activate
 
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies (choose one):
+# For v7.0 production only (minimal):
+pip install -r requirements/requirements-minimal.txt
+
+# For standard use (includes visualization & Jupyter):
+pip install -r requirements/requirements.txt
+
+# For full development (includes v6.0 educational examples):
+pip install -r requirements/requirements-dev.txt
 
 # Register Jupyter kernel
-pip install ipykernel
 python -m ipykernel install --user --name=nlp-bert
 ```
 

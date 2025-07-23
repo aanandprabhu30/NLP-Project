@@ -1,0 +1,54 @@
+# =============================================================================
+# NLP Project Requirements
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# CORE PACKAGES (Required for v7.0 Production Models)
+# -----------------------------------------------------------------------------
+joblib==1.5.0              # Model serialization
+matplotlib==3.10.1         # Plotting and visualization
+numpy==2.2.5               # Numerical computing
+pandas==2.2.3              # Data manipulation
+scikit-learn==1.6.1        # Core ML algorithms (TF-IDF, XGBoost interface)
+seaborn==0.13.2            # Statistical visualization
+xgboost==3.0.0             # Main model for v7.0 classifiers
+imbalanced-learn==0.13.0   # Data augmentation (SMOTE, etc.)
+
+# -----------------------------------------------------------------------------
+# TEXT PROCESSING
+# -----------------------------------------------------------------------------
+nltk==3.8.1               # Text preprocessing, tokenization
+
+# -----------------------------------------------------------------------------
+# JUPYTER ENVIRONMENT (Development & Analysis)
+# -----------------------------------------------------------------------------
+notebook                   # Jupyter notebook server
+ipykernel                  # Jupyter kernel support
+tqdm>=4.65.0              # Progress bars
+
+# -----------------------------------------------------------------------------
+# ADVANCED PACKAGES (Optional - Only for v6.0 Educational & Legacy Notebooks)
+# -----------------------------------------------------------------------------
+# Uncomment these if you want to run v6.0 educational examples or legacy experiments:
+#
+# transformers==4.40.1      # BERT/SciBERT models (v3.x-v6.0)
+# datasets==2.19.0          # Hugging Face datasets
+# peft==0.10.0              # LoRA fine-tuning (v3.x-v4.x)
+# evaluate==0.4.1           # Model evaluation metrics
+# bitsandbytes==0.43.1      # Memory optimization for transformers
+# sentence-transformers==4.1.0  # SPECTER embeddings (v2.x)
+# shap>=0.44.0              # Model interpretation (v6.0 analysis)
+
+# -----------------------------------------------------------------------------
+# INSTALLATION INSTRUCTIONS
+# -----------------------------------------------------------------------------
+# For v7.0 Production Only:
+#   pip install -r requirements.txt
+#
+# For Full Development (All Experiments):
+#   Uncomment the advanced packages above, then:
+#   pip install -r requirements.txt
+#
+# For Minimal v7.0 Setup:
+#   pip install joblib numpy pandas scikit-learn xgboost
+# -----------------------------------------------------------------------------

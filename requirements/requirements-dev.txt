@@ -1,0 +1,29 @@
+# Development requirements for full project (all versions)
+# Install with: pip install -r requirements-dev.txt
+
+# Core packages (v7.0 production)
+joblib==1.5.0
+matplotlib==3.10.1
+numpy==2.2.5
+pandas==2.2.3
+scikit-learn==1.6.1
+seaborn==0.13.2
+xgboost==3.0.0
+imbalanced-learn==0.13.0
+
+# Text processing
+nltk==3.8.1
+
+# Jupyter environment
+notebook
+ipykernel
+tqdm>=4.65.0
+
+# Advanced packages (v6.0 educational & legacy)
+transformers==4.40.1
+datasets==2.19.0
+peft==0.10.0
+evaluate==0.4.1
+bitsandbytes==0.43.1
+sentence-transformers==4.1.0
+shap>=0.44.0 

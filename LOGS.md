@@ -368,7 +368,7 @@ v7.0 should be used for all production deployments. v6.0 serves as an educationa
 
 #### Artefacts (Unified Pipeline)
 
-- `/Notebooks/unified_classification_pipeline.ipynb` – Complete integrated system
+- `/Notebooks/unified/unified_classification_pipeline.ipynb` – Complete integrated system
 - **Feature Extractors**: Domain-specific extractors for each classification task
 - **Smart Classification Functions**: With confidence-based post-processing
 - **Production API Wrapper**: Ready for real-world deployment
