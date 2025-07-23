@@ -81,6 +81,7 @@ analyze_classification_confidence(results, title, abstract)
 |--------|-------------|
 | `/Artefacts/` | **current/**: v7.0 production models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
 | `/Data/` | **Master.csv**: Production dataset (37MB) - 26,944 papers with title, abstract, discipline, subfield, methodology |
+| `/Documentation/` | **LOGS.md**: Complete development log \| Project documentation and insights |
 | `/Scripts/` | Data scraping scripts |
 | `/Notebooks/` | **current/**: v7.0 methodology \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
 | `/requirements/` | **requirements.txt**: Standard use \| **requirements-minimal.txt**: Production only \| **requirements-dev.txt**: Full development |
