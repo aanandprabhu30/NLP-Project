@@ -1,0 +1,23 @@
+Discipline Classifier v7.0 Performance Metrics
+==================================================
+
+Training date: 2025-07-22 10:26:47
+Dataset size: 26944
+Train/Val/Test split: 17244/4311/5389
+Augmented training size: 22936
+Feature count: 3000
+Best model: xgboost
+
+Cross-validation accuracy: 0.9173 ± 0.0094
+Test accuracy: 0.9232
+
+Classification Report:
+              precision    recall  f1-score   support
+
+          CS       0.94      0.95      0.95      2982
+          IS       0.92      0.93      0.93      2092
+          IT       0.72      0.61      0.66       315
+
+    accuracy                           0.92      5389
+   macro avg       0.86      0.83      0.85      5389
+weighted avg       0.92      0.92      0.92      5389

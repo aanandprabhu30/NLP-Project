@@ -1,0 +1,27 @@
+IS Subfield Classifier v7.0 Performance Metrics
+==================================================
+
+Training date: 2025-07-23 08:03:02
+Discipline: IS
+Total IS papers: 10460
+Train/Val/Test split: 7465/2112/2618
+Augmented training size: 10004
+Feature count: 3000
+Best model: xgboost
+Subfield classes: BPM, DT, GOV, HIS, KM
+
+Cross-validation accuracy: 0.7684 ± 0.0225
+Test accuracy: 0.8033
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         BPM       0.86      0.77      0.81       389
+          DT       0.83      0.82      0.82       933
+         GOV       0.77      0.82      0.79       295
+         HIS       0.88      0.90      0.89       376
+          KM       0.70      0.74      0.72       625
+
+    accuracy                           0.80      2618
+   macro avg       0.81      0.81      0.81      2618
+weighted avg       0.81      0.80      0.80      2618

@@ -1,0 +1,28 @@
+CS Subfield Classifier v7.0 Performance Metrics
+==================================================
+
+Training date: 2025-07-23 07:34:02
+Discipline: CS
+Total CS papers: 14910
+Train/Val/Test split: 10260/2829/3490
+Augmented training size: 14417
+Feature count: 3000
+Best model: logistic_regression
+Subfield classes: AI/ML, CLOUDCS, CV, NLP, SE, SEC
+
+Cross-validation accuracy: 0.8148 ± 0.0212
+Test accuracy: 0.8292
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       AI/ML       0.81      0.81      0.81      1002
+     CLOUDCS       0.71      0.88      0.79       113
+          CV       0.87      0.89      0.88       532
+         NLP       0.72      0.74      0.73       245
+          SE       0.82      0.79      0.81       915
+         SEC       0.91      0.89      0.90       683
+
+    accuracy                           0.83      3490
+   macro avg       0.81      0.83      0.82      3490
+weighted avg       0.83      0.83      0.83      3490

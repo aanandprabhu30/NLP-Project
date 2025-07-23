@@ -1,0 +1,26 @@
+IT Subfield Classifier v7.0 Performance Metrics
+==================================================
+
+Training date: 2025-07-23 08:11:03
+Discipline: IT
+Total IT papers: 1574
+Train/Val/Test split: 1191/358/445
+Augmented training size: 1597
+Feature count: 3000
+Best model: logistic_regression
+Subfield classes: CLOUDIT, DEVOPS, EMERGING, RISK
+
+Cross-validation accuracy: 0.8354 ± 0.0101
+Test accuracy: 0.8539
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     CLOUDIT       0.86      0.82      0.84       152
+      DEVOPS       0.92      0.87      0.89       190
+    EMERGING       0.74      0.94      0.83        49
+        RISK       0.76      0.81      0.79        54
+
+    accuracy                           0.85       445
+   macro avg       0.82      0.86      0.84       445
+weighted avg       0.86      0.85      0.85       445

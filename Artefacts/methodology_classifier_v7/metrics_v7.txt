@@ -1,0 +1,23 @@
+Methodology Classifier v7.0 Performance Metrics
+==================================================
+
+Training date: 2025-07-22 11:53:20
+Dataset size: 26944
+Train/Val/Test split: 18916/5299/6553
+Augmented training size: 27281
+Feature count: 3000
+Best model: xgboost
+
+Cross-validation accuracy: 0.8657 ± 0.0089
+Test accuracy: 0.8692
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       MIXED       0.76      0.61      0.68      1099
+        QUAL       0.81      0.84      0.82      1430
+       QUANT       0.92      0.95      0.93      4024
+
+    accuracy                           0.87      6553
+   macro avg       0.83      0.80      0.81      6553
+weighted avg       0.87      0.87      0.87      6553
