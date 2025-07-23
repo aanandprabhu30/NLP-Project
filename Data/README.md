@@ -11,8 +11,8 @@ This folder contains the final, production-ready dataset for the NLP classificat
 
 ## 📋 **Master.csv Columns**
 
-``` bash
-title,abstract,discipline,subfield,methodology,confidence
+```bash
+title,abstract,discipline,subfield,methodology
 ```
 
 - **title**: Paper title
@@ -20,7 +20,6 @@ title,abstract,discipline,subfield,methodology,confidence
 - **discipline**: CS (Computer Science) | IS (Information Systems) | IT (Information Technology)
 - **subfield**: Specialized area within discipline (AI/ML, CV, NLP, SE, SEC, BPM, DT, GOV, etc.)
 - **methodology**: Qualitative | Quantitative | Mixed
-- **confidence**: Model confidence score
 
 ## 🚀 **Quick Start**
 
@@ -50,8 +49,8 @@ quant_papers = df[df['methodology'] == 'Quantitative']
 qual_papers = df[df['methodology'] == 'Qualitative']
 mixed_papers = df[df['methodology'] == 'Mixed']
 
-# Filter by confidence threshold
-high_confidence = df[df['confidence'] > 0.8]
+# Filter by subfield or methodology
+cs_ai_papers = df[(df['discipline'] == 'CS') & (df['subfield'] == 'AI/ML')]
 ```
 
 ## 📈 **Dataset Statistics**
@@ -68,7 +67,7 @@ high_confidence = df[df['confidence'] > 0.8]
 - **Disciplines**: 3 (CS, IS, IT)
 - **Subfields**: 15+ specialized areas
 - **Methodologies**: 3 (Qualitative, Quantitative, Mixed)
-- **Confidence**: Included for quality control
+- **Quality**: Production-ready, clean labeled data
 
 ## 🎯 **Why This Structure?**
 
@@ -81,7 +80,7 @@ high_confidence = df[df['confidence'] > 0.8]
 ### **Completeness**
 
 - **All three tasks** in one file (discipline, subfield, methodology)
-- **All required fields** (title, abstract, labels, confidence)
+- **All required fields** (title, abstract, labels)
 - **Latest data** (July 2025 - most recent validation)
 
 ### **Production Focus**
