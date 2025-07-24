@@ -28,11 +28,12 @@ High test scores but methodological flaws - valuable for learning about common m
 
 ### `unified/`
 
-Complete integrated classification system
+Complete integrated classification systems
 
-- `unified_classification_pipeline.ipynb` - Hierarchical discipline → subfield → methodology workflow with smart post-processing
+- `unified_classification_pipeline.ipynb` - Hierarchical discipline → subfield → methodology workflow with smart post-processing (v6.0 based)
+- `unified_pipeline_v7.ipynb` - Updated unified pipeline with v7.0 methodological corrections and improved reliability
 
-**Use this for:** End-to-end classification system, production deployment examples, comprehensive analysis
+**Use these for:** End-to-end classification system, production deployment examples, comprehensive analysis
 
 ### `legacy/`
 
@@ -67,7 +68,10 @@ jupyter notebook v6.0_educational/discipline_classifier_v6_0.ipynb
 ### For Complete Classification System
 
 ```bash
-# Use unified pipeline
+# Use v7.0 methodologically corrected pipeline (recommended)
+jupyter notebook unified/unified_pipeline_v7.ipynb
+
+# Or use original unified pipeline (v6.0 based)
 jupyter notebook unified/unified_classification_pipeline.ipynb
 ```
 
@@ -117,7 +121,8 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 | Production Code | `current/` | Local nlp-bert kernel |
 | Learning ML Methodology | `current/` vs `v6.0_educational/` | Any Python 3.11+ |
 | Research/Comparison | `legacy/` | Match original environment |
-| Complete System | `unified/` | Local nlp-bert kernel |
+| Complete System (Reliable) | `unified/unified_pipeline_v7.ipynb` | Local nlp-bert kernel |
+| Complete System (Educational) | `unified/unified_classification_pipeline.ipynb` | Local nlp-bert kernel |
 
 ## 🎓 Key Learning Insight
 
