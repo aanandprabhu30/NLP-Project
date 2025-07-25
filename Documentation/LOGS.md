@@ -270,19 +270,19 @@ Following comprehensive analysis of v6.0 models, significant methodological issu
 
 #### Key Insights and Learnings
 
-**1. Test Accuracy vs Real Performance:**
+##### 1. Test Accuracy vs Real Performance
 
 - v6.0's 94.77% was inflated by data leakage; v7.0's 92.32% represents actual capability
 - High test scores can be misleading without proper validation methodology
 - Real-world performance should be the ultimate validation metric
 
-**2. Simplicity vs Complexity:**
+##### 2. Simplicity vs Complexity
 
 - 3,000 features performed nearly as well as 11,500+ features when methodology is sound
 - Complex feature engineering can mask fundamental validation problems
 - Simpler models are often more reliable and deployable
 
-**3. Validation Methodology Critical:**
+##### 3. Validation Methodology Critical
 
 - Proper train/test splitting is more important than advanced feature engineering
 - Data leakage can invalidate even the most sophisticated models
@@ -346,37 +346,43 @@ While v7.0 provided methodologically sound classification with 86.92% accuracy, 
 
 #### Implementation (v8.0 MIXED Detection Enhancement)
 
-**Core Innovation: Two-Stage Classification**
+##### Core Innovation: Two-Stage Classification
+
 - **Stage 1**: Specialized Mixed vs Non-Mixed binary classifier with optimized threshold
 - **Stage 2**: Traditional Qualitative vs Quantitative classification for non-mixed papers
 - **Threshold Optimization**: Systematic tuning (0.15-0.60) to maximize MIXED detection while maintaining overall performance
 
-**Enhanced Feature Engineering**
+##### Enhanced Feature Engineering
+
 - **Base Features**: Leverages same 3,000 TF-IDF features as v7.0 (maintaining methodological soundness)
 - **Methodology-Specific Features**: 11 additional targeted features designed for methodology detection
   - Qualitative indicators: interview, survey, observation, theme, narrative patterns
   - Quantitative indicators: statistical, numerical, measurement, hypothesis testing patterns
   - Mixed indicators: triangulation, combination, integration, convergent validity patterns
 
-**Advanced Ensemble Architecture**
+##### Advanced Ensemble Architecture
+
 - **v7+v8 Ensemble**: Optimal weighting (70% v7, 30% v8) determined through validation
 - **Dynamic Weighting**: Increased v8 influence when MIXED methodology likely detected
 - **Best-of-Both**: Combines v7's overall accuracy with v8's specialized MIXED detection
 
 #### Results (v8.0 MIXED Detection Specialist)
 
-**v8.0 Standalone Performance:**
+##### v8.0 Standalone Performance
+
 - **Overall Accuracy**: 82.76% (vs 86.92% v7) - Strategic 4.16% decrease
 - **MIXED F1-score**: 0.564 (vs ~0.35 v7) - **+21.4% improvement**
 - **MIXED Precision**: 0.61 | **MIXED Recall**: 0.52
 - **Strategic Trade-off**: Optimized for MIXED detection over general accuracy
 
-**v8.0 Ensemble Performance (RECOMMENDED):**
+##### v8.0 Ensemble Performance (RECOMMENDED)
+
 - **Overall Accuracy**: 84.57% - Best balance of accuracy and specialization
 - **MIXED F1-score**: 0.644 - **+29.4% improvement over v7 baseline**
 - **Production Ready**: Maintains high accuracy while significantly improving MIXED detection
 
-**Comparison Summary:**
+##### Comparison Summary
+
 ```
 Model Comparison:
 v7 (baseline):    86.92% accuracy | MIXED F1: ~0.35
@@ -386,63 +392,74 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644 (+29.4%)
 
 #### Key Technical Innovations
 
-**Two-Stage Classification Methodology**
+##### Two-Stage Classification Methodology
+
 - Addresses class imbalance by focusing detection effort
 - Prevents degradation of Qual/Quant classification by MIXED confusion
 - Allows specialized optimization for each classification stage
 
-**Methodology-Aware Feature Engineering**
+##### Methodology-Aware Feature Engineering
+
 - Domain-specific keyword detection patterns
 - Context-aware scoring for methodological approaches
 - Integration with existing TF-IDF framework without feature explosion
 
-**Intelligent Ensemble Strategy**
+##### Intelligent Ensemble Strategy
+
 - Validation-based weight optimization rather than arbitrary combining
 - Dynamic adjustment based on prediction confidence
 - Maintains compatibility with existing v7 production systems
 
 #### Artifacts (v8.0 MIXED Detection Specialist)
 
-**v8.0 Standalone Model:**
+##### v8.0 Standalone Model
+
 - `v8.0_development/methodology_classifier_v8/artifacts_v8.pkl` – Complete v8.0 two-stage model
 - Contains: TwoStageMethodologyClassifier, MethodologyFeatureExtractor, optimized thresholds
 - Training config: threshold=0.6, feature_count=3011, performance metrics
 
-**v8.0 Ensemble Model (RECOMMENDED):**
+##### v8.0 Ensemble Model (RECOMMENDED)
+
 - `v8.0_development/ensemble_classifier_v8/ensemble_artifacts.pkl` – Optimal v7+v8 ensemble
 - Contains: v7_model, v8_model, feature_extractors, optimal_v7_weight=0.7
 - Production ready: MethodologyEnsembleClassifier class with simplified API
 
-**Development Documentation:**
+##### Development Documentation
+
 - `Notebooks/v8.0_development/methodology_classifier_v8.ipynb` – Complete development process
 - Threshold optimization results, feature engineering process, ensemble evaluation
 - Ready for replication and further development
 
 #### Strategic Recommendations
 
-**Use Case Optimization:**
+##### Use Case Optimization
+
 - **v7.0**: General methodology classification where overall accuracy is priority
 - **v8.0**: Research contexts where MIXED methodology detection is critical
 - **Ensemble**: Production deployments requiring balance of accuracy and MIXED detection
 
-**Future Development:**
+##### Future Development
+
 - Apply v8.0's two-stage approach to discipline and subfield classification
 - Extend methodology-specific feature engineering to other classification tasks
 - Investigate advanced ensemble methods beyond simple weighted combining
 
 #### Impact and Significance
 
-**Methodological Advancement**
+##### Methodological Advancement
+
 - Demonstrates targeted optimization for specific classification challenges
 - Shows how ensemble methods can achieve better overall performance than individual models
 - Provides framework for addressing class imbalance in academic text classification
 
-**Production Value**
+##### Production Value
+
 - Ensemble model ready for immediate deployment where MIXED detection matters
 - Maintains compatibility with existing v7 infrastructure
 - Offers clear upgrade path with quantified performance benefits
 
-**Research Contribution**
+##### Research Contribution
+
 - First specialized approach to MIXED methodology detection in academic papers
 - Establishes baseline for future MIXED methodology research
 - Documents complete methodology for replication and extension
