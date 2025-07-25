@@ -76,12 +76,24 @@ v6.0 models show impressive test metrics but have fundamental methodological fla
 - **IS Subfield**: 83.39% accuracy (advanced features but validation issues)
 - **IT Subfield**: 88.48% accuracy (sophisticated but methodologically flawed)
 
+### 🎓 v8.0: Educational False Premise Case Study (July 25th, 2025)
+
+v8.0 demonstrates how incorrect baseline assumptions can invalidate research conclusions
+
+- **Issue**: Developed under false assumption that v7.0 had poor Mixed detection (F1≈0.35)
+- **Reality**: v7.0 Mixed F1 = 0.68 (excellent performance)  
+- **Performance**: 82.76% accuracy, 0.564 Mixed F1 (regression, not improvement)
+- **Value**: Educational example of baseline verification importance
+- **Status**: Moved to `v8.0_educational/` folder alongside v6.0 educational examples
+
 ### 🎯 Recommendations
 
 - **Production Deployment**: Use v7.0 models for all real-world applications
-- **Research/Education**: v6.0 serves as valuable example of common ML pitfalls
-- **Future Development**: Apply v7.0's methodology to v6.0's advanced features for optimal results
-- **Key Learning**: Proper validation methodology is more important than complex feature engineering
+- **Educational Examples**: 
+  - v6.0: Learn about data leakage and overfitting pitfalls
+  - v8.0: Learn about baseline verification and assumption testing
+- **Future Development**: Apply v7.0's methodology to advanced features for optimal results
+- **Key Learning**: Proper validation methodology and baseline verification are essential for reliable ML research
 
 ### ✅ Unified Classification Pipeline: COMPLETE INTEGRATION
 
@@ -130,9 +142,9 @@ v6.0 models show impressive test metrics but have fundamental methodological fla
    - ✅ Documented comparison between flawed (v6.0) and sound (v7.0) methodologies
    - ✅ Created valuable case study in ML validation and methodology
    - ✅ Demonstrated importance of proper data science practices
-5. **Specialized Classification Enhancement (v8.0)** ✅
-   - ✅ Developed two-stage methodology classifier targeting MIXED detection weakness
-   - ✅ Developed alternative two-stage methodology approach (F1: 0.564 vs v7's 0.68)
+5. **Educational Case Study Development (v8.0)** ✅
+   - ✅ Developed two-stage methodology classifier based on false premise (assumed v7.0 weakness)
+   - ✅ Created educational example of baseline verification importance (F1: 0.564 vs v7's 0.68)
 
 - ✅ Created v7+v8 ensemble experiment (84.57% accuracy, F1: 0.644 vs v7's 0.68)
   - ✅ Established framework for targeted classification optimization
