@@ -341,6 +341,8 @@ v7.0 should be used for all production deployments. v6.0 serves as an educationa
 
 ### 🎯 July 25th, 2025 – Methodology Classifier v8.0 (TWO-STAGE ALTERNATIVE APPROACH)
 
+> **Update (July 25th, 2025)**: v8.0 has been **moved to educational status** (`v8.0_educational/`) after discovering it was built on false premises. Originally claimed to improve upon v7.0's "poor" Mixed F1 (≈0.35), but v7.0's actual Mixed F1 = 0.68. v8.0 now serves as an educational case study in baseline verification importance.
+
 #### Background and Motivation
 
 While v7.0 provided methodologically sound classification with 86.92% accuracy and solid Mixed methodology detection (F1-score 0.68), exploration of alternative approaches led to the development of v8.0 as a two-stage methodology classifier experiment.
@@ -415,19 +417,19 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644
 
 ##### v8.0 Standalone Model
 
-- `current/methodology_classifier_v8/artifacts_v8.pkl` – Complete v8.0 two-stage model
+- `v8.0_educational/methodology_classifier_v8/artifacts_v8.pkl` – Complete v8.0 two-stage model (educational)
 - Contains: TwoStageMethodologyClassifier, MethodologyFeatureExtractor, optimized thresholds
 - Training config: threshold=0.6, feature_count=3011, performance metrics
 
 ##### v8.0 Ensemble Model (EXPERIMENTAL)
 
-- `current/methodology_ensemble_v8/ensemble_artifacts.pkl` – Experimental v7+v8 ensemble
+- `v8.0_educational/methodology_ensemble_v8/ensemble_artifacts.pkl` – Educational v7+v8 ensemble example
 - Contains: v7_model, v8_model, feature_extractors, optimal_v7_weight=0.7
 - Experimental: MethodologyEnsembleClassifier class with simplified API
 
 ##### Development Documentation
 
-- `Notebooks/current/methodology_classifier_v8.ipynb` – Complete development process
+- `Notebooks/v8.0_educational/methodology_classifier_v8.ipynb` – Complete development process (educational)
 - Threshold optimization results, feature engineering process, ensemble evaluation
 - Ready for replication and further development
 
@@ -436,7 +438,7 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644
 ##### Use Case Optimization
 
 - **v7.0**: **Recommended for all production use** - excellent overall performance (86.92% accuracy, 0.68 Mixed F1)
-- **v8.0**: Experimental two-stage approach with different trade-offs (82.76% accuracy, 0.564 Mixed F1)
+- **v8.0**: Educational example of false premise development (82.76% accuracy, 0.564 Mixed F1)
 - **Ensemble**: Research experiment combining approaches (84.57% accuracy, 0.644 Mixed F1)
 
 ##### Future Development

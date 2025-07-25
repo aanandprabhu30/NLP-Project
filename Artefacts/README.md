@@ -16,8 +16,6 @@ Methodologically sound models recommended for all real-world use
 
 **Use these for:** Production deployments, real-world applications, reliable classification
 
-
-
 ### `v6.0_educational/` - v6.0 (⚠️ **EDUCATIONAL USE ONLY**)
 
 High test scores but methodological flaws - valuable for learning about ML pitfalls
@@ -70,8 +68,8 @@ from joblib import load
 methodology_model_v7 = load('current/methodology_classifier_v7/methodology_pipeline_v7.pkl')
 
 # Alternative experimental approaches
-# methodology_model_v8 = load('current/methodology_classifier_v8/artifacts_v8.pkl')
-# ensemble_model_v8 = load('current/methodology_ensemble_v8/ensemble_artifacts.pkl')
+# methodology_model_v8 = load('v8.0_educational/methodology_classifier_v8/artifacts_v8.pkl')  # Educational only
+# ensemble_model_v8 = load('v8.0_educational/methodology_ensemble_v8/ensemble_artifacts.pkl')    # Educational only
 ```
 
 ### For Production Use

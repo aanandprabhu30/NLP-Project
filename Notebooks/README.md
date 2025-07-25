@@ -61,11 +61,11 @@ Contains all development iterations including:
 
 ## 🎯 Quick Start Guide
 
-### For v8.0 Alternative Approach
+### For v8.0 Educational Study
 
 ```bash
-# Use v8.0 experimental two-stage approach
-jupyter notebook current/methodology_classifier_v8.ipynb
+# Study v8.0 false premise case study  
+jupyter notebook v8.0_educational/methodology_classifier_v8.ipynb
 ```
 
 ### For Learning Proper ML Methodology
