@@ -16,6 +16,16 @@ Methodologically sound models recommended for all real-world use
 
 **Use these for:** Production deployments, real-world applications, reliable classification
 
+### `v8.0_development/` - v8.0 (🚀 **ACTIVE DEVELOPMENT**)
+
+Next-generation improvements building on v7.0's methodological foundation
+
+- `methodology_classifier_v8/` - Two-stage MIXED detection specialist (82.76% accuracy, +21.4% MIXED F1)
+- `ensemble_classifier_v8/` - v7+v8 ensemble model (84.57% accuracy, +29.4% MIXED F1)
+- _Future: discipline, subfield classifiers v8.0 to be added_
+
+**Use these for:** Cutting-edge experiments, development testing, latest improvements
+
 ### `v6.0_educational/` - v6.0 (⚠️ **EDUCATIONAL USE ONLY**)
 
 High test scores but methodological flaws - valuable for learning about ML pitfalls
@@ -47,6 +57,16 @@ Contains all previous experiments, baseline models, and development iterations i
 
 ## 🎯 Quick Start
 
+### For Latest Development
+
+```python
+# Load v8.0 models (cutting-edge development)
+from joblib import load
+
+methodology_model_v8 = load('v8.0_development/methodology_classifier_v8/artifacts_v8.pkl')
+ensemble_model_v8 = load('v8.0_development/ensemble_classifier_v8/ensemble_artifacts.pkl')
+```
+
 ### For Production Use
 
 ```python
@@ -75,6 +95,7 @@ If updating existing code:
 
 | **Version** | **Status** | **Accuracy** | **Recommendation** |
 |-------------|------------|--------------|-------------------|
+| **v8.0** | 🚀 Development | 82.76% (+21.4% MIXED F1) | MIXED detection specialist |
 | **v7.0** | ✅ Production | 92.32% (sound) | Use for deployment |
 | **v6.0** | ⚠️ Educational | 94.77% (flawed) | Study methodology issues |
 | **Legacy** | 📚 Historical | Various | Reference only |

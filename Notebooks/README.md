@@ -16,6 +16,15 @@ Methodologically corrected notebooks that demonstrate proper ML practices
 
 **Use these for:** Learning proper ML methodology, production implementations, reliable approaches
 
+### `v8.0_development/` - v8.0 (🚀 **ACTIVE DEVELOPMENT**)
+
+Next-generation improvements building on v7.0's methodological foundation
+
+- `methodology_classifier_v8.ipynb` - Two-stage MIXED detection specialist (82.76% accuracy, +21.4% MIXED F1)
+- _Future: discipline, subfield classifiers v8.0 to be added_
+
+**Use these for:** Exploring latest improvements, experimental features, cutting-edge development
+
 ### `v6.0_educational/` - v6.0 (⚠️ **EDUCATIONAL - SHOWS ML PITFALLS**)
 
 High test scores but methodological flaws - valuable for learning about common mistakes
@@ -50,6 +59,13 @@ Contains all development iterations including:
 **Use these for:** Understanding project evolution, reproducing earlier experiments, historical reference
 
 ## 🎯 Quick Start Guide
+
+### For Latest Development (v8.0)
+
+```bash
+# Explore cutting-edge v8.0 development
+jupyter notebook v8.0_development/methodology_classifier_v8.ipynb
+```
 
 ### For Learning Proper ML Methodology
 
@@ -89,19 +105,25 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 ## 📚 Learning Path Recommendations
 
-### 1. Start with v7.0 (Proper Methodology)
+### 1. Explore v8.0 Development (Latest Innovations)
+
+- Follow cutting-edge improvements
+- Understand next-generation approaches
+- Contribute to active development
+
+### 2. Master v7.0 (Proper Methodology)
 
 - Learn correct data splitting techniques
 - Understand proper validation frameworks
 - See how to prevent data leakage
 
-### 2. Compare with v6.0 (Common Pitfalls)
+### 3. Compare with v6.0 (Common Pitfalls)
 
 - Identify methodological issues
 - Understand why test scores were inflated
 - Learn to spot overfitting signs
 
-### 3. Study Evolution (Legacy)
+### 4. Study Evolution (Legacy)
 
 - See how the project developed over time
 - Understand different approaches tried
@@ -118,6 +140,7 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 | **Purpose** | **Use This** | **Environment** |
 |-------------|--------------|-----------------|
+| **Latest Development** | `v8.0_development/` | Local nlp-bert kernel |
 | Production Code | `current/` | Local nlp-bert kernel |
 | Learning ML Methodology | `current/` vs `v6.0_educational/` | Any Python 3.11+ |
 | Research/Comparison | `legacy/` | Match original environment |

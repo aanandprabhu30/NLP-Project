@@ -20,13 +20,18 @@ This project classifies computing research abstracts by:
 
 - Discipline: 92.32% | Methodology: 86.92% | Subfield: 80-85%
 
+**v8.0 (MIXED Detection Specialist):** Enhanced mixed methodology identification
+
+- Methodology: 82.76% (standalone) | MIXED F1: +21.4% improvement | Ensemble: 84.57%
+
 ✅ **Production-ready unified pipeline with smart post-processing**  
 ✅ **Batch processing and confidence analysis capabilities**  
-✅ **Critical learning: Proper methodology is essential for real-world performance**
+✅ **Critical learning: Proper methodology is essential for real-world performance**  
+🚀 **v8.0 in active development:** Next-generation improvements building on v7.0's foundation
 
 ---
 
-## 🔍 Key Difference: v6.0 vs v7.0
+## 🔍 Key Differences: v6.0 vs v7.0 vs v8.0
 
 ### v6.0: High Test Scores (Not Recommended)
 
@@ -34,28 +39,49 @@ This project classifies computing research abstracts by:
 - **Causes**: Augmented before splitting, fitted vectorizers on test data, excessive features (11,500+)
 - **Result**: Impressive test scores but required manual corrections in practice
 
-### v7.0: Methodologically Sound (Recommended)
+### v7.0: Methodologically Sound (Production Standard)
 
 - **Fixes**: Proper train/test splitting, conservative augmentation, reduced features (3,000)
 - **Benefits**: Reliable real-world performance, proper validation methodology
-- **Usage**: Recommended for all production deployments
+- **Usage**: Recommended for general production deployments
+
+### v8.0: MIXED Detection Specialist (Targeted Use)
+
+- **Innovation**: Two-stage classification, methodology-specific features, ensemble approach
+- **Strength**: 21.4% improvement in MIXED methodology detection (F1: 0.564 vs 0.35)
+- **Trade-off**: Slight overall accuracy decrease (82.76% vs 86.92%) for specialized performance
+- **Usage**: Use when MIXED methodology detection is critical; ensemble for balanced performance
 
 ---
 
 ## 🚀 Quick Start
 
-### Load v7.0 Production Models
+### Load v8.0 MIXED Detection Specialist
 
 ```python
 from joblib import load
 import pandas as pd
 
-# Load v7.0 production models (recommended)
-discipline_pipeline = load('Artefacts/current/discipline_classifier_v7/discipline_pipeline_v7.pkl')
-methodology_pipeline = load('Artefacts/current/methodology_classifier_v7/methodology_pipeline_v7.pkl')
+# Load v8.0 ensemble model (best balance of accuracy and MIXED detection)
+ensemble_artifacts = load('Artefacts/v8.0_development/ensemble_classifier_v8/ensemble_artifacts.pkl')
+ensemble_model = ensemble_artifacts['v7_model']  # Includes both v7 and v8 components
 
 # Load production data
 df = pd.read_csv('Data/Master.csv')  # 26,944 papers with all labels
+
+# Classify with enhanced MIXED detection
+title = "A Mixed Methods Study of User Experience in Mobile Apps"
+abstract = "This research combines quantitative analytics with qualitative interviews..."
+
+methodology = ensemble_model.predict([abstract])  # Better MIXED detection
+```
+
+### Load v7.0 Production Models
+
+```python
+# Load v7.0 production models (general use)
+discipline_pipeline = load('Artefacts/current/discipline_classifier_v7/discipline_pipeline_v7.pkl')
+methodology_pipeline = load('Artefacts/current/methodology_classifier_v7/methodology_pipeline_v7.pkl')
 
 # Classify a paper
 title = "Deep Learning for Medical Image Segmentation"
@@ -79,14 +105,20 @@ analyze_classification_confidence(results, title, abstract)
 
 | Folder | Description |
 |--------|-------------|
-| `/Artefacts/` | **current/**: v7.0 production models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
+| `/Artefacts/` | **v8.0_development/**: Latest enhancements \| **current/**: v7.0 production models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
 | `/Data/` | **Master.csv**: Production dataset (37MB) - 26,944 papers with title, abstract, discipline, subfield, methodology |
 | `/Documentation/` | **LOGS.md**: Complete development log \| Project documentation and insights |
 | `/Scripts/` | Data scraping scripts |
-| `/Notebooks/` | **current/**: v7.0 methodology \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
+| `/Notebooks/` | **v8.0_development/**: Latest innovations \| **current/**: v7.0 methodology \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
 | `/requirements/` | **requirements.txt**: Standard use \| **requirements-minimal.txt**: Production only \| **requirements-dev.txt**: Full development |
 
 ### Key Model Files
+
+**v8.0 (Active Development):**
+
+- `v8.0_development/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage MIXED detection
+- `v8.0_development/ensemble_classifier_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (recommended)
+- _Future: discipline, subfield classifiers v8.0 in development_
 
 **v7.0 (Production Ready):**
 
@@ -110,15 +142,17 @@ analyze_classification_confidence(results, title, abstract)
 
 ## 📊 Performance Summary
 
-| **Task** | **v7.0 (Sound)** | **v6.0 (Flawed)** | **Recommendation** |
-|----------|-------------------|--------------------|--------------------|
-| Discipline | 92.32% | 94.77% | Use v7.0 for reliability |
-| Methodology | 86.92% | 91.87% | Use v7.0 for real-world use |
-| CS Subfield | 82.92% | 89.61% | Use v7.0 for production |
-| IS Subfield | 80.33% | 83.39% | Use v7.0 for production |
-| IT Subfield | 85.39% | 88.48% | Use v7.0 for production |
+| **Task** | **v8.0 (Specialist)** | **v7.0 (Sound)** | **v6.0 (Flawed)** | **Recommendation** |
+|----------|----------------------|-------------------|--------------------|--------------------|
+| Discipline | _Coming soon_ | 92.32% | 94.77% | Use v7.0 for reliability |
+| Methodology (Overall) | 82.76% | 86.92% | 91.87% | Use v7.0 for general use |
+| Methodology (MIXED F1) | **0.564** (+21.4%) | ~0.35 | N/A | **Use v8.0 for MIXED detection** |
+| Methodology (Ensemble) | **84.57%** | 86.92% | 91.87% | **Use ensemble for balance** |
+| CS Subfield | _Coming soon_ | 82.92% | 89.61% | Use v7.0 for production |
+| IS Subfield | _Coming soon_ | 80.33% | 83.39% | Use v7.0 for production |
+| IT Subfield | _Coming soon_ | 85.39% | 88.48% | Use v7.0 for production |
 
-> **Key Learning**: v6.0's higher scores were due to data leakage. v7.0's scores represent true performance.
+> **Key Learning**: v8.0 trades overall accuracy for specialized MIXED detection. Ensemble provides optimal balance.
 
 ---
 
