@@ -16,12 +16,7 @@ Methodologically sound models recommended for all real-world use
 
 **Use these for:** Production deployments, real-world applications, reliable classification
 
-**v8.0 Methodology Enhancement:**
 
-- `methodology_classifier_v8/` - Two-stage methodology approach (82.76% accuracy, 0.564 Mixed F1)
-- `methodology_ensemble_v8/` - v7+v8 ensemble experiment (84.57% accuracy, 0.644 Mixed F1)
-
-**Use these for:** Research into two-stage classification, methodology approach experiments
 
 ### `v6.0_educational/` - v6.0 (⚠️ **EDUCATIONAL USE ONLY**)
 
@@ -32,6 +27,17 @@ High test scores but methodological flaws - valuable for learning about ML pitfa
 - `subfield_classifier_v6.0/` - 83-90% accuracy (validation issues)
 
 **Use these for:** Educational examples, research on ML methodology, case studies of common pitfalls
+
+### `v8.0_educational/` - v8.0 (⚠️ **EDUCATIONAL USE ONLY**)
+
+False premise research case study - valuable for learning about baseline verification
+
+- `methodology_classifier_v8/` - 82.76% accuracy, 0.564 Mixed F1 (worse than v7.0's 0.68)
+- `methodology_ensemble_v8/` - 84.57% accuracy, 0.644 Mixed F1 (still worse than v7.0)
+
+**Built on false premise:** Assumed v7.0 was weak at Mixed detection (F1≈0.35) when actual F1=0.68
+
+**Use these for:** Learning about baseline verification, research methodology rigor, assumption validation
 
 ### `shared/`
 
@@ -81,8 +87,11 @@ methodology_model = load('current/methodology_classifier_v7/methodology_pipeline
 ### For Educational/Research
 
 ```python
-# Load v6.0 models (educational examples of methodological issues)
-discipline_model_flawed = load('v6.0_educational/discipline_classifier_v6.0/discipline_classifier_v6.0_pipeline.pkl')
+# Load v6.0 models (educational examples of data leakage issues)
+discipline_model_v6 = load('v6.0_educational/discipline_classifier_v6.0/discipline_classifier_v6.0_pipeline.pkl')
+
+# Load v8.0 models (educational examples of false premise issues)
+methodology_model_v8 = load('v8.0_educational/methodology_classifier_v8/artifacts_v8.pkl')
 ```
 
 ## 🔄 Migration Notes
@@ -91,14 +100,15 @@ If updating existing code:
 
 - Replace `../Artefacts/discipline_classifier_v7/` with `../Artefacts/current/discipline_classifier_v7/`
 - Replace `../Artefacts/discipline_classifier_v6.0/` with `../Artefacts/v6.0_educational/discipline_classifier_v6.0/`
+- Replace `../Artefacts/current/methodology_classifier_v8/` with `../Artefacts/v8.0_educational/methodology_classifier_v8/`
 
 ## 📊 Version Comparison Summary
 
 | **Version** | **Status** | **Accuracy** | **Recommendation** |
 |-------------|------------|--------------|-------------------|
-| **v8.0** | 🔬 Experimental | 82.76% (0.564 Mixed F1) | Two-stage approach |
-| **v7.0** | ✅ Production | 92.32% (sound) | Use for deployment |
-| **v6.0** | ⚠️ Educational | 94.77% (flawed) | Study methodology issues |
+| **v7.0** | ✅ Production | 92.32% (0.68 Mixed F1) | Use for all deployments |
+| **v8.0** | ⚠️ Educational | 82.76% (0.564 Mixed F1) | Study false premise issues |
+| **v6.0** | ⚠️ Educational | 94.77% (inflated) | Study data leakage issues |
 | **Legacy** | 📚 Historical | Various | Reference only |
 
 ## 🎓 Key Learning

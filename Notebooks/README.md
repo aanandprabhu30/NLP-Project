@@ -16,12 +16,6 @@ Methodologically corrected notebooks that demonstrate proper ML practices
 
 **Use these for:** Learning proper ML methodology, production implementations, reliable approaches
 
-**v8.0 Methodology Enhancement:**
-
-- `methodology_classifier_v8.ipynb` - Two-stage methodology approach (82.76% accuracy, 0.564 Mixed F1, ensemble: 84.57%)
-
-**Use this for:** Research into two-stage methodology classification, alternative approaches
-
 ### `v6.0_educational/` - v6.0 (⚠️ **EDUCATIONAL - SHOWS ML PITFALLS**)
 
 High test scores but methodological flaws - valuable for learning about common mistakes
@@ -31,6 +25,16 @@ High test scores but methodological flaws - valuable for learning about common m
 - `subfield_classifier_v6_0.ipynb` - 83-90% accuracy (shows validation issues)
 
 **Use these for:** Understanding common ML mistakes, studying methodological pitfalls, educational purposes
+
+### `v8.0_educational/` - v8.0 (⚠️ **EDUCATIONAL - FALSE PREMISE CASE STUDY**)
+
+False premise research example - valuable for learning about baseline verification
+
+- `methodology_classifier_v8.ipynb` - 82.76% accuracy, 0.564 Mixed F1 (demonstrates false premise issues)
+
+**Built on false assumption:** v7.0 was weak at Mixed detection (F1≈0.35) when actual F1=0.68
+
+**Use this for:** Learning about baseline verification, research methodology rigor, assumption validation
 
 ### `unified/`
 
@@ -102,23 +106,23 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 ## 📚 Learning Path Recommendations
 
-### 1. Explore v8.0 Alternative Approach (Experimental)
+### 1. Start with v7.0 (Production Standard)
 
-- Apply specialized MIXED methodology detection
-- Understand two-stage classification approach
-- Explore ensemble approaches for research
-
-### 2. Master v7.0 (Proper Methodology)
-
-- Learn correct data splitting techniques
+- Learn methodologically sound ML practices
 - Understand proper validation frameworks
-- See how to prevent data leakage
+- See optimal Mixed detection approach (0.68 F1)
 
-### 3. Compare with v6.0 (Common Pitfalls)
+### 2. Study v6.0 Educational Examples (Data Leakage)
 
-- Identify methodological issues
+- Identify methodological issues  
+- Learn correct data splitting techniques
 - Understand why test scores were inflated
-- Learn to spot overfitting signs
+
+### 3. Study v8.0 Educational Examples (False Premise)
+
+- Learn about baseline verification importance
+- Understand how false assumptions invalidate conclusions
+- See why simple approaches often beat complex ones
 
 ### 4. Study Evolution (Legacy)
 
@@ -132,12 +136,13 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 - Replace `../Notebooks/discipline_v7.ipynb` with `../Notebooks/current/discipline_v7.ipynb`
 - Replace `../Notebooks/discipline_classifier_v6_0.ipynb` with `../Notebooks/v6.0_educational/discipline_classifier_v6_0.ipynb`
+- Replace `../Notebooks/current/methodology_classifier_v8.ipynb` with `../Notebooks/v8.0_educational/methodology_classifier_v8.ipynb`
 
 ## 📊 Execution Recommendations
 
 | **Purpose** | **Use This** | **Environment** |
 |-------------|--------------|-----------------|
-| **v8.0 Two-Stage Approach** | `current/methodology_classifier_v8.ipynb` | Local nlp-bert kernel |
+| **False Premise Study** | `v8.0_educational/methodology_classifier_v8.ipynb` | Local nlp-bert kernel |
 | Production Code | `current/` | Local nlp-bert kernel |
 | Learning ML Methodology | `current/` vs `v6.0_educational/` | Any Python 3.11+ |
 | Research/Comparison | `legacy/` | Match original environment |

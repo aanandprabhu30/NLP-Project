@@ -20,14 +20,14 @@ This project classifies computing research abstracts by:
 
 - Discipline: 92.32% | Methodology: 86.92% | Subfield: 80-85%
 
-**v8.0 (Alternative Approach):** Two-stage methodology approach
+**v8.0 (Educational):** Demonstrates false premise research pitfalls
 
-- Methodology: 82.76% (standalone) | MIXED F1: 0.564 vs v7.0's 0.68 | Ensemble: 84.57%
+- Methodology: 82.76% (standalone) | MIXED F1: 0.564 vs v7.0's 0.68 | Educational use only
 
 ✅ **Production-ready unified pipeline with smart post-processing**  
 ✅ **Batch processing and confidence analysis capabilities**  
 ✅ **Critical learning: Proper methodology is essential for real-world performance**  
-🔬 **v8.0 experimental approach:** Alternative two-stage methodology classification research
+🎓 **v8.0 educational approach:** Case study in false premise research methodology
 
 ---
 
@@ -45,28 +45,25 @@ This project classifies computing research abstracts by:
 - **Benefits**: Reliable real-world performance, proper validation methodology
 - **Usage**: Recommended for general production deployments
 
-### v8.0: Two-Stage Alternative Approach
+### v8.0: Educational False Premise Case Study
 
-- **Innovation**: Two-stage classification, methodology-specific features, ensemble approach  
-- **Approach**: Different detection strategy (F1: 0.564 vs v7.0's 0.68 Mixed F1)
-- **Trade-off**: Lower overall accuracy (82.76% vs 86.92%) for specialized two-stage methodology
-- **Usage**: Alternative approach for methodology classification; v7.0 recommended for general use
+- **Issue**: Built on false assumption that v7.0 was weak at Mixed detection (F1≈0.35 vs actual 0.68)
+- **Reality**: v8.0 performs worse than v7.0 (0.564 vs 0.68 Mixed F1)
+- **Value**: Educational example of how incorrect baselines invalidate "improvement" claims
+- **Usage**: Educational study only; demonstrates importance of baseline verification
 
 ---
 
 ## 🚀 Quick Start
 
-### Load v8.0 Alternative Approach (Optional)
+### Load v7.0 Production Model
 
 ```python
 from joblib import load
 import pandas as pd
 
-# Load v7.0 methodology model (recommended for production)
+# Load v7.0 methodology model (production recommended)
 methodology_pipeline = load('Artefacts/current/methodology_classifier_v7/methodology_pipeline_v7.pkl')
-
-# Alternative: Load v8.0 ensemble (two-stage approach)
-# ensemble_artifacts = load('Artefacts/current/methodology_ensemble_v8/ensemble_artifacts.pkl')
 
 # Load production data
 df = pd.read_csv('Data/Master.csv')  # 26,944 papers with all labels
@@ -75,7 +72,7 @@ df = pd.read_csv('Data/Master.csv')  # 26,944 papers with all labels
 title = "A Mixed Methods Study of User Experience in Mobile Apps"
 abstract = "This research combines quantitative analytics with qualitative interviews..."
 
-methodology = methodology_pipeline.predict([abstract])  # Recommended approach
+methodology = methodology_pipeline.predict([abstract])  # Production approach
 ```
 
 ### Load v7.0 Production Models
@@ -107,19 +104,14 @@ analyze_classification_confidence(results, title, abstract)
 
 | Folder | Description |
 |--------|-------------|
-| `/Artefacts/` | **current/**: v7.0 production & v8.0 experimental models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
+| `/Artefacts/` | **current/**: v7.0 production models \| **v6.0_educational/**: Data leakage examples \| **v8.0_educational/**: False premise examples \| **legacy/**: Historical development \| **shared/**: Common files |
 | `/Data/` | **Master.csv**: Production dataset (37MB) - 26,944 papers with title, abstract, discipline, subfield, methodology |
 | `/Documentation/` | **LOGS.md**: Complete development log \| Project documentation and insights |
 | `/Scripts/` | Data scraping scripts |
-| `/Notebooks/` | **current/**: v7.0 production & v8.0 experimental notebooks \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
+| `/Notebooks/` | **current/**: v7.0 production notebooks \| **v6.0_educational/**: Data leakage pitfalls \| **v8.0_educational/**: False premise pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
 | `/requirements/` | **requirements.txt**: Standard use \| **requirements-minimal.txt**: Production only \| **requirements-dev.txt**: Full development |
 
 ### Key Model Files
-
-**v8.0 (Alternative Approach):**
-
-- `current/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage methodology approach
-- `current/methodology_ensemble_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (experimental)
 
 **v7.0 (Production Ready):**
 
@@ -129,11 +121,11 @@ analyze_classification_confidence(results, title, abstract)
 - `current/is_subfield_classifier_v7/is_subfield_pipeline_v7.pkl`
 - `current/it_subfield_classifier_v7/it_subfield_pipeline_v7.pkl`
 
-**v6.0 (Educational Examples):**
+**Educational Examples:**
 
+- **v6.0**: `v6.0_educational/` - Data leakage and overfitting issues
+- **v8.0**: `v8.0_educational/` - False premise and baseline verification issues
 - `unified_classification_pipeline.ipynb` - Complete system with post-processing
-- `v6.0_educational/discipline_classifier_v6.0/` - Shows data leakage issues
-- `v6.0_educational/methodology_classifier_v6.0/` - Shows overfitting problems
 
 **Shared Files:**
 
@@ -143,17 +135,16 @@ analyze_classification_confidence(results, title, abstract)
 
 ## 📊 Performance Summary
 
-| **Task** | **v8.0 (Alternative)** | **v7.0 (Sound)** | **v6.0 (Flawed)** | **Recommendation** |
-|----------|----------------------|-------------------|--------------------|--------------------|
-| Discipline | _Coming soon_ | 92.32% | 94.77% | Use v7.0 for reliability |
-| Methodology (Overall) | 82.76% | 86.92% | 91.87% | Use v7.0 for general use |
-| Methodology (MIXED F1) | **0.564** | **0.68** | N/A | **v7.0 better for MIXED detection** |
-| Methodology (Ensemble) | **84.57%** | **86.92%** | 91.87% | **v7.0 recommended** |
-| CS Subfield | _Coming soon_ | 82.92% | 89.61% | Use v7.0 for production |
-| IS Subfield | _Coming soon_ | 80.33% | 83.39% | Use v7.0 for production |
-| IT Subfield | _Coming soon_ | 85.39% | 88.48% | Use v7.0 for production |
+| **Task** | **v7.0 (Production)** | **v6.0 (Educational)** | **v8.0 (Educational)** | **Recommendation** |
+|----------|----------------------|------------------------|------------------------|-------------------|
+| Discipline | **92.32%** | 94.77% (data leakage) | N/A | **Use v7.0 for production** |
+| Methodology | **86.92%** | 91.87% (overfitting) | 82.76% (false premise) | **Use v7.0 for production** |
+| Methodology (MIXED F1) | **0.68** | N/A | 0.564 (regression) | **v7.0 optimal for MIXED** |
+| CS Subfield | **82.92%** | 89.61% (flawed validation) | N/A | **Use v7.0 for production** |
+| IS Subfield | **80.33%** | 83.39% (flawed validation) | N/A | **Use v7.0 for production** |
+| IT Subfield | **85.39%** | 88.48% (flawed validation) | N/A | **Use v7.0 for production** |
 
-> **Key Learning**: v7.0 provides optimal performance across all methodology classes. v8.0 offers alternative two-stage approach.
+> **Key Learning**: v7.0 provides optimal, methodologically sound performance. v6.0 and v8.0 serve as educational examples of common ML research pitfalls.
 
 ---
 
@@ -182,10 +173,11 @@ python -m ipykernel install --user --name=nlp-bert
 
 ## 🎯 Future Work
 
-- **Apply v7.0 methodology to v6.0 features** for optimal performance
-- **Web API deployment** with Flask/FastAPI
+- **Apply v7.0 methodology to advanced features** for optimal performance
+- **Web API deployment** with Flask/FastAPI  
 - **Real-time monitoring** and confidence calibration
 - **Domain expansion** to other academic fields
+- **Educational framework** for ML methodology best practices
 
 ---
 
