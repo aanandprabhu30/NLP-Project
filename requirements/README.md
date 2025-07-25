@@ -105,8 +105,8 @@ If you previously used requirements files in the project root:
 
 ## 🎯 Version Compatibility
 
-| **File** | **v7.0 Models** | **v6.0 Educational** | **Legacy (v2-v5)** | **Jupyter** | **Visualization** |
-|----------|:---------------:|:--------------------:|:------------------:|:------------:|:----------------:|
+| **File** | **v7.0 & v8.0 Models** | **v6.0 Educational** | **Legacy (v2-v5)** | **Jupyter** | **Visualization** |
+|----------|:----------------------:|:--------------------:|:------------------:|:------------:|:----------------:|
 | `requirements.txt` | ✅ | ❌ | ❌ | ✅ | ✅ |
 | `requirements-minimal.txt` | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `requirements-dev.txt` | ✅ | ✅ | ✅ | ✅ | ✅ |

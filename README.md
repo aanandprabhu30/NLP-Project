@@ -114,7 +114,7 @@ analyze_classification_confidence(results, title, abstract)
 
 ### Key Model Files
 
-**v8.0 (Active Development):**
+**v8.0 (MIXED Detection Specialist):**
 
 - `current/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage MIXED detection
 - `current/methodology_ensemble_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (recommended)
