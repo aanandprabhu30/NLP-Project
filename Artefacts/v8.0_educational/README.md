@@ -9,6 +9,7 @@ These v8.0 models demonstrate how **incorrect baseline assumptions** can lead to
 ## 📚 **Educational Value: False Premise Development**
 
 ### 🚨 **The Core Problem**
+
 v8.0 was developed under the **false assumption** that v7.0 had poor Mixed methodology detection (F1≈0.35). In reality, **v7.0 Mixed F1 = 0.68** (excellent performance).
 
 ### 📊 **Actual vs Claimed Performance**
@@ -30,12 +31,14 @@ v8.0 was developed under the **false assumption** that v7.0 had poor Mixed metho
 ## 📁 **Educational Artifacts**
 
 ### `methodology_classifier_v8/`
+
 - **What**: Two-stage methodology classifier (Mixed vs Non-Mixed → Qual vs Quant)
 - **Performance**: 82.76% accuracy, 0.564 Mixed F1
 - **Educational Point**: Complex architecture doesn't guarantee better results
 - **Lesson**: v7.0's simple approach (86.92% accuracy, 0.68 Mixed F1) outperforms this
 
 ### `methodology_ensemble_v8/`
+
 - **What**: Ensemble combining v7.0 and v8.0 models
 - **Performance**: 84.57% accuracy, 0.644 Mixed F1  
 - **Educational Point**: Ensembles can be suboptimal if one component is inferior
@@ -46,18 +49,21 @@ v8.0 was developed under the **false assumption** that v7.0 had poor Mixed metho
 ## 🎯 **Key Takeaways for Students/Researchers**
 
 ### ✅ **What v8.0 Did Right**
+
 - Methodologically sound data splitting (learned from v6.0 mistakes)
 - Proper cross-validation and artifact management
 - Interesting two-stage classification approach
 - Complete experimental documentation
 
 ### ❌ **What Went Wrong**
+
 - **False premise**: Assumed v7.0 was weak at Mixed detection
 - **No baseline verification**: Didn't check actual v7.0 performance
 - **Confirmation bias**: Interpreted results as "improvements" without proper comparison
 - **Documentation cascade**: Built entire narrative on incorrect foundation
 
 ### 📖 **Research Lessons**
+
 1. **Always verify your baseline** before claiming improvements
 2. **Question your assumptions** - what if the problem is already solved?
 3. **Simple can be superior** - v7.0's direct approach beats v8.0's complexity
@@ -67,9 +73,10 @@ v8.0 was developed under the **false assumption** that v7.0 had poor Mixed metho
 
 ## 🏭 **For Production Use**
 
-**❌ Do NOT use these models for production**
+### ❌ Do NOT use these models for production**
 
 **✅ Use v7.0 models from `../current/` instead:**
+
 - `../current/methodology_classifier_v7/methodology_pipeline_v7.pkl`
 - Superior performance: 86.92% accuracy, 0.68 Mixed F1
 - Production-tested and reliable
@@ -100,4 +107,4 @@ While unsuitable for production, v8.0 provides excellent **educational examples*
 
 ## 👨‍💻 **Author's Note**
 
-"v8.0 represents an important learning moment in my research journey. While the models themselves don't improve upon v7.0, the process taught me invaluable lessons about assumption verification and the dangers of building on false premises. I'm keeping these models as educational examples for future researchers." - Aanand Prabhu 
+"v8.0 represents an important learning moment in my research journey. While the models themselves don't improve upon v7.0, the process taught me invaluable lessons about assumption verification and the dangers of building on false premises. I'm keeping these models as educational examples for future researchers." - Aanand Prabhu
