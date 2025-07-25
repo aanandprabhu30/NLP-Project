@@ -63,7 +63,7 @@ from joblib import load
 import pandas as pd
 
 # Load v8.0 ensemble model (best balance of accuracy and MIXED detection)
-ensemble_artifacts = load('Artefacts/current/v8.0/ensemble_classifier_v8/ensemble_artifacts.pkl')
+ensemble_artifacts = load('Artefacts/current/methodology_ensemble_v8/ensemble_artifacts.pkl')
 ensemble_model = ensemble_artifacts['v7_model']  # Includes both v7 and v8 components
 
 # Load production data
@@ -116,9 +116,8 @@ analyze_classification_confidence(results, title, abstract)
 
 **v8.0 (Active Development):**
 
-- `current/v8.0/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage MIXED detection
-- `current/v8.0/ensemble_classifier_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (recommended)
-- _Future: discipline, subfield classifiers v8.0 in development_
+- `current/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage MIXED detection
+- `current/methodology_ensemble_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (recommended)
 
 **v7.0 (Production Ready):**
 

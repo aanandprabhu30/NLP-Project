@@ -16,12 +16,10 @@ Methodologically sound models recommended for all real-world use
 
 **Use these for:** Production deployments, real-world applications, reliable classification
 
-### `current/v8.0/` - v8.0 (✅ **PRODUCTION READY**)
-
-Advanced MIXED detection specialist built on v7.0's methodological foundation
+**v8.0 Methodology Enhancement:**
 
 - `methodology_classifier_v8/` - Two-stage MIXED detection specialist (82.76% accuracy, +21.4% MIXED F1)
-- `ensemble_classifier_v8/` - v7+v8 ensemble model (84.57% accuracy, +29.4% MIXED F1)
+- `methodology_ensemble_v8/` - v7+v8 ensemble model (84.57% accuracy, +29.4% MIXED F1)
 
 **Use these for:** Production MIXED detection, specialized methodology classification, ensemble deployment
 
@@ -62,8 +60,8 @@ Contains all previous experiments, baseline models, and development iterations i
 # Load v8.0 models (cutting-edge development)
 from joblib import load
 
-methodology_model_v8 = load('current/v8.0/methodology_classifier_v8/artifacts_v8.pkl')
-ensemble_model_v8 = load('current/v8.0/ensemble_classifier_v8/ensemble_artifacts.pkl')
+methodology_model_v8 = load('current/methodology_classifier_v8/artifacts_v8.pkl')
+ensemble_model_v8 = load('current/methodology_ensemble_v8/ensemble_artifacts.pkl')
 ```
 
 ### For Production Use

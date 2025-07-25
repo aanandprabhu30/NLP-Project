@@ -16,13 +16,11 @@ Methodologically corrected notebooks that demonstrate proper ML practices
 
 **Use these for:** Learning proper ML methodology, production implementations, reliable approaches
 
-### `current/v8.0/` - v8.0 (✅ **PRODUCTION READY**)
-
-Advanced MIXED detection specialist built on v7.0's methodological foundation
+**v8.0 Methodology Enhancement:**
 
 - `methodology_classifier_v8.ipynb` - Two-stage MIXED detection specialist (82.76% accuracy, +21.4% MIXED F1, with ensemble: 84.57%)
 
-**Use these for:** Production MIXED detection, specialized methodology classification, ensemble approaches
+**Use this for:** Production MIXED detection, specialized methodology classification, ensemble approaches
 
 ### `v6.0_educational/` - v6.0 (⚠️ **EDUCATIONAL - SHOWS ML PITFALLS**)
 
@@ -63,7 +61,7 @@ Contains all development iterations including:
 
 ```bash
 # Use v8.0 production MIXED detection specialist
-jupyter notebook current/v8.0/methodology_classifier_v8.ipynb
+jupyter notebook current/methodology_classifier_v8.ipynb
 ```
 
 ### For Learning Proper ML Methodology
@@ -139,7 +137,7 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 | **Purpose** | **Use This** | **Environment** |
 |-------------|--------------|-----------------|
-| **v8.0 MIXED Detection** | `current/v8.0/` | Local nlp-bert kernel |
+| **v8.0 MIXED Detection** | `current/methodology_classifier_v8.ipynb` | Local nlp-bert kernel |
 | Production Code | `current/` | Local nlp-bert kernel |
 | Learning ML Methodology | `current/` vs `v6.0_educational/` | Any Python 3.11+ |
 | Research/Comparison | `legacy/` | Match original environment |
