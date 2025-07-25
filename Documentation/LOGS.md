@@ -89,7 +89,7 @@ v8.0 demonstrates how incorrect baseline assumptions can invalidate research con
 ### 🎯 Recommendations
 
 - **Production Deployment**: Use v7.0 models for all real-world applications
-- **Educational Examples**: 
+- **Educational Examples**:
   - v6.0: Learn about data leakage and overfitting pitfalls
   - v8.0: Learn about baseline verification and assumption testing
 - **Future Development**: Apply v7.0's methodology to advanced features for optimal results
