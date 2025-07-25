@@ -245,7 +245,7 @@ Following comprehensive analysis of v6.0 models, significant methodological issu
 
 #### Results (v7.0 Methodological Corrections)
 
-**Discipline Classifier v7.0:**
+**Discipline Classifier v7.0 Results:**
 
 - **Accuracy**: 92.32% (properly validated)
 - **Cross-validation**: 91.73% ± 0.94%
@@ -253,7 +253,7 @@ Following comprehensive analysis of v6.0 models, significant methodological issu
 - **Dataset**: 26,944 samples, properly split before augmentation
 - **Significance**: 2.45% lower than v6.0 but represents true model performance without data leakage
 
-**Methodology Classifier v7.0:**
+**Methodology Classifier v7.0 Results:**
 
 - **Accuracy**: 86.92% (methodologically sound)
 - **Cross-validation**: 86.57% ± 0.89%
@@ -261,7 +261,7 @@ Following comprehensive analysis of v6.0 models, significant methodological issu
 - **Dataset**: 26,944 samples, conservative augmentation
 - **Significance**: 4.95% lower than v6.0 but reliable for real-world use
 
-**Subfield Classifiers v7.0:**
+**Subfield Classifiers v7.0 Results:**
 
 - **CS Subfield**: 82.92% accuracy (logistic regression, properly validated)
 - **IS Subfield**: 80.33% accuracy (XGBoost, methodologically correct)
@@ -290,19 +290,19 @@ Following comprehensive analysis of v6.0 models, significant methodological issu
 
 #### Artifacts (v7.0 Methodological Corrections)
 
-**Discipline Classifier v7.0:**
+**Discipline Classifier v7.0 Artifacts:**
 
 - `discipline_classifier_v7/discipline_pipeline_v7.pkl` – Complete methodologically sound pipeline
 - `discipline_classifier_v7/artifacts_v7.pkl` – Training components and configuration
 - `discipline_classifier_v7/metrics_v7.txt` – Detailed performance metrics and validation results
 
-**Methodology Classifier v7.0:**
+**Methodology Classifier v7.0 Artifacts:**
 
 - `methodology_classifier_v7/methodology_pipeline_v7.pkl` – Complete methodologically sound pipeline
 - `methodology_classifier_v7/artifacts_v7.pkl` – Training components and configuration
 - `methodology_classifier_v7/metrics_v7.txt` – Detailed performance metrics and validation results
 
-**Subfield Classifiers v7.0:**
+**Subfield Classifiers v7.0 Artifacts:**
 
 - `cs_subfield_classifier_v7/cs_subfield_pipeline_v7.pkl` – CS subfield classifier (82.92% accuracy)
 - `is_subfield_classifier_v7/is_subfield_pipeline_v7.pkl` – IS subfield classifier (80.33% accuracy)
@@ -316,7 +316,7 @@ Following comprehensive analysis of v6.0 models, significant methodological issu
 - `OptimizedFeatureExtractor` class – Simplified, robust feature extraction
 - `[Task]ClassifierPipeline` classes – Production-ready pipelines with proper methodology
 
-#### Impact and Significance
+#### Impact and Significance (v7.0)
 
 ##### Project Completion with Critical Learning
 
@@ -383,7 +383,7 @@ While v7.0 provided methodologically sound classification with 86.92% accuracy, 
 
 ##### Comparison Summary
 
-```
+```bash
 Model Comparison:
 v7 (baseline):    86.92% accuracy | MIXED F1: ~0.35
 v8 (specialist):  82.76% accuracy | MIXED F1: 0.564 (+21.4%)
@@ -444,7 +444,7 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644 (+29.4%)
 - Extend methodology-specific feature engineering to other classification tasks
 - Investigate advanced ensemble methods beyond simple weighted combining
 
-#### Impact and Significance
+#### Impact and Significance (v8.0)
 
 ##### Methodological Advancement
 
