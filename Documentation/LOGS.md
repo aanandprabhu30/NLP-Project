@@ -133,8 +133,9 @@ v6.0 models show impressive test metrics but have fundamental methodological fla
 5. **Specialized Classification Enhancement (v8.0)** ✅
    - ✅ Developed two-stage methodology classifier targeting MIXED detection weakness
    - ✅ Developed alternative two-stage methodology approach (F1: 0.564 vs v7's 0.68)
+
 - ✅ Created v7+v8 ensemble experiment (84.57% accuracy, F1: 0.644 vs v7's 0.68)
-   - ✅ Established framework for targeted classification optimization
+  - ✅ Established framework for targeted classification optimization
 
 ### 🌟 Future Research Directions (Recommended Extensions)
 
@@ -338,7 +339,7 @@ v7.0 should be used for all production deployments. v6.0 serves as an educationa
 
 ---
 
-### 🎯 July 25th, 2025 – Methodology Classifier v8.0 (MIXED DETECTION SPECIALIST)
+### 🎯 July 25th, 2025 – Methodology Classifier v8.0 (TWO-STAGE ALTERNATIVE APPROACH)
 
 #### Background and Motivation
 
@@ -362,11 +363,11 @@ While v7.0 provided methodologically sound classification with 86.92% accuracy a
 
 ##### Advanced Ensemble Architecture
 
-- **v7+v8 Ensemble**: Optimal weighting (70% v7, 30% v8) determined through validation
+- **v7+v8 Ensemble**: Experimental weighting (70% v7, 30% v8) determined through validation
 - **Dynamic Weighting**: Increased v8 influence when MIXED methodology likely detected
-- **Best-of-Both**: Combines v7's overall accuracy with v8's specialized MIXED detection
+- **Combination Approach**: Combines v7's overall accuracy with v8's two-stage methodology
 
-#### Results (v8.0 MIXED Detection Specialist)
+#### Results (v8.0 Two-Stage Alternative)
 
 ##### v8.0 Standalone Performance
 
@@ -375,11 +376,11 @@ While v7.0 provided methodologically sound classification with 86.92% accuracy a
 - **MIXED Precision**: 0.61 | **MIXED Recall**: 0.52
 - **Strategic Trade-off**: Optimized for MIXED detection over general accuracy
 
-##### v8.0 Ensemble Performance (RECOMMENDED)
+##### v8.0 Ensemble Performance (EXPERIMENTAL)
 
-- **Overall Accuracy**: 84.57% - Best balance of accuracy and specialization
+- **Overall Accuracy**: 84.57% - Experimental balance of v7 and v8 approaches
 - **MIXED F1-score**: 0.644 (vs v7's 0.68) - **Similar performance**
-- **Production Ready**: Maintains high accuracy while significantly improving MIXED detection
+- **Experimental**: Maintains reasonable accuracy with alternative MIXED detection approach
 
 ##### Comparison Summary
 
@@ -410,7 +411,7 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644
 - Dynamic adjustment based on prediction confidence
 - Maintains compatibility with existing v7 production systems
 
-#### Artifacts (v8.0 MIXED Detection Specialist)
+#### Artifacts (v8.0 Two-Stage Alternative)
 
 ##### v8.0 Standalone Model
 
@@ -418,11 +419,11 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644
 - Contains: TwoStageMethodologyClassifier, MethodologyFeatureExtractor, optimized thresholds
 - Training config: threshold=0.6, feature_count=3011, performance metrics
 
-##### v8.0 Ensemble Model (RECOMMENDED)
+##### v8.0 Ensemble Model (EXPERIMENTAL)
 
-- `current/methodology_ensemble_v8/ensemble_artifacts.pkl` – Optimal v7+v8 ensemble
+- `current/methodology_ensemble_v8/ensemble_artifacts.pkl` – Experimental v7+v8 ensemble
 - Contains: v7_model, v8_model, feature_extractors, optimal_v7_weight=0.7
-- Production ready: MethodologyEnsembleClassifier class with simplified API
+- Experimental: MethodologyEnsembleClassifier class with simplified API
 
 ##### Development Documentation
 

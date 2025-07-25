@@ -20,14 +20,14 @@ This project classifies computing research abstracts by:
 
 - Discipline: 92.32% | Methodology: 86.92% | Subfield: 80-85%
 
-**v8.0 (MIXED Detection Specialist):** Two-stage methodology approach
+**v8.0 (Alternative Approach):** Two-stage methodology approach
 
 - Methodology: 82.76% (standalone) | MIXED F1: 0.564 vs v7.0's 0.68 | Ensemble: 84.57%
 
 ✅ **Production-ready unified pipeline with smart post-processing**  
 ✅ **Batch processing and confidence analysis capabilities**  
 ✅ **Critical learning: Proper methodology is essential for real-world performance**  
-🚀 **v8.0 in active development:** Next-generation improvements building on v7.0's foundation
+🔬 **v8.0 experimental approach:** Alternative two-stage methodology classification research
 
 ---
 
@@ -45,7 +45,7 @@ This project classifies computing research abstracts by:
 - **Benefits**: Reliable real-world performance, proper validation methodology
 - **Usage**: Recommended for general production deployments
 
-### v8.0: MIXED Detection Specialist (Alternative Approach)
+### v8.0: Two-Stage Alternative Approach
 
 - **Innovation**: Two-stage classification, methodology-specific features, ensemble approach  
 - **Approach**: Different detection strategy (F1: 0.564 vs v7.0's 0.68 Mixed F1)
@@ -56,7 +56,7 @@ This project classifies computing research abstracts by:
 
 ## 🚀 Quick Start
 
-### Load v8.0 MIXED Detection Specialist
+### Load v8.0 Alternative Approach (Optional)
 
 ```python
 from joblib import load
@@ -71,7 +71,7 @@ methodology_pipeline = load('Artefacts/current/methodology_classifier_v7/methodo
 # Load production data
 df = pd.read_csv('Data/Master.csv')  # 26,944 papers with all labels
 
-# Classify with enhanced MIXED detection
+# Classify with v7.0 methodology approach
 title = "A Mixed Methods Study of User Experience in Mobile Apps"
 abstract = "This research combines quantitative analytics with qualitative interviews..."
 
@@ -107,11 +107,11 @@ analyze_classification_confidence(results, title, abstract)
 
 | Folder | Description |
 |--------|-------------|
-| `/Artefacts/` | **current/**: v7.0 & v8.0 production models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
+| `/Artefacts/` | **current/**: v7.0 production & v8.0 experimental models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
 | `/Data/` | **Master.csv**: Production dataset (37MB) - 26,944 papers with title, abstract, discipline, subfield, methodology |
 | `/Documentation/` | **LOGS.md**: Complete development log \| Project documentation and insights |
 | `/Scripts/` | Data scraping scripts |
-| `/Notebooks/` | **current/**: v7.0 & v8.0 production notebooks \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
+| `/Notebooks/` | **current/**: v7.0 production & v8.0 experimental notebooks \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
 | `/requirements/` | **requirements.txt**: Standard use \| **requirements-minimal.txt**: Production only \| **requirements-dev.txt**: Full development |
 
 ### Key Model Files
@@ -143,7 +143,7 @@ analyze_classification_confidence(results, title, abstract)
 
 ## 📊 Performance Summary
 
-| **Task** | **v8.0 (Specialist)** | **v7.0 (Sound)** | **v6.0 (Flawed)** | **Recommendation** |
+| **Task** | **v8.0 (Alternative)** | **v7.0 (Sound)** | **v6.0 (Flawed)** | **Recommendation** |
 |----------|----------------------|-------------------|--------------------|--------------------|
 | Discipline | _Coming soon_ | 92.32% | 94.77% | Use v7.0 for reliability |
 | Methodology (Overall) | 82.76% | 86.92% | 91.87% | Use v7.0 for general use |

@@ -57,10 +57,10 @@ Contains all development iterations including:
 
 ## 🎯 Quick Start Guide
 
-### For v8.0 MIXED Detection Specialist
+### For v8.0 Alternative Approach
 
 ```bash
-# Use v8.0 production MIXED detection specialist
+# Use v8.0 experimental two-stage approach
 jupyter notebook current/methodology_classifier_v8.ipynb
 ```
 
@@ -102,11 +102,11 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 ## 📚 Learning Path Recommendations
 
-### 1. Use v8.0 MIXED Detection (Production Ready)
+### 1. Explore v8.0 Alternative Approach (Experimental)
 
 - Apply specialized MIXED methodology detection
 - Understand two-stage classification approach
-- Deploy ensemble models for optimal performance
+- Explore ensemble approaches for research
 
 ### 2. Master v7.0 (Proper Methodology)
 
