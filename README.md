@@ -63,7 +63,7 @@ from joblib import load
 import pandas as pd
 
 # Load v8.0 ensemble model (best balance of accuracy and MIXED detection)
-ensemble_artifacts = load('Artefacts/v8.0_development/ensemble_classifier_v8/ensemble_artifacts.pkl')
+ensemble_artifacts = load('Artefacts/current/v8.0/ensemble_classifier_v8/ensemble_artifacts.pkl')
 ensemble_model = ensemble_artifacts['v7_model']  # Includes both v7 and v8 components
 
 # Load production data
@@ -105,19 +105,19 @@ analyze_classification_confidence(results, title, abstract)
 
 | Folder | Description |
 |--------|-------------|
-| `/Artefacts/` | **v8.0_development/**: Latest enhancements \| **current/**: v7.0 production models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
+| `/Artefacts/` | **current/**: v7.0 & v8.0 production models \| **v6.0_educational/**: Educational examples \| **legacy/**: Historical development \| **shared/**: Common files |
 | `/Data/` | **Master.csv**: Production dataset (37MB) - 26,944 papers with title, abstract, discipline, subfield, methodology |
 | `/Documentation/` | **LOGS.md**: Complete development log \| Project documentation and insights |
 | `/Scripts/` | Data scraping scripts |
-| `/Notebooks/` | **v8.0_development/**: Latest innovations \| **current/**: v7.0 methodology \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
+| `/Notebooks/` | **current/**: v7.0 & v8.0 production notebooks \| **v6.0_educational/**: Shows ML pitfalls \| **unified/**: Complete system \| **legacy/**: Historical development |
 | `/requirements/` | **requirements.txt**: Standard use \| **requirements-minimal.txt**: Production only \| **requirements-dev.txt**: Full development |
 
 ### Key Model Files
 
 **v8.0 (Active Development):**
 
-- `v8.0_development/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage MIXED detection
-- `v8.0_development/ensemble_classifier_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (recommended)
+- `current/v8.0/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage MIXED detection
+- `current/v8.0/ensemble_classifier_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (recommended)
 - _Future: discipline, subfield classifiers v8.0 in development_
 
 **v7.0 (Production Ready):**

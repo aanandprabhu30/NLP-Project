@@ -414,19 +414,19 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644 (+29.4%)
 
 ##### v8.0 Standalone Model
 
-- `v8.0_development/methodology_classifier_v8/artifacts_v8.pkl` – Complete v8.0 two-stage model
+- `current/v8.0/methodology_classifier_v8/artifacts_v8.pkl` – Complete v8.0 two-stage model
 - Contains: TwoStageMethodologyClassifier, MethodologyFeatureExtractor, optimized thresholds
 - Training config: threshold=0.6, feature_count=3011, performance metrics
 
 ##### v8.0 Ensemble Model (RECOMMENDED)
 
-- `v8.0_development/ensemble_classifier_v8/ensemble_artifacts.pkl` – Optimal v7+v8 ensemble
+- `current/v8.0/ensemble_classifier_v8/ensemble_artifacts.pkl` – Optimal v7+v8 ensemble
 - Contains: v7_model, v8_model, feature_extractors, optimal_v7_weight=0.7
 - Production ready: MethodologyEnsembleClassifier class with simplified API
 
 ##### Development Documentation
 
-- `Notebooks/v8.0_development/methodology_classifier_v8.ipynb` – Complete development process
+- `Notebooks/current/v8.0/methodology_classifier_v8.ipynb` – Complete development process
 - Threshold optimization results, feature engineering process, ensemble evaluation
 - Ready for replication and further development
 

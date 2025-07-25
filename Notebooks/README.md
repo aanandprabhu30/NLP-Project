@@ -16,14 +16,13 @@ Methodologically corrected notebooks that demonstrate proper ML practices
 
 **Use these for:** Learning proper ML methodology, production implementations, reliable approaches
 
-### `v8.0_development/` - v8.0 (🚀 **ACTIVE DEVELOPMENT**)
+### `current/v8.0/` - v8.0 (✅ **PRODUCTION READY**)
 
-Next-generation improvements building on v7.0's methodological foundation
+Advanced MIXED detection specialist built on v7.0's methodological foundation
 
-- `methodology_classifier_v8.ipynb` - Two-stage MIXED detection specialist (82.76% accuracy, +21.4% MIXED F1)
-- _Future: discipline, subfield classifiers v8.0 to be added_
+- `methodology_classifier_v8.ipynb` - Two-stage MIXED detection specialist (82.76% accuracy, +21.4% MIXED F1, with ensemble: 84.57%)
 
-**Use these for:** Exploring latest improvements, experimental features, cutting-edge development
+**Use these for:** Production MIXED detection, specialized methodology classification, ensemble approaches
 
 ### `v6.0_educational/` - v6.0 (⚠️ **EDUCATIONAL - SHOWS ML PITFALLS**)
 
@@ -60,11 +59,11 @@ Contains all development iterations including:
 
 ## 🎯 Quick Start Guide
 
-### For Latest Development (v8.0)
+### For v8.0 MIXED Detection Specialist
 
 ```bash
-# Explore cutting-edge v8.0 development
-jupyter notebook v8.0_development/methodology_classifier_v8.ipynb
+# Use v8.0 production MIXED detection specialist
+jupyter notebook current/v8.0/methodology_classifier_v8.ipynb
 ```
 
 ### For Learning Proper ML Methodology
@@ -105,11 +104,11 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 ## 📚 Learning Path Recommendations
 
-### 1. Explore v8.0 Development (Latest Innovations)
+### 1. Use v8.0 MIXED Detection (Production Ready)
 
-- Follow cutting-edge improvements
-- Understand next-generation approaches
-- Contribute to active development
+- Apply specialized MIXED methodology detection
+- Understand two-stage classification approach
+- Deploy ensemble models for optimal performance
 
 ### 2. Master v7.0 (Proper Methodology)
 
@@ -140,7 +139,7 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 | **Purpose** | **Use This** | **Environment** |
 |-------------|--------------|-----------------|
-| **Latest Development** | `v8.0_development/` | Local nlp-bert kernel |
+| **v8.0 MIXED Detection** | `current/v8.0/` | Local nlp-bert kernel |
 | Production Code | `current/` | Local nlp-bert kernel |
 | Learning ML Methodology | `current/` vs `v6.0_educational/` | Any Python 3.11+ |
 | Research/Comparison | `legacy/` | Match original environment |
