@@ -6,7 +6,7 @@ This folder contains the final, production-ready dataset for the NLP classificat
 
 | File | Size | Date | Description |
 |------|------|------|-------------|
-| **`Master.csv`** | 37MB | July 22, 2025 | **Complete production dataset** - All papers with discipline, subfield, methodology labels |
+| **`Master.csv`** | 37MB | July 23, 2025 | **Complete production dataset** - All papers with discipline, subfield, methodology labels |
 | `README.md` | 5.8KB | Documentation | This file |
 
 ## 📋 **Master.csv Columns**
@@ -58,7 +58,7 @@ cs_ai_papers = df[(df['discipline'] == 'CS') & (df['subfield'] == 'AI/ML')]
 ### Production Dataset (Master.csv)
 
 - **Total papers**: ~26,944
-- **Date**: July 22, 2025 (latest)
+- **Date**: July 23, 2025 (latest)
 - **Quality**: Production-ready, LLM-validated
 - **Completeness**: All three classification tasks included
 
