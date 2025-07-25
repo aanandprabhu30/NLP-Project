@@ -20,9 +20,9 @@ This project classifies computing research abstracts by:
 
 - Discipline: 92.32% | Methodology: 86.92% | Subfield: 80-85%
 
-**v8.0 (MIXED Detection Specialist):** Enhanced mixed methodology identification
+**v8.0 (MIXED Detection Specialist):** Two-stage methodology approach
 
-- Methodology: 82.76% (standalone) | MIXED F1: +21.4% improvement | Ensemble: 84.57%
+- Methodology: 82.76% (standalone) | MIXED F1: 0.564 vs v7.0's 0.68 | Ensemble: 84.57%
 
 ✅ **Production-ready unified pipeline with smart post-processing**  
 ✅ **Batch processing and confidence analysis capabilities**  
@@ -45,12 +45,12 @@ This project classifies computing research abstracts by:
 - **Benefits**: Reliable real-world performance, proper validation methodology
 - **Usage**: Recommended for general production deployments
 
-### v8.0: MIXED Detection Specialist (Targeted Use)
+### v8.0: MIXED Detection Specialist (Alternative Approach)
 
-- **Innovation**: Two-stage classification, methodology-specific features, ensemble approach
-- **Strength**: 21.4% improvement in MIXED methodology detection (F1: 0.564 vs 0.35)
-- **Trade-off**: Slight overall accuracy decrease (82.76% vs 86.92%) for specialized performance
-- **Usage**: Use when MIXED methodology detection is critical; ensemble for balanced performance
+- **Innovation**: Two-stage classification, methodology-specific features, ensemble approach  
+- **Approach**: Different detection strategy (F1: 0.564 vs v7.0's 0.68 Mixed F1)
+- **Trade-off**: Lower overall accuracy (82.76% vs 86.92%) for specialized two-stage methodology
+- **Usage**: Alternative approach for methodology classification; v7.0 recommended for general use
 
 ---
 
@@ -62,9 +62,11 @@ This project classifies computing research abstracts by:
 from joblib import load
 import pandas as pd
 
-# Load v8.0 ensemble model (best balance of accuracy and MIXED detection)
-ensemble_artifacts = load('Artefacts/current/methodology_ensemble_v8/ensemble_artifacts.pkl')
-ensemble_model = ensemble_artifacts['v7_model']  # Includes both v7 and v8 components
+# Load v7.0 methodology model (recommended for production)
+methodology_pipeline = load('Artefacts/current/methodology_classifier_v7/methodology_pipeline_v7.pkl')
+
+# Alternative: Load v8.0 ensemble (two-stage approach)
+# ensemble_artifacts = load('Artefacts/current/methodology_ensemble_v8/ensemble_artifacts.pkl')
 
 # Load production data
 df = pd.read_csv('Data/Master.csv')  # 26,944 papers with all labels
@@ -73,7 +75,7 @@ df = pd.read_csv('Data/Master.csv')  # 26,944 papers with all labels
 title = "A Mixed Methods Study of User Experience in Mobile Apps"
 abstract = "This research combines quantitative analytics with qualitative interviews..."
 
-methodology = ensemble_model.predict([abstract])  # Better MIXED detection
+methodology = methodology_pipeline.predict([abstract])  # Recommended approach
 ```
 
 ### Load v7.0 Production Models
@@ -114,10 +116,10 @@ analyze_classification_confidence(results, title, abstract)
 
 ### Key Model Files
 
-**v8.0 (MIXED Detection Specialist):**
+**v8.0 (Alternative Approach):**
 
-- `current/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage MIXED detection
-- `current/methodology_ensemble_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (recommended)
+- `current/methodology_classifier_v8/artifacts_v8.pkl` - Two-stage methodology approach
+- `current/methodology_ensemble_v8/ensemble_artifacts.pkl` - v7+v8 ensemble (experimental)
 
 **v7.0 (Production Ready):**
 
@@ -145,13 +147,13 @@ analyze_classification_confidence(results, title, abstract)
 |----------|----------------------|-------------------|--------------------|--------------------|
 | Discipline | _Coming soon_ | 92.32% | 94.77% | Use v7.0 for reliability |
 | Methodology (Overall) | 82.76% | 86.92% | 91.87% | Use v7.0 for general use |
-| Methodology (MIXED F1) | **0.564** (+21.4%) | ~0.35 | N/A | **Use v8.0 for MIXED detection** |
-| Methodology (Ensemble) | **84.57%** | 86.92% | 91.87% | **Use ensemble for balance** |
+| Methodology (MIXED F1) | **0.564** | **0.68** | N/A | **v7.0 better for MIXED detection** |
+| Methodology (Ensemble) | **84.57%** | **86.92%** | 91.87% | **v7.0 recommended** |
 | CS Subfield | _Coming soon_ | 82.92% | 89.61% | Use v7.0 for production |
 | IS Subfield | _Coming soon_ | 80.33% | 83.39% | Use v7.0 for production |
 | IT Subfield | _Coming soon_ | 85.39% | 88.48% | Use v7.0 for production |
 
-> **Key Learning**: v8.0 trades overall accuracy for specialized MIXED detection. Ensemble provides optimal balance.
+> **Key Learning**: v7.0 provides optimal performance across all methodology classes. v8.0 offers alternative two-stage approach.
 
 ---
 

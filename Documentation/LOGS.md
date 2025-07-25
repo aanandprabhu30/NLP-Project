@@ -132,8 +132,8 @@ v6.0 models show impressive test metrics but have fundamental methodological fla
    - ✅ Demonstrated importance of proper data science practices
 5. **Specialized Classification Enhancement (v8.0)** ✅
    - ✅ Developed two-stage methodology classifier targeting MIXED detection weakness
-   - ✅ Achieved 21.4% improvement in MIXED methodology F1-score (0.564 vs 0.35)
-   - ✅ Created optimal ensemble combining v7 and v8 (84.57% accuracy, +29.4% MIXED F1)
+   - ✅ Developed alternative two-stage methodology approach (F1: 0.564 vs v7's 0.68)
+- ✅ Created v7+v8 ensemble experiment (84.57% accuracy, F1: 0.644 vs v7's 0.68)
    - ✅ Established framework for targeted classification optimization
 
 ### 🌟 Future Research Directions (Recommended Extensions)
@@ -342,9 +342,9 @@ v7.0 should be used for all production deployments. v6.0 serves as an educationa
 
 #### Background and Motivation
 
-While v7.0 provided methodologically sound classification with 86.92% accuracy, analysis revealed a critical weakness: poor detection of MIXED methodology papers (F1-score ~0.35). This significant gap in MIXED methodology identification motivated the development of v8.0 as a specialized solution.
+While v7.0 provided methodologically sound classification with 86.92% accuracy and solid Mixed methodology detection (F1-score 0.68), exploration of alternative approaches led to the development of v8.0 as a two-stage methodology classifier experiment.
 
-#### Implementation (v8.0 MIXED Detection Enhancement)
+#### Implementation (v8.0 Two-Stage Methodology Approach)
 
 ##### Core Innovation: Two-Stage Classification
 
@@ -371,23 +371,23 @@ While v7.0 provided methodologically sound classification with 86.92% accuracy, 
 ##### v8.0 Standalone Performance
 
 - **Overall Accuracy**: 82.76% (vs 86.92% v7) - Strategic 4.16% decrease
-- **MIXED F1-score**: 0.564 (vs ~0.35 v7) - **+21.4% improvement**
+- **MIXED F1-score**: 0.564 (vs 0.68 v7) - **Different approach**
 - **MIXED Precision**: 0.61 | **MIXED Recall**: 0.52
 - **Strategic Trade-off**: Optimized for MIXED detection over general accuracy
 
 ##### v8.0 Ensemble Performance (RECOMMENDED)
 
 - **Overall Accuracy**: 84.57% - Best balance of accuracy and specialization
-- **MIXED F1-score**: 0.644 - **+29.4% improvement over v7 baseline**
+- **MIXED F1-score**: 0.644 (vs v7's 0.68) - **Similar performance**
 - **Production Ready**: Maintains high accuracy while significantly improving MIXED detection
 
 ##### Comparison Summary
 
 ```bash
 Model Comparison:
-v7 (baseline):    86.92% accuracy | MIXED F1: ~0.35
-v8 (specialist):  82.76% accuracy | MIXED F1: 0.564 (+21.4%)
-Ensemble:         84.57% accuracy | MIXED F1: 0.644 (+29.4%)
+v7 (baseline):    86.92% accuracy | MIXED F1: 0.68
+v8 (alternative): 82.76% accuracy | MIXED F1: 0.564 
+Ensemble:         84.57% accuracy | MIXED F1: 0.644
 ```
 
 #### Key Technical Innovations
@@ -434,9 +434,9 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644 (+29.4%)
 
 ##### Use Case Optimization
 
-- **v7.0**: General methodology classification where overall accuracy is priority
-- **v8.0**: Research contexts where MIXED methodology detection is critical
-- **Ensemble**: Production deployments requiring balance of accuracy and MIXED detection
+- **v7.0**: **Recommended for all production use** - excellent overall performance (86.92% accuracy, 0.68 Mixed F1)
+- **v8.0**: Experimental two-stage approach with different trade-offs (82.76% accuracy, 0.564 Mixed F1)
+- **Ensemble**: Research experiment combining approaches (84.57% accuracy, 0.644 Mixed F1)
 
 ##### Future Development
 
@@ -452,11 +452,11 @@ Ensemble:         84.57% accuracy | MIXED F1: 0.644 (+29.4%)
 - Shows how ensemble methods can achieve better overall performance than individual models
 - Provides framework for addressing class imbalance in academic text classification
 
-##### Production Value
+##### Research Value
 
-- Ensemble model ready for immediate deployment where MIXED detection matters
-- Maintains compatibility with existing v7 infrastructure
-- Offers clear upgrade path with quantified performance benefits
+- Demonstrates alternative two-stage methodology classification approach
+- Maintains compatibility with existing v7 infrastructure  
+- Provides framework for exploring different classification strategies
 
 ##### Research Contribution
 

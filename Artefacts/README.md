@@ -18,10 +18,10 @@ Methodologically sound models recommended for all real-world use
 
 **v8.0 Methodology Enhancement:**
 
-- `methodology_classifier_v8/` - Two-stage MIXED detection specialist (82.76% accuracy, +21.4% MIXED F1)
-- `methodology_ensemble_v8/` - v7+v8 ensemble model (84.57% accuracy, +29.4% MIXED F1)
+- `methodology_classifier_v8/` - Two-stage methodology approach (82.76% accuracy, 0.564 Mixed F1)
+- `methodology_ensemble_v8/` - v7+v8 ensemble experiment (84.57% accuracy, 0.644 Mixed F1)
 
-**Use these for:** Production MIXED detection, specialized methodology classification, ensemble deployment
+**Use these for:** Research into two-stage classification, methodology approach experiments
 
 ### `v6.0_educational/` - v6.0 (⚠️ **EDUCATIONAL USE ONLY**)
 
@@ -60,8 +60,12 @@ Contains all previous experiments, baseline models, and development iterations i
 # Load v8.0 models (cutting-edge development)
 from joblib import load
 
-methodology_model_v8 = load('current/methodology_classifier_v8/artifacts_v8.pkl')
-ensemble_model_v8 = load('current/methodology_ensemble_v8/ensemble_artifacts.pkl')
+# Recommended for production
+methodology_model_v7 = load('current/methodology_classifier_v7/methodology_pipeline_v7.pkl')
+
+# Alternative experimental approaches
+# methodology_model_v8 = load('current/methodology_classifier_v8/artifacts_v8.pkl')
+# ensemble_model_v8 = load('current/methodology_ensemble_v8/ensemble_artifacts.pkl')
 ```
 
 ### For Production Use
@@ -92,7 +96,7 @@ If updating existing code:
 
 | **Version** | **Status** | **Accuracy** | **Recommendation** |
 |-------------|------------|--------------|-------------------|
-| **v8.0** | 🚀 Development | 82.76% (+21.4% MIXED F1) | MIXED detection specialist |
+| **v8.0** | 🔬 Experimental | 82.76% (0.564 Mixed F1) | Two-stage approach |
 | **v7.0** | ✅ Production | 92.32% (sound) | Use for deployment |
 | **v6.0** | ⚠️ Educational | 94.77% (flawed) | Study methodology issues |
 | **Legacy** | 📚 Historical | Various | Reference only |
