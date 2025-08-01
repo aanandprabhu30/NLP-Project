@@ -19,9 +19,7 @@ from collections import Counter
 
 # Configuration
 API_KEYS = [
-    "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",
-    "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",
-    "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"
+   
 ]
 
 # Rate limiting configuration
