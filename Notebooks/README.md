@@ -36,6 +36,20 @@ False premise research example - valuable for learning about baseline verificati
 
 **Use this for:** Learning about baseline verification, research methodology rigor, assumption validation
 
+### `v9.0_educational/` - v9.0 (⚠️ **EDUCATIONAL - DISCONTINUED APPROACH**)
+
+Data augmentation techniques with detailed 8-category classification - ultimately abandoned
+
+- `methodology_classifier_v9.ipynb` - 78.42% accuracy (solid implementation, impractical classification scheme)
+
+**Experimental approach:** Attempted detailed 8-category methodology classification (ALGO, CASE, SYST, EXPT, PERF, REVW, ANAL, UNKNOWN) with advanced data augmentation techniques
+
+**Why discontinued:** Too much definitional overlap and classification ambiguity between categories made the approach impractical despite solid technical implementation
+
+**Final decision:** Reverted to standard 3-level QUAL/QUANT/MIXED classification for production use
+
+**Use this for:** Learning data augmentation techniques, feature optimization strategies, strategic decision-making in ML projects
+
 ### `unified/`
 
 Complete integrated classification systems
@@ -73,6 +87,13 @@ jupyter notebook v8.0_educational/methodology_classifier_v8.ipynb
 ```bash
 # Study v7.0 notebooks (recommended approach)
 jupyter notebook current/discipline_v7.ipynb
+```
+
+### For Data Augmentation & Strategic Decision-Making
+
+```bash
+# Study v9.0 discontinued approach (educational value)
+jupyter notebook v9.0_educational/methodology_classifier_v9.ipynb
 ```
 
 ### For Understanding Common ML Mistakes
@@ -124,7 +145,14 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 - Understand how false assumptions invalidate conclusions
 - See why simple approaches often beat complex ones
 
-### 4. Study Evolution (Legacy)
+### 4. Study v9.0 Educational Examples (Strategic Decision-Making)
+
+- Learn advanced data augmentation techniques
+- Understand when to abandon complex approaches
+- See practical classification scheme design decisions
+- Learn about definitional overlap issues in ML
+
+### 5. Study Evolution (Legacy)
 
 - See how the project developed over time
 - Understand different approaches tried
@@ -143,12 +171,23 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 | **Purpose** | **Use This** | **Environment** |
 |-------------|--------------|-----------------|
 | **False Premise Study** | `v8.0_educational/methodology_classifier_v8.ipynb` | Local nlp-bert kernel |
+| **Data Augmentation Study** | `v9.0_educational/methodology_classifier_v9.ipynb` | Local nlp-bert kernel |
 | Production Code | `current/` | Local nlp-bert kernel |
 | Learning ML Methodology | `current/` vs `v6.0_educational/` | Any Python 3.11+ |
 | Research/Comparison | `legacy/` | Match original environment |
 | Complete System (Reliable) | `unified/unified_pipeline_v7.ipynb` | Local nlp-bert kernel |
 | Complete System (Educational) | `unified/unified_classification_pipeline.ipynb` | Local nlp-bert kernel |
 
-## 🎓 Key Learning Insight
+## 🎓 Key Learning Insights
 
-The most valuable outcome from this notebook collection is the comparison between v6.0 and v7.0, which demonstrates that **proper methodology is more important than complex feature engineering**. v7.0's slightly lower but methodologically sound results are far more valuable than v6.0's inflated scores.
+### **Methodology Over Complexity**
+
+The comparison between v6.0 and v7.0 demonstrates that **proper methodology is more important than complex feature engineering**. v7.0's slightly lower but methodologically sound results are far more valuable than v6.0's inflated scores.
+
+### **Practical Classification Design**
+
+The v9.0 experience shows that **simpler approaches often outperform complex ones in practical applications**. Despite solid technical implementation, the 8-category detailed classification was abandoned for the cleaner QUAL/QUANT/MIXED approach due to definitional overlap and ambiguity issues.
+
+### **Strategic Decision-Making**
+
+Sometimes the most valuable lesson is knowing **when to abandon a technically successful approach** in favor of a more practical solution. v9.0's discontinuation demonstrates mature engineering judgment.

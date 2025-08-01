@@ -30,9 +30,79 @@ The project follows a modular architecture with three main components:
    - Performance metrics tracking
    - Error analysis and model debugging
 
-## 📊 Project Status (July 25th, 2025)
+## 📊 Project Status (August 1st, 2025)
 
-### 🚨 Critical Discovery: v6.0 Methodological Issues (July 2025)
+### 🎓 Complete Educational Framework Established (August 1st, 2025)
+
+Following the development of v9.0 educational examples, the project now provides a **comprehensive educational framework** covering all major ML methodology challenges encountered during development.
+
+#### Comprehensive Documentation Achievement
+
+- **Complete README Coverage**: All notebook subdirectories now have detailed documentation
+  - `Notebooks/current/README.md`: v7.0 production notebooks (methodologically sound)
+  - `Notebooks/v6.0_educational/README.md`: Data leakage examples and pitfalls
+  - `Notebooks/v8.0_educational/README.md`: False premise research case study
+  - `Notebooks/v9.0_educational/README.md`: Strategic decision-making examples
+  - `Notebooks/unified/README.md`: Complete integrated classification systems
+  - `Notebooks/legacy/README.md`: Historical development evolution (v1.x-v5.x)
+  
+- **Artifacts Documentation**: Complete artifact documentation including v9.0 educational examples
+  - `Artefacts/v9.0_educational/README.md`: Strategic decision-making case study with discontinued 8-category classification
+
+- **Data Documentation**: Enhanced dataset documentation including experimental approaches
+  - `Data/README.md`: Production and experimental datasets with clear usage guidance
+
+#### v9.0 Educational Framework Overview: Strategic Decision-Making Case Study
+
+The v9.0 approach represents a **technically successful but strategically discontinued** classification system, providing valuable lessons in ML engineering decision-making.
+
+**Technical Achievement (v9.0)**:
+
+- **Accuracy**: 78.42% on 8-category detailed methodology classification
+- **Approach**: Advanced data augmentation with OptimizedFeatureExtractor
+- **Categories**: ALGO, CASE, SYST, REVW, EXPT, PERF, ANAL, UNKNOWN
+- **Methodology**: Proper validation, no data leakage, solid implementation
+
+**Strategic Issues Identified**:
+
+- **Definitional Overlap**: Categories not mutually exclusive (e.g., ALGO vs SYST, CASE vs EXPT)
+- **Classification Ambiguity**: Difficult for human annotators to assign consistently
+- **Reduced Practical Value**: 8 categories too granular for most research applications
+- **Annotation Challenges**: Complex boundaries led to inconsistent labeling
+
+**Strategic Decision: Discontinuation**:
+
+- **Abandoned complex approach** in favor of proven 3-level QUAL/QUANT/MIXED classification
+- **Preserved educational value** through complete documentation and artifacts
+- **Demonstrated mature engineering judgment**: Technical success ≠ practical success
+
+#### Complete Educational Framework Now Available
+
+| **Educational Topic** | **Version** | **Key Lesson** | **Artifacts Available** |
+|----------------------|-------------|----------------|------------------------|
+| **Data Leakage Prevention** | v6.0 | Methodology > High Test Scores | ✅ Complete models, notebooks, documentation |
+| **Baseline Verification** | v8.0 | Always Verify Assumptions | ✅ Complete models, notebooks, documentation |
+| **Strategic Decision-Making** | v9.0 | Simple Often Beats Complex | ✅ Complete models, notebooks, documentation |
+| **Production Standards** | v7.0 | Methodologically Sound Approach | ✅ Complete models, notebooks, documentation |
+
+#### Dataset Enhancement
+
+- **MASTER_DETAILED_METHODOLOGY.csv**: 27,114 papers with experimental 8-category detailed methodology labels
+- **Master.csv**: 27,114 papers with production 3-level methodology labels (QUAL/QUANT/MIXED)
+- **Dual-purpose structure**: Production clarity + Educational preservation
+
+#### Impact and Significance
+
+- **Complete ML Education Resource**: Covers data leakage, false premise research, and strategic decision-making
+- **Real-world Engineering Lessons**: When to abandon technically successful but impractical approaches
+- **Comprehensive Case Studies**: All major ML methodology challenges documented with complete artifacts
+- **Strategic Framework**: Guidelines for complex vs simple approach decisions in ML projects
+
+---
+
+## 📅 Development Timeline
+
+### 🚨 July 25th, 2025 – Critical Discovery: v6.0 Methodological Issues
 
 #### Major Finding
 
@@ -202,9 +272,161 @@ v8.0 demonstrates how incorrect baseline assumptions can invalidate research con
 
 The most important outcome of this project is not the specific accuracy numbers, but the demonstration that **methodological soundness is fundamental to reliable machine learning**. v7.0's slightly lower but properly validated scores represent true model performance and are far more valuable than v6.0's inflated but unreliable metrics.
 
----
+### 📚 August 1st, 2025 – Complete Educational Framework and v9.0 Documentation
 
-## 📅 Development Timeline
+#### Comprehensive Documentation Project
+
+Major documentation effort to create complete educational framework covering all ML methodology challenges encountered during project development.
+
+#### Documentation Created
+
+##### Notebook READMEs (Complete Coverage)
+
+- **`Notebooks/current/README.md`**: v7.0 production notebooks documentation
+  - Performance summary: 92.32% discipline, 86.92% methodology, 80-85% subfields
+  - Methodologically sound practices and production-ready artifacts
+  - Proper data splitting and validation techniques
+
+- **`Notebooks/v6.0_educational/README.md`**: Data leakage educational examples
+  - Inflated performance metrics: 94.77% discipline, 91.87% methodology
+  - Detailed analysis of methodological flaws and data leakage issues
+  - Educational value for learning ML pitfalls
+
+- **`Notebooks/v8.0_educational/README.md`**: False premise research case study
+  - Performance metrics: 82.76% accuracy, 0.564 Mixed F1 vs v7.0's 0.68
+  - Educational example of baseline verification importance
+  - Case study in research methodology rigor
+
+- **`Notebooks/v9.0_educational/README.md`**: Strategic decision-making examples
+  - Performance metrics: 78.42% accuracy on 8-category detailed methodology
+  - Advanced data augmentation techniques with discontinued approach
+  - Strategic insights on when to abandon complex approaches
+
+- **`Notebooks/unified/README.md`**: Complete integrated classification systems
+  - Documentation of hierarchical discipline → subfield → methodology workflows
+  - Smart post-processing and confidence-based corrections
+  - Production deployment examples
+
+- **`Notebooks/legacy/README.md`**: Historical development evolution
+  - Complete documentation of v1.x-v5.x development iterations
+  - Performance evolution and lessons learned
+  - Technical progression from basic models to advanced implementations
+
+##### Artifacts Documentation
+
+- **`Artefacts/README.md`**: Enhanced to include v9.0 educational artifacts
+  - Complete version comparison with educational status indicators
+  - Strategic decision-making framework documentation
+  - Comprehensive educational framework overview
+
+- **`Artefacts/v9.0_educational/README.md`**: Strategic decision-making case study
+  - Complete v9.0 artifact documentation (methodology_pipeline_v9.pkl, artifacts_v9.pkl, metrics_v9.txt)
+  - Detailed analysis of why 8-category approach was discontinued
+  - Educational value for learning strategic engineering decisions
+
+##### Data Documentation
+
+- **`Data/README.md`**: Enhanced dataset documentation
+  - Added MASTER_DETAILED_METHODOLOGY.csv documentation
+  - Clear distinction between production and experimental datasets
+  - Usage recommendations for each dataset type
+
+#### v9.0 Educational Framework: Strategic Decision-Making Case Study
+
+##### v9.0 Technical Implementation
+
+- **Approach**: Advanced data augmentation with detailed 8-category methodology classification
+- **Performance**: 78.42% test accuracy, 77.13% ± 1.31% cross-validation
+- **Categories**: ALGO (26.4%), CASE (21.8%), SYST (17.1%), REVW (11.4%), EXPT (7.8%), PERF (7.7%), ANAL (6.1%), UNKNOWN (1.7%)
+- **Technical Quality**: Solid implementation with proper methodology, no data leakage
+
+##### Strategic Issues and Discontinuation
+
+- **Definitional Overlap**: Categories not mutually exclusive (ALGO vs SYST, CASE vs EXPT, EXPT vs PERF)
+- **Classification Ambiguity**: Difficult for human annotators to assign papers consistently
+- **Reduced Practical Value**: 8 categories too granular for most research applications
+- **Strategic Decision**: Abandoned complex approach for proven 3-level QUAL/QUANT/MIXED classification
+
+##### Educational Value
+
+- **Strategic Decision-Making**: When to abandon technically successful but impractical approaches
+- **Data Augmentation Techniques**: Advanced text augmentation and feature optimization
+- **Complex Classification Design**: Challenges in multi-category classification scheme design
+- **Engineering Maturity**: Technical excellence ≠ practical success
+
+#### Dataset Enhancement (August 1st, 2025)
+
+##### MASTER_DETAILED_METHODOLOGY.csv Creation
+
+- **Size**: 27,114 papers (same as Master.csv)
+- **Purpose**: Experimental dataset with 8-category detailed methodology labels
+- **Status**: Discontinued approach preserved for educational study
+- **Usage**: Educational analysis of complex classification schemes
+
+##### Dual-Dataset Structure
+
+- **Master.csv**: Production dataset with 3-level methodology (QUAL/QUANT/MIXED)
+- **MASTER_DETAILED_METHODOLOGY.csv**: Experimental dataset with 8-level methodology
+- **Design**: Dual-purpose structure for production clarity and educational preservation
+
+#### Complete Educational Framework Achievement
+
+##### Four-Pillar Educational Structure
+
+| **Educational Topic** | **Version** | **Key Lesson** | **Artifacts** |
+|----------------------|-------------|----------------|---------------|
+| **Data Leakage Prevention** | v6.0 | Methodology > High Test Scores | ✅ Complete |
+| **Baseline Verification** | v8.0 | Always Verify Assumptions | ✅ Complete |
+| **Strategic Decision-Making** | v9.0 | Simple Often Beats Complex | ✅ Complete |
+| **Production Standards** | v7.0 | Methodologically Sound Approach | ✅ Complete |
+
+##### Documentation Standards
+
+- **Complete README coverage**: All major directories documented
+- **Performance verification**: All accuracy values verified against actual notebook outputs
+- **Educational context**: Each version's purpose and lessons clearly explained
+- **Strategic insights**: Decision-making frameworks for ML engineering
+
+#### Impact and Significance (August 1st, 2025)
+
+##### Educational Contribution (Documentation Framework)
+
+- **Comprehensive ML Education Resource**: Complete case studies for all major ML methodology challenges
+- **Real-world Engineering Lessons**: Strategic decision-making in ML project development
+- **Practical Guidelines**: When to use complex vs simple approaches
+- **Complete Documentation**: All artifacts preserved with educational context
+
+##### Strategic Framework
+
+- **Technical Excellence ≠ Practical Success**: v9.0 demonstrates this principle
+- **Simple Approaches Often Superior**: 3-level methodology outperforms 8-level in practice
+- **Documentation Preservation**: Educational value of discontinued approaches
+- **Mature Engineering Judgment**: Knowing when to abandon technically sound approaches
+
+##### Future Educational Use
+
+- **ML Methodology Training**: Complete case studies for educational institutions
+- **Research Methodology**: Examples of proper validation vs common pitfalls
+- **Strategic Thinking**: Engineering decision-making frameworks
+- **Comprehensive Reference**: Complete documentation for all approaches
+
+#### Artifacts (August 1st, 2025)
+
+##### Documentation Files Created
+
+- 7 comprehensive README.md files for notebook subdirectories
+- 2 enhanced README.md files for artifacts and data
+- Complete performance verification and accuracy validation
+- Strategic decision-making documentation and frameworks
+
+##### Educational Framework Artifacts
+
+- Complete educational artifacts for all versions (v6.0, v7.0, v8.0, v9.0)
+- Strategic decision-making case studies with full documentation
+- Comprehensive ML methodology training resources
+- Real-world engineering lessons with practical applications
+
+---
 
 ### 🔬 July 23rd, 2025 – Classifier v7.0 (METHODOLOGICAL CORRECTION - PRODUCTION RECOMMENDED)
 
@@ -940,27 +1162,37 @@ Aanand Prabhu
 
 > _Submitted as part of my BSc Final Year Project in Computer Science – University of London_
 >
-> **Project Status: COMPLETE with Critical Methodological Learnings**
+> **Project Status: COMPLETE with Comprehensive Educational Framework**
 >
-> **v7.0 (Methodologically Sound - RECOMMENDED FOR PRODUCTION):**
+> **v7.0 (Production Standard - RECOMMENDED):**
 >
 > - Discipline (v7.0, 92.32% accuracy, July 23rd, 2025)
 > - Methodology (v7.0, 86.92% accuracy, July 23rd, 2025)  
 > - Subfield (v7.0, CS: 82.92%, IS: 80.33%, IT: 85.39% accuracy, July 23rd, 2025)
 >
-> **v6.0 (High Test Scores - EDUCATIONAL USE ONLY):**
+> **Educational Framework (Complete Documentation - August 1st, 2025):**
 >
-> - Discipline (v6.0, 94.77% accuracy with data leakage issues, June 11, 2025)
-> - Methodology (v6.0, 91.87% accuracy with overfitting issues, June 19, 2025)  
-> - Subfield (v6.0, CS: 89.61%, IS: 83.39%, IT: 88.48% accuracy with validation issues, July 10th, 2025)
+> - **v6.0**: Data leakage examples (94.77% discipline, 91.87% methodology - inflated scores)
+> - **v8.0**: False premise case study (82.76% methodology, 0.564 Mixed F1 - baseline verification)
+> - **v9.0**: Strategic decision-making (78.42% detailed methodology - discontinued approach)
+> - **Unified Pipeline**: Complete integration with smart post-processing (July 19th, 2025)
 >
-> **Unified Pipeline:** Complete Integration (July 19th, 2025)
+> **Complete Documentation (August 1st, 2025):**
 >
-> - Smart post-processing with confidence-based error correction
-> - Production-ready API with batch processing capabilities
-> - Comprehensive analysis and recommendation system
-> - Can be updated to use v7.0 methodologically sound models
+> - All notebook subdirectories documented with comprehensive READMEs
+> - Complete artifact documentation including educational examples
+> - Strategic decision-making frameworks and engineering lessons
+> - Production vs educational usage guidance for all versions
 >
-> **Key Discovery:** High test scores can be misleading without proper validation methodology. v7.0 represents the true, reliable performance for real-world applications.
+> **Key Discoveries:**
 >
-> **Recommendation:** Use v7.0 for all production deployments. v6.0 serves as valuable educational example of common ML methodology pitfalls.
+> - **Methodological soundness > High test scores** (v6.0 vs v7.0)
+> - **Baseline verification critical** (v8.0 false premise)
+> - **Simple approaches often superior** (v9.0 discontinuation)
+> - **Complete documentation essential** for educational value
+>
+> **Recommendations:**
+>
+> - **Production**: Use v7.0 exclusively for all real-world applications
+> - **Education**: Study v6.0, v8.0, v9.0 for comprehensive ML methodology training
+> - **Strategic Thinking**: Leverage v9.0 case study for engineering decision-making frameworks
