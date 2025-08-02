@@ -71,7 +71,7 @@ cs_ai_papers = df[(df['discipline'] == 'CS') & (df['subfield'] == 'AI/ML')]
 
 ### Production Dataset (Master.csv)
 
-- **Total papers**: 27,114 (excluding header)
+- **Total papers**: 26,944 (excluding header)
 - **Date**: July 23, 2025
 - **Quality**: Production-ready, LLM-validated
 - **Completeness**: All three classification tasks included
@@ -79,7 +79,7 @@ cs_ai_papers = df[(df['discipline'] == 'CS') & (df['subfield'] == 'AI/ML')]
 
 ### Experimental Dataset (MASTER_DETAILED_METHODOLOGY.csv)
 
-- **Total papers**: 27,114 (same papers as Master.csv)
+- **Total papers**: 26,944 (same papers as Master.csv)
 - **Date**: August 1, 2025
 - **Purpose**: Experimental detailed methodology classification
 - **Status**: ❌ **Discontinued due to classification ambiguity**

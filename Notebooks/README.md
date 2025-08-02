@@ -50,14 +50,32 @@ Data augmentation techniques with detailed 8-category classification - ultimatel
 
 **Use this for:** Learning data augmentation techniques, feature optimization strategies, strategic decision-making in ML projects
 
+### `academic_paper_classifier.ipynb` (🚀 **SIMPLIFIED & USER-FRIENDLY**)
+
+Streamlined, ready-to-use classification tool for quick paper analysis
+
+- **20 cells** (vs 37 in unified pipeline) - simplified structure
+- **Sample data included** - works out of the box with realistic examples
+- **Layman explanations** - plain English descriptions of classifications
+- **Variable-based interaction** - no input() function issues in Jupyter
+- **Auto working directory detection** - handles path issues automatically
+- **Built-in troubleshooting** - enhanced error messages and guidance
+
+**Classification Examples Included:**
+
+- CS/SEC/QUANT: "Machine Learning Approaches for Cybersecurity Threat Detection in IoT Networks"
+- IT/EMERGING/QUAL: "Blockchain-based Supply Chain Management: A Systematic Review"
+
+**Use this for:** Quick paper classification, first-time users, demonstration purposes, practical applications
+
 ### `unified/`
 
-Complete integrated classification systems
+Complete integrated classification systems for comprehensive analysis
 
 - `unified_classification_pipeline.ipynb` - Hierarchical discipline → subfield → methodology workflow with smart post-processing (v6.0 based)
 - `unified_pipeline_v7.ipynb` - Updated unified pipeline with v7.0 methodological corrections and improved reliability
 
-**Use these for:** End-to-end classification system, production deployment examples, comprehensive analysis
+**Use these for:** End-to-end classification system, production deployment examples, detailed analysis workflows
 
 ### `legacy/`
 
@@ -75,11 +93,11 @@ Contains all development iterations including:
 
 ## 🎯 Quick Start Guide
 
-### For v8.0 Educational Study
+### For Quick Paper Classification (⭐ **RECOMMENDED FOR NEW USERS**)
 
 ```bash
-# Study v8.0 false premise case study  
-jupyter notebook v8.0_educational/methodology_classifier_v8.ipynb
+# Use simplified, user-friendly classifier with sample data
+jupyter notebook academic_paper_classifier.ipynb
 ```
 
 ### For Learning Proper ML Methodology
@@ -87,6 +105,16 @@ jupyter notebook v8.0_educational/methodology_classifier_v8.ipynb
 ```bash
 # Study v7.0 notebooks (recommended approach)
 jupyter notebook current/discipline_v7.ipynb
+```
+
+### For Complete Classification System
+
+```bash
+# Use v7.0 methodologically corrected pipeline (advanced users)
+jupyter notebook unified/unified_pipeline_v7.ipynb
+
+# Or use original unified pipeline (v6.0 based)
+jupyter notebook unified/unified_classification_pipeline.ipynb
 ```
 
 ### For Data Augmentation & Strategic Decision-Making
@@ -103,14 +131,11 @@ jupyter notebook v9.0_educational/methodology_classifier_v9.ipynb
 jupyter notebook v6.0_educational/discipline_classifier_v6_0.ipynb
 ```
 
-### For Complete Classification System
+### For v8.0 Educational Study
 
 ```bash
-# Use v7.0 methodologically corrected pipeline (recommended)
-jupyter notebook unified/unified_pipeline_v7.ipynb
-
-# Or use original unified pipeline (v6.0 based)
-jupyter notebook unified/unified_classification_pipeline.ipynb
+# Study v8.0 false premise case study  
+jupyter notebook v8.0_educational/methodology_classifier_v8.ipynb
 ```
 
 ## 🔬 Key Differences Between Versions
@@ -170,6 +195,9 @@ jupyter notebook unified/unified_classification_pipeline.ipynb
 
 | **Purpose** | **Use This** | **Environment** |
 |-------------|--------------|-----------------|
+| **Quick Classification** ⭐ | `academic_paper_classifier.ipynb` | Any Python 3.11+ |
+| **First-Time Users** | `academic_paper_classifier.ipynb` | Any Python 3.11+ |
+| **Demo/Presentation** | `academic_paper_classifier.ipynb` | Any Python 3.11+ |
 | **False Premise Study** | `v8.0_educational/methodology_classifier_v8.ipynb` | Local nlp-bert kernel |
 | **Data Augmentation Study** | `v9.0_educational/methodology_classifier_v9.ipynb` | Local nlp-bert kernel |
 | Production Code | `current/` | Local nlp-bert kernel |
@@ -191,3 +219,7 @@ The v9.0 experience shows that **simpler approaches often outperform complex one
 ### **Strategic Decision-Making**
 
 Sometimes the most valuable lesson is knowing **when to abandon a technically successful approach** in favor of a more practical solution. v9.0's discontinuation demonstrates mature engineering judgment.
+
+### **User-Centered Design**
+
+The creation of `academic_paper_classifier.ipynb` demonstrates the importance of **simplifying complex systems for end users**. By reducing 37 cells to 20, adding sample data, and including layman explanations, technical capabilities become accessible to broader audiences without sacrificing functionality.
