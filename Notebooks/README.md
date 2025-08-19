@@ -54,7 +54,7 @@ Data augmentation techniques with detailed 8-category classification - ultimatel
 
 Streamlined, ready-to-use classification tool for quick paper analysis
 
-- **20 cells** (vs 37 in unified pipeline) - simplified structure
+- **26 cells** (vs 37 in unified pipeline) - simplified structure
 - **Sample data included** - works out of the box with realistic examples
 - **Layman explanations** - plain English descriptions of classifications
 - **Variable-based interaction** - no input() function issues in Jupyter
